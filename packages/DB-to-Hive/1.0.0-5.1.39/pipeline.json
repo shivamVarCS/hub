@@ -1,0 +1,36 @@
+{
+  "schedule": "0 * * * *",
+  "resources": {
+    "memoryMB": 2048,
+    "virtualCores": 1
+  },
+  "stages": [
+    {
+      "name": "Database",
+      "plugin": {
+        "name": "Database",
+        "type": "batchsource",
+        "properties": {
+          "importQuery": "${importQuery}",
+          "connectionString": "jdbc:mysql://${hostname}:${port}/${dbname}"
+          "user": "${user}",
+          "password": "${password}",
+          "numSplits": "1", 
+          "jdbcPluginName": "mysql"
+        }
+      }
+    },
+    {
+      "name": "Hive",
+      "plugin": {
+        "name": "Hive",
+        "type": "batchsink",
+        "properties": {
+        }
+      }
+    }
+  ],
+  "connections": [
+    { "from": "Database", "to": "Hive" }
+  ]
+}
