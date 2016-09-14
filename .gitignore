@@ -1,0 +1,11 @@
+*.class
+.*.swp
+# Package Files #
+*.jar
+
+# Intellij Files & Dir #
+*.iml
+*.ipr
+*.iws
+.idea
+.DS_Store
