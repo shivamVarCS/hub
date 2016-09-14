@@ -1,11 +1,9 @@
 {
   "specVersion": "1.0",
-  "name": "MySQL-to-Hive",
   "label": "MySQL to Hive",
   "description": "Reads from a MySQL Database (using version 5.1.39 of the MySQL JDBC driver) and writes to Hive",
   "author": "Cask Data Inc.",
   "org": "Cask Data Inc.",
-  "version": "1.0.0-5.1.39",
   "categories": [ "hydrator-pipeline" ],
   "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
   "actions": [
