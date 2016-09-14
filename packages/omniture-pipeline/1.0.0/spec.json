@@ -1,0 +1,67 @@
+{
+  "specVersion": "1.0",
+  "label": "Omniture Hits Pipeline",
+  "description": "Reads Omniture hit data and joins it with browser information before writing to Time Partitioned Files in Avro format.",
+  "author": "Cask Data Inc.",
+  "org": "Cask Data Inc.",
+  "categories": [ "hydrator-pipeline" ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
+  "actions": [
+    {
+      "type": "create_stream",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "hits"
+        },
+        {
+          "name": "description",
+          "value": "Omniture Hit Data"
+        },
+        {
+          "name": "loadfiles",
+          "value": [ "hit_data.tsv" ]
+        }
+      ]
+    },
+    {
+      "type": "create_stream",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "browserInfo"
+        },
+        {
+          "name": "description",
+          "value": "Browser ID to Name Mapping"
+        },
+        {
+          "name": "loadfiles",
+          "value": [ "browsers.tsv" ]
+        }
+      ]
+    },
+    {
+      "type": "create_app",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "system",
+            "name": "cdap-data-pipeline",
+            "version": "4.0.0-SNAPSHOT"
+          }
+        },
+        {
+          "name": "name",
+          "value": "omnitureHitsPipeline",
+          "canModify": true
+        },
+        {
+          "name": "config",
+          "value": "pipeline.json"
+        } 
+      ]
+    }
+  ]
+}
