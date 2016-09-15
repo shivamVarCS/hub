@@ -165,7 +165,7 @@ public class Packager {
       LOG.info("Creating archive for package {}-{} from files {}", name, version, archiveFiles);
       try (ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(archiveFile)))) {
         for (File file : archiveFiles) {
-          addFileToArchive(zos, file, "", builder.getMeta().getCreated());
+          addFileToArchive(zos, file, "", builder.getMeta().getCreated() * 1000);
         }
         zos.finish();
       }
