@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -45,6 +46,12 @@ public class Packager {
   private static final Comparator<File> FILE_COMPARATOR = new FileComparator();
   private final File packagesDir;
   private final File catalogFile;
+
+  static {
+    // zip stores the modified date in its header, which uses the default timezone.
+    // always use UTC to ensure that even zips on machines with different timezones create the exact same zip.
+    TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+  }
 
   public Packager(File baseDir) {
     this.packagesDir = new File(baseDir, "packages");
@@ -181,14 +188,18 @@ public class Packager {
   private void addFileToArchive(ZipOutputStream zos, File file, String parent, long time) throws IOException {
     if (file.isDirectory()) {
       String path = parent + file.getName() + "/";
-      ZipEntry zipEntry = createDeterministicZipEntry(file, path, time);
+      ZipEntry zipEntry = new ZipEntry(path);
+      // set time to ensure bytes (and md5) are same for the zip
+      zipEntry.setTime(time);
       zos.putNextEntry(zipEntry);
       for (File child : sortedListFiles(file)) {
         addFileToArchive(zos, child, path, time);
       }
       zos.closeEntry();
     } else {
-      ZipEntry zipEntry = createDeterministicZipEntry(file, parent + file.getName(), time);
+      ZipEntry zipEntry = new ZipEntry(parent + file.getName());
+      // set time to ensure bytes (and md5) are same for the zip
+      zipEntry.setTime(time);
       zos.putNextEntry(zipEntry);
       byte[] buffer = new byte[1024 * 1024];
       try (FileInputStream inputStream = new FileInputStream(file)) {
@@ -199,13 +210,6 @@ public class Packager {
       }
       zos.closeEntry();
     }
-  }
-
-  // set the time on the zip entry so that zips created with the same data have the same bytes and md5
-  private ZipEntry createDeterministicZipEntry(File file, String zipPath, long time) throws IOException {
-    ZipEntry zipEntry = new ZipEntry(zipPath);
-    zipEntry.setTime(time);
-    return zipEntry;
   }
 
   // returns files in sorted order. We do this to ensure that zips created are always the same bytes.
