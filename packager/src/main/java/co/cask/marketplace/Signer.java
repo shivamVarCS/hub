@@ -22,7 +22,6 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPPrivateKey;
 import org.bouncycastle.openpgp.PGPSecretKey;
-import org.bouncycastle.openpgp.PGPSecretKeyRing;
 import org.bouncycastle.openpgp.PGPSecretKeyRingCollection;
 import org.bouncycastle.openpgp.PGPSignature;
 import org.bouncycastle.openpgp.PGPSignatureGenerator;
@@ -50,18 +49,31 @@ public class Signer {
     Security.addProvider(new BouncyCastleProvider());
   }
 
-  public static Signer fromKeyFile(File keyFile, String keyPassword) throws IOException, PGPException,
+  public static Signer fromKeyFile(File keyFile, long id, String keyPassword) throws IOException, PGPException,
     NoSuchProviderException, NoSuchAlgorithmException {
-    try (InputStream is = PGPUtil.getDecoderStream(new FileInputStream(keyFile))) {
-      PGPSecretKeyRingCollection secretKeyRing = new PGPSecretKeyRingCollection(is);
-      PGPSecretKeyRing pgpSecretKeyRing = (PGPSecretKeyRing) secretKeyRing.getKeyRings().next();
-      PGPSecretKey secretKey = pgpSecretKeyRing.getSecretKey();
-      PGPPrivateKey privateKey = secretKey.extractPrivateKey(keyPassword.toCharArray(), "BC");
-      int algo = secretKey.getPublicKey().getAlgorithm();
 
-      PGPSignatureGenerator signer = new PGPSignatureGenerator(algo, PGPUtil.SHA1, "BC");
-      signer.initSign(PGPSignature.BINARY_DOCUMENT, privateKey);
-      return new Signer(signer);
+    PGPSecretKey secretKey = getSecretKey(keyFile, id);
+    PGPPrivateKey privateKey;
+    try {
+      privateKey = secretKey.extractPrivateKey(keyPassword.toCharArray(), "BC");
+    } catch (Exception e) {
+      throw new IllegalArgumentException("Could not extract private key. Please make sure the password is correct.", e);
+    }
+    int algorithm = secretKey.getPublicKey().getAlgorithm();
+
+    PGPSignatureGenerator signer = new PGPSignatureGenerator(algorithm, PGPUtil.SHA256, "BC");
+    signer.initSign(PGPSignature.BINARY_DOCUMENT, privateKey);
+    return new Signer(signer);
+  }
+
+  private static PGPSecretKey getSecretKey(File keyFile, long id) throws IOException, PGPException {
+    try (InputStream is = PGPUtil.getDecoderStream(new FileInputStream(keyFile))) {
+      PGPSecretKeyRingCollection secretKeyRings = new PGPSecretKeyRingCollection(is);
+      PGPSecretKey key = secretKeyRings.getSecretKey(id);
+      if (key == null) {
+        throw new IllegalArgumentException("Could not find secret key with id " + id + " in keyring.");
+      }
+      return key;
     }
   }
 

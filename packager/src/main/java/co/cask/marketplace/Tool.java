@@ -16,6 +16,8 @@
 
 package co.cask.marketplace;
 
+import com.google.common.io.BaseEncoding;
+import com.google.common.primitives.Longs;
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -39,10 +41,14 @@ public class Tool {
     Options options = new Options()
       .addOption(new Option("h", "help", false, "Print this usage message."))
       .addOption(new Option("k", "key", true,
-                            "File containing the GPG private key used to sign package specs and archives. " +
+                            "File containing the GPG secret keyring containing the private key to use to " +
+                              "sign package specs and archives. " +
                               "If none is given, specs and archives will not be signed."))
       .addOption(new Option("p", "password", true,
                             "Password for the GPG private key."))
+      .addOption(new Option("i", "keyid", true,
+                            "Id (in hex) of the private key to use to sign specs and archives. " +
+                              "If you are using gpg, you can get this from 'gpg --list-keys --keyid-format LONG'"))
       .addOption(new Option("d", "dir", true,
                             "Directory containing packages. Defaults to the current working directory."))
       .addOption(new Option("b", "bucket", true, "The S3 bucket to publish packages to."))
@@ -113,12 +119,26 @@ public class Tool {
         LOG.error("Key file {} is not a file.", keyFile);
         System.exit(1);
       }
+
       if (!commandLine.hasOption('p')) {
         LOG.error("A password for the private key must be given.");
         System.exit(1);
       }
       String password = commandLine.getOptionValue('p');
-      signer = Signer.fromKeyFile(keyFile, password);
+
+      if (!commandLine.hasOption('i')) {
+        LOG.error("The ID of the private key in the keyring must be given.");
+        System.exit(1);
+      }
+      String keyIDHex = commandLine.getOptionValue('i');
+      long keyID = 0;
+      try {
+        keyID = Longs.fromByteArray(BaseEncoding.base16().decode(keyIDHex.toUpperCase()));
+      } catch (Exception e) {
+        LOG.error("Could not decode {} into a long. Please ensure it is a long in hex format.", keyIDHex, e);
+        System.exit(1);
+      }
+      signer = Signer.fromKeyFile(keyFile, keyID, password);
     }
 
     String bucket = null;
