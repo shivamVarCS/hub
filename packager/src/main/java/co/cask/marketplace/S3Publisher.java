@@ -81,14 +81,16 @@ public class S3Publisher implements Publisher {
 
   // puts the file on s3 if the md5 is different, or the file length is different.
   private void putFileIfChanged(String key, File file) throws IOException {
-    ObjectMetadata existingMeta = client.getObjectMetadata(bucket, key);
-    long fileLength = file.length();
-    String md5Hex = BaseEncoding.base16().encode(Files.hash(file, Hashing.md5()).asBytes());
-    if (existingMeta != null &&
-      existingMeta.getContentLength() == fileLength &&
-      existingMeta.getETag() != null && existingMeta.getETag().equalsIgnoreCase(md5Hex)) {
-      LOG.info("{} hasn't changed, skipping upload to s3.", key);
-      return;
+    if (client.doesObjectExist(bucket, key)) {
+      ObjectMetadata existingMeta = client.getObjectMetadata(bucket, key);
+      long fileLength = file.length();
+      String md5Hex = BaseEncoding.base16().encode(Files.hash(file, Hashing.md5()).asBytes());
+      if (existingMeta != null &&
+        existingMeta.getContentLength() == fileLength &&
+        existingMeta.getETag() != null && existingMeta.getETag().equalsIgnoreCase(md5Hex)) {
+        LOG.info("{} hasn't changed, skipping upload to s3.", key);
+        return;
+      }
     }
 
     String ext = Files.getFileExtension(file.getName());

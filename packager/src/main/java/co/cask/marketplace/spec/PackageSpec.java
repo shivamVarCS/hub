@@ -30,17 +30,19 @@ public class PackageSpec implements Validatable {
   private final String author;
   private final String org;
   private final String cdapVersion;
+  private final long created;
   private final Set<String> categories;
   private final List<ActionSpec> actions;
 
   public PackageSpec(String specVersion, String description, String label, String author, String org,
-                     String cdapVersion, Set<String> categories, List<ActionSpec> actions) {
+                     String cdapVersion, long created, Set<String> categories, List<ActionSpec> actions) {
     this.specVersion = specVersion;
     this.description = description;
     this.label = label;
     this.author = author;
     this.org = org;
     this.cdapVersion = cdapVersion;
+    this.created = created;
     this.categories = categories;
     this.actions = actions;
   }
@@ -67,6 +69,10 @@ public class PackageSpec implements Validatable {
 
   public String getCdapVersion() {
     return cdapVersion;
+  }
+
+  public long getCreated() {
+    return created;
   }
 
   public Set<String> getCategories() {
@@ -101,13 +107,14 @@ public class PackageSpec implements Validatable {
       Objects.equals(author, that.author) &&
       Objects.equals(org, that.org) &&
       Objects.equals(cdapVersion, that.cdapVersion) &&
+      Objects.equals(created, that.created) &&
       Objects.equals(categories, that.categories) &&
       Objects.equals(actions, that.actions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(specVersion, description, label, author, org, cdapVersion, categories, actions);
+    return Objects.hash(specVersion, description, label, author, org, cdapVersion, created, categories, actions);
   }
 
   @Override
@@ -119,6 +126,7 @@ public class PackageSpec implements Validatable {
       ", author='" + author + '\'' +
       ", org='" + org + '\'' +
       ", cdapVersion='" + cdapVersion + '\'' +
+      ", created=" + created +
       ", categories=" + categories +
       ", actions=" + actions +
       '}';

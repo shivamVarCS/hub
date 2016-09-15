@@ -30,24 +30,26 @@ public class PackageMeta {
   private final String label;
   private final String author;
   private final String org;
-  private final Set<String> categories;
   private final String cdapVersion;
+  private final long created;
+  private final Set<String> categories;
 
   public static PackageMeta fromSpec(String name, String version, PackageSpec spec) {
     return new PackageMeta(name, version, spec.getDescription(), spec.getLabel(), spec.getAuthor(), spec.getOrg(),
-                           spec.getCategories(), spec.getCdapVersion());
+                           spec.getCdapVersion(), spec.getCreated(), spec.getCategories());
   }
 
   public PackageMeta(String name, String version, String description, String label, String author, String org,
-                     Set<String> categories, String cdapVersion) {
+                     String cdapVersion, long created, Set<String> categories) {
     this.name = name;
     this.version = version;
     this.description = description;
     this.label = label;
     this.author = author;
     this.org = org;
-    this.categories = categories;
     this.cdapVersion = cdapVersion;
+    this.created = created;
+    this.categories = categories;
   }
 
   public String getName() {
@@ -74,6 +76,10 @@ public class PackageMeta {
     return org;
   }
 
+  public long getCreated() {
+    return created;
+  }
+
   public Set<String> getCategories() {
     return categories;
   }
@@ -94,13 +100,14 @@ public class PackageMeta {
       Objects.equals(label, that.label) &&
       Objects.equals(author, that.author) &&
       Objects.equals(org, that.org) &&
-      Objects.equals(categories, that.categories) &&
-      Objects.equals(cdapVersion, that.cdapVersion);
+      Objects.equals(cdapVersion, that.cdapVersion) &&
+      Objects.equals(created, that.created) &&
+      Objects.equals(categories, that.categories);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, version, description, label, author, org, categories, cdapVersion);
+    return Objects.hash(name, version, description, label, author, org, cdapVersion, created, categories);
   }
 
   @Override
@@ -112,8 +119,9 @@ public class PackageMeta {
       ", label='" + label + '\'' +
       ", author='" + author + '\'' +
       ", org='" + org + '\'' +
-      ", categories=" + categories +
       ", cdapVersion='" + cdapVersion + '\'' +
+      ", created=" + created +
+      ", categories=" + categories +
       '}';
   }
 }

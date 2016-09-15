@@ -165,7 +165,7 @@ public class Packager {
       LOG.info("Creating archive for package {}-{} from files {}", name, version, archiveFiles);
       try (ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(archiveFile)))) {
         for (File file : archiveFiles) {
-          addFileToArchive(zos, file, "");
+          addFileToArchive(zos, file, "", builder.getMeta().getCreated());
         }
         zos.finish();
       }
@@ -175,17 +175,17 @@ public class Packager {
     return builder.build();
   }
 
-  private void addFileToArchive(ZipOutputStream zos, File file, String parent) throws IOException {
+  private void addFileToArchive(ZipOutputStream zos, File file, String parent, long time) throws IOException {
     if (file.isDirectory()) {
       String path = parent + file.getName() + "/";
-      ZipEntry zipEntry = createDeterministicZipEntry(file, path);
+      ZipEntry zipEntry = createDeterministicZipEntry(file, path, time);
       zos.putNextEntry(zipEntry);
       for (File child : listFiles(file)) {
-        addFileToArchive(zos, child, path);
+        addFileToArchive(zos, child, path, time);
       }
       zos.closeEntry();
     } else {
-      ZipEntry zipEntry = createDeterministicZipEntry(file, parent + file.getName());
+      ZipEntry zipEntry = createDeterministicZipEntry(file, parent + file.getName(), time);
       zos.putNextEntry(zipEntry);
       byte[] buffer = new byte[1024 * 1024];
       try (FileInputStream inputStream = new FileInputStream(file)) {
@@ -199,9 +199,9 @@ public class Packager {
   }
 
   // set the time on the zip entry so that zips created with the same data have the same bytes and md5
-  private ZipEntry createDeterministicZipEntry(File file, String zipPath) throws IOException {
+  private ZipEntry createDeterministicZipEntry(File file, String zipPath, long time) throws IOException {
     ZipEntry zipEntry = new ZipEntry(zipPath);
-    zipEntry.setTime(file.lastModified());
+    zipEntry.setTime(time);
     return zipEntry;
   }
 

@@ -181,6 +181,10 @@ public class Package implements Iterable<File> {
       return this;
     }
 
+    public PackageMeta getMeta() {
+      return meta;
+    }
+
     public Package build() {
       return new Package(name, version, meta, archive, archiveSignature, spec, specSignature, license, icon);
     }
