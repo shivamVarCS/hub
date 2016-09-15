@@ -214,6 +214,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
+        <version>2.4.3</version>
         <executions>
           <execution>
             <id>etl-tools-fat-jar</id>

@@ -29,6 +29,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -40,6 +42,7 @@ public class Packager {
   private static final Logger LOG = LoggerFactory.getLogger(Packager.class);
   private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
   private static final String ARCHIVE_NAME = "archive.zip";
+  private static final Comparator<File> FILE_COMPARATOR = new FileComparator();
   private final File packagesDir;
   private final File catalogFile;
 
@@ -60,11 +63,11 @@ public class Packager {
       }
     }
 
-    for (File packageDir : listFiles(packagesDir)) {
+    for (File packageDir : sortedListFiles(packagesDir)) {
       if (!packageDir.isDirectory()) {
         continue;
       }
-      for (File versionDir : listFiles(packageDir)) {
+      for (File versionDir : sortedListFiles(packageDir)) {
         if (!versionDir.isDirectory()) {
           continue;
         }
@@ -87,14 +90,14 @@ public class Packager {
     List<Package> packages = new ArrayList<>();
     List<PackageMeta> packageCatalog = new ArrayList<>();
 
-    for (File packageDir : listFiles(packagesDir)) {
+    for (File packageDir : sortedListFiles(packagesDir)) {
       if (!packageDir.isDirectory()) {
         LOG.warn("Skipping {} since it is not a directory", packageDir);
         continue;
       }
 
       String packageName = packageDir.getName();
-      for (File versionDir : listFiles(packageDir)) {
+      for (File versionDir : sortedListFiles(packageDir)) {
         if (!versionDir.isDirectory()) {
           LOG.warn("Skipping {} since it is not a directory", versionDir);
           continue;
@@ -126,7 +129,7 @@ public class Packager {
 
     Package.Builder builder = Package.builder(name, version);
 
-    for (File packageFile : listFiles(packageDir)) {
+    for (File packageFile : sortedListFiles(packageDir)) {
       String fileName = packageFile.getName();
 
       if (fileName.equals("icon.jpg")) {
@@ -180,7 +183,7 @@ public class Packager {
       String path = parent + file.getName() + "/";
       ZipEntry zipEntry = createDeterministicZipEntry(file, path, time);
       zos.putNextEntry(zipEntry);
-      for (File child : listFiles(file)) {
+      for (File child : sortedListFiles(file)) {
         addFileToArchive(zos, child, path, time);
       }
       zos.closeEntry();
@@ -205,12 +208,21 @@ public class Packager {
     return zipEntry;
   }
 
-  private File[] listFiles(File dir) throws IOException {
+  // returns files in sorted order. We do this to ensure that zips created are always the same bytes.
+  private File[] sortedListFiles(File dir) throws IOException {
     File[] files = dir.listFiles();
     if (files == null) {
       throw new IOException("Unable to list files in directory " + dir);
     }
+    Arrays.sort(files, FILE_COMPARATOR);
     return files;
   }
 
+  private static class FileComparator implements Comparator<File> {
+
+    @Override
+    public int compare(File o1, File o2) {
+      return o1.getName().compareTo(o2.getName());
+    }
+  }
 }
