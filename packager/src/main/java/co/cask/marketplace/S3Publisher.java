@@ -95,13 +95,13 @@ public class S3Publisher implements Publisher {
     String contentType;
     switch (ext) {
       case "json":
-        contentType = MediaType.JSON_UTF_8.toString();
+        contentType = MediaType.JSON_UTF_8.withoutParameters().toString();
         break;
       case "txt":
-        contentType = MediaType.PLAIN_TEXT_UTF_8.toString();
+        contentType = MediaType.PLAIN_TEXT_UTF_8.withoutParameters().toString();
         break;
       default:
-        contentType = MediaType.OCTET_STREAM.toString();
+        contentType = MediaType.OCTET_STREAM.withoutParameters().toString();
     }
     ObjectMetadata newMeta = new ObjectMetadata();
     newMeta.setContentType(contentType);
