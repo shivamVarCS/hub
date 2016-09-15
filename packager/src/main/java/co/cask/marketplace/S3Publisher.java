@@ -36,6 +36,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import javax.annotation.Nullable;
 
 /**
  * Publish packages to S3.
@@ -44,8 +45,12 @@ public class S3Publisher implements Publisher {
   private static final Logger LOG = LoggerFactory.getLogger(S3Publisher.class);
   private final AmazonS3Client client;
   private final String bucket;
+  private final boolean forcePush;
 
-  public S3Publisher(File cfgFile, String bucket) throws IOException {
+  public S3Publisher(File cfgFile, String bucket, boolean forcePush) throws IOException {
+    this.bucket = bucket;
+    this.forcePush = forcePush;
+
     Map<String, String> conf = parseConfig(cfgFile);
     String accessKey = conf.get("access_key");
     String secretKey = conf.get("secret_key");
@@ -63,24 +68,39 @@ public class S3Publisher implements Publisher {
       clientConf.setSocketTimeout(Integer.parseInt(conf.get("socket_timeout")));
     }
     this.client = new AmazonS3Client(new BasicAWSCredentials(accessKey, secretKey), clientConf);
-    this.bucket = bucket;
   }
 
   @Override
   public void publishPackage(Package pkg) throws Exception {
-    String keyBase = String.format("packages/%s/%s/", pkg.getName(), pkg.getVersion());
-    for (File file : pkg) {
-      putFileIfChanged(keyBase + file.getName(), file);
-    }
+    String keyPrefix = String.format("packages/%s/%s/", pkg.getName(), pkg.getVersion());
+
+    putFilesIfChanged(keyPrefix, pkg.getIcon());
+    putFilesIfChanged(keyPrefix, pkg.getLicense());
+    putFilesIfChanged(keyPrefix, pkg.getArchive(), pkg.getArchiveSignature());
+    putFilesIfChanged(keyPrefix, pkg.getSpec(), pkg.getSpecSignature());
   }
 
   @Override
   public void publishCatalog(File catalog) throws Exception {
-    putFileIfChanged(catalog.getName(), catalog);
+    putFilesIfChanged("", catalog);
   }
 
-  // puts the file on s3 if the md5 is different, or the file length is different.
-  private void putFileIfChanged(String key, File file) throws IOException {
+  // if the specified file has changed, put it plus all extra files on s3.
+  private void putFilesIfChanged(String keyPrefix, @Nullable File file, File... extraFiles) throws IOException {
+    if (file != null && shouldPush(keyPrefix, file)) {
+      putFile(keyPrefix, file);
+      for (File extraFile : extraFiles) {
+        putFile(keyPrefix, extraFile);
+      }
+    }
+  }
+
+  // check if the file on s3 has a different md5 or the file length.
+  private boolean shouldPush(String keyPrefix, File file) throws IOException {
+    if (forcePush) {
+      return true;
+    }
+    String key = keyPrefix + file.getName();
     if (client.doesObjectExist(bucket, key)) {
       ObjectMetadata existingMeta = client.getObjectMetadata(bucket, key);
       long fileLength = file.length();
@@ -88,11 +108,14 @@ public class S3Publisher implements Publisher {
       if (existingMeta != null &&
         existingMeta.getContentLength() == fileLength &&
         existingMeta.getETag() != null && existingMeta.getETag().equalsIgnoreCase(md5Hex)) {
-        LOG.info("{} hasn't changed, skipping upload to s3.", key);
-        return;
+        LOG.info("{} has not changed, skipping upload to S3.", file);
+        return false;
       }
     }
+    return true;
+  }
 
+  private void putFile(String keyPrefix, File file) throws IOException {
     String ext = Files.getFileExtension(file.getName());
     String contentType;
     switch (ext) {
@@ -102,11 +125,15 @@ public class S3Publisher implements Publisher {
       case "txt":
         contentType = MediaType.PLAIN_TEXT_UTF_8.withoutParameters().toString();
         break;
+      case "asc":
+        contentType = MediaType.PLAIN_TEXT_UTF_8.withoutParameters().toString();
+        break;
       default:
         contentType = MediaType.OCTET_STREAM.withoutParameters().toString();
     }
     ObjectMetadata newMeta = new ObjectMetadata();
     newMeta.setContentType(contentType);
+    String key = keyPrefix + file.getName();
     PutObjectRequest request = new PutObjectRequest(bucket, key, file)
       .withCannedAcl(CannedAccessControlList.PublicRead)
       .withMetadata(newMeta);

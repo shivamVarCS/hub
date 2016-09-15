@@ -19,6 +19,7 @@ package co.cask.marketplace;
 import co.cask.marketplace.spec.PackageMeta;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.bouncycastle.openpgp.PGPException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +29,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+import java.security.SignatureException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -35,6 +40,7 @@ import java.util.List;
 import java.util.TimeZone;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
+import javax.annotation.Nullable;
 
 /**
  * Tool to create and publish packages for a CDAP Marketplace.
@@ -46,6 +52,7 @@ public class Packager {
   private static final Comparator<File> FILE_COMPARATOR = new FileComparator();
   private final File packagesDir;
   private final File catalogFile;
+  private final Signer signer;
 
   static {
     // zip stores the modified date in its header, which uses the default timezone.
@@ -53,9 +60,10 @@ public class Packager {
     TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
   }
 
-  public Packager(File baseDir) {
+  public Packager(File baseDir, @Nullable Signer signer) throws InvalidKeyException {
     this.packagesDir = new File(baseDir, "packages");
     this.catalogFile = new File(baseDir, "packages.json");
+    this.signer = signer;
   }
 
   /**
@@ -85,6 +93,20 @@ public class Packager {
             throw new IOException("Could not delete archive file " + archiveFile);
           }
         }
+        File archiveSignature = new File(versionDir, ARCHIVE_NAME + ".asc");
+        if (archiveSignature.exists()) {
+          LOG.info("Deleting package archive signature " + archiveSignature);
+          if (!archiveSignature.delete()) {
+            throw new IOException("Could not delete archive signature " + archiveSignature);
+          }
+        }
+        File specSignature = new File(versionDir, "spec.json.asc");
+        if (specSignature.exists()) {
+          LOG.info("Deleting spec signature " + specSignature);
+          if (!specSignature.delete()) {
+            throw new IOException("Could not delete spec signature " + specSignature);
+          }
+        }
       }
     }
   }
@@ -93,7 +115,8 @@ public class Packager {
    * Build package archives and create the package catalog file.
    * @throws IOException
    */
-  public List<Package> buildPackages() throws IOException {
+  public List<Package> buildPackages() throws IOException, SignatureException, NoSuchAlgorithmException,
+    NoSuchProviderException, PGPException {
     List<Package> packages = new ArrayList<>();
     List<PackageMeta> packageCatalog = new ArrayList<>();
 
@@ -130,7 +153,9 @@ public class Packager {
     return catalogFile;
   }
 
-  private Package buildPackage(String name, String version, File packageDir) throws IOException {
+  private Package buildPackage(String name, String version, File packageDir)
+    throws IOException, NoSuchAlgorithmException, SignatureException, NoSuchProviderException, PGPException {
+
     List<File> archiveFiles = new ArrayList<>();
     boolean containsSpec = false;
 
@@ -152,6 +177,9 @@ public class Packager {
       if (fileName.equals("spec.json")) {
         containsSpec = true;
         builder.setSpec(packageFile);
+        if (signer != null) {
+          builder.setSpecSignature(signer.signFile(packageFile));
+        }
         continue;
       }
 
@@ -180,6 +208,9 @@ public class Packager {
         zos.finish();
       }
       builder.setArchive(archiveFile);
+      if (signer != null) {
+        builder.setArchiveSignature(signer.signFile(archiveFile));
+      }
     }
 
     return builder.build();

@@ -56,9 +56,11 @@
 
   <properties>
     <aws.s3.version>1.11.22</aws.s3.version>
+    <bouncycastle.version>1.46</bouncycastle.version>
     <commons.cli.version>1.2</commons.cli.version>
     <gson.version>2.2.4</gson.version>
     <guava.version>19.0</guava.version>
+    <jsr.version>2.0.1</jsr.version>
     <logback.version>1.0.9</logback.version>
     <slf4j.version>1.7.5</slf4j.version>
   </properties>
@@ -104,7 +106,17 @@
     <dependency>
       <groupId>com.google.code.findbugs</groupId>
       <artifactId>jsr305</artifactId>
-      <version>2.0.1</version>
+      <version>${jsr.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcprov-jdk16</artifactId>
+      <version>${bouncycastle.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcpg-jdk16</artifactId>
+      <version>${bouncycastle.version}</version>
     </dependency>
   </dependencies>
 
@@ -213,18 +225,21 @@
         </dependencies>
       </plugin>
       <plugin>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>2.4.3</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
         <executions>
           <execution>
-            <id>etl-tools-fat-jar</id>
+            <id>copy-dependencies</id>
             <phase>package</phase>
-            <configuration>
-              <createDependencyReducedPom>false</createDependencyReducedPom>
-            </configuration>
             <goals>
-              <goal>shade</goal>
+              <goal>copy-dependencies</goal>
             </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/lib</outputDirectory>
+              <overWriteReleases>false</overWriteReleases>
+              <overWriteSnapshots>false</overWriteSnapshots>
+              <overWriteIfNewer>true</overWriteIfNewer>
+            </configuration>
           </execution>
         </executions>
       </plugin>

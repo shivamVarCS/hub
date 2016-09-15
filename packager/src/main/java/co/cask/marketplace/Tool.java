@@ -27,7 +27,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.List;
-import java.util.TimeZone;
 
 /**
  * Tool used to create, sign, and publish packages.
@@ -40,10 +39,16 @@ public class Tool {
     Options options = new Options()
       .addOption(new Option("h", "help", false, "Print this usage message."))
       .addOption(new Option("k", "key", true,
-                            "File containing the private key used to sign package specs and archives."))
+                            "File containing the GPG private key used to sign package specs and archives. " +
+                              "If none is given, specs and archives will not be signed."))
+      .addOption(new Option("p", "password", true,
+                            "Password for the GPG private key."))
       .addOption(new Option("d", "dir", true,
                             "Directory containing packages. Defaults to the current working directory."))
       .addOption(new Option("b", "bucket", true, "The S3 bucket to publish packages to."))
+      .addOption(new Option("f", "force", false,
+                            "Push packages to S3 even if they have not changed. " +
+                              "This may be useful if the signatures have been updated, but the files have not."))
       .addOption(new Option("c", "config", true,
                             "The location of the s3 config file, containing the access key and secret key. " +
                               "The config file must specify properties as <property> = <value>. It must contain " +
@@ -97,6 +102,25 @@ public class Tool {
       System.exit(1);
     }
 
+    Signer signer = null;
+    if (commandLine.hasOption('k')) {
+      File keyFile = new File(commandLine.getOptionValue('k'));
+      if (!keyFile.exists()) {
+        LOG.error("Key file {} does not exist.", keyFile);
+        System.exit(1);
+      }
+      if (!keyFile.isFile()) {
+        LOG.error("Key file {} is not a file.", keyFile);
+        System.exit(1);
+      }
+      if (!commandLine.hasOption('p')) {
+        LOG.error("A password for the private key must be given.");
+        System.exit(1);
+      }
+      String password = commandLine.getOptionValue('p');
+      signer = Signer.fromKeyFile(keyFile, password);
+    }
+
     String bucket = null;
     File cfgFile = null;
     if (command.equalsIgnoreCase("publish")) {
@@ -120,7 +144,7 @@ public class Tool {
       }
     }
 
-    Packager packager = new Packager(packageDirectory);
+    Packager packager = new Packager(packageDirectory, signer);
 
     packager.clean();
     if (command.equalsIgnoreCase("clean")) {
@@ -132,7 +156,7 @@ public class Tool {
       System.exit(0);
     }
 
-    Publisher publisher = new S3Publisher(cfgFile, bucket);
+    Publisher publisher = new S3Publisher(cfgFile, bucket, commandLine.hasOption('f'));
     for (Package pkg : packages) {
       LOG.info("Publishing package {}-{}", pkg.getName(), pkg.getVersion());
       publisher.publishPackage(pkg);
