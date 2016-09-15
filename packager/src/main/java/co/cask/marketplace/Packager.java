@@ -17,15 +17,8 @@
 package co.cask.marketplace;
 
 import co.cask.marketplace.spec.PackageMeta;
-import co.cask.marketplace.spec.PackageSpec;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.apache.commons.cli.BasicParser;
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Option;
-import org.apache.commons.cli.Options;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,10 +26,8 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -49,12 +40,10 @@ public class Packager {
   private static final Logger LOG = LoggerFactory.getLogger(Packager.class);
   private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
   private static final String ARCHIVE_NAME = "archive.zip";
-  private final File baseDir;
   private final File packagesDir;
   private final File catalogFile;
 
   public Packager(File baseDir) {
-    this.baseDir = baseDir;
     this.packagesDir = new File(baseDir, "packages");
     this.catalogFile = new File(baseDir, "packages.json");
   }
@@ -94,7 +83,8 @@ public class Packager {
    * Build package archives and create the package catalog file.
    * @throws IOException
    */
-  public void buildArchives() throws IOException {
+  public List<Package> buildPackages() throws IOException {
+    List<Package> packages = new ArrayList<>();
     List<PackageMeta> packageCatalog = new ArrayList<>();
 
     for (File packageDir : listFiles(packagesDir)) {
@@ -111,10 +101,10 @@ public class Packager {
         }
 
         String packageVersion = versionDir.getName();
-        PackageSpec spec = buildPackageArchive(packageName, packageVersion, versionDir);
-        spec.validate();
-        packageCatalog.add(PackageMeta.fromSpec(packageName, packageVersion, spec));
-        LOG.info("Created archive for package {}-{}", packageName, packageVersion);
+        Package pkg = buildPackage(packageName, packageVersion, versionDir);
+        packageCatalog.add(pkg.getMeta());
+        packages.add(pkg);
+        LOG.info("Created package {}-{}", packageName, packageVersion);
       }
     }
     LOG.info("Created {} packages", packageCatalog.size());
@@ -123,38 +113,35 @@ public class Packager {
       printWriter.print(GSON.toJson(packageCatalog) + "\n");
     }
     LOG.info("Created package catalog file {}", catalogFile);
+    return packages;
   }
 
-  /**
-   * Sign all package specs and archives
-   */
-  public void signPackages() {
-
+  public File getCatalog() {
+    return catalogFile;
   }
 
-  private PackageSpec buildPackageArchive(String name, String version, File packageDir) throws IOException {
+  private Package buildPackage(String name, String version, File packageDir) throws IOException {
     List<File> archiveFiles = new ArrayList<>();
-    boolean containsIcon = false;
-    PackageSpec spec = null;
+    boolean containsSpec = false;
+
+    Package.Builder builder = Package.builder(name, version);
 
     for (File packageFile : listFiles(packageDir)) {
       String fileName = packageFile.getName();
 
       if (fileName.equals("icon.jpg")) {
-        containsIcon = true;
+        builder.setIcon(packageFile);
         continue;
       }
 
       if (fileName.equals("license.txt")) {
+        builder.setLicense(packageFile);
         continue;
       }
 
       if (fileName.equals("spec.json")) {
-        try (Reader reader = new FileReader(packageFile)) {
-          spec = GSON.fromJson(reader, PackageSpec.class);
-        } catch (Exception e) {
-          throw new IllegalArgumentException(String.format("Unable to parse spec for %s-%s", name, version), e);
-        }
+        containsSpec = true;
+        builder.setSpec(packageFile);
         continue;
       }
 
@@ -168,12 +155,8 @@ public class Packager {
       archiveFiles.add(packageFile);
     }
 
-    if (spec == null) {
+    if (!containsSpec) {
       throw new IllegalArgumentException(String.format("No spec found for package %s-%s.", name, version));
-    }
-
-    if (!containsIcon) {
-      LOG.warn("Package {}-{} does not contain an icon.", name, version);
     }
 
     // build the zip from everything but icon, license, and spec
@@ -186,21 +169,25 @@ public class Packager {
         }
         zos.finish();
       }
+      builder.setArchive(archiveFile);
     }
-    return spec;
+
+    return builder.build();
   }
 
   private void addFileToArchive(ZipOutputStream zos, File file, String parent) throws IOException {
     if (file.isDirectory()) {
       String path = parent + file.getName() + "/";
-      zos.putNextEntry(new ZipEntry(path));
+      ZipEntry zipEntry = createDeterministicZipEntry(file, path);
+      zos.putNextEntry(zipEntry);
       for (File child : listFiles(file)) {
         addFileToArchive(zos, child, path);
       }
       zos.closeEntry();
     } else {
-      zos.putNextEntry(new ZipEntry(parent + file.getName()));
-      byte[] buffer = new byte[4096];
+      ZipEntry zipEntry = createDeterministicZipEntry(file, parent + file.getName());
+      zos.putNextEntry(zipEntry);
+      byte[] buffer = new byte[1024 * 1024];
       try (FileInputStream inputStream = new FileInputStream(file)) {
         int length;
         while ((length = inputStream.read(buffer)) > 0) {
@@ -211,6 +198,13 @@ public class Packager {
     }
   }
 
+  // set the time on the zip entry so that zips created with the same data have the same bytes and md5
+  private ZipEntry createDeterministicZipEntry(File file, String zipPath) throws IOException {
+    ZipEntry zipEntry = new ZipEntry(zipPath);
+    zipEntry.setTime(file.lastModified());
+    return zipEntry;
+  }
+
   private File[] listFiles(File dir) throws IOException {
     File[] files = dir.listFiles();
     if (files == null) {
@@ -219,66 +213,4 @@ public class Packager {
     return files;
   }
 
-  public static void main(String[] args) throws Exception {
-
-    Options options = new Options()
-      .addOption(new Option("h", "help", false, "Print this usage message."))
-      .addOption(new Option("k", "key", true,
-                            "File containing the private key used to sign package specs and archives."))
-      .addOption(new Option("d", "dir", true,
-                            "Directory containing packages. Defaults to the current working directory."));
-
-    CommandLineParser parser = new BasicParser();
-    CommandLine commandLine = parser.parse(options, args);
-    String[] commandArgs = commandLine.getArgs();
-
-    // if help is an option
-    if (commandLine.hasOption("h") || commandArgs.length == 0) {
-      HelpFormatter helpFormatter = new HelpFormatter();
-      helpFormatter.printHelp(
-        Packager.class.getName() + " <command>",
-        "Supported commands are 'clean' and 'build'." +
-          "'build' will create package archives and the package.json catalog listing all packages found. " +
-          "Expects packages to conform to a specific directory structure. " +
-          "Each package should put its contents in the <base>/packages/<package-name>/<package-version> directory. " +
-          "In that directory, there must be a spec.json file.\n" +
-          "If the package contains a license, it must be named license.txt.\n" +
-          "If the package contains an icon, it must be named icon.jpg.\n" +
-          "Anything else in the package directory will be zipped up into a file named archive.zip.\n\n" +
-          "'clean' will delete any existing archives and the package.json catalog listing.", options, "");
-      System.exit(0);
-    }
-
-    String command = commandArgs[0];
-    if (!command.equalsIgnoreCase("build") && !command.equalsIgnoreCase("clean")) {
-      LOG.error("Command must be 'build' or 'clean'.");
-      System.exit(1);
-    }
-
-    // read and validate options
-
-    // get package directory
-    String packageDirectoryStr = commandLine.hasOption("d") ?
-      commandLine.getOptionValue("d") : System.getProperty("user.dir");
-    File packageDirectory = new File(packageDirectoryStr);
-    if (!packageDirectory.exists()) {
-      LOG.error("Directory '{}' does not exist.", packageDirectory);
-      System.exit(1);
-    }
-    if (!packageDirectory.isDirectory()) {
-      LOG.error("Directory '{}' is not a directory.", packageDirectory);
-      System.exit(1);
-    }
-
-    // get private key
-
-    Packager packager = new Packager(packageDirectory);
-
-    if (command.equalsIgnoreCase("clean")) {
-      packager.clean();
-    } else if (command.equalsIgnoreCase("build")) {
-      packager.clean();
-      packager.buildArchives();
-    }
-  }
 }
