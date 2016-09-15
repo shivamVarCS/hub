@@ -88,7 +88,7 @@ public class Tool {
     if (!command.equalsIgnoreCase("build") &&
       !command.equalsIgnoreCase("clean") &&
       !command.equalsIgnoreCase("publish")) {
-      LOG.error("Unrecognized command '{}'. Command must be 'clean', 'build', or 'publish'.");
+      LOG.error("Unrecognized command '{}'. Command must be 'clean', 'build', or 'publish'.", command);
       System.exit(1);
     }
 
