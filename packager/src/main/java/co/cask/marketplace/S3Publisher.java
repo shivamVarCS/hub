@@ -65,7 +65,7 @@ public class S3Publisher implements Publisher {
     clientConf = "true".equalsIgnoreCase(conf.get("use_https")) ?
       clientConf.withProtocol(Protocol.HTTPS) : clientConf.withProtocol(Protocol.HTTP);
     if (conf.containsKey("socket_timeout")) {
-      clientConf.setSocketTimeout(Integer.parseInt(conf.get("socket_timeout")));
+      clientConf.setSocketTimeout(Integer.parseInt(conf.get("socket_timeout")) * 1000);
     }
     this.client = new AmazonS3Client(new BasicAWSCredentials(accessKey, secretKey), clientConf);
   }
