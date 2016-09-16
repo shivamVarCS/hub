@@ -36,6 +36,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import javax.activation.FileTypeMap;
+import javax.activation.MimetypesFileTypeMap;
 import javax.annotation.Nullable;
 
 /**
@@ -43,6 +45,7 @@ import javax.annotation.Nullable;
  */
 public class S3Publisher implements Publisher {
   private static final Logger LOG = LoggerFactory.getLogger(S3Publisher.class);
+  private static final FileTypeMap fileTypeMap = MimetypesFileTypeMap.getDefaultFileTypeMap();
   private final AmazonS3Client client;
   private final String bucket;
   private final boolean forcePush;
@@ -129,7 +132,7 @@ public class S3Publisher implements Publisher {
         contentType = MediaType.PLAIN_TEXT_UTF_8.withoutParameters().toString();
         break;
       default:
-        contentType = MediaType.OCTET_STREAM.withoutParameters().toString();
+        contentType = fileTypeMap.getContentType(file);
     }
     ObjectMetadata newMeta = new ObjectMetadata();
     newMeta.setContentType(contentType);
