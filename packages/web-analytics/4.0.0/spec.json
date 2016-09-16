@@ -1,0 +1,63 @@
+{
+  "specVersion": "1.0",
+  "label": "Web Analytics Flow",
+  "description": "Example of a Flow that reads an Apache access log from a Stream, computes unique visitor counts, and stores those counts into a custom Dataset.",
+  "author": "Cask Data Inc.",
+  "org": "Cask Data Inc.",
+  "created": 1474060461,
+  "categories": [ "example" ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
+  "actions": [
+    {
+      "type": "create_stream",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "log"
+        },
+        {
+          "name": "loadfiles",
+          "value": [ "access.log" ]
+        }
+      ]
+    },
+    {
+      "type": "create_artifact",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "WebAnalytics"
+        },
+        {
+          "name": "version",
+          "value": "4.0.0"
+        },
+        {
+          "name": "scope",
+          "value": "user"
+        },
+        {
+          "name": "jar",
+          "value": "WebAnalytics-4.0.0.jar"
+        }
+      ]
+    },
+    {
+      "type": "create_app",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "user",
+            "name": "WebAnalytics",
+            "version": "4.0.0"
+          }
+        },
+        {
+          "name": "name",
+          "value": "WebAnalytics"
+        }
+      ]
+    }
+  ]
+}

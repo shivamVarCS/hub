@@ -1,7 +1,7 @@
 *.class
 .*.swp
-# Package Files #
 *.jar
+!packages/**/*.jar
 
 # Intellij Files & Dir #
 *.iml
