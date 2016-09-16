@@ -93,7 +93,9 @@ public class S3Publisher implements Publisher {
     if (file != null && shouldPush(keyPrefix, file)) {
       putFile(keyPrefix, file);
       for (File extraFile : extraFiles) {
-        putFile(keyPrefix, extraFile);
+        if (extraFile != null) {
+          putFile(keyPrefix, extraFile);
+        }
       }
     }
   }
