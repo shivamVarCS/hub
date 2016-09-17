@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Log Analysis with Spark and MapReduce",
-  "description": "Example of a Workflow of Spark and MapReduce programs that reads Apache logs from a Stream, writes counts to FileSets, and serves those counts with a Service.",
+  "description": "A Workflow of Spark and MapReduce programs that reads Apache logs from a Stream, writes counts to FileSets, and serves those counts with a Service.",
   "author": "Cask Data Inc.",
   "org": "Cask Data Inc.",
   "created": 1474060461,

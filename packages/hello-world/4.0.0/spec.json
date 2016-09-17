@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Hello World",
-  "description": "Example of a Flow that counts random data.",
+  "description": "A Flow and Service that simply echoes the last name written to a Stream.",
   "author": "Cask Data Inc.",
   "org": "Cask Data Inc.",
   "created": 1474060461,

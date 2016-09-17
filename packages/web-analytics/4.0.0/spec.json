@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Web Analytics Flow",
-  "description": "Example of a Flow that reads an Apache access log from a Stream, computes unique visitor counts, and stores those counts into a custom Dataset.",
+  "description": "A Flow that reads an Apache access log from a Stream, computes unique visitor counts, and stores those counts into a custom Dataset.",
   "author": "Cask Data Inc.",
   "org": "Cask Data Inc.",
   "created": 1474060461,
