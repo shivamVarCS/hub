@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "MySQL JDBC Connector",
-  "description": "The MySQL JDBC connector version 5.1.39 as a Hydrator plugin",
+  "description": "The MySQL JDBC connector version 3.1.14 as a Hydrator plugin",
   "author": "Cask Data Inc.",
   "org": "Cask Data Inc.",
   "created": 1473901763,
@@ -16,7 +16,7 @@
         },
         {
           "name": "version",
-          "value": "5.1.39"
+          "value": "3.1.14"
         },
         {
           "name": "scope",
@@ -24,15 +24,15 @@
         },
         {
           "name": "externalArchive",
-          "value": "https://dev.mysql.com/downloads/file/?id=462850"
+          "value": "https://dev.mysql.com/downloads/file/?id=13520"
         },
         {
           "name": "externalArchiveSignature",
-          "value": "https://dev.mysql.com/downloads/gpg/?file=mysql-connector-java-5.1.39.zip"
+          "value": "https://dev.mysql.com/downloads/gpg/?file=mysql-connector-java-3.1.14.zip"
         },
         {
           "name": "externalArchiveJar",
-          "value": "mysql-connector-java-5.1.39-bin.jar"
+          "value": "mysql-connector-java-3.1.14-bin.jar"
         },
         {
           "name": "config",
