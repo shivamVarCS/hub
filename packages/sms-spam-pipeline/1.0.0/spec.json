@@ -1,0 +1,82 @@
+{
+  "specVersion": "1.0",
+  "label": "SMS Text Spam Model Trainer and Classifier",
+  "description": "One pipeline that reads labeled SMS Texts and trains a NaiveBayes model, and another that uses that model to classify other texts as spam or not.",
+  "author": "Cask Data Inc.",
+  "org": "Cask Data Inc.",
+  "created": 1473901763,
+  "categories": [ "hydrator-pipeline" ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
+  "actions": [
+    {
+      "type": "create_stream",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "labeledSMSTexts"
+        },
+        {
+          "name": "loadfiles",
+          "value": [ "labeled_texts.tsv" ]
+        }
+      ]
+    },
+    {
+      "type": "create_stream",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "smsTexts"
+        },
+        {
+          "name": "loadfiles",
+          "value": [ "texts.txt" ]
+        }
+      ]
+    },
+    {
+      "type": "create_app",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "system",
+            "name": "cdap-data-pipeline",
+            "version": "4.0.0-SNAPSHOT"
+          }
+        },
+        {
+          "name": "name",
+          "value": "naiveBayesSpamTrainer",
+          "canModify": true
+        },
+        {
+          "name": "config",
+          "value": "trainer.json"
+        } 
+      ]
+    },
+    {
+      "type": "create_app",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "system",
+            "name": "cdap-data-pipeline",
+            "version": "4.0.0-SNAPSHOT"
+          }
+        },
+        {
+          "name": "name",
+          "value": "smsSpamClassifier",
+          "canModify": true
+        },
+        {
+          "name": "config",
+          "value": "classifier.json"
+        } 
+      ]
+    }
+  ]
+}
