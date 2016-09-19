@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
 public class S3Publisher implements Publisher {
   private static final Logger LOG = LoggerFactory.getLogger(S3Publisher.class);
   private static final FileTypeMap fileTypeMap = MimetypesFileTypeMap.getDefaultFileTypeMap();
+  private static final String version = "v1";
   private final AmazonS3Client client;
   private final String bucket;
   private final boolean forcePush;
@@ -75,7 +76,7 @@ public class S3Publisher implements Publisher {
 
   @Override
   public void publishPackage(Package pkg) throws Exception {
-    String keyPrefix = String.format("packages/%s/%s/", pkg.getName(), pkg.getVersion());
+    String keyPrefix = String.format("%s/%s/%s/", version, pkg.getName(), pkg.getVersion());
 
     putFilesIfChanged(keyPrefix, pkg.getIcon());
     putFilesIfChanged(keyPrefix, pkg.getLicense());
@@ -85,7 +86,7 @@ public class S3Publisher implements Publisher {
 
   @Override
   public void publishCatalog(File catalog) throws Exception {
-    putFilesIfChanged("", catalog);
+    putFilesIfChanged(version + "/", catalog);
   }
 
   // if the specified file has changed, put it plus all extra files on s3.
