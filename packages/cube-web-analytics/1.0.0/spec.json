@@ -1,0 +1,63 @@
+{
+  "specVersion": "1.0",
+  "label": "Cube Weblog Analytics",
+  "description": "An application that ingests web logs, aggregates the request counts for different combinations of fields, and that can then be queried for the volume over a time period. The application is powered by an OLAP (Online Analytical Processing) Cube, which is a Dataset available in CDAP. See https://github.com/cdap-guides/cdap-cube-guide for more information and for the source code.",
+  "author": "Cask Data Inc.",
+  "org": "Cask Data Inc.",
+  "created": 1474312686,
+  "categories": [ "usecase" ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
+  "actions": [
+    {
+      "type": "create_stream",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "weblogs"
+        },
+        {
+          "name": "loadfiles",
+          "value": [ "accesslog.txt" ]
+        }
+      ]
+    },
+    {
+      "type": "create_artifact",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "cdap-cube-guide"
+        },
+        {
+          "name": "version",
+          "value": "1.0.0"
+        },
+        {
+          "name": "scope",
+          "value": "user"
+        },
+        {
+          "name": "jar",
+          "value": "cdap-cube-guide-1.0.0.jar"
+        }
+      ]
+    },
+    {
+      "type": "create_app",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "user",
+            "name": "cdap-cube-guide",
+            "version": "1.0.0"
+          }
+        },
+        {
+          "name": "name",
+          "value": "CubeWebAnalyticsApp"
+        }
+      ]
+    }
+  ]
+}
