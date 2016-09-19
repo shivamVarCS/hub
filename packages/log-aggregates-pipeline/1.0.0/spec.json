@@ -1,0 +1,51 @@
+{
+  "specVersion": "1.0",
+  "label": "Access Log Aggregates Pipeline",
+  "description": "Reads access logs from a Stream, calculates the number of requests from each remote host, number of times each http status was returned, and min, average, and max content length for each request path.",
+  "author": "Cask Data Inc.",
+  "org": "Cask Data Inc.",
+  "created": 1473901763,
+  "categories": [ "hydrator-pipeline" ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
+  "actions": [
+    {
+      "type": "create_stream",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "accessLogs"
+        },
+        {
+          "name": "description",
+          "value": "Access Logs in CLF Format"
+        },
+        {
+          "name": "loadfiles",
+          "value": [ "access.log.clf" ]
+        }
+      ]
+    },
+    {
+      "type": "create_app",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "system",
+            "name": "cdap-data-pipeline",
+            "version": "4.0.0-SNAPSHOT"
+          }
+        },
+        {
+          "name": "name",
+          "value": "access-log-aggregates",
+          "canModify": true
+        },
+        {
+          "name": "config",
+          "value": "pipeline.json"
+        } 
+      ]
+    }
+  ]
+}
