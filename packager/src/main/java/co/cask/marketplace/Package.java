@@ -24,57 +24,36 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
 import javax.annotation.Nullable;
 
 /**
  * Contains all files in a package.
  */
-public class Package implements Iterable<File> {
+public class Package {
   private final String name;
   private final String version;
   private final PackageMeta meta;
-  private final File spec;
-  private final File specSignature;
-  @Nullable
-  private final File archive;
-  @Nullable
-  private final File archiveSignature;
   @Nullable
   private final File license;
   @Nullable
   private final File icon;
-  private final List<File> files;
+  private final SignedFile spec;
+  private final SignedFile archive;
+  // all the files that are in the package, plus their signatures.
+  private final List<SignedFile> files;
 
-  public Package(String name, String version, PackageMeta meta, File archive, File archiveSignature,
-                 File spec, File specSignature, File license, File icon) {
+  public Package(String name, String version, PackageMeta meta, File license, File icon,
+                 SignedFile archive, SignedFile spec, List<SignedFile> files) {
     this.name = name;
     this.version = version;
     this.meta = meta;
     this.archive = archive;
-    this.archiveSignature = archiveSignature;
     this.spec = spec;
-    this.specSignature = specSignature;
     this.license = license;
     this.icon = icon;
-    files = new ArrayList<>();
-    files.add(spec);
-    if (specSignature != null) {
-      files.add(specSignature);
-    }
-    if (archive != null) {
-      files.add(archive);
-    }
-    if (archiveSignature != null) {
-      files.add(archiveSignature);
-    }
-    if (license != null) {
-      files.add(license);
-    }
-    if (icon != null) {
-      files.add(icon);
-    }
+    this.files = Collections.unmodifiableList(files);
   }
 
   public String getName() {
@@ -89,20 +68,12 @@ public class Package implements Iterable<File> {
     return meta;
   }
 
-  public File getArchive() {
+  public SignedFile getArchive() {
     return archive;
   }
 
-  public File getArchiveSignature() {
-    return archiveSignature;
-  }
-
-  public File getSpec() {
+  public SignedFile getSpec() {
     return spec;
-  }
-
-  public File getSpecSignature() {
-    return specSignature;
   }
 
   @Nullable
@@ -115,13 +86,12 @@ public class Package implements Iterable<File> {
     return icon;
   }
 
-  public static Builder builder(String name, String version) {
-    return new Builder(name, version);
+  public List<SignedFile> getFiles() {
+    return files;
   }
 
-  @Override
-  public Iterator<File> iterator() {
-    return files.iterator();
+  public static Builder builder(String name, String version) {
+    return new Builder(name, version);
   }
 
   /**
@@ -132,42 +102,32 @@ public class Package implements Iterable<File> {
     private final String name;
     private final String version;
     private PackageMeta meta;
-    private File archive;
-    private File archiveSignature;
-    private File spec;
-    private File specSignature;
     private File license;
     private File icon;
+    private SignedFile archive;
+    private SignedFile spec;
+    private List<SignedFile> files;
 
     public Builder(String name, String version) {
       this.name = name;
       this.version = version;
+      this.files = new ArrayList<>();
     }
 
-    public Builder setArchive(File archive) {
+    public Builder setArchive(SignedFile archive) {
       this.archive = archive;
       return this;
     }
 
-    public Builder setArchiveSignature(File archiveSignature) {
-      this.archiveSignature = archiveSignature;
-      return this;
-    }
-
-    public Builder setSpec(File spec) {
+    public Builder setSpec(SignedFile spec) {
       this.spec = spec;
-      try (Reader reader = new FileReader(spec)) {
+      try (Reader reader = new FileReader(spec.getFile())) {
         PackageSpec specObj = GSON.fromJson(reader, PackageSpec.class);
         specObj.validate();
         meta = PackageMeta.fromSpec(name, version, specObj);
       } catch (Exception e) {
         throw new IllegalArgumentException("Unable to parse spec file " + spec, e);
       }
-      return this;
-    }
-
-    public Builder setSpecSignature(File specSignature) {
-      this.specSignature = specSignature;
       return this;
     }
 
@@ -181,12 +141,17 @@ public class Package implements Iterable<File> {
       return this;
     }
 
+    public Builder addFile(SignedFile file) {
+      this.files.add(file);
+      return this;
+    }
+
     public PackageMeta getMeta() {
       return meta;
     }
 
     public Package build() {
-      return new Package(name, version, meta, archive, archiveSignature, spec, specSignature, license, icon);
+      return new Package(name, version, meta, license, icon, archive, spec, files);
     }
   }
 }

@@ -53,6 +53,7 @@ public class Packager {
   private final File packagesDir;
   private final File catalogFile;
   private final Signer signer;
+  private final boolean createZip;
 
   static {
     // zip stores the modified date in its header, which uses the default timezone.
@@ -61,9 +62,14 @@ public class Packager {
   }
 
   public Packager(File baseDir, @Nullable Signer signer) throws InvalidKeyException {
+    this(baseDir, signer, false);
+  }
+
+  public Packager(File baseDir, @Nullable Signer signer, boolean createZip) {
     this.packagesDir = new File(baseDir, "packages");
     this.catalogFile = new File(baseDir, "packages.json");
     this.signer = signer;
+    this.createZip = createZip;
   }
 
   /**
@@ -176,10 +182,7 @@ public class Packager {
 
       if (fileName.equals("spec.json")) {
         containsSpec = true;
-        builder.setSpec(packageFile);
-        if (signer != null) {
-          builder.setSpecSignature(signer.signFile(packageFile));
-        }
+        builder.setSpec(new SignedFile(packageFile, signer == null ? null : signer.signFile(packageFile)));
         continue;
       }
 
@@ -190,6 +193,8 @@ public class Packager {
         continue;
       }
 
+
+      builder.addFile(new SignedFile(packageFile, signer == null ? null : signer.signFile(packageFile)));
       archiveFiles.add(packageFile);
     }
 
@@ -198,7 +203,7 @@ public class Packager {
     }
 
     // build the zip from everything but icon, license, and spec
-    if (!archiveFiles.isEmpty()) {
+    if (createZip && !archiveFiles.isEmpty()) {
       File archiveFile = new File(packageDir, ARCHIVE_NAME);
       LOG.info("Creating archive for package {}-{} from files {}", name, version, archiveFiles);
       try (ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(archiveFile)))) {
@@ -207,10 +212,8 @@ public class Packager {
         }
         zos.finish();
       }
-      builder.setArchive(archiveFile);
-      if (signer != null) {
-        builder.setArchiveSignature(signer.signFile(archiveFile));
-      }
+
+      builder.setArchive(new SignedFile(archiveFile, signer == null ? null : signer.signFile(archiveFile)));
     }
 
     return builder.build();
