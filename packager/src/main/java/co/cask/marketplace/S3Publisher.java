@@ -40,6 +40,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import javax.activation.FileTypeMap;
 import javax.activation.MimetypesFileTypeMap;
 import javax.annotation.Nullable;
@@ -87,7 +88,10 @@ public class S3Publisher implements Publisher {
     if (cfClient != null) {
       CreateInvalidationRequest invalidationRequest = new CreateInvalidationRequest()
         .withDistributionId(cfDistribution)
-        .withInvalidationBatch(new InvalidationBatch().withPaths(new Paths().withItems()));
+        .withInvalidationBatch(
+          new InvalidationBatch().withPaths(
+            new Paths().withItems()).withCallerReference(UUID.randomUUID().toString())
+        );
       if (!dryrun) {
         LOG.info("Invalidating cloudfront objects {}", updatedKeys);
         cfClient.createInvalidation(invalidationRequest);
