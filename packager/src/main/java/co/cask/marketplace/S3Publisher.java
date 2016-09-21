@@ -165,6 +165,9 @@ public class S3Publisher implements Publisher {
       case "txt":
         contentType = MediaType.PLAIN_TEXT_UTF_8.withoutParameters().toString();
         break;
+      case "png":
+        contentType = MediaType.PNG.withoutParameters().toString();
+        break;
       case "asc":
         contentType = MediaType.PLAIN_TEXT_UTF_8.withoutParameters().toString();
         break;
