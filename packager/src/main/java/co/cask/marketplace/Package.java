@@ -40,6 +40,7 @@ public class Package {
   @Nullable
   private final File icon;
   private final SignedFile spec;
+  @Nullable
   private final SignedFile archive;
   // all the files that are in the package, plus their signatures.
   private final List<SignedFile> files;
@@ -68,6 +69,7 @@ public class Package {
     return meta;
   }
 
+  @Nullable
   public SignedFile getArchive() {
     return archive;
   }

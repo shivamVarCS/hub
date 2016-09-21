@@ -80,8 +80,10 @@ public class S3Publisher implements Publisher {
 
     putFilesIfChanged(keyPrefix, pkg.getIcon());
     putFilesIfChanged(keyPrefix, pkg.getLicense());
-    putFilesIfChanged(keyPrefix, pkg.getArchive().getFile(), pkg.getArchive().getSignature());
     putFilesIfChanged(keyPrefix, pkg.getSpec().getFile(), pkg.getSpec().getSignature());
+    if (pkg.getArchive() != null) {
+      putFilesIfChanged(keyPrefix, pkg.getArchive().getFile(), pkg.getArchive().getSignature());
+    }
     for (SignedFile file : pkg.getFiles()) {
       putFilesIfChanged(keyPrefix, file.getFile(), file.getSignature());
     }
