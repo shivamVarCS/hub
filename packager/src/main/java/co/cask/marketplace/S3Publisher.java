@@ -92,7 +92,7 @@ public class S3Publisher implements Publisher {
       String objectKey = objectSummary.getKey();
       String name = objectKey.substring(keyPrefix.length());
       if (!pkg.getFileNames().contains(name)) {
-        LOG.info("Deleting object {} from s3 since it does not exist in the package anymore.");
+        LOG.info("Deleting object {} from s3 since it does not exist in the package anymore.", objectKey);
         client.deleteObject(bucket, objectKey);
       }
     }
