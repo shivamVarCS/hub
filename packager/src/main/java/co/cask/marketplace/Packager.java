@@ -88,10 +88,12 @@ public class Packager {
       if (!packageDir.isDirectory()) {
         continue;
       }
+
       for (File versionDir : sortedListFiles(packageDir)) {
         if (!versionDir.isDirectory()) {
           continue;
         }
+        
         File archiveFile = new File(versionDir, ARCHIVE_NAME);
         if (archiveFile.exists()) {
           LOG.info("Deleting package archive " + archiveFile);
@@ -99,18 +101,13 @@ public class Packager {
             throw new IOException("Could not delete archive file " + archiveFile);
           }
         }
-        File archiveSignature = new File(versionDir, ARCHIVE_NAME + ".asc");
-        if (archiveSignature.exists()) {
-          LOG.info("Deleting package archive signature " + archiveSignature);
-          if (!archiveSignature.delete()) {
-            throw new IOException("Could not delete archive signature " + archiveSignature);
-          }
-        }
-        File specSignature = new File(versionDir, "spec.json.asc");
-        if (specSignature.exists()) {
-          LOG.info("Deleting spec signature " + specSignature);
-          if (!specSignature.delete()) {
-            throw new IOException("Could not delete spec signature " + specSignature);
+
+        for (File packagefile : sortedListFiles(versionDir)) {
+          if (packagefile.getName().endsWith(".asc")) {
+            LOG.info("Deleting signature file {}", packagefile);
+            if (!packagefile.delete()) {
+              throw new IOException("Could not delete signature file " + packagefile);
+            }
           }
         }
       }

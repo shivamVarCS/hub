@@ -17,6 +17,7 @@
 package co.cask.marketplace;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * Publishes packages.
@@ -24,18 +25,11 @@ import java.io.File;
 public interface Publisher {
 
   /**
-   * Publish a package.
+   * Publish a packages.
    *
-   * @param pkg the package to publish
-   * @throws Exception if there was an error publishing the package.
-   */
-  void publishPackage(Package pkg) throws Exception;
-
-  /**
-   * Publish the package catalog.
-   *
+   * @param packages the packages to publish
    * @param catalog the catalog to publish
-   * @throws Exception if there was an error publishing the catalog
+   * @throws Exception if there was an error publishing
    */
-  void publishCatalog(File catalog) throws Exception;
+  void publish(List<Package> packages, File catalog) throws Exception;
 }

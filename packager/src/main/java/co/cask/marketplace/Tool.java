@@ -51,14 +51,20 @@ public class Tool {
                               "If you are using gpg, you can get this from 'gpg --list-keys --keyid-format LONG'"))
       .addOption(new Option("d", "dir", true,
                             "Directory containing packages. Defaults to the current working directory."))
-      .addOption(new Option("b", "bucket", true, "The S3 bucket to publish packages to."))
       .addOption(new Option("f", "force", false,
                             "Push packages to S3 even if they have not changed. " +
                               "This may be useful if the signatures have been updated, but the files have not."))
-      .addOption(new Option("c", "config", true,
-                            "The location of the s3 config file, containing the access key and secret key. " +
-                              "The config file must specify properties as <property> = <value>. It must contain " +
-                              "at least the access_key and secret_key properties."));
+      .addOption(new Option("y", "dryrun", false,
+                            "Perform a dryrun, which won't actually publish to s3 or invalidate cloudfront objects."))
+      .addOption(new Option("s3b", "s3bucket", true, "The S3 bucket to publish packages to."))
+      .addOption(new Option("s3p", "s3prefix", true,
+                            "Optional prefix to use when publishing the s3. Defaults to empty."))
+      .addOption(new Option("s3a", "s3access", true, "Access key to publish to s3."))
+      .addOption(new Option("s3s", "s3secret", true, "Secret key to publish to s3."))
+      .addOption(new Option("s3t", "s3timeout", true, "Timeout in seconds to use when pushing to s3. Defaults to 30."))
+      .addOption(new Option("cfd", "cfdistribution", true, "Cloudfront distribution fronting the s3 bucket."))
+      .addOption(new Option("cfa", "cfaccess", true, "Access key to invalidate cloudfront objects."))
+      .addOption(new Option("cfs", "cfsecret", true, "Secret key to invalidate cloudfront objects."));
 
     CommandLineParser parser = new BasicParser();
     CommandLine commandLine = parser.parse(options, args);
@@ -141,30 +147,8 @@ public class Tool {
       signer = Signer.fromKeyFile(keyFile, keyID, password);
     }
 
-    String bucket = null;
-    File cfgFile = null;
-    if (command.equalsIgnoreCase("publish")) {
-      if (!commandLine.hasOption('b')) {
-        LOG.error("Must specify a bucket when publishing.");
-        System.exit(1);
-      }
-      bucket = commandLine.getOptionValue('b');
-      if (!commandLine.hasOption('c')) {
-        LOG.error("Must specify an s3 config when publishing.");
-        System.exit(1);
-      }
-      cfgFile = new File(commandLine.getOptionValue('c'));
-      if (!cfgFile.exists()) {
-        LOG.error("S3 config file '{}' does not exist.", cfgFile);
-        System.exit(1);
-      }
-      if (!cfgFile.isFile()) {
-        LOG.error("S3 config file '{}' is not a file.", cfgFile);
-        System.exit(1);
-      }
-    }
-
     Packager packager = new Packager(packageDirectory, signer);
+    Publisher publisher = command.equalsIgnoreCase("publish") ? getPublisher(commandLine) : null;
 
     packager.clean();
     if (command.equalsIgnoreCase("clean")) {
@@ -176,12 +160,53 @@ public class Tool {
       System.exit(0);
     }
 
-    Publisher publisher = new S3Publisher(cfgFile, bucket, commandLine.hasOption('f'));
-    for (Package pkg : packages) {
-      LOG.info("Publishing package {}-{}", pkg.getName(), pkg.getVersion());
-      publisher.publishPackage(pkg);
+    if (publisher == null) {
+      System.exit(0);
     }
-    LOG.info("Publishing catalog");
-    publisher.publishCatalog(packager.getCatalog());
+
+    publisher.publish(packages, packager.getCatalog());
+  }
+
+  private static S3Publisher getPublisher(CommandLine commandLine) {
+
+    if (!commandLine.hasOption("s3b")) {
+      LOG.error("Must specify a bucket when publishing.");
+      System.exit(1);
+    }
+    String bucket = commandLine.getOptionValue("s3b");
+
+    if (!commandLine.hasOption("s3a")) {
+      LOG.error("Must specify an s3 access key when publishing.");
+      System.exit(1);
+    }
+    String s3AccessKey = commandLine.getOptionValue("s3a");
+
+    if (!commandLine.hasOption("s3s")) {
+      LOG.error("Must specify an s3 secret key when publishing.");
+      System.exit(1);
+    }
+    String s3SecretKey = commandLine.getOptionValue("s3s");
+
+    S3Publisher.Builder builder = S3Publisher.builder(bucket, s3AccessKey, s3SecretKey)
+      .setForcePush(commandLine.hasOption('f'))
+      .setDryRun(commandLine.hasOption('y'));
+
+    if (commandLine.hasOption("s3p")) {
+      builder.setPrefix(commandLine.getOptionValue("s3p"));
+    }
+
+    if (commandLine.hasOption("s3t")) {
+      builder.setTimeout(Integer.parseInt(commandLine.getOptionValue("s3t")));
+    }
+
+    if (commandLine.hasOption("cfa")) {
+      builder.setCloudfrontAccessKey(commandLine.getOptionValue("cfa"));
+    }
+
+    if (commandLine.hasOption("cfs")) {
+      builder.setCloudfrontSecretKey(commandLine.getOptionValue("cfs"));
+    }
+
+    return builder.build();
   }
 }

@@ -31,23 +31,16 @@ This will go through the files under the 'packages' directory, adding a packages
     packages/<name>/<version>/spec.json.asc
     packages/<name>/<version>/icon.jpg
     packages/<name>/<version>/license.txt
-    packages/<name>/<version>/<other files>
-    packages/<name>/<version>/archive.zip
-    packages/<name>/<version>/archive.zip.asc
+    packages/<name>/<version>/<file1>
+    packages/<name>/<version>/<file1>.asc
+    packages/<name>/<version>/<file2>
+    packages/<name>/<version>/<file2>.asc
 
 To build all the packages and also push them to s3:
 
-    java -cp packager/target/*:packager/target/lib/* co.cask.marketplace.Tool package -k <gpg keyring file> -i <keyid> -p <key password> -b <s3 bucket> -c <s3 cfg file>
+    java -cp packager/target/*:packager/target/lib/* co.cask.marketplace.Tool publish -k <gpg keyring file> -i <keyid> -p <key password> -s3b <s3 bucket> -s3a <s3 access key> -s3s <s3 secret key>
 
 This will build and sign all packages, as well as push anything that has changed to s3. The tool will use the md5 and file size to determine whether an object has changed or not. Signatures will only be pushed if the corresponding file has changed.
-The s3 config file is just a text file in the format:
-
-    access_key = <s3 access key> 
-    secret_key = <s3 secret key>
-    use_https = True | False
-    socket_timeout = <socket timeout in seconds>
-
-The access_key and secret_key are required. Others are optional. This makes it compatible with the config file used by s3cmd.
 
 ## Package specs
 The spec.json file must be a JSON Object with the following format:
@@ -64,7 +57,7 @@ The spec.json file must be a JSON Object with the following format:
       "cdapVersion": "<cdap version range>" (for example: "[4.0.0-SNAPSHOT,4.1.0)")
       "actions": [
         {
-          "type": "create_stream" | "create_app" | "create_artifact" | "create_dataset",
+          "type": "create_stream" | "create_app" | "create_artifact" | "create_dataset" | "load_datapack",
           "arguments": [
             {
               "name": "<arg name>",

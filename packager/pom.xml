@@ -55,7 +55,7 @@
   </issueManagement>
 
   <properties>
-    <aws.s3.version>1.11.22</aws.s3.version>
+    <aws.version>1.11.22</aws.version>
     <bouncycastle.version>1.46</bouncycastle.version>
     <commons.cli.version>1.2</commons.cli.version>
     <gson.version>2.2.4</gson.version>
@@ -101,7 +101,12 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk-s3</artifactId>
-      <version>${aws.s3.version}</version>
+      <version>${aws.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-java-sdk-cloudfront</artifactId>
+      <version>${aws.version}</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.findbugs</groupId>

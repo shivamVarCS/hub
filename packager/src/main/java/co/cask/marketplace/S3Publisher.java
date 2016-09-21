@@ -19,6 +19,10 @@ package co.cask.marketplace;
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.Protocol;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.cloudfront.AmazonCloudFrontClient;
+import com.amazonaws.services.cloudfront.model.CreateInvalidationRequest;
+import com.amazonaws.services.cloudfront.model.InvalidationBatch;
+import com.amazonaws.services.cloudfront.model.Paths;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
@@ -31,12 +35,11 @@ import com.google.common.net.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import javax.activation.FileTypeMap;
 import javax.activation.MimetypesFileTypeMap;
 import javax.annotation.Nullable;
@@ -47,37 +50,55 @@ import javax.annotation.Nullable;
 public class S3Publisher implements Publisher {
   private static final Logger LOG = LoggerFactory.getLogger(S3Publisher.class);
   private static final FileTypeMap fileTypeMap = MimetypesFileTypeMap.getDefaultFileTypeMap();
-  private static final String version = "v1";
-  private final AmazonS3Client client;
+  private final AmazonS3Client s3Client;
+  @Nullable
+  private final AmazonCloudFrontClient cfClient;
   private final String bucket;
+  private final String prefix;
+  @Nullable
+  private final String cfDistribution;
   private final boolean forcePush;
+  private final boolean dryrun;
+  private final Set<String> updatedKeys;
 
-  public S3Publisher(File cfgFile, String bucket, boolean forcePush) throws IOException {
+  private S3Publisher(AmazonS3Client s3Client, @Nullable AmazonCloudFrontClient cfClient,
+                      String bucket, String prefix, @Nullable String cfDistribution,
+                      boolean forcePush, boolean dryrun) {
+    this.s3Client = s3Client;
+    this.cfClient = cfClient;
     this.bucket = bucket;
+    this.prefix = prefix;
+    this.cfDistribution = cfDistribution;
     this.forcePush = forcePush;
-
-    Map<String, String> conf = parseConfig(cfgFile);
-    String accessKey = conf.get("access_key");
-    String secretKey = conf.get("secret_key");
-    if (accessKey == null) {
-      throw new IllegalArgumentException("Could not find access_key in S3 config file " + cfgFile);
-    }
-    if (secretKey == null) {
-      throw new IllegalArgumentException("Could not find access_key in S3 config file " + cfgFile);
-    }
-
-    ClientConfiguration clientConf = new ClientConfiguration();
-    clientConf = "true".equalsIgnoreCase(conf.get("use_https")) ?
-      clientConf.withProtocol(Protocol.HTTPS) : clientConf.withProtocol(Protocol.HTTP);
-    if (conf.containsKey("socket_timeout")) {
-      clientConf.setSocketTimeout(Integer.parseInt(conf.get("socket_timeout")) * 1000);
-    }
-    this.client = new AmazonS3Client(new BasicAWSCredentials(accessKey, secretKey), clientConf);
+    this.dryrun = dryrun;
+    this.updatedKeys = new HashSet<>();
   }
 
   @Override
-  public void publishPackage(Package pkg) throws Exception {
-    String keyPrefix = String.format("%s/packages/%s/%s/", version, pkg.getName(), pkg.getVersion());
+  public void publish(List<Package> packages, File catalog) throws Exception {
+    updatedKeys.clear();
+    for (Package pkg : packages) {
+      LOG.info("Publishing package {}-{}", pkg.getName(), pkg.getVersion());
+      publishPackage(pkg);
+    }
+    LOG.info("Publishing catalog");
+    putFilesIfChanged(prefix + "/", catalog);
+
+    if (cfClient != null) {
+      CreateInvalidationRequest invalidationRequest = new CreateInvalidationRequest()
+        .withDistributionId(cfDistribution)
+        .withInvalidationBatch(new InvalidationBatch().withPaths(new Paths().withItems()));
+      if (!dryrun) {
+        LOG.info("Invalidating cloudfront objects {}", updatedKeys);
+        cfClient.createInvalidation(invalidationRequest);
+      } else {
+        LOG.info("dryrun - would have invalidated cloudfront objects {}", updatedKeys);
+      }
+    }
+  }
+
+  private void publishPackage(Package pkg) throws Exception {
+    String keyPrefix = String.format("%s/packages/%s/%s/", prefix, pkg.getName(), pkg.getVersion());
 
     putFilesIfChanged(keyPrefix, pkg.getIcon());
     putFilesIfChanged(keyPrefix, pkg.getLicense());
@@ -88,19 +109,18 @@ public class S3Publisher implements Publisher {
     for (SignedFile file : pkg.getFiles()) {
       putFilesIfChanged(keyPrefix, file.getFile(), file.getSignature());
     }
-    for (S3ObjectSummary objectSummary : client.listObjects(bucket, keyPrefix).getObjectSummaries()) {
+    for (S3ObjectSummary objectSummary : s3Client.listObjects(bucket, keyPrefix).getObjectSummaries()) {
       String objectKey = objectSummary.getKey();
       String name = objectKey.substring(keyPrefix.length());
       if (!pkg.getFileNames().contains(name)) {
-        LOG.info("Deleting object {} from s3 since it does not exist in the package anymore.", objectKey);
-        client.deleteObject(bucket, objectKey);
+        if (!dryrun) {
+          LOG.info("Deleting object {} from s3 since it does not exist in the package anymore.", objectKey);
+          s3Client.deleteObject(bucket, objectKey);
+        } else {
+          LOG.info("dryrun - would have deleted {} from s3 since it does not exist in the package anymore.", objectKey);
+        }
       }
     }
-  }
-
-  @Override
-  public void publishCatalog(File catalog) throws Exception {
-    putFilesIfChanged(version + "/", catalog);
   }
 
   // if the specified file has changed, put it plus all extra files on s3.
@@ -121,8 +141,8 @@ public class S3Publisher implements Publisher {
       return true;
     }
     String key = keyPrefix + file.getName();
-    if (client.doesObjectExist(bucket, key)) {
-      ObjectMetadata existingMeta = client.getObjectMetadata(bucket, key);
+    if (s3Client.doesObjectExist(bucket, key)) {
+      ObjectMetadata existingMeta = s3Client.getObjectMetadata(bucket, key);
       long fileLength = file.length();
       String md5Hex = BaseEncoding.base16().encode(Files.hash(file, Hashing.md5()).asBytes());
       if (existingMeta != null &&
@@ -157,22 +177,96 @@ public class S3Publisher implements Publisher {
     PutObjectRequest request = new PutObjectRequest(bucket, key, file)
       .withCannedAcl(CannedAccessControlList.PublicRead)
       .withMetadata(newMeta);
-    client.putObject(request);
-    LOG.info("put file {} into s3 bucket {}, key {}", file, bucket, key);
+    if (!dryrun) {
+      LOG.info("put file {} into s3 with key {}", file, key);
+      s3Client.putObject(request);
+    } else {
+      LOG.info("dryrun - would have put file {} into s3 with key {}", file, key);
+    }
+    updatedKeys.add(key);
   }
 
-  private static Map<String, String> parseConfig(File cfgFile) throws IOException {
-    Map<String, String> config = new HashMap<>();
-    try (BufferedReader br = new BufferedReader(new FileReader(cfgFile))) {
-      String line;
-      while ((line = br.readLine()) != null) {
-        String[] parts = line.split("\\s*=\\s*");
-        if (parts.length != 2) {
-          continue;
-        }
-        config.put(parts[0], parts[1]);
-      }
+  public static Builder builder(String s3Bucket, String s3AccessKey, String s3SecretKey) {
+    return new Builder(s3Bucket, s3AccessKey, s3SecretKey);
+  }
+
+  /**
+   * Builder to create the S3Publisher.
+   */
+  public static class Builder {
+    private final String s3Bucket;
+    private final String s3AccessKey;
+    private final String s3SecretKey;
+    private String prefix;
+    private String cfDistribution;
+    private String cfAccessKey;
+    private String cfSecretKey;
+    private boolean forcePush;
+    private boolean dryrun;
+    private int timeout;
+
+    public Builder(String s3Bucket, String s3AccessKey, String s3SecretKey) {
+      this.s3Bucket = s3Bucket;
+      this.s3AccessKey = s3AccessKey;
+      this.s3SecretKey = s3SecretKey;
+      forcePush = false;
+      dryrun = false;
+      timeout = 30;
+      prefix = "";
     }
-    return config;
+
+    public Builder setCloudfrontDistribution(String distribution) {
+      this.cfDistribution = distribution;
+      return this;
+    }
+
+    public Builder setCloudfrontAccessKey(String accessKey) {
+      this.cfAccessKey = accessKey;
+      return this;
+    }
+
+    public Builder setCloudfrontSecretKey(String secretKey) {
+      this.cfSecretKey = secretKey;
+      return this;
+    }
+
+    public Builder setPrefix(String prefix) {
+      this.prefix = prefix;
+      return this;
+    }
+
+    public Builder setForcePush(boolean forcePush) {
+      this.forcePush = forcePush;
+      return this;
+    }
+
+    public Builder setDryRun(boolean dryrun) {
+      this.dryrun = dryrun;
+      return this;
+    }
+
+    public Builder setTimeout(int timeout) {
+      this.timeout = timeout;
+      return this;
+    }
+
+    public S3Publisher build() {
+      ClientConfiguration clientConf = new ClientConfiguration()
+        .withProtocol(Protocol.HTTPS)
+        .withSocketTimeout(timeout * 1000);
+
+      AmazonS3Client s3Client = new AmazonS3Client(new BasicAWSCredentials(s3AccessKey, s3SecretKey), clientConf);
+
+      AmazonCloudFrontClient cfClient = null;
+      if (cfDistribution != null) {
+        if (cfAccessKey == null || cfSecretKey == null) {
+          throw new IllegalArgumentException(
+            "When specifying a cloudfront distribution, must also specify a cloudfront access key and secret key.");
+        }
+        cfClient = new AmazonCloudFrontClient(new BasicAWSCredentials(cfAccessKey, cfSecretKey), clientConf);
+      }
+
+      return new S3Publisher(s3Client, cfClient, s3Bucket, prefix, cfDistribution, forcePush, dryrun);
+    }
   }
 }
