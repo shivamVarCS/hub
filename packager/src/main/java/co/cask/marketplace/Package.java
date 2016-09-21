@@ -111,7 +111,10 @@ public class Package {
     return fileNames;
   }
 
-  private void addSignedFile(SignedFile signedFile) {
+  private void addSignedFile(@Nullable SignedFile signedFile) {
+    if (signedFile == null) {
+      return;
+    }
     fileNames.add(signedFile.getFile().getName());
     if (signedFile.getSignature() != null) {
       fileNames.add(signedFile.getSignature().getName());
