@@ -59,8 +59,12 @@ public class Package {
     this.icon = icon;
     this.files = Collections.unmodifiableList(files);
     this.fileNames = new HashSet<>();
-    fileNames.add(license.getName());
-    fileNames.add(icon.getName());
+    if (license != null) {
+      fileNames.add(license.getName());
+    }
+    if (icon != null) {
+      fileNames.add(icon.getName());
+    }
     addSignedFile(spec);
     addSignedFile(archive);
     for (SignedFile signedFile : files) {
