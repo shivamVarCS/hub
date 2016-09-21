@@ -210,6 +210,10 @@ public class Tool {
       builder.setCloudfrontSecretKey(commandLine.getOptionValue("cfs"));
     }
 
+    if (commandLine.hasOption("cfd")) {
+      builder.setCloudfrontDistribution(commandLine.getOptionValue("cfd"));
+    }
+
     return builder.build();
   }
 }
