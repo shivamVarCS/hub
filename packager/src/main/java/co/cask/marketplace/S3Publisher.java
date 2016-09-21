@@ -23,6 +23,7 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.google.common.hash.Hashing;
 import com.google.common.io.BaseEncoding;
 import com.google.common.io.Files;
@@ -86,6 +87,14 @@ public class S3Publisher implements Publisher {
     }
     for (SignedFile file : pkg.getFiles()) {
       putFilesIfChanged(keyPrefix, file.getFile(), file.getSignature());
+    }
+    for (S3ObjectSummary objectSummary : client.listObjects(bucket, keyPrefix).getObjectSummaries()) {
+      String objectKey = objectSummary.getKey();
+      String name = objectKey.substring(keyPrefix.length());
+      if (!pkg.getFileNames().contains(name)) {
+        LOG.info("Deleting object {} from s3 since it does not exist in the package anymore.");
+        client.deleteObject(bucket, objectKey);
+      }
     }
   }
 

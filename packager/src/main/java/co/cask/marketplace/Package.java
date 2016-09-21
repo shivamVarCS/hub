@@ -25,7 +25,9 @@ import java.io.FileReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
 
 /**
@@ -44,6 +46,7 @@ public class Package {
   private final SignedFile archive;
   // all the files that are in the package, plus their signatures.
   private final List<SignedFile> files;
+  private final Set<String> fileNames;
 
   public Package(String name, String version, PackageMeta meta, File license, File icon,
                  SignedFile archive, SignedFile spec, List<SignedFile> files) {
@@ -55,6 +58,14 @@ public class Package {
     this.license = license;
     this.icon = icon;
     this.files = Collections.unmodifiableList(files);
+    this.fileNames = new HashSet<>();
+    fileNames.add(license.getName());
+    fileNames.add(icon.getName());
+    addSignedFile(spec);
+    addSignedFile(archive);
+    for (SignedFile signedFile : files) {
+      addSignedFile(signedFile);
+    }
   }
 
   public String getName() {
@@ -90,6 +101,17 @@ public class Package {
 
   public List<SignedFile> getFiles() {
     return files;
+  }
+
+  public Set<String> getFileNames() {
+    return fileNames;
+  }
+
+  private void addSignedFile(SignedFile signedFile) {
+    fileNames.add(signedFile.getFile().getName());
+    if (signedFile.getSignature() != null) {
+      fileNames.add(signedFile.getSignature().getName());
+    }
   }
 
   public static Builder builder(String name, String version) {
