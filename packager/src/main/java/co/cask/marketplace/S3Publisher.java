@@ -90,7 +90,7 @@ public class S3Publisher implements Publisher {
         .withDistributionId(cfDistribution)
         .withInvalidationBatch(
           new InvalidationBatch().withPaths(
-            new Paths().withItems()).withCallerReference(UUID.randomUUID().toString())
+            new Paths().withItems()).withCallerReference(String.valueOf(System.currentTimeMillis()))
         );
       if (!dryrun) {
         LOG.info("Invalidating cloudfront objects {}", updatedKeys);
