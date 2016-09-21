@@ -77,7 +77,7 @@ public class S3Publisher implements Publisher {
 
   @Override
   public void publishPackage(Package pkg) throws Exception {
-    String keyPrefix = String.format("%s/%s/%s/", version, pkg.getName(), pkg.getVersion());
+    String keyPrefix = String.format("%s/packages/%s/%s/", version, pkg.getName(), pkg.getVersion());
 
     putFilesIfChanged(keyPrefix, pkg.getIcon());
     putFilesIfChanged(keyPrefix, pkg.getLicense());
