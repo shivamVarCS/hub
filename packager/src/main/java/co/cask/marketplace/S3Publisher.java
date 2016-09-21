@@ -40,7 +40,6 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 import javax.activation.FileTypeMap;
 import javax.activation.MimetypesFileTypeMap;
 import javax.annotation.Nullable;
@@ -90,7 +89,7 @@ public class S3Publisher implements Publisher {
         .withDistributionId(cfDistribution)
         .withInvalidationBatch(
           new InvalidationBatch()
-            .withPaths(new Paths().withItems().withQuantity(updatedKeys.size()))
+            .withPaths(new Paths().withItems(updatedKeys).withQuantity(updatedKeys.size()))
             .withCallerReference(String.valueOf(System.currentTimeMillis())));
       if (!dryrun) {
         LOG.info("Invalidating cloudfront objects {}", updatedKeys);
@@ -133,7 +132,7 @@ public class S3Publisher implements Publisher {
       putFile(keyPrefix, file);
       for (File extraFile : extraFiles) {
         if (extraFile != null) {
-          //putFile(keyPrefix, extraFile);
+          putFile(keyPrefix, extraFile);
         }
       }
     }
@@ -190,7 +189,7 @@ public class S3Publisher implements Publisher {
     } else {
       LOG.info("dryrun - would have put file {} into s3 with key {}", file, key);
     }
-    updatedKeys.add(key);
+    updatedKeys.add("/" + key);
   }
 
   public static Builder builder(String s3Bucket, String s3AccessKey, String s3SecretKey) {
