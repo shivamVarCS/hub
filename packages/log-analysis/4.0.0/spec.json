@@ -14,9 +14,18 @@
         {
           "name": "name",
           "value": "logStream"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "logStream"
         },
         {
-          "name": "loadfiles",
+          "name": "files",
           "value": [ "apachelog.txt" ]
         }
       ]

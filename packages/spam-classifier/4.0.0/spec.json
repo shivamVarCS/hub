@@ -14,9 +14,18 @@
         {
           "name": "name",
           "value": "trainingDataStream"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "trainingDataStream"
         },
         {
-          "name": "loadfiles",
+          "name": "files",
           "value": [ "training.tsv" ]
         }
       ]

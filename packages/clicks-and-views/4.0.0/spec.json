@@ -14,9 +14,18 @@
         {
           "name": "name",
           "value": "clicks"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "clicks"
         },
         {
-          "name": "loadfiles",
+          "name": "files",
           "value": [ "clicks.tsv" ]
         }
       ]
@@ -27,9 +36,18 @@
         {
           "name": "name",
           "value": "views"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "views"
         },
         {
-          "name": "loadfiles",
+          "name": "files",
           "value": [ "views.tsv" ]
         }
       ]

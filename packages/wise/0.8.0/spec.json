@@ -14,9 +14,18 @@
         {
           "name": "name",
           "value": "logEventStream"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "logEventStream"
         },
         {
-          "name": "loadfiles",
+          "name": "files",
           "value": [ "log_events.txt" ]
         }
       ]

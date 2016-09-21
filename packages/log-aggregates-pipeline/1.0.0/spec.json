@@ -18,10 +18,19 @@
         {
           "name": "description",
           "value": "Access Logs in CLF Format"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "accessLogs"
         },
         {
-          "name": "loadfiles",
-          "value": [ "access.log.clf" ]
+          "name": "files",
+          "value": [ "access.txt" ]
         }
       ]
     },

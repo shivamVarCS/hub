@@ -14,9 +14,18 @@
         {
           "name": "name",
           "value": "labeledSMSTexts"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "labeledSMSTexts"
         },
         {
-          "name": "loadfiles",
+          "name": "files",
           "value": [ "labeled_texts.tsv" ]
         }
       ]
@@ -30,6 +39,19 @@
         },
         {
           "name": "loadfiles",
+          "value": [ "texts.txt" ]
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "smsTexts"
+        },
+        {
+          "name": "files",
           "value": [ "texts.txt" ]
         }
       ]

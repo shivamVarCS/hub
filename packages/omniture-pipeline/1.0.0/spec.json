@@ -18,9 +18,18 @@
         {
           "name": "description",
           "value": "Omniture Hit Data"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "hits"
         },
         {
-          "name": "loadfiles",
+          "name": "files",
           "value": [ "hit_data.tsv" ]
         }
       ]
@@ -35,9 +44,18 @@
         {
           "name": "description",
           "value": "Browser ID to Name Mapping"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "browserInfo"
         },
         {
-          "name": "loadfiles",
+          "name": "files",
           "value": [ "browsers.tsv" ]
         }
       ]

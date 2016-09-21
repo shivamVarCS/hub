@@ -14,9 +14,18 @@
         {
           "name": "name",
           "value": "log"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "log"
         },
         {
-          "name": "loadfiles",
+          "name": "files",
           "value": [ "access.log" ]
         }
       ]

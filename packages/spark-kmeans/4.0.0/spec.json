@@ -14,9 +14,18 @@
         {
           "name": "name",
           "value": "pointsStream"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "pointsStream"
         },
         {
-          "name": "loadfiles",
+          "name": "files",
           "value": [ "points.txt" ]
         }
       ]

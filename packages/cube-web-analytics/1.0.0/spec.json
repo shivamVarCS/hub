@@ -14,9 +14,18 @@
         {
           "name": "name",
           "value": "weblogs"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "weblogs"
         },
         {
-          "name": "loadfiles",
+          "name": "files",
           "value": [ "accesslog.txt" ]
         }
       ]

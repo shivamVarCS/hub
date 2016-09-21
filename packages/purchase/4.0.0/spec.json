@@ -14,9 +14,18 @@
         {
           "name": "name",
           "value": "purchaseStream"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "purchaseStream"
         },
         {
-          "name": "loadfiles",
+          "name": "files",
           "value": [ "purchases.txt" ]
         }
       ]

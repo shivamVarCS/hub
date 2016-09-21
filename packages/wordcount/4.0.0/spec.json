@@ -14,9 +14,18 @@
         {
           "name": "name",
           "value": "wordStream"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "wordStream"
         },
         {
-          "name": "loadfiles",
+          "name": "files",
           "value": [ "data.txt" ]
         }
       ]

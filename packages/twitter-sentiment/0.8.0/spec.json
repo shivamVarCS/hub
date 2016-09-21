@@ -14,9 +14,18 @@
         {
           "name": "name",
           "value": "TweetStream"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "TweetStream"
         },
         {
-          "name": "loadfiles",
+          "name": "files",
           "value": [ "sample_tweets.txt" ]
         }
       ]
