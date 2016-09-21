@@ -167,7 +167,7 @@ public class Packager {
     for (File packageFile : sortedListFiles(packageDir)) {
       String fileName = packageFile.getName();
 
-      if (fileName.equals("icon.jpg")) {
+      if (fileName.equals("icon.png")) {
         builder.setIcon(packageFile);
         continue;
       }
