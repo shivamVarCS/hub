@@ -84,7 +84,7 @@ public class S3Publisher implements Publisher {
     LOG.info("Publishing catalog");
     putFilesIfChanged(prefix + "/", catalog);
 
-    if (cfClient != null) {
+    if (cfClient != null && !updatedKeys.isEmpty()) {
       CreateInvalidationRequest invalidationRequest = new CreateInvalidationRequest()
         .withDistributionId(cfDistribution)
         .withInvalidationBatch(
