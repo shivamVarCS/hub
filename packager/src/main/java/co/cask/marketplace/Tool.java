@@ -192,7 +192,10 @@ public class Tool {
       .setDryRun(commandLine.hasOption('y'));
 
     if (commandLine.hasOption("s3p")) {
-      builder.setPrefix(commandLine.getOptionValue("s3p"));
+      String prefix = commandLine.getOptionValue("s3p");
+      builder.setPrefix(prefix.endsWith("/") ? prefix + "v1" : prefix + "/v1");
+    } else {
+      builder.setPrefix("v1");
     }
 
     if (commandLine.hasOption("s3t")) {

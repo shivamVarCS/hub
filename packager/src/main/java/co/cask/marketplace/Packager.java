@@ -93,7 +93,7 @@ public class Packager {
         if (!versionDir.isDirectory()) {
           continue;
         }
-        
+
         File archiveFile = new File(versionDir, ARCHIVE_NAME);
         if (archiveFile.exists()) {
           LOG.info("Deleting package archive " + archiveFile);
