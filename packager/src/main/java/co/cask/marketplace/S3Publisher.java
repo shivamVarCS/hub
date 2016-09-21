@@ -91,8 +91,7 @@ public class S3Publisher implements Publisher {
         .withInvalidationBatch(
           new InvalidationBatch()
             .withPaths(new Paths().withItems().withQuantity(updatedKeys.size()))
-            .withCallerReference(String.valueOf(System.currentTimeMillis())))
-        .;
+            .withCallerReference(String.valueOf(System.currentTimeMillis())));
       if (!dryrun) {
         LOG.info("Invalidating cloudfront objects {}", updatedKeys);
         cfClient.createInvalidation(invalidationRequest);
