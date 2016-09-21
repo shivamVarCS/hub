@@ -1,0 +1,21 @@
+{
+  "specVersion": "1.0",
+  "label": "Browser Mapping",
+  "description": "A mapping of an integer ID to browser name.",
+  "author": "Cask Data Inc.",
+  "org": "Cask Data Inc.",
+  "created": 1473901763,
+  "categories": [ "datapack" ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
+  "actions": [
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "files",
+          "value": [ "browsers.tsv" ]
+        }
+      ]
+    }
+  ]
+}

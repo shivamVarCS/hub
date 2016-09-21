@@ -1,0 +1,21 @@
+{
+  "specVersion": "1.0",
+  "label": "Omniture Hits Datapack",
+  "description": "Sample Omniture hit data.",
+  "author": "Cask Data Inc.",
+  "org": "Cask Data Inc.",
+  "created": 1473901763,
+  "categories": [ "datapack" ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
+  "actions": [
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "files",
+          "value": [ "hit_data.tsv" ]
+        }
+      ]
+    }
+  ]
+}

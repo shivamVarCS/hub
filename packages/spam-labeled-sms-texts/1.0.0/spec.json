@@ -1,0 +1,21 @@
+{
+  "specVersion": "1.0",
+  "label": "Spam Labeled SMS Texts",
+  "description": "SMS texts that have been labeled as spam or ham.",
+  "author": "Cask Data Inc.",
+  "org": "Cask Data Inc.",
+  "created": 1474060461,
+  "categories": [ "datapack" ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
+  "actions": [
+    {
+      "type": "load_datapack",
+      "arguments": [
+        {
+          "name": "files",
+          "value": [ "texts.tsv" ]
+        }
+      ]
+    }
+  ]
+}
