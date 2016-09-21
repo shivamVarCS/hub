@@ -133,7 +133,7 @@ public class S3Publisher implements Publisher {
       putFile(keyPrefix, file);
       for (File extraFile : extraFiles) {
         if (extraFile != null) {
-          putFile(keyPrefix, extraFile);
+          //putFile(keyPrefix, extraFile);
         }
       }
     }
