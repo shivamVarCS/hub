@@ -89,9 +89,10 @@ public class S3Publisher implements Publisher {
       CreateInvalidationRequest invalidationRequest = new CreateInvalidationRequest()
         .withDistributionId(cfDistribution)
         .withInvalidationBatch(
-          new InvalidationBatch().withPaths(
-            new Paths().withItems()).withCallerReference(String.valueOf(System.currentTimeMillis()))
-        );
+          new InvalidationBatch()
+            .withPaths(new Paths().withItems().withQuantity(updatedKeys.size()))
+            .withCallerReference(String.valueOf(System.currentTimeMillis())))
+        .;
       if (!dryrun) {
         LOG.info("Invalidating cloudfront objects {}", updatedKeys);
         cfClient.createInvalidation(invalidationRequest);
