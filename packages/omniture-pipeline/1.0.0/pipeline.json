@@ -30,7 +30,6 @@
             "to": "Browser File Parser"
         }
     ],
-    "engine": "mapreduce",
     "stages": [
         {
             "name": "Stream",
