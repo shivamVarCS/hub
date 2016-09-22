@@ -34,7 +34,7 @@
                 "label": "Stream",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -62,7 +62,7 @@
                 "label": "NaiveBayesClassifier",
                 "artifact": {
                     "name": "spark-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -97,7 +97,7 @@
                 "label": "Formatter",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -129,7 +129,7 @@
                 "label": "TPFSAvro",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {

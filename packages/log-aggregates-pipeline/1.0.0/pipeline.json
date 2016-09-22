@@ -44,7 +44,7 @@
                 "label": "Stream",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -71,7 +71,7 @@
                 "label": "Status Counts",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -103,7 +103,7 @@
                 "label": "StatusCountFiles",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -136,7 +136,7 @@
                 "label": "Request Aggregates",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -168,7 +168,7 @@
                 "label": "RequestAggregateFiles",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -201,7 +201,7 @@
                 "label": "Requestor Counts",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -233,7 +233,7 @@
                 "label": "RequestorCountFiles",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {

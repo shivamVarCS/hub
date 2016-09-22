@@ -31,7 +31,7 @@
                 "label": "Stream",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -59,7 +59,7 @@
                 "label": "Projection",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -90,7 +90,7 @@
                 "label": "JavaScript",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -122,7 +122,7 @@
                 "label": "NaiveBayesTrainer",
                 "artifact": {
                     "name": "spark-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {

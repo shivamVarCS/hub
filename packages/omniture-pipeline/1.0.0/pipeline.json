@@ -40,7 +40,7 @@
                 "label": "Stream",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -68,7 +68,7 @@
                 "label": "Hits Count Parser",
                 "artifact": {
                     "name": "transform-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -101,7 +101,7 @@
                 "label": "Join Browser",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -138,7 +138,7 @@
                 "label": "Joined Browser Data",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -170,7 +170,7 @@
                 "label": "Browser File Parser",
                 "artifact": {
                     "name": "transform-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -203,7 +203,7 @@
                 "label": "Stream2",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.4.0",
+                    "version": "1.5.0-SNAPSHOT",
                     "scope": "SYSTEM"
                 },
                 "properties": {
