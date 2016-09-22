@@ -34,7 +34,6 @@
             "to": "RequestorCountFiles"
         }
     ],
-    "engine": "mapreduce",
     "stages": [
         {
             "name": "Stream",
