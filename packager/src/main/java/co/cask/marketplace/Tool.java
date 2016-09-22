@@ -16,6 +16,7 @@
 
 package co.cask.marketplace;
 
+import com.google.common.base.Splitter;
 import com.google.common.io.BaseEncoding;
 import com.google.common.primitives.Longs;
 import org.apache.commons.cli.BasicParser;
@@ -28,7 +29,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Tool used to create, sign, and publish packages.
@@ -56,6 +59,9 @@ public class Tool {
                               "This may be useful if the signatures have been updated, but the files have not."))
       .addOption(new Option("y", "dryrun", false,
                             "Perform a dryrun, which won't actually publish to s3 or invalidate cloudfront objects."))
+      .addOption(new Option("w", "whitelist", true,
+                            "A comma separated whitelist of packages to publish. The package name and version must " +
+                              "be separated by a '/'. For example, abc/1.0.0,xyz/9.9.9."))
       .addOption(new Option("s3b", "s3bucket", true, "The S3 bucket to publish packages to."))
       .addOption(new Option("s3p", "s3prefix", true,
                             "Optional prefix to use when publishing the s3. Defaults to empty."))
@@ -147,8 +153,12 @@ public class Tool {
       signer = Signer.fromKeyFile(keyFile, keyID, password);
     }
 
+    Set<PackageId> whitelist = new HashSet<>();
+    if (commandLine.hasOption('w')) {
+      whitelist = parseWhitelist(commandLine.getOptionValue('w'));
+    }
     Packager packager = new Packager(packageDirectory, signer);
-    Publisher publisher = command.equalsIgnoreCase("publish") ? getPublisher(commandLine) : null;
+    Publisher publisher = command.equalsIgnoreCase("publish") ? getPublisher(commandLine, whitelist) : null;
 
     packager.clean();
     if (command.equalsIgnoreCase("clean")) {
@@ -167,7 +177,7 @@ public class Tool {
     publisher.publish(packages, packager.getCatalog());
   }
 
-  private static S3Publisher getPublisher(CommandLine commandLine) {
+  private static S3Publisher getPublisher(CommandLine commandLine, Set<PackageId> whitelist) {
 
     if (!commandLine.hasOption("s3b")) {
       LOG.error("Must specify a bucket when publishing.");
@@ -189,7 +199,8 @@ public class Tool {
 
     S3Publisher.Builder builder = S3Publisher.builder(bucket, s3AccessKey, s3SecretKey)
       .setForcePush(commandLine.hasOption('f'))
-      .setDryRun(commandLine.hasOption('y'));
+      .setDryRun(commandLine.hasOption('y'))
+      .setWhitelist(whitelist);
 
     if (commandLine.hasOption("s3p")) {
       String prefix = commandLine.getOptionValue("s3p");
@@ -215,5 +226,21 @@ public class Tool {
     }
 
     return builder.build();
+  }
+
+  private static Set<PackageId> parseWhitelist(String whitelistStr) {
+    Set<PackageId> whitelist = new HashSet<>();
+    for (String packageStr : Splitter.on(',').trimResults().split(whitelistStr)) {
+      int idx = packageStr.indexOf('/');
+      if (idx < 0) {
+        LOG.error("Invalid whitelist package {}. Name and version must be separated by a '/'.", packageStr);
+        System.exit(1);
+      }
+      String name = packageStr.substring(0, idx);
+      String version = packageStr.substring(idx + 1);
+      LOG.info("Adding {}-{} to the whitelist", name, version);
+      whitelist.add(new PackageId(name, version));
+    }
+    return whitelist;
   }
 }

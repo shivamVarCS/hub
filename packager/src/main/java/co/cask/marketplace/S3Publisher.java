@@ -59,11 +59,12 @@ public class S3Publisher implements Publisher {
   private final String cfDistribution;
   private final boolean forcePush;
   private final boolean dryrun;
+  private final Set<PackageId> whitelist;
   private final Set<String> updatedKeys;
 
   private S3Publisher(AmazonS3Client s3Client, @Nullable AmazonCloudFrontClient cfClient,
                       String bucket, String prefix, @Nullable String cfDistribution,
-                      boolean forcePush, boolean dryrun) {
+                      boolean forcePush, boolean dryrun, Set<PackageId> whitelist) {
     this.s3Client = s3Client;
     this.cfClient = cfClient;
     this.bucket = bucket;
@@ -71,6 +72,7 @@ public class S3Publisher implements Publisher {
     this.cfDistribution = cfDistribution;
     this.forcePush = forcePush;
     this.dryrun = dryrun;
+    this.whitelist = whitelist;
     this.updatedKeys = new HashSet<>();
   }
 
@@ -78,6 +80,10 @@ public class S3Publisher implements Publisher {
   public void publish(List<Package> packages, File catalog) throws Exception {
     updatedKeys.clear();
     for (Package pkg : packages) {
+      if (!whitelist.isEmpty() && !whitelist.contains(new PackageId(pkg.getName(), pkg.getVersion()))) {
+        LOG.info("Skipping package {}-{} since it's not in the whitelist", pkg.getName(), pkg.getVersion());
+        continue;
+      }
       LOG.info("Publishing package {}-{}", pkg.getName(), pkg.getVersion());
       publishPackage(pkg);
     }
@@ -210,6 +216,7 @@ public class S3Publisher implements Publisher {
     private boolean forcePush;
     private boolean dryrun;
     private int timeout;
+    private Set<PackageId> whitelist;
 
     public Builder(String s3Bucket, String s3AccessKey, String s3SecretKey) {
       this.s3Bucket = s3Bucket;
@@ -219,6 +226,7 @@ public class S3Publisher implements Publisher {
       dryrun = false;
       timeout = 30;
       prefix = "";
+      whitelist = new HashSet<>();
     }
 
     public Builder setCloudfrontDistribution(String distribution) {
@@ -256,6 +264,11 @@ public class S3Publisher implements Publisher {
       return this;
     }
 
+    public Builder setWhitelist(Set<PackageId> whitelist) {
+      this.whitelist = whitelist;
+      return this;
+    }
+
     public S3Publisher build() {
       ClientConfiguration clientConf = new ClientConfiguration()
         .withProtocol(Protocol.HTTPS)
@@ -272,7 +285,7 @@ public class S3Publisher implements Publisher {
         cfClient = new AmazonCloudFrontClient(new BasicAWSCredentials(cfAccessKey, cfSecretKey), clientConf);
       }
 
-      return new S3Publisher(s3Client, cfClient, s3Bucket, prefix, cfDistribution, forcePush, dryrun);
+      return new S3Publisher(s3Client, cfClient, s3Bucket, prefix, cfDistribution, forcePush, dryrun, whitelist);
     }
   }
 }
