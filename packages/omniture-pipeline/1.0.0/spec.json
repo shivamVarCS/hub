@@ -10,6 +10,7 @@
   "actions": [
     {
       "type": "create_stream",
+      "label": "Omniture Hits Stream",
       "arguments": [
         {
           "name": "name",
@@ -23,6 +24,7 @@
     },
     {
       "type": "load_datapack",
+      "label": "Omniture Hits Data",
       "arguments": [
         {
           "name": "name",
@@ -36,6 +38,7 @@
     },
     {
       "type": "create_stream",
+      "label": "Browser Mapping Stream",
       "arguments": [
         {
           "name": "name",
@@ -49,6 +52,7 @@
     },
     {
       "type": "load_datapack",
+      "label": "Browser Mapping Data",
       "arguments": [
         {
           "name": "name",
@@ -61,7 +65,7 @@
       ]
     },
     {
-      "type": "create_app",
+      "type": "create_pipeline",
       "arguments": [
         {
           "name": "artifact",
