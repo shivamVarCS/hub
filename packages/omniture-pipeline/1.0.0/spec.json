@@ -66,6 +66,7 @@
     },
     {
       "type": "create_pipeline",
+      "label": "Omniture Hits Pipeline",
       "arguments": [
         {
           "name": "artifact",
