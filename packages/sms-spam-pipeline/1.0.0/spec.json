@@ -2,14 +2,15 @@
   "specVersion": "1.0",
   "label": "SMS Text Spam Model Trainer and Classifier",
   "description": "One pipeline that reads labeled SMS Texts and trains a NaiveBayes model, and another that uses that model to classify other texts as spam or not.",
-  "author": "Cask Data Inc.",
-  "org": "Cask Data Inc.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
   "created": 1473901763,
-  "categories": [ "hydrator-pipeline" ],
+  "categories": [ "usecase" ],
   "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
   "actions": [
     {
       "type": "create_stream",
+      "label": "Labeled SMS Texts",
       "arguments": [
         {
           "name": "name",
@@ -19,6 +20,7 @@
     },
     {
       "type": "load_datapack",
+      "label": "Labeled SMS Text Data",
       "arguments": [
         {
           "name": "name",
@@ -32,6 +34,7 @@
     },
     {
       "type": "create_stream",
+      "label": "Unlabeled SMS Texts",
       "arguments": [
         {
           "name": "name",
@@ -45,6 +48,7 @@
     },
     {
       "type": "load_datapack",
+      "label": "Unlabeled SMS Text Data",
       "arguments": [
         {
           "name": "name",
@@ -57,7 +61,8 @@
       ]
     },
     {
-      "type": "create_app",
+      "type": "create_pipeline",
+      "label": "Spam Classifier Trainer",
       "arguments": [
         {
           "name": "artifact",
@@ -79,7 +84,8 @@
       ]
     },
     {
-      "type": "create_app",
+      "type": "create_pipeline",
+      "label": "Spam Labeler",
       "arguments": [
         {
           "name": "artifact",

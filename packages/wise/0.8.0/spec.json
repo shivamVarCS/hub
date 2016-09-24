@@ -2,10 +2,10 @@
   "specVersion": "1.0",
   "label": "Web Insights Engine Application (WISE)",
   "description": "WISE extracts information from web server access logs, counts visits made by different IP addresses seen in the logs in realtime, and computes the bounce ratio of each web page encountered using batch processing. See https://github.com/caskdata/cdap-apps/tree/develop/Wise for more information and for the source code.",
-  "author": "Cask Data Inc.",
-  "org": "Cask Data Inc.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
   "created": 1474312686,
-  "categories": [ "usecase" ],
+  "categories": [ "example" ],
   "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
   "actions": [
     {

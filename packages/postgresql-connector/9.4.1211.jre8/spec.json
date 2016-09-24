@@ -2,10 +2,10 @@
   "specVersion": "1.0",
   "label": "PostgreSQL JDBC Connector",
   "description": "The PostgreSQL JDBC connector version 9.4.1211 for Java 1.8 as a Hydrator plugin",
-  "author": "Cask Data Inc.",
-  "org": "Cask Data Inc.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
   "created": 1473901763,
-  "categories": [ "hydrator-plugin" ],
+  "categories": [ "3rd-party-artifact" ],
   "actions": [
     {
       "type": "create_artifact",

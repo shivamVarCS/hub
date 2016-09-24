@@ -2,10 +2,10 @@
   "specVersion": "1.0",
   "label": "Omniture Hits Pipeline",
   "description": "Reads Omniture hit data and joins it with browser information before writing to Time Partitioned Files in Avro format.",
-  "author": "Cask Data Inc.",
-  "org": "Cask Data Inc.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
   "created": 1473901763,
-  "categories": [ "hydrator-pipeline" ],
+  "categories": [ "usecase" ],
   "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
   "actions": [
     {
