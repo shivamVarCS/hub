@@ -1,0 +1,35 @@
+{
+  "specVersion": "1.0",
+  "label": "Import Data From Excel",
+  "description": "Imports Data from Excel file and dumps it to time partitioned file set backed by Hive.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1473901763,
+  "categories": [ "usecase" ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
+  "actions": [
+    {
+      "type": "create_pipeline",
+      "label": "Import Data From Excel",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "system",
+            "name": "cdap-data-pipeline",
+            "version": "4.0.0-SNAPSHOT"
+          }
+        },
+        {
+          "name": "name",
+          "value": "ImportExcelData",
+          "canModify": true
+        },
+        {
+          "name": "config",
+          "value": "pipeline.json"
+        } 
+      ]
+    }
+  ]
+}
