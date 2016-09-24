@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "Real-time Log Ingestion and Indexing",
-  "description": "This pipeline monitors a directory for new access log files. When a new file is moved into the directory, it will stream the data to a parser, which will then send the individual events to Elastic Search to be indexed. At the same time, it will perform aggregations to count the number of requests sent to each IP address over one minute windows, and write those counts to time partitioned files.",
+  "label": "Real-time Log Analytics",
+  "description": "Real-time log analytics and log indexing is the most common use case for processing machine-generated logs. Log analytics provides insights into how users are using your application or how devices are performing in the field. Real-time analytics provides insights as soon as they happen providing faster response times.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -10,7 +10,7 @@
   "actions": [
     {
       "type": "download_datapack",
-      "label": "Sample Access Logs",
+      "label": "Access Logs",
       "arguments": [
         {
           "name": "files",
