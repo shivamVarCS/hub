@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "RSS Feed Processor",
-  "description": "Real-time processor that polls the NY Times world news RSS feed, parses it, then indexes articles using Elastic Search."
+  "description": "Real-time processor that polls the NY Times world news RSS feed, parses it, then indexes articles using Elastic Search.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
