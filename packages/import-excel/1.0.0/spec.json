@@ -9,7 +9,7 @@
   "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
   "actions": [
     {
-      "type": "create_pipeline",
+      "type": "create_pipeline_draft",
       "label": "Import Data From Excel",
       "arguments": [
         {
