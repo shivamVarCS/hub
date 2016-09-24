@@ -8,6 +8,19 @@
   "categories": [ "3rd-party-artifact" ],
   "actions": [
     {
+      "type": "informational",
+      "label": "Download PostgreSQL JDBC Driver",
+      "arguments": [
+        {
+          "name": "steps",
+          "value": [
+            "Download the jar file from https://jdbc.postgresql.org/download/postgresql-9.4.1211.jre7.jar",
+            "Upload the file in the next step"
+          ]
+        }
+      ]
+    },
+    {
       "type": "create_artifact",
       "arguments": [
         {
@@ -21,10 +34,6 @@
         {
           "name": "scope",
           "value": "user"
-        },
-        {
-          "name": "externalJar",
-          "value": "https://jdbc.postgresql.org/download/postgresql-9.4.1211.jre7.jar"
         },
         {
           "name": "config",
