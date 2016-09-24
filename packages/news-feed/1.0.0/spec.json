@@ -1,24 +1,20 @@
 {
   "specVersion": "1.0",
-  "label": "Access Log Sample",
-  "description": "Sample access logs in Combined Log Format (CLF)",
+  "label": "NY Times World News Feed",
+  "description": "A sample of the world news RSS feed from the NYTimes in XML format.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "created": 1473901763,
+  "created": 1474681358,
   "categories": [ "datapack" ],
   "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
   "actions": [
     {
       "type": "load_datapack",
-      "label": "Access Logs",
+      "label": "NY Times World News Feed", 
       "arguments": [
         {
-          "name": "name",
-          "value": "accessLogs"
-        },
-        {
           "name": "files",
-          "value": [ "access.txt" ]
+          "value": [ "nytimes-world.xml" ]
         }
       ]
     }

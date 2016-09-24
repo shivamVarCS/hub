@@ -1,0 +1,45 @@
+{
+  "specVersion": "1.0",
+  "label": "Real-time Log Ingestion and Indexing",
+  "description": "This pipeline monitors a directory for new access log files. When a new file is moved into the directory, it will stream the data to a parser, which will then send the individual events to Elastic Search to be indexed. At the same time, it will perform aggregations to count the number of requests sent to each IP address over one minute windows, and write those counts to time partitioned files.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1473901763,
+  "categories": [ "usecase" ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
+  "actions": [
+    {
+      "type": "download_datapack",
+      "label": "Sample Access Logs",
+      "arguments": [
+        {
+          "name": "files",
+          "value": [ "logdata.txt" ]
+        }
+      ]
+    },
+    {
+      "type": "create_pipeline",
+      "label": "Log Ingestion and Indexing Pipeline",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "system",
+            "name": "cdap-data-pipeline",
+            "version": "4.0.0-SNAPSHOT"
+          }
+        },
+        {
+          "name": "name",
+          "value": "logIngestion",
+          "canModify": true
+        },
+        {
+          "name": "config",
+          "value": "pipeline.json"
+        } 
+      ]
+    }
+  ]
+}
