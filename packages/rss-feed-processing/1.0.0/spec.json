@@ -1,0 +1,35 @@
+{
+  "specVersion": "1.0",
+  "label": "RSS Feed Processor",
+  "description": "Real-time processor that polls the NY Times world news RSS feed, parses it, then indexes articles using Elastic Search."
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1473901763,
+  "categories": [ "usecase" ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
+  "actions": [
+    {
+      "type": "create_pipeline",
+      "label": "RSS Feed Processor",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "system",
+            "name": "cdap-data-streams",
+            "version": "4.0.0-SNAPSHOT"
+          }
+        },
+        {
+          "name": "name",
+          "value": "rssProcessor",
+          "canModify": true
+        },
+        {
+          "name": "config",
+          "value": "pipeline.json"
+        } 
+      ]
+    }
+  ]
+}
