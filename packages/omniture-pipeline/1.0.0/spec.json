@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "Omniture Hits Pipeline",
-  "description": "Reads Omniture hit data and joins it with browser information before writing to Time Partitioned Files in Avro format.",
+  "label": "Omniture Analytics",
+  "description": "Omniture Click Stream data feeds are aggregation of Hits and Lookup Data. Performing analytics on Omniture Hits data allows one to gain insights into how the users are behaving on their website on different dimensions. This data application, provides you a starting point for building analytics on Omniture Hits data.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
