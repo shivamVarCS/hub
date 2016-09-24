@@ -51,7 +51,7 @@
           "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"body\",\"type\":\"string\"}]}",
           "format": "text",
           "extensions": "txt",
-          "path": "/tmp/streamdata",
+          "path": "${inputdir}",
           "referenceName": "FileSource"
         }
       }
@@ -154,7 +154,7 @@
         },
         "properties": {
           "referenceName": "ElasticsearchSink",
-          "es.host": "http://127.0.0.1:9200",
+          "es.host": "http://${eshost}:${esport}",
           "es.index": "logdata",
           "es.type": "data",
           "es.idField": "id"
