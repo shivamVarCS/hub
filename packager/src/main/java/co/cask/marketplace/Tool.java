@@ -157,7 +157,7 @@ public class Tool {
     if (commandLine.hasOption('w')) {
       whitelist = parseWhitelist(commandLine.getOptionValue('w'));
     }
-    Packager packager = new Packager(packageDirectory, signer);
+    Packager packager = new Packager(packageDirectory, signer, false, whitelist);
     Publisher publisher = command.equalsIgnoreCase("publish") ? getPublisher(commandLine, whitelist) : null;
 
     packager.clean();

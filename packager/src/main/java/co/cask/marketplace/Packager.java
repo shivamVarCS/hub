@@ -36,7 +36,9 @@ import java.security.SignatureException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.TimeZone;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -54,6 +56,7 @@ public class Packager {
   private final File catalogFile;
   private final Signer signer;
   private final boolean createZip;
+  private final Set<String> whitelist;
 
   static {
     // zip stores the modified date in its header, which uses the default timezone.
@@ -61,15 +64,12 @@ public class Packager {
     TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
   }
 
-  public Packager(File baseDir, @Nullable Signer signer) throws InvalidKeyException {
-    this(baseDir, signer, false);
-  }
-
-  public Packager(File baseDir, @Nullable Signer signer, boolean createZip) {
+  public Packager(File baseDir, @Nullable Signer signer, boolean createZip, Set<String> whitelist) {
     this.packagesDir = new File(baseDir, "packages");
     this.catalogFile = new File(baseDir, "packages.json");
     this.signer = signer;
     this.createZip = createZip;
+    this.whitelist = whitelist;
   }
 
   /**
@@ -138,6 +138,21 @@ public class Packager {
 
         String packageVersion = versionDir.getName();
         Package pkg = buildPackage(packageName, packageVersion, versionDir);
+
+        if (!whitelist.isEmpty()) {
+          boolean shouldPublish = false;
+          for (String category : pkg.getMeta().getCategories()) {
+            if (whitelist.contains(category)) {
+              shouldPublish = true;
+              break;
+            }
+          }
+          if (!shouldPublish) {
+            LOG.info("Skipping package {}-{} since it's categories are not in the whitelist",
+                     pkg.getName(), pkg.getVersion());
+            continue;
+          }
+        }
         packageCatalog.add(pkg.getMeta());
         packages.add(pkg);
         LOG.info("Created package {}-{}", packageName, packageVersion);
@@ -189,7 +204,6 @@ public class Packager {
         }
         continue;
       }
-
 
       builder.addFile(new SignedFile(packageFile, signer == null ? null : signer.signFile(packageFile)));
       archiveFiles.add(packageFile);

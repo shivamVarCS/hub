@@ -101,23 +101,7 @@ public class S3Publisher implements Publisher {
     }
   }
 
-
   private void publishPackage(Package pkg) throws Exception {
-    if (!whitelist.isEmpty()) {
-      boolean shouldPublish = false;
-      for (String category : pkg.getMeta().getCategories()) {
-        if (whitelist.contains(category)) {
-          shouldPublish = true;
-          break;
-        }
-      }
-      if (!shouldPublish) {
-        LOG.info("Skipping package {}-{} since it's categories are not in the whitelist",
-                 pkg.getName(), pkg.getVersion());
-        return;
-      }
-    }
-
     LOG.info("Publishing package {}-{}", pkg.getName(), pkg.getVersion());
     String keyPrefix = String.format("%s/packages/%s/%s/", prefix, pkg.getName(), pkg.getVersion());
 
