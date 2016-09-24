@@ -36,17 +36,6 @@
           "name": "scope",
           "value": "user"
         },
-          "name": "externalArchive",
-          "value": "https://dev.mysql.com/downloads/file/?id=462850"
-        },
-        {
-          "name": "externalArchiveSignature",
-          "value": "https://dev.mysql.com/downloads/gpg/?file=mysql-connector-java-5.1.39.zip"
-        },
-        {
-          "name": "externalArchiveJar",
-          "value": "mysql-connector-java-5.1.39-bin.jar"
-        },
         {
           "name": "config",
           "value": "mysql-connector-java.json"
