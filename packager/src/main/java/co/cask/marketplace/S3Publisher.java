@@ -59,12 +59,12 @@ public class S3Publisher implements Publisher {
   private final String cfDistribution;
   private final boolean forcePush;
   private final boolean dryrun;
-  private final Set<PackageId> whitelist;
+  private final Set<String> whitelist;
   private final Set<String> updatedKeys;
 
   private S3Publisher(AmazonS3Client s3Client, @Nullable AmazonCloudFrontClient cfClient,
                       String bucket, String prefix, @Nullable String cfDistribution,
-                      boolean forcePush, boolean dryrun, Set<PackageId> whitelist) {
+                      boolean forcePush, boolean dryrun, Set<String> whitelist) {
     this.s3Client = s3Client;
     this.cfClient = cfClient;
     this.bucket = bucket;
@@ -80,11 +80,6 @@ public class S3Publisher implements Publisher {
   public void publish(List<Package> packages, File catalog) throws Exception {
     updatedKeys.clear();
     for (Package pkg : packages) {
-      if (!whitelist.isEmpty() && !whitelist.contains(new PackageId(pkg.getName(), pkg.getVersion()))) {
-        LOG.info("Skipping package {}-{} since it's not in the whitelist", pkg.getName(), pkg.getVersion());
-        continue;
-      }
-      LOG.info("Publishing package {}-{}", pkg.getName(), pkg.getVersion());
       publishPackage(pkg);
     }
     LOG.info("Publishing catalog");
@@ -106,7 +101,24 @@ public class S3Publisher implements Publisher {
     }
   }
 
+
   private void publishPackage(Package pkg) throws Exception {
+    if (!whitelist.isEmpty()) {
+      boolean shouldPublish = false;
+      for (String category : pkg.getMeta().getCategories()) {
+        if (whitelist.contains(category)) {
+          shouldPublish = true;
+          break;
+        }
+      }
+      if (!shouldPublish) {
+        LOG.info("Skipping package {}-{} since it's categories are not in the whitelist",
+                 pkg.getName(), pkg.getVersion());
+        return;
+      }
+    }
+
+    LOG.info("Publishing package {}-{}", pkg.getName(), pkg.getVersion());
     String keyPrefix = String.format("%s/packages/%s/%s/", prefix, pkg.getName(), pkg.getVersion());
 
     putFilesIfChanged(keyPrefix, pkg.getIcon());
@@ -216,7 +228,7 @@ public class S3Publisher implements Publisher {
     private boolean forcePush;
     private boolean dryrun;
     private int timeout;
-    private Set<PackageId> whitelist;
+    private Set<String> whitelist;
 
     public Builder(String s3Bucket, String s3AccessKey, String s3SecretKey) {
       this.s3Bucket = s3Bucket;
@@ -264,7 +276,7 @@ public class S3Publisher implements Publisher {
       return this;
     }
 
-    public Builder setWhitelist(Set<PackageId> whitelist) {
+    public Builder setWhitelist(Set<String> whitelist) {
       this.whitelist = whitelist;
       return this;
     }

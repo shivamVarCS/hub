@@ -60,8 +60,8 @@ public class Tool {
       .addOption(new Option("y", "dryrun", false,
                             "Perform a dryrun, which won't actually publish to s3 or invalidate cloudfront objects."))
       .addOption(new Option("w", "whitelist", true,
-                            "A comma separated whitelist of packages to publish. The package name and version must " +
-                              "be separated by a '/'. For example, abc/1.0.0,xyz/9.9.9."))
+                            "A comma separated whitelist of categories to publish. Any package that does not have " +
+                              "one of these categories will not be published."))
       .addOption(new Option("s3b", "s3bucket", true, "The S3 bucket to publish packages to."))
       .addOption(new Option("s3p", "s3prefix", true,
                             "Optional prefix to use when publishing the s3. Defaults to empty."))
@@ -153,7 +153,7 @@ public class Tool {
       signer = Signer.fromKeyFile(keyFile, keyID, password);
     }
 
-    Set<PackageId> whitelist = new HashSet<>();
+    Set<String> whitelist = new HashSet<>();
     if (commandLine.hasOption('w')) {
       whitelist = parseWhitelist(commandLine.getOptionValue('w'));
     }
@@ -177,7 +177,7 @@ public class Tool {
     publisher.publish(packages, packager.getCatalog());
   }
 
-  private static S3Publisher getPublisher(CommandLine commandLine, Set<PackageId> whitelist) {
+  private static S3Publisher getPublisher(CommandLine commandLine, Set<String> whitelist) {
 
     if (!commandLine.hasOption("s3b")) {
       LOG.error("Must specify a bucket when publishing.");
@@ -228,18 +228,10 @@ public class Tool {
     return builder.build();
   }
 
-  private static Set<PackageId> parseWhitelist(String whitelistStr) {
-    Set<PackageId> whitelist = new HashSet<>();
+  private static Set<String> parseWhitelist(String whitelistStr) {
+    Set<String> whitelist = new HashSet<>();
     for (String packageStr : Splitter.on(',').trimResults().split(whitelistStr)) {
-      int idx = packageStr.indexOf('/');
-      if (idx < 0) {
-        LOG.error("Invalid whitelist package {}. Name and version must be separated by a '/'.", packageStr);
-        System.exit(1);
-      }
-      String name = packageStr.substring(0, idx);
-      String version = packageStr.substring(idx + 1);
-      LOG.info("Adding {}-{} to the whitelist", name, version);
-      whitelist.add(new PackageId(name, version));
+      whitelist.add(packageStr);
     }
     return whitelist;
   }
