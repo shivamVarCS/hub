@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Bulk Data Transfer",
-  "description": "Takes snapshots of the entire contents of a MySQL database and writes it to files on the Hadoop Filesystem.",
+  "description": "Moving data from structured data source likes traditional relational database into Hadoop is very common in building Data Lakes. This data application allows you to set-up periodic full data dumps from RDBMS into Hadoop cluster. Data on Hadoop is stored as DB table snapshot. Supports other relational databases.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
