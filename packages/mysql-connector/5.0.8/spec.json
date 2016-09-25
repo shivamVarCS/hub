@@ -23,7 +23,7 @@
     },
     {
       "type": "create_artifact",
-      "label": "MySQL Driver plugin",
+      "label": "MySQL Driver Plugin",
       "arguments": [
         {
           "name": "name",

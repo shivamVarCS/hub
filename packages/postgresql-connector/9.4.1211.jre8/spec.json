@@ -22,7 +22,7 @@
     },
     {
       "type": "create_artifact",
-      "label": "PostgreSQL Driver plugin",
+      "label": "PostgreSQL Driver Plugin",
       "arguments": [
         {
           "name": "name",
