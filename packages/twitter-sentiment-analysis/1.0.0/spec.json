@@ -1,0 +1,114 @@
+{
+  "specVersion": "1.0",
+  "label": "Twitter Sentiment Analysis",
+  "description": "This use case loads tweets that have been labeled as positive, neutral, or negative into a CDAP Stream. A Hydrator pipeline is used to read from that stream to train a tweet classification model. Another Hydrator pipeline uses that model to classify unlabeled tweets as neutrual, positive, or negative. It stores tweets of each sentiment into their own separate sets of files.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1473901763,
+  "categories": [ "usecase" ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
+  "actions": [
+    {
+      "type": "create_stream",
+      "label": "Labeled Tweets Stream",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "labeledTweets"
+        },
+        {
+          "name": "description",
+          "value": "Contains tweets that have been labeled as positive, neutral, or negative"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "label": "Labeled Tweet Data",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "labeledTweets"
+        },
+        {
+          "name": "files",
+          "value": [ "labeled-tweets.csv" ]
+        }
+      ]
+    },
+    {
+      "type": "create_stream",
+      "label": "Raw Tweets Stream",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "rawTweets"
+        },
+        {
+          "name": "description",
+          "value": "Contains raw tweets"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "label": "Raw Tweet Data",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "rawTweets"
+        },
+        {
+          "name": "files",
+          "value": [ "raw-tweets.csv" ]
+        }
+      ]
+    },
+    {
+      "type": "create_pipeline",
+      "label": "Tweet Sentiment Labeler",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "system",
+            "name": "cdap-data-pipeline",
+            "version": "4.0.0-SNAPSHOT"
+          }
+        },
+        {
+          "name": "name",
+          "value": "tweetSentimentLabeler",
+          "canModify": true
+        },
+        {
+          "name": "config",
+          "value": "labeler.json"
+        } 
+      ]
+    },
+    {
+      "type": "create_pipeline",
+      "label": "Tweet Sentiment Model Trainer",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "system",
+            "name": "cdap-data-pipeline",
+            "version": "4.0.0-SNAPSHOT"
+          }
+        },
+        {
+          "name": "name",
+          "value": "tweetSentimentModelTrainer",
+          "canModify": true
+        },
+        {
+          "name": "config",
+          "value": "trainer.json"
+        } 
+      ]
+    }
+  ]
+}
