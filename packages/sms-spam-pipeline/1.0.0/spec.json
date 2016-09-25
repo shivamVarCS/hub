@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "SMS Text Spam Model Trainer and Classifier",
-  "description": "One pipeline that reads labeled SMS Texts and trains a NaiveBayes model, and another that uses that model to classify other texts as spam or not.",
+  "label": "Spam Classifier - Machine Learning",
+  "description": "Spam classifiers allow classifying emails or sms messages using labelled data. Using bag of words and statistical technique like Naive Bayes make classify spam easy. This use case includes the trainer application for training the model and also the scorer for using the trained model to score the incoming emails or sms.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -10,21 +10,21 @@
   "actions": [
     {
       "type": "create_stream",
-      "label": "Labeled SMS Texts",
+      "label": "Labeled Messages",
       "arguments": [
         {
           "name": "name",
-          "value": "labeledSMSTexts"
+          "value": "labeledmessages"
         }
       ]
     },
     {
       "type": "load_datapack",
-      "label": "Labeled SMS Text Data",
+      "label": "Labeled Messages Sample",
       "arguments": [
         {
           "name": "name",
-          "value": "labeledSMSTexts"
+          "value": "labeledmessages"
         },
         {
           "name": "files",
@@ -34,11 +34,11 @@
     },
     {
       "type": "create_stream",
-      "label": "Unlabeled SMS Texts",
+      "label": "Unlabeled Messages",
       "arguments": [
         {
           "name": "name",
-          "value": "smsTexts"
+          "value": "unlabeledmessages"
         },
         {
           "name": "loadfiles",
@@ -52,7 +52,7 @@
       "arguments": [
         {
           "name": "name",
-          "value": "smsTexts"
+          "value": "unlabeledmessages"
         },
         {
           "name": "files",
@@ -74,7 +74,7 @@
         },
         {
           "name": "name",
-          "value": "naiveBayesSpamTrainer",
+          "value": "SpamTrainer",
           "canModify": true
         },
         {
@@ -97,7 +97,7 @@
         },
         {
           "name": "name",
-          "value": "smsSpamClassifier",
+          "value": "SpamClassifier",
           "canModify": true
         },
         {
