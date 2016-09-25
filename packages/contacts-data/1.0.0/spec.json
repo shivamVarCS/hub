@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "Organizations data from Crunchbase",
-  "description": "CSV formatted organizations data from Crunchbase ",
+  "label": "Sample contacts data",
+  "description": "Sample contacts data in CSV format",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -10,15 +10,15 @@
   "actions": [
     {
       "type": "load_datapack",
-      "label": "Organization Data",
+      "label": "Contacts",
       "arguments": [
         {
           "name": "name",
-          "value": "organizations"
+          "value": "contacts"
         },
         {
           "name": "files",
-          "value": [ "organizations.csv"]
+          "value": [ "contacts.csv"]
         }
       ]
     }
