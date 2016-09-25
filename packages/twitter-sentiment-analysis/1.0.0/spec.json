@@ -32,7 +32,7 @@
         },
         {
           "name": "files",
-          "value": [ "labeled-tweets.csv" ]
+          "value": [ "labeled_tweets.tsv" ]
         }
       ]
     },
@@ -60,7 +60,7 @@
         },
         {
           "name": "files",
-          "value": [ "raw-tweets.csv" ]
+          "value": [ "raw_tweets.txt" ]
         }
       ]
     },

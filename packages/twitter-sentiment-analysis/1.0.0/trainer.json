@@ -31,7 +31,7 @@
                 },
                 "properties": {
                     "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"score\",\"type\":\"double\"},{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"date\",\"type\":\"string\"},{\"name\":\"query\",\"type\":\"string\"},{\"name\":\"handle\",\"type\":\"string\"},{\"name\":\"tweet\",\"type\":\"string\"}]}",
-                    "format": "csv",
+                    "format": "tsv",
                     "name": "labeledTweets",
                     "duration": "1d"
                 }
