@@ -10,7 +10,7 @@
   "actions": [
     {
       "type": "load_datapack",
-      "label": "Omniture Hits Sample"
+      "label": "Omniture Hits Sample",
       "arguments": [
         {
           "name": "files",
