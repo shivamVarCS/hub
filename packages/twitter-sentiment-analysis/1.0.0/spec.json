@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "Twitter Sentiment Analysis",
-  "description": "This use case loads tweets that have been labeled as positive, neutral, or negative into a CDAP Stream. A Hydrator pipeline is used to read from that stream to train a tweet classification model. Another Hydrator pipeline uses that model to classify unlabeled tweets as neutrual, positive, or negative. It stores tweets of each sentiment into their own separate sets of files.",
+  "label": "Social Media Sentiment Analysis",
+  "description": "As many companies use social media marketing to prompte their brands, it has become necessary to evaluate the effectiveness of the campaigns. Understanding sentiment about product launch, or product features can be easily achieved with these use case. This use case includes two applications. First, a trainer that uses the human labelled data to train the model, and second application for classifying.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -66,7 +66,7 @@
     },
     {
       "type": "create_pipeline",
-      "label": "Tweet Sentiment Labeler",
+      "label": "Sentiment Classifier",
       "arguments": [
         {
           "name": "artifact",
@@ -78,7 +78,7 @@
         },
         {
           "name": "name",
-          "value": "tweetSentimentLabeler",
+          "value": "SentimentClassifier",
           "canModify": true
         },
         {
@@ -89,7 +89,7 @@
     },
     {
       "type": "create_pipeline",
-      "label": "Tweet Sentiment Model Trainer",
+      "label": "Sentiment Model Trainer",
       "arguments": [
         {
           "name": "artifact",
@@ -101,7 +101,7 @@
         },
         {
           "name": "name",
-          "value": "tweetSentimentModelTrainer",
+          "value": "SentimentModelTrainer",
           "canModify": true
         },
         {
