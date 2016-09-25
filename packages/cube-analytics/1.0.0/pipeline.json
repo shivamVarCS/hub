@@ -1,0 +1,81 @@
+{
+    "resources": {
+      "virtualCores": 1,
+      "memoryMB": 512
+    },
+    "driverResources": {
+      "virtualCores": 1,
+      "memoryMB": 512
+    },
+    "connections": [
+      {
+        "from": "Kafka",
+        "to": "LogParser"
+      },
+      {
+        "from": "LogParser",
+        "to": "OLAP Cube"
+      }
+    ],
+    "comments": [],
+    "postActions": [],
+    "stages": [
+      {
+        "name": "Kafka",
+        "plugin": {
+          "name": "Kafka",
+          "type": "realtimesource",
+          "label": "Kafka",
+          "artifact": {
+            "name": "kafka-plugins",
+            "scope": "SYSTEM",
+            "version": "1.5.0-SNAPSHOT"
+          },
+          "properties": {
+            "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"body\",\"type\":\"string\"}]}",
+            "kafka.topic": "logs",
+            "kafka.initial.offset": "0",
+            "format": "text",
+            "kafka.partitions": "1"
+          }
+        }
+      },
+      {
+        "name": "LogParser",
+        "plugin": {
+          "name": "LogParser",
+          "type": "transform",
+          "label": "LogParser",
+          "artifact": {
+            "name": "core-plugins",
+            "version": "1.5.0-SNAPSHOT",
+            "scope": "SYSTEM"
+          },
+          "properties": {
+            "logFormat": "CLF"
+          }
+        }
+      },
+      {
+        "name": "OLAP Cube",
+        "plugin": {
+          "name": "Cube",
+          "type": "realtimesink",
+          "label": "OLAP Cube",
+          "artifact": {
+            "name": "core-plugins",
+            "scope": "SYSTEM",
+            "version": "1.5.0-SNAPSHOT"
+          },
+          "properties": {
+            "dataset.cube.resolutions": "1",
+            "cubeFact.measurements": "\"cubeFact.measurement.count\":COUNTER",
+            "name": "logcube",
+            "dataset.cube.properties": "{\"dataset.cube.aggregation.agg1.dimensions\":\"ip\",\"dataset.cube.aggregation.agg2.dimensions\":\"httpStatus\"}"
+          }
+        }
+      }
+    ],
+    "instances": 1,
+    "description": "Generate an OLAP Cube in real time from Kafka"
+  }
