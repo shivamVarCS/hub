@@ -10,7 +10,7 @@
   "actions": [
     {
       "type": "load_datapack",
-      "label": "Browser mapping"
+      "label": "Browser mapping",
       "arguments": [
         {
           "name": "files",

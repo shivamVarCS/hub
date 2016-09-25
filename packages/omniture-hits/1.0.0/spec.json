@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Omniture Hits Datapack",
-  "description": "Sample Omniture hit data.",
+  "description": "Omniture Clicks hits dataset.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -10,6 +10,7 @@
   "actions": [
     {
       "type": "load_datapack",
+      "label": "Omniture Hits Sample"
       "arguments": [
         {
           "name": "files",
