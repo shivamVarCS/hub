@@ -9,7 +9,7 @@
   "actions": [
     {
       "type": "informational",
-      "label": "Download Microsoft SQL Server 6.0 JDBC Driver",
+      "label": "SQL Server 6.0 JDBC Driver",
       "arguments": [
         {
           "name": "steps",
@@ -25,7 +25,7 @@
     },
     {
       "type": "create_artifact",
-      "label": "Microsoft SQL Server 6.0 JDBC Driver Plugin",
+      "label": "SQL Server 6.0 JDBC Driver Plugin",
       "arguments": [
         {
           "name": "name",
