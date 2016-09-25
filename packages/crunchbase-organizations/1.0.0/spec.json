@@ -1,0 +1,26 @@
+{
+  "specVersion": "1.0",
+  "label": "CSV formatted organizations data from Crunchbase",
+  "description": "CSV formatted organizations data from Crunchbase ",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1473901763,
+  "categories": [ "datapack" ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
+  "actions": [
+    {
+      "type": "load_datapack",
+      "label": "Access Logs",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "organizations"
+        },
+        {
+          "name": "files",
+          "value": [ "organizations.csv"]
+        }
+      ]
+    }
+  ]
+}
