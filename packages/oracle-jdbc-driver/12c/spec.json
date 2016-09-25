@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Oracle 12c JDBC Driver",
-  "description": "JDBC Driver for connecting with Oracle 12c Database release. The driver can be configured within a Hydrator Database plugin to connect to database",
+  "description": "JDBC Driver for connecting with Oracle 12c Database. The driver installed can be configured within a Hydrator Database plugin to connect to instance of Oracle 12c database",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
