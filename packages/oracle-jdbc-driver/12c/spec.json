@@ -1,0 +1,49 @@
+{
+  "specVersion": "1.0",
+  "label": "Oracle 12c JDBC Driver",
+  "description": JDBC Driver for connecting with Oracle 12c Database release. The driver can be configured within a Hydrator Database plugin to connect to database",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1473901763,
+  "categories": [ "3rd-party-artifact" ],
+  "actions": [
+    {
+      "type": "informational",
+      "label": "Download Oracle 12c JDBC Driver",
+      "arguments": [
+        {
+          "name": "steps",
+          "value": [
+            "Go to http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html",
+            "Select appropriate version for Oracle 12c Release",
+            "Accept License Agreement",
+            "Download ojdbc7.jar (Patched JDBC Thin driver that supports TLSv1.1 and TLSv1.2 protocols)",
+            "Upload the downloaded jar file in the next step"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "create_artifact",
+      "label": "Oracle 12c JDBC Driver Plugin",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "oracle12c"
+        },
+        {
+          "name": "version",
+          "value": "12c"
+        },
+        {
+          "name": "scope",
+          "value": "user"
+        },
+        {
+          "name": "config",
+          "value": "oracle12c-connector.json"
+        }
+      ]
+    }
+  ]
+}

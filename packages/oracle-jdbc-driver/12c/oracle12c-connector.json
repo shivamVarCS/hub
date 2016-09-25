@@ -1,0 +1,15 @@
+{
+  "parents": [
+    "cdap-data-pipeline[3.0.0,10.0.0]",
+    "cdap-data-streams[3.0.0,10.0.0]",
+    "cdap-etl-batch[3.0.0,10.0.0]"
+  ],
+  "plugins": [
+    {
+      "name" : "oracle12c",
+      "type" : "jdbc",
+      "className" : "oracle.jdbc.driver.OracleDriver",
+      "description" : "Plugin for Oracle 12c JDBC driver"
+    }
+  ]
+}
