@@ -10,7 +10,7 @@
   "actions": [
     {
       "type": "informational",
-      "label": "Input Access Logs",
+      "label": "Download Sample Input",
       "arguments": [
         {
           "name": "steps",
