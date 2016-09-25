@@ -1,6 +1,6 @@
 {
   "specVersion": "1.0",
-  "label": "CSV formatted organizations data from Crunchbase",
+  "label": "Organizations data from Crunchbase",
   "description": "CSV formatted organizations data from Crunchbase ",
   "author": "Cask",
   "org": "Cask Data, Inc.",

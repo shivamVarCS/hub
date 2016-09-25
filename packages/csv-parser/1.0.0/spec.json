@@ -1,6 +1,6 @@
 {
   "specVersion": "1.0",
-  "label": "XML Parsing",
+  "label": "CSV Parsing",
   "description": "Parse CSV data and write to HBase",
   "author": "Cask",
   "org": "Cask Data, Inc.",
