@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "RSS Feed Processor",
-  "description": "Real-time processor that polls the NY Times world news RSS feed, parses it, then indexes articles using Elastic Search.",
+  "label": "HTTP Source Data Ingestion",
+  "description": "HTTP is a common mechanism for accessing cloud based source of data. Subscribing to feeds and periodically ingesting the data into Data Lake is critical for centralizing all the data. This application shows how you can ingest RSS XML data into Hadoop and Elastic Search.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
