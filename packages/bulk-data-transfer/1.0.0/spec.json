@@ -1,11 +1,12 @@
 {
   "specVersion": "1.0",
-  "label": "MySQL JDBC Connector",
-  "description": "The MySQL JDBC connector version 5.1.39 as a Hydrator plugin",
+  "label": "Bulk Data Transfer",
+  "description": "Takes snapshots of the entire contents of a MySQL database and writes it to files on the Hadoop Filesystem.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
-  "categories": [ "3rd-party-artifact" ],
+  "categories": [ "usecase" ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
   "actions": [
     {
       "type": "informational",
@@ -23,7 +24,7 @@
     },
     {
       "type": "create_artifact",
-      "label": "MySQL Driver plugin",
+      "label": "MySQL Driver Plugin",
       "arguments": [
         {
           "name": "name",
@@ -41,6 +42,29 @@
           "name": "config",
           "value": "mysql-connector-java.json"
         }
+      ]
+    },
+    {
+      "type": "create_pipeline",
+      "label": "Bulk Data Transfer Pipeline",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "system",
+            "name": "cdap-data-pipeline",
+            "version": "4.0.0-SNAPSHOT"
+          }
+        },
+        {
+          "name": "name",
+          "value": "bulkDataTransfer",
+          "canModify": true
+        },
+        {
+          "name": "config",
+          "value": "pipeline.json"
+        } 
       ]
     }
   ]
