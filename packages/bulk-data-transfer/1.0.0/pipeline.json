@@ -64,7 +64,7 @@
                     "scope": "SYSTEM"
                 },
                 "properties": {
-                    "name": "${dbname}Snapshot",
+                    "name": "${dbtable}Snapshot",
                     "cleanPartitionsOlderThan": "60d"
                 }
             },
