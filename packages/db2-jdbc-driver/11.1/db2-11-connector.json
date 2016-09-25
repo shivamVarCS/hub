@@ -1,0 +1,15 @@
+{
+  "parents": [
+    "cdap-data-pipeline[3.0.0,10.0.0]",
+    "cdap-data-streams[3.0.0,10.0.0]",
+    "cdap-etl-batch[3.0.0,10.0.0]"
+  ],
+  "plugins": [
+    {
+      "name" : "db211",
+      "type" : "jdbc",
+      "className" : "com.ibm.db2.jdbc.app.DB2Driver",
+      "description" : "Plugin for DB2 11 JDBC driver"
+    }
+  ]
+}
