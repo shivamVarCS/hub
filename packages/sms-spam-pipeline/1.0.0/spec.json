@@ -14,7 +14,7 @@
       "arguments": [
         {
           "name": "name",
-          "value": "labeledmessages"
+          "value": "labeledSMSTexts"
         }
       ]
     },
@@ -24,7 +24,7 @@
       "arguments": [
         {
           "name": "name",
-          "value": "labeledmessages"
+          "value": "labeledSMSTexts"
         },
         {
           "name": "files",
@@ -38,7 +38,7 @@
       "arguments": [
         {
           "name": "name",
-          "value": "unlabeledmessages"
+          "value": "smsTexts"
         },
         {
           "name": "loadfiles",
@@ -52,7 +52,7 @@
       "arguments": [
         {
           "name": "name",
-          "value": "unlabeledmessages"
+          "value": "smsTexts"
         },
         {
           "name": "files",
@@ -80,7 +80,7 @@
         {
           "name": "config",
           "value": "trainer.json"
-        } 
+        }
       ]
     },
     {
@@ -103,7 +103,7 @@
         {
           "name": "config",
           "value": "classifier.json"
-        } 
+        }
       ]
     }
   ]
