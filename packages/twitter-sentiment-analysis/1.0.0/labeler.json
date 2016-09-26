@@ -1,6 +1,6 @@
 {
     "resources": {
-        "memoryMB": 2048
+        "memoryMB": 2048,
         "virtualCores": 1
     },
     "driverResources": {
