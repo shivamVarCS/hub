@@ -15,7 +15,7 @@
         {
           "name": "steps",
           "value": [
-            "Download the zip file from Oracle at https://dev.mysql.com/downloads/file/?id=462850",
+            "Download the zip file from Mysql at https://dev.mysql.com/downloads/file/?id=462850",
             "Unzip the file",
             "In the next step, upload the 'mysql-connector-java-5.1.39-bin.jar' file from the zip"
           ]
