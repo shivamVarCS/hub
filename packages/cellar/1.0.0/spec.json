@@ -1,0 +1,59 @@
+{
+  "specVersion": "1.0",
+  "label": "Cask Cellar",
+  "description": "Cellar - where you store casks. This is a cloud storage application that can be used to upload, browse, and search for files.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1480729432,
+  "categories": [ "usecase" ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,4.1.0)",
+  "actions": [
+    {
+      "type": "informational",
+      "label": "Download Cellar Artifact",
+      "arguments": [
+        {
+          "name": "steps",
+          "value": [ 
+            "Download the Cellar jar from http://market.cask.co/v1/packages/cellar/1.0.0/cellar-1.0.0.jar",
+            "Deploy the artifact using the UI or CLI."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "create_application",
+      "label": "Create Cellar App",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "user",
+            "name": "cellar",
+            "version": "1.0.0"
+          }
+        },
+        {
+          "name": "name",
+          "value": "Cellar",
+          "canModify": false 
+        }
+      ]
+    },
+    {
+      "type": "informational",
+      "label": "Start Cellar",
+      "arguments": [
+        {
+          "name": "steps",
+          "value": [ 
+            "Start the Cellar FileService (start service Cellar.FileService).",
+            "Start the Cellar UI (start service Cellar.webui).",
+            "Start the Cellar Indexer (start worker Cellar.IndexerWorker).",
+            "Go to the UI (cluster:11015/v3/namespaces/<namespace>/apps/Cellar/services/webui/methods/browse.html)."
+          ]
+        }
+      ]
+    }
+  ]
+}
