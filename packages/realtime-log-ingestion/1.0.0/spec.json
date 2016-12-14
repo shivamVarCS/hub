@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Real-time Log Analytics",
-  "description": "Real-time log analytics and log indexing is the most common use case for processing machine-generated logs. Log analytics provides insights into how users are using your application or how devices are performing in the field. Real-time analytics provides insights as soon as they happen providing faster response times. This use case requires a running instance of Elastic Search 1.6.",
+  "description": "Real-time log analytics and log indexing is the most common use case for processing machine-generated logs. Log analytics provides insights into how users are using your application or how devices are performing in the field. Real-time analytics provides insights as soon as they happen, providing faster response times. This use case requires a running instance of Elasticsearch 1.6.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -16,7 +16,7 @@
           "name": "steps",
           "value": [ 
             "Download the sample access log from http://market.cask.co/preview/v1/packages/realtime-log-ingestion/1.0.0/logdata.txt",
-            "Take note of the directory you downloaded the file to. It will need to be specified as the 'inputdir' argument when starting the pipeline."
+            "Note the directory you downloaded the file to; it will be specified as the 'inputdir' argument when starting the pipeline"
           ]
         }
       ]

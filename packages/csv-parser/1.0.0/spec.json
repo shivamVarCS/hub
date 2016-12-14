@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "CSV Parsing",
-  "description": "Parse CSV data and write to HBase",
+  "description": "Parses CSV data and writes to HBase.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,

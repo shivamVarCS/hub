@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Browser Mapping",
-  "description": "A mapping of an integer ID to browser name.",
+  "description": "A mapping of an integer ID to a browser name.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -10,7 +10,7 @@
   "actions": [
     {
       "type": "load_datapack",
-      "label": "Browser mapping",
+      "label": "Browser Mapping",
       "arguments": [
         {
           "name": "files",

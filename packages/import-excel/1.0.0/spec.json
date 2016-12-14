@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "Import Data From Excel",
-  "description": "Imports Data from Excel file and dumps it to time partitioned file set backed by Hive.",
+  "label": "Import Data from Excel",
+  "description": "Imports data from an Excel file and dumps it to a time-partitioned file set backed by Hive.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -10,7 +10,7 @@
   "actions": [
     {
       "type": "create_pipeline_draft",
-      "label": "Import Data From Excel",
+      "label": "Import Data from Excel",
       "arguments": [
         {
           "name": "artifact",

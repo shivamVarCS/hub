@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "XML Parsing",
-  "description": "Parse XML document and write to HBase",
+  "description": "Parses an XML document and writes to HBase.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,

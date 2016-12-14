@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "Javascript Transform",
-  "description": "Perform transformation using javascript",
+  "label": "JavaScript Transform",
+  "description": "Perform transformations using JavaScript.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -10,7 +10,7 @@
   "actions": [
     {
       "type": "create_pipeline_draft",
-      "label": "Javascript Transform",
+      "label": "JavaScript Transform",
       "arguments": [
         {
           "name": "artifact",

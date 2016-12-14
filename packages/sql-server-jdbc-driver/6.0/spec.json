@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Microsoft SQL Server 6.0 JDBC Driver",
-  "description": "JDBC Driver for connecting with Microsoft SQL Server 6.0 Database. The driver installed can be configured within a Hydrator Database plugin to connect to instance of Microsoft SQL Server 6.0 database",
+  "description": "JDBC Driver for connecting with a Microsoft SQL Server 6.0 database. The installed driver can be configured from within a Hydrator database plugin to connect to an instance of a Microsoft SQL Server 6.0 database.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -15,10 +15,10 @@
           "name": "steps",
           "value": [
             "Go to https://www.microsoft.com/en-us/download/details.aspx?displaylang=en&id=11774",
-            "Select only qljdbc_4.0.2206.100_enu.tar.gz to download",
-            "Click Next to Download file",
+            "Select only 'enu\sqljdbc_6.0.7728.100_enu.tar.gz' to download",
+            "Click 'Next' to download the file",
             "Decompress using gzip and untar it",
-            "Upload the sqljdbc4.jar (sqljdbc_4.0/enu) in the next step"
+            "Upload the 'sqljdbc4.jar' (in 'sqljdbc_6.0/enu') in the next stage"
           ]
         }
       ]

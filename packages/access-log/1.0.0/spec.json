@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Access Log Sample",
-  "description": "Sample access logs in Combined Log Format (CLF)",
+  "description": "Sample access logs in Combined Log Format (CLF).",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,

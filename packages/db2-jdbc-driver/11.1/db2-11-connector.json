@@ -9,7 +9,7 @@
       "name" : "db211",
       "type" : "jdbc",
       "className" : "com.ibm.db2.jdbc.app.DB2Driver",
-      "description" : "Plugin for DB2 11 JDBC driver"
+      "description" : "Plugin for the DB2 11 JDBC driver"
     }
   ]
 }

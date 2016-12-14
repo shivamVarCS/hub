@@ -9,7 +9,7 @@
       "name" : "oracle12c",
       "type" : "jdbc",
       "className" : "oracle.jdbc.driver.OracleDriver",
-      "description" : "Plugin for Oracle 12c JDBC driver"
+      "description" : "Plugin for the Oracle 12c JDBC driver"
     }
   ]
 }

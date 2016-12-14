@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "Spam Classifier - Machine Learning",
-  "description": "Spam classifiers allow classifying emails or sms messages using labelled data. Using bag of words and statistical technique like Naive Bayes makes classifying easy. This use case includes a trainer application for training the model over labelled data and a classifier for using the trained model to score the incoming emails or sms.",
+  "label": "Spam Classifier: Machine Learning",
+  "description": "Spam classifiers allow classifying emails or SMS messages using labelled data. Using bags of words and statistical techniques such as 'Naive Bayes' makes classifying easy. This package includes a trainer application for training the model using labelled data and a classifier for using the trained model to score incoming emails or SMS messages.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
