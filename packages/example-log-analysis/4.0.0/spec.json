@@ -1,0 +1,50 @@
+{
+  "specVersion": "1.0",
+  "label": "Log Analysis Example",
+  "description": "The example Log Analysis application. This reads Apache access log events from a Stream using both MapReduce and Spark. The programs will write to several counter datasets and service those counts using a Service.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1481840165,
+  "categories": [ "example" ],
+  "cdapVersion": "[4.0.0,4.1.0)",
+  "actions": [
+    {
+      "type": "create_stream",
+      "label": "Create Log Stream",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "logStream"
+        },
+        {
+          "name": "description",
+          "value": "Stream of Apache access log events"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "label": "Load Sample Log Events",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "logStream"
+        },
+        {
+          "name": "files",
+          "value": [ "logevents.txt" ]
+        }
+      ]
+    },
+    {
+      "type": "deploy_app",
+      "label": "Deploy App",
+      "arguments": [
+        {
+          "name": "jar",
+          "value": "LogAnalysis-4.0.0.jar"
+        }
+      ]
+    }
+  ]
+}

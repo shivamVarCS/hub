@@ -1,0 +1,22 @@
+{
+  "specVersion": "1.0",
+  "label": "Wikipedia Workflow Example",
+  "description": "The example Wikipedia application. This contains a more complicated workflow, demonstrating conditions and forks.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1481840165,
+  "categories": [ "example" ],
+  "cdapVersion": "[4.0.0,4.1.0)",
+  "actions": [
+    {
+      "type": "deploy_app",
+      "label": "Deploy App",
+      "arguments": [
+        {
+          "name": "jar",
+          "value": "WikipediaPipeline-4.0.0.jar"
+        }
+      ]
+    }
+  ]
+}

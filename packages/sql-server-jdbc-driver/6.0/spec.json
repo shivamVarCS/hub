@@ -24,7 +24,7 @@
       ]
     },
     {
-      "type": "create_artifact",
+      "type": "create_driver_artifact",
       "label": "SQL Server 6.0 JDBC Driver Plugin",
       "arguments": [
         {

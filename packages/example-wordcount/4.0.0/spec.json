@@ -1,0 +1,22 @@
+{
+  "specVersion": "1.0",
+  "label": "Word Count Example",
+  "description": "The example Word Count application. This example reads arbitrary text from a Stream using a Flow. The Flow will parse each event and count how many times each word appears, as well as how many times each pair of words appear together in the same event.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1481840165,
+  "categories": [ "example" ],
+  "cdapVersion": "[4.0.0,4.1.0)",
+  "actions": [
+    {
+      "type": "deploy_app",
+      "label": "Deploy App",
+      "arguments": [
+        {
+          "name": "jar",
+          "value": "WordCount-4.0.0.jar"
+        }
+      ]
+    }
+  ]
+}

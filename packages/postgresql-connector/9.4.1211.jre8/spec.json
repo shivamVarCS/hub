@@ -21,7 +21,7 @@
       ]
     },
     {
-      "type": "create_artifact",
+      "type": "create_driver_artifact",
       "label": "PostgreSQL Driver Plugin",
       "arguments": [
         {

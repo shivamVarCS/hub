@@ -23,7 +23,7 @@
       ]
     },
     {
-      "type": "create_artifact",
+      "type": "create_driver_artifact",
       "label": "DB2 11 JDBC Driver Plugin",
       "arguments": [
         {

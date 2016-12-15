@@ -24,7 +24,7 @@
       ]
     },
     {
-      "type": "create_artifact",
+      "type": "create_driver_artifact",
       "label": "Oracle 12c JDBC Driver Plugin",
       "arguments": [
         {

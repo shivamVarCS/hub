@@ -1,0 +1,50 @@
+{
+  "specVersion": "1.0",
+  "label": "Spark KMeans Example",
+  "description": "The example Spark KMeans application. This example starts with a Stream of points represented by their x, y, and z coordinates. A Flow reads from the Stream and writes each point to an ObjectStore. There is then a Spark program that reads points from that ObjectStore and trains a KMeans model to divide the points into clusters. A Service is then used to take an input point and return which cluster it belongs to.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1481840165,
+  "categories": [ "example" ],
+  "cdapVersion": "[4.0.0,4.1.0)",
+  "actions": [
+    {
+      "type": "create_stream",
+      "label": "Create Points Stream",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "pointsStream"
+        },
+        {
+          "name": "description",
+          "value": "Stream of points reprented by their x,y,z coordinates"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "label": "Load Sample Points",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "pointsStream"
+        },
+        {
+          "name": "files",
+          "value": [ "points.txt" ]
+        }
+      ]
+    },
+    {
+      "type": "deploy_app",
+      "label": "Deploy App",
+      "arguments": [
+        {
+          "name": "jar",
+          "value": "SparkKMeans-4.0.0.jar"
+        }
+      ]
+    }
+  ]
+}

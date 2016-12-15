@@ -1,0 +1,50 @@
+{
+  "specVersion": "1.0",
+  "label": "Spark PageRank Example",
+  "description": "The example Spark PageRank application. The input for this example is a Stream of url pairs, representing links between pages. A workflow of Spark and MapReduce runs to read that data and generate the page rank model. A Service is used to output ranks for different urls based on the trained model.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1481840165,
+  "categories": [ "example" ],
+  "cdapVersion": "[4.0.0,4.1.0)",
+  "actions": [
+    {
+      "type": "create_stream",
+      "label": "Create URL Stream",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "backlinkURLStream"
+        },
+        {
+          "name": "description",
+          "value": "Stream of URL pairs representing links between pages"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "label": "Load Sample Links",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "backlinkURLStream"
+        },
+        {
+          "name": "files",
+          "value": [ "links.txt" ]
+        }
+      ]
+    },
+    {
+      "type": "deploy_app",
+      "label": "Deploy App",
+      "arguments": [
+        {
+          "name": "jar",
+          "value": "SparkPageRank-4.0.0.jar"
+        }
+      ]
+    }
+  ]
+}
