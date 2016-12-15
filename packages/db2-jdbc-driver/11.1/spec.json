@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "DB2 11 JDBC Driver",
-  "description": "JDBC Driver for connecting with DB2 11 Database. The driver installed can be configured within a Hydrator Database plugin to connect to instance of DB2 11 database",
+  "description": "JDBC Driver for connecting with a DB2 11 Database. The installed driver can be configured from within a Hydrator database plugin to connect to an instance of a DB2 11 database.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -15,9 +15,9 @@
           "name": "steps",
           "value": [
             "Go to http://www-01.ibm.com/support/docview.wss?uid=swg21363866",
-            "Click on JDBC 4.0 Driver (db2jcc4.jar)",
-            "Log-in into IBM Center to download the driver",
-            "Upload the downloaded jar file in the next step"
+            "Click on the appropriate JDBC 4.0 Driver ('db2jcc4.jar')",
+            "Login to the IBM Center to download the driver",
+            "Upload the downloaded JAR file in the next stage"
           ]
         }
       ]

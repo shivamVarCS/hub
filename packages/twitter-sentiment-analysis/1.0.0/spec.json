@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Social Media Sentiment Analysis",
-  "description": "As many companies use social media marketing to prompte their brands, it has become necessary to evaluate the effectiveness of the campaigns. Understanding sentiment about product launch, or product features can be easily achieved with these use case. This use case includes two applications. First, a trainer that uses the human labelled data to train the model, and second application for classifying.",
+  "description": "With many companies using social media marketing to prompte their brands, it's become necessary to evaluate the effectiveness of these campaigns. Understanding sentiment about a product launch or product features can be easily achieved with this use case. The package includes two applications: a trainer that uses human-labelled data to train a model and a second application used for classifying.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -18,7 +18,7 @@
         },
         {
           "name": "description",
-          "value": "Contains tweets that have been labeled as positive, neutral, or negative"
+          "value": "Contains tweets that have been labeled as negative, neutral, or positive"
         }
       ]
     },

@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "Billionaires & Fortune 500",
-  "description": "An Excel spreadsheet containing information about the wealthiest billionaires and companies in the world. Information about the billionaires includes the company they are associated with, their net worth, their age, gender and country. The spreadsheet also includes information about the Fortune 500 and their net worth.",
+  "label": "Billionaires and Fortune 500",
+  "description": "An Excel spreadsheet containing information about the wealthiest billionaires and companies in the world. Information about the billionaires includes the company they are associated with, plus their net worth, age, gender, and country. The spreadsheet includes information about the Fortune 500 companies and their net value.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1474681358,

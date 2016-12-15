@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "Masking sensitive data",
-  "description": "Ingests Transaction data, masks sensitive fields and writes to HBase.",
+  "label": "Masking Sensitive Data",
+  "description": "Ingests transaction data, masks sensitive fields, and writes to HBase.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -10,7 +10,7 @@
   "actions": [
     {
       "type": "create_pipeline_draft",
-      "label": "Masking sensitive data",
+      "label": "Masking Sensitive Data",
       "arguments": [
         {
           "name": "artifact",

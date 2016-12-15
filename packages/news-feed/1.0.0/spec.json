@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "NY Times World News Feed",
-  "description": "A sample of the world news RSS feed from the NYTimes in XML format.",
+  "label": "New York Times World News Feed",
+  "description": "A sample of the world news RSS feed from the New York Times in XML format.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1474681358,
@@ -10,7 +10,7 @@
   "actions": [
     {
       "type": "load_datapack",
-      "label": "NY Times World News Feed", 
+      "label": "New York Times World News Feed", 
       "arguments": [
         {
           "name": "files",

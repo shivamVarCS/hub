@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "Sample contacts data",
-  "description": "Sample contacts data in CSV format",
+  "label": "Sample Contact Data",
+  "description": "Sample contact data in CSV format.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,

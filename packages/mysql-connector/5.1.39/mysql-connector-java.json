@@ -9,7 +9,7 @@
       "name" : "mysql",
       "type" : "jdbc",
       "className" : "com.mysql.jdbc.Driver",
-      "description" : "Plugin for MySQL JDBC driver"
+      "description" : "Plugin for the MySQL JDBC driver"
     }
   ]
 }

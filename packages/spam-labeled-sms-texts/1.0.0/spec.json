@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "Spam Labeled SMS Texts",
-  "description": "SMS texts that have been labeled as spam or ham.",
+  "label": "Spam-labeled SMS Texts",
+  "description": "SMS texts that have been labeled as either 'spam' or 'ham'.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1474060461,

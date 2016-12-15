@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Projection Pipeline",
-  "description": "Drops, renames, and type casts fields in a Hydrator pipeline.",
+  "description": "Drops, renames, and type-casts fields in a Hydrator pipeline.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -18,7 +18,7 @@
         },
         {
           "name": "description",
-          "value": "Contains product id, currency, price, and number in stock"
+          "value": "Contains product ID, currency, price, and number in stock"
         }
       ]
     },

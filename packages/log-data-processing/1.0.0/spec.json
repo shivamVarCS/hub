@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "Log data analytics",
-  "description": "Imports Apache access logs from S3, parses logs and computes aggregation by ip and http status.",
+  "label": "Log Data Analytics",
+  "description": "Imports Apache access logs from S3, parses the logs, and computes aggregations by IP and HTTP status.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -10,7 +10,7 @@
   "actions": [
     {
       "type": "create_pipeline_draft",
-      "label": "Log data analytics",
+      "label": "Log Data Analytics",
       "arguments": [
         {
           "name": "artifact",

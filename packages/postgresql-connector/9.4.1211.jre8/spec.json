@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "PostgreSQL JDBC Connector",
-  "description": "The PostgreSQL JDBC connector version 9.4.1211 for Java 1.8 as a Hydrator plugin",
+  "label": "PostgreSQL JDBC Driver",
+  "description": "The PostgreSQL JDBC Driver, version 9.4.1211 for Java 1.8, as a Hydrator plugin.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -14,8 +14,8 @@
         {
           "name": "steps",
           "value": [
-            "Download the jar file from https://jdbc.postgresql.org/download/postgresql-9.4.1211.jar",
-            "Upload the file in the next step"
+            "Download the JAR file from https://jdbc.postgresql.org/download/postgresql-9.4.1211.jar",
+            "Upload the downloaded JAR file in the next stage"
           ]
         }
       ]

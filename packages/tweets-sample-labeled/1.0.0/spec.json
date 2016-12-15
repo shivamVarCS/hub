@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "Tweet Sentiment Labeled Data",
-  "description": "Sample of tweets labeled as negative (0), neutral (2), or positive (4).",
+  "label": "Tweet Sentiment-labeled Data",
+  "description": "Sample of tweets, labeled as negative (0), neutral (2), or positive (4).",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1474312686,
