@@ -14,7 +14,7 @@
         {
           "name": "steps",
           "value": [
-            "Download the plugin jar from http://market.cask.co/v1/packages/hydrator-plugin-kinesis-sink/1.5.0/kinesis-sink-plugin-1.5.0.jar",
+            "Download the plugin jar from http://market.cask.co/v1/packages/hydrator-plugin-kinesis-batchsink/1.5.0/kinesis-batchsink-plugin-1.5.0.jar",
             "Upload the jar in the next step"
           ]
         }
