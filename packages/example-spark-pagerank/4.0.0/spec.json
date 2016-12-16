@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Spark PageRank Example",
-  "description": "The example Spark PageRank application. The input for this example is a Stream of url pairs, representing links between pages. A workflow of Spark and MapReduce runs to read that data and generate the page rank model. A Service is used to output ranks for different urls based on the trained model.",
+  "description": "This example demonstrates Spark and MapReduce performing streaming log analysis, computing the page rank based on information about backlink URLs. For information on running the application, see http://docs.cask.co/cdap/4.0.0/en/examples-manual/examples/spark-page-rank.html",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1481840165,
@@ -32,7 +32,7 @@
         },
         {
           "name": "files",
-          "value": [ "links.txt" ]
+          "value": [ "urlpairs.txt" ]
         }
       ]
     },

@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Log Analysis Example",
-  "description": "The example Log Analysis application. This reads Apache access log events from a Stream using both MapReduce and Spark. The programs will write to several counter datasets and service those counts using a Service.",
+  "description": "This example demonstrates Spark and MapReduce performing log analysis, computing total number of hits for every unique URL, total number of responses for every unique response code, and total number of requests made by every unique IP address, based on Apache usage log. For information on running the application, see http://docs.cask.co/cdap/4.0.0/en/examples-manual/examples/log-analysis.html",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1481840165,
@@ -32,7 +32,7 @@
         },
         {
           "name": "files",
-          "value": [ "logevents.txt" ]
+          "value": [ "apache.accesslog" ]
         }
       ]
     },
