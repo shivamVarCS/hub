@@ -1,0 +1,52 @@
+{
+  "specVersion": "1.0",
+  "label": "Solr Hydrator Plugins",
+  "description": "Plugins to write to Solr in a Hydrator pipeline in both batch and realtime.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1473901763,
+  "categories": [ "3rd-party-artifact" ],
+  "actions": [
+    {
+      "type": "informational",
+      "label": "Download DB2 11 JDBC Driver",
+      "arguments": [
+        {
+          "name": "steps",
+          "value": [
+            "Go to http://www-01.ibm.com/support/docview.wss?uid=swg21363866",
+            "Click on the appropriate JDBC 4.0 Driver ('db2jcc4.jar')",
+            "Login to the IBM Center to download the driver",
+            "Upload the downloaded JAR file in the next stage"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "create_plugin_artifact",
+      "label": "Deploy Solr Plugins",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "solrsearch-plugins"
+        },
+        {
+          "name": "version",
+          "value": "1.5.0"
+        },
+        {
+          "name": "scope",
+          "value": "user"
+        },
+        {
+          "name": "config",
+          "value": "solrsearch-plugins-1.5.0.json"
+        },
+        {
+          "name": "jar",
+          "value": "solrsearch-plugins-1.5.0.jar"
+        }
+      ]
+    }
+  ]
+}
