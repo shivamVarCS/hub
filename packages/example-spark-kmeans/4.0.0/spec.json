@@ -37,6 +37,19 @@
       ]
     },
     {
+      "type": "informational",
+      "label": "Download Application Jar",
+      "arguments": [
+        {
+          "name": "steps",
+          "value": [
+            "Download the application jar from http://market.cask.co/v1/packages/example-spark-kmeans/4.0.0/SparkKMeans-4.0.0.jar",
+            "Upload the jar in the next step"
+          ]
+        }
+      ]
+    },
+    {
       "type": "deploy_app",
       "label": "Deploy App",
       "arguments": [

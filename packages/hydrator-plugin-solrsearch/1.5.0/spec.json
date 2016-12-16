@@ -5,19 +5,17 @@
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
-  "categories": [ "3rd-party-artifact" ],
+  "categories": [ "hydrator-plugin" ],
   "actions": [
     {
       "type": "informational",
-      "label": "Download DB2 11 JDBC Driver",
+      "label": "Download Plugin Jar",
       "arguments": [
         {
           "name": "steps",
           "value": [
-            "Go to http://www-01.ibm.com/support/docview.wss?uid=swg21363866",
-            "Click on the appropriate JDBC 4.0 Driver ('db2jcc4.jar')",
-            "Login to the IBM Center to download the driver",
-            "Upload the downloaded JAR file in the next stage"
+            "Download the plugin jar from http://market.cask.co/v1/packages/hydrator-plugin-solrsearch/1.5.0/solrsearch-plugins-1.5.0.jar",
+            "Upload the jar in the next step"
           ]
         }
       ]

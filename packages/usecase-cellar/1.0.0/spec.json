@@ -7,6 +7,7 @@
   "created": 1480729432,
   "categories": [ "usecase" ],
   "cdapVersion": "[4.0.0,4.1.0)",
+  "beta": true,
   "actions": [
     {
       "type": "informational",
