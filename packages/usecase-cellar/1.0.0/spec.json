@@ -8,6 +8,7 @@
   "categories": [ "usecase" ],
   "cdapVersion": "[4.0.0,4.1.0)",
   "beta": true,
+  "license": "license.txt",
   "actions": [
     {
       "type": "informational",
@@ -16,14 +17,21 @@
         {
           "name": "steps",
           "value": [ 
-            "Download the Cellar JAR from http://market.cask.co/v1/packages/cellar/1.0.0/cellar-1.0.0.jar"
+            "Download the Cellar JAR from http://market.cask.co/v1/packages/cellar/1.0.0/cellar-1.0.0.jar",
+            "Upload the jar in the next step"
           ]
         }
       ]
     },
     {
       "type": "create_app",
-      "label": "Deploy App"
+      "label": "Deploy App",
+      "arguments": [
+        {
+          "name": "jar",
+          "value": "cellar-1.0.0.jar"
+        }
+      ]
     }
   ]
 }
