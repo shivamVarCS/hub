@@ -26,7 +26,7 @@
       "arguments": [
         {
           "name": "name",
-          "value": "kinesis-sink-plugin"
+          "value": "kinesis-batchsink-plugin"
         },
         {
           "name": "version",
@@ -38,11 +38,11 @@
         },
         {
           "name": "config",
-          "value": "kinesis-sink-plugin-1.5.0.json"
+          "value": "kinesis-batchsink-plugin-1.5.0.json"
         },
         {
           "name": "jar",
-          "value": "kinesis-sink-plugin-1.5.0.jar"
+          "value": "kinesis-batchsink-plugin-1.5.0.jar"
         }
       ]
     }
