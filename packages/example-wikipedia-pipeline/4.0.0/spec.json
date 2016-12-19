@@ -56,7 +56,7 @@
       "arguments": [
         {
           "name": "name",
-          "value": "wikisStream"
+          "value": "wikiStream"
         },
         {
           "name": "files",
