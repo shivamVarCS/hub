@@ -1,11 +1,4 @@
 {
-  "artifact": {
-    "name": "cdap-data-pipeline",
-    "version": "4.0.0-SNAPSHOT",
-    "scope": "SYSTEM"
-  },
-  "name": "omnitureHitsPipeline_v2",
-  "config": {
     "resources": {
       "memoryMB": 2048,
       "virtualCores": 1
@@ -236,5 +229,4 @@
     ],
     "schedule": "0 * * * *",
     "engine": "mapreduce"
-  }
 }
