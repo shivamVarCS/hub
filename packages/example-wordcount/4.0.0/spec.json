@@ -15,7 +15,7 @@
         {
           "name": "steps",
           "value": [
-            "Download the application jar from http://market.cask.co/v1/packages/example-word-count/4.0.0/WordCount-4.0.0.jar",
+            "Download the application jar from http://market.cask.co/v1/packages/example-wordcount/4.0.0/WordCount-4.0.0.jar",
             "Upload the jar in the next step"
           ]
         }
