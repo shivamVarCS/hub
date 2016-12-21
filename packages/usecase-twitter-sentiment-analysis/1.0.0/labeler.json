@@ -50,7 +50,7 @@
                 "label": "Stream",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.5.0-SNAPSHOT",
+                    "version": "1.5.0",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -78,7 +78,7 @@
                 "label": "Labeler",
                 "artifact": {
                     "name": "spark-plugins",
-                    "version": "1.5.0-SNAPSHOT",
+                    "version": "1.5.0",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -113,7 +113,7 @@
                 "label": "Negative",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.5.0-SNAPSHOT",
+                    "version": "1.5.0",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -145,7 +145,7 @@
                 "label": "Negative Store",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.5.0-SNAPSHOT",
+                    "version": "1.5.0",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -178,7 +178,7 @@
                 "label": "Neutral",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.5.0-SNAPSHOT",
+                    "version": "1.5.0",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -210,7 +210,7 @@
                 "label": "Positive",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.5.0-SNAPSHOT",
+                    "version": "1.5.0",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -242,7 +242,7 @@
                 "label": "Neutral Store",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.5.0-SNAPSHOT",
+                    "version": "1.5.0",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -275,7 +275,7 @@
                 "label": "Positive Store",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.5.0-SNAPSHOT",
+                    "version": "1.5.0",
                     "scope": "SYSTEM"
                 },
                 "properties": {

@@ -63,7 +63,7 @@ The spec.json file must be a JSON Object with this format:
       "org": "<org>",
       "created": <timestamp in seconds>,
       "categories": [ <categories> ],
-      "cdapVersion": "<cdap version range>" (for example: "[4.0.0-SNAPSHOT,4.1.0)")
+      "cdapVersion": "<cdap version range>" (for example: "[4.0.0,4.1.0)")
       "actions": [
         {
           "type": "create_stream" | "create_app" | "create_artifact" | "create_dataset" | "load_datapack",
