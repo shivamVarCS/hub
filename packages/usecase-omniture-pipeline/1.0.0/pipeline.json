@@ -56,7 +56,7 @@
           "label": "HitData",
           "artifact": {
             "name": "core-plugins",
-            "version": "1.5.0-SNAPSHOT",
+            "version": "1.5.0",
             "scope": "SYSTEM"
           },
           "properties": {
@@ -75,7 +75,7 @@
           "label": "HitDataParser",
           "artifact": {
             "name": "transform-plugins",
-            "version": "1.5.0-SNAPSHOT",
+            "version": "1.5.0",
             "scope": "SYSTEM"
           },
           "properties": {
@@ -93,7 +93,7 @@
           "label": "Group by Geo",
           "artifact": {
             "name": "core-plugins",
-            "version": "1.5.0-SNAPSHOT",
+            "version": "1.5.0",
             "scope": "SYSTEM"
           },
           "properties": {
@@ -110,7 +110,7 @@
           "label": "HBase Geo Hits",
           "artifact": {
             "name": "core-plugins",
-            "version": "1.5.0-SNAPSHOT",
+            "version": "1.5.0",
             "scope": "SYSTEM"
           },
           "properties": {
@@ -128,7 +128,7 @@
           "label": "BrowserData",
           "artifact": {
             "name": "core-plugins",
-            "version": "1.5.0-SNAPSHOT",
+            "version": "1.5.0",
             "scope": "SYSTEM"
           },
           "properties": {
@@ -147,7 +147,7 @@
           "label": "BrowserDataParser",
           "artifact": {
             "name": "transform-plugins",
-            "version": "1.5.0-SNAPSHOT",
+            "version": "1.5.0",
             "scope": "SYSTEM"
           },
           "properties": {
@@ -165,7 +165,7 @@
           "label": "Joiner",
           "artifact": {
             "name": "core-plugins",
-            "version": "1.5.0-SNAPSHOT",
+            "version": "1.5.0",
             "scope": "SYSTEM"
           },
           "properties": {
@@ -183,7 +183,7 @@
           "label": "TPFSAvro",
           "artifact": {
             "name": "core-plugins",
-            "version": "1.5.0-SNAPSHOT",
+            "version": "1.5.0",
             "scope": "SYSTEM"
           },
           "properties": {
@@ -201,7 +201,7 @@
           "label": "Distinct Domains",
           "artifact": {
             "name": "core-plugins",
-            "version": "1.5.0-SNAPSHOT",
+            "version": "1.5.0",
             "scope": "SYSTEM"
           },
           "properties": {
@@ -217,7 +217,7 @@
           "label": "SnapshotText",
           "artifact": {
             "name": "core-plugins",
-            "version": "1.5.0-SNAPSHOT",
+            "version": "1.5.0",
             "scope": "SYSTEM"
           },
           "properties": {

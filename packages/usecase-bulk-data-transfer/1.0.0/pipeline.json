@@ -26,7 +26,7 @@
                 "label": "Database",
                 "artifact": {
                     "name": "database-plugins",
-                    "version": "1.5.0-SNAPSHOT",
+                    "version": "1.5.0",
                     "scope": "SYSTEM"
                 },
                 "properties": {
@@ -60,7 +60,7 @@
                 "label": "SnapshotText",
                 "artifact": {
                     "name": "core-plugins",
-                    "version": "1.5.0-SNAPSHOT",
+                    "version": "1.5.0",
                     "scope": "SYSTEM"
                 },
                 "properties": {
