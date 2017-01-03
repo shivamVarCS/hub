@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Oracle Export Action Plugin",
-  "description": "A Hydrator Action plugin to efficiently export data from Oracle to HDFS or local file system. The plugin uses Oracle's command line tools to export data. The data exported from this tool can then be used in Hydrator pipelines",
+  "description": "A Hydrator Action plugin to efficiently export data from Oracle to HDFS or local file system. The plugin uses Oracle's command line tools to export data. The data exported from this tool can then be used in Hydrator pipelines.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,

@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Date Transform",
-  "description": "A Hydrator plugin to convert dates into formatted strings. Source code available at https://github.com/hydrator/date-transform",
+  "description": "A Hydrator plugin to convert dates into formatted strings. Source code available at https://github.com/hydrator/date-transform.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1481943992,
