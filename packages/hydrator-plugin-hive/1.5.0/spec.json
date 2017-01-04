@@ -1,12 +1,13 @@
 {
   "specVersion": "1.0",
   "label": "Hive Hydrator Plugins",
-  "description": "Plugins to write to Hive in a Hydrator pipeline in batch.",
+  "description": "Plugins to read from and write to Hive in a Hydrator pipeline in batch.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1483495209,
   "categories": [ "hydrator-plugin" ],
   "cdapVersion": "[4.0.0,4.1.0)",
+  "license": "license.txt",
   "actions": [
     {
       "type": "informational",
