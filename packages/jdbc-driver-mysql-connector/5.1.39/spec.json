@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "MySQL JDBC Driver",
-  "description": "The MySQL JDBC Driver, version 5.1.39, as a Hydrator plugin.",
+  "description": "The MySQL JDBC driver, version 5.1.39, as a Hydrator plugin.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,

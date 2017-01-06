@@ -10,13 +10,13 @@
   "actions": [
     {
       "type": "informational",
-      "label": "Download Plugin Jar",
+      "label": "Download Plugin JAR",
       "arguments": [
         {
           "name": "steps",
           "value": [
-            "Download the plugin jar from http://market.cask.co/v1/packages/hydrator-plugin-solrsearch/1.5.0/solrsearch-plugins-1.5.0.jar",
-            "Upload the jar in the next step"
+            "Download the plugin JAR from http://market.cask.co/v1/packages/hydrator-plugin-solrsearch/1.5.0/solrsearch-plugins-1.5.0.jar",
+            "Upload the JAR in the next step"
           ]
         }
       ]
