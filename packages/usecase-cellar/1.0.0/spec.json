@@ -17,7 +17,7 @@
         {
           "name": "steps",
           "value": [ 
-            "Download the Cellar JAR from http://market.cask.co/v1/packages/cellar/1.0.0/cellar-1.0.0.jar",
+            "Download the Cellar JAR from http://market.cask.co/v1/packages/usecase-cellar/1.0.0/cellar-1.0.0.jar",
             "Upload the jar in the next step"
           ]
         }
