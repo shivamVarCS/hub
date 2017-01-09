@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Solr Hydrator Plugins",
-  "description": "Plugins to write to Solr in a Hydrator pipeline in both batch and realtime.",
+  "description": "Plugins to write to Solr in a Hydrator pipeline both in batch and in real time.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -10,13 +10,13 @@
   "actions": [
     {
       "type": "informational",
-      "label": "Download Plugin Jar",
+      "label": "Download Plugin JAR",
       "arguments": [
         {
           "name": "steps",
           "value": [
-            "Download the plugin jar from http://market.cask.co/v1/packages/hydrator-plugin-solrsearch/1.5.0/solrsearch-plugins-1.5.0.jar",
-            "Upload the jar in the next step"
+            "Download the plugin JAR from http://market.cask.co/v1/packages/hydrator-plugin-solrsearch/1.5.0/solrsearch-plugins-1.5.0.jar",
+            "Upload the JAR in the next step"
           ]
         }
       ]

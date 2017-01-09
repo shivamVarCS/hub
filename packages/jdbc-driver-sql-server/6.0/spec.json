@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Microsoft SQL Server 6.0 JDBC Driver",
-  "description": "JDBC Driver for connecting with a Microsoft SQL Server 6.0 database. The installed driver can be configured from within a Hydrator database plugin to connect to an instance of a Microsoft SQL Server 6.0 database.",
+  "description": "JDBC driver for connecting with a Microsoft SQL Server 6.0 database. The installed driver can be configured from within a Hydrator database plugin to connect to an instance of a Microsoft SQL Server 6.0 database.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,

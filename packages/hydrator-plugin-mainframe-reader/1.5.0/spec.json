@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Mainframe Reader Hydrator Plugin",
-  "description": "This is a Hydrator source plugin that uses a fixed-length COBOL copybook to allow users to read and process mainframe files generated on either a z/OS IBM or AS/400 mainframe.",
+  "description": "This is a Hydrator source plugin that uses a fixed-length COBOL copybook to allow users to read and process mainframe files generated on either IBM z/OS or AS/400 mainframes.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
@@ -10,13 +10,13 @@
   "actions": [
     {
       "type": "informational",
-      "label": "Download Plugin Jar",
+      "label": "Download Plugin JAR",
       "arguments": [
         {
           "name": "steps",
           "value": [
-            "Download the plugin jar from http://market.cask.co/v1/packages/hydrator-plugin-mainframe-reader/1.5.0/mainframe-reader-plugins-1.5.0.jar",
-            "Upload the jar in the next step"
+            "Download the plugin JAR from http://market.cask.co/v1/packages/hydrator-plugin-mainframe-reader/1.5.0/mainframe-reader-plugins-1.5.0.jar",
+            "Upload the JAR in the next step"
           ]
         }
       ]

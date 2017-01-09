@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "PostgreSQL JDBC Driver",
-  "description": "The PostgreSQL JDBC Driver, version 9.4.1211 for Java 1.7, as a Hydrator plugin.",
+  "description": "The PostgreSQL JDBC driver, version 9.4.1211 for Java 1.7, as a Hydrator plugin.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,

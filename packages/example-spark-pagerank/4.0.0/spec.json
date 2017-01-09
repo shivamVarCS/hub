@@ -38,13 +38,13 @@
     },
     {
       "type": "informational",
-      "label": "Download Application Jar",
+      "label": "Download Application JAR",
       "arguments": [
         {
           "name": "steps",
           "value": [
-            "Download the application jar from http://market.cask.co/v1/packages/example-spark-page-rank/4.0.0/SparkPageRank-4.0.0.jar",
-            "Upload the jar in the next step"
+            "Download the application JAR from http://market.cask.co/v1/packages/example-spark-page-rank/4.0.0/SparkPageRank-4.0.0.jar",
+            "Upload the JAR in the next step"
           ]
         }
       ]
