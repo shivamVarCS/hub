@@ -43,7 +43,7 @@
         {
           "name": "steps",
           "value": [
-            "Download the application JAR from http://market.cask.co/v1/packages/example-spark-page-rank/4.0.0/SparkPageRank-4.0.0.jar",
+            "Download the application JAR from http://market.cask.co/v1/packages/example-spark-pagerank/4.0.0/SparkPageRank-4.0.0.jar",
             "Upload the JAR in the next step"
           ]
         }
