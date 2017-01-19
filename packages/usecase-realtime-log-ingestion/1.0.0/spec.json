@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "label": "Real-time Log Analytics",
-  "description": "Real-time log analytics and log indexing is the most common use case for processing machine-generated logs. Log analytics provides insights into how users are using your application or how devices are performing in the field. Real-time analytics provides insights as soon as they happen, providing faster response times. This use case requires a running instance of Elasticsearch 1.6.",
+  "description": "Real-time log analytics and log indexing is the most common use case for processing machine-generated logs. Log analytics provides insights into how users are using your application or how devices are performing in the field. Real-time analytics provides insights as soon as they happen, providing faster response times. This use case requires a running instance of Elasticsearch 1.6. Also, ElasticSearch plugins must be downloaded and deployed from the 'Plugins' section of the Cask Market.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,

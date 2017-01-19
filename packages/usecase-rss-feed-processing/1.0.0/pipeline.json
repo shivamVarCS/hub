@@ -94,7 +94,7 @@
                 "artifact": {
                     "name": "elasticsearch-plugins",
                     "version": "1.5.0",
-                    "scope": "SYSTEM"
+                    "scope": "USER"
                 },
                 "properties": {
                     "referenceName": "newsIndex",
