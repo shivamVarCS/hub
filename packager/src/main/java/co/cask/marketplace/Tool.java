@@ -70,7 +70,9 @@ public class Tool {
       .addOption(new Option("s3t", "s3timeout", true, "Timeout in seconds to use when pushing to s3. Defaults to 30."))
       .addOption(new Option("cfd", "cfdistribution", true, "Cloudfront distribution fronting the s3 bucket."))
       .addOption(new Option("cfa", "cfaccess", true, "Access key to invalidate cloudfront objects."))
-      .addOption(new Option("cfs", "cfsecret", true, "Secret key to invalidate cloudfront objects."));
+      .addOption(new Option("cfs", "cfsecret", true, "Secret key to invalidate cloudfront objects."))
+      .addOption(new Option("v", "version", true,
+                            "Sets the version. Defaults to 'v2'. Note that it should not include slashes."));
 
     CommandLineParser parser = new BasicParser();
     CommandLine commandLine = parser.parse(options, args);
@@ -202,11 +204,14 @@ public class Tool {
       .setDryRun(commandLine.hasOption('y'))
       .setWhitelist(whitelist);
 
+    // default to 'v2'
+    String version = commandLine.hasOption("v") ? commandLine.getOptionValue("v") : "v2";
+
     if (commandLine.hasOption("s3p")) {
       String prefix = commandLine.getOptionValue("s3p");
-      builder.setPrefix(prefix.endsWith("/") ? prefix + "v1" : prefix + "/v1");
+      builder.setPrefix(prefix.endsWith("/") ? prefix + version : prefix + "/" + version);
     } else {
-      builder.setPrefix("v1");
+      builder.setPrefix(version);
     }
 
     if (commandLine.hasOption("s3t")) {
