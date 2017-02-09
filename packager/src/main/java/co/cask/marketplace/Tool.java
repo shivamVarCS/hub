@@ -209,7 +209,7 @@ public class Tool {
 
     if (commandLine.hasOption("s3p")) {
       String prefix = commandLine.getOptionValue("s3p");
-      builder.setPrefix(prefix.endsWith("/") ? prefix + version : prefix + "/" + version);
+      builder.setPrefix(prefix.endsWith("/") || prefix.isEmpty() ? prefix + version : prefix + "/" + version);
     } else {
       builder.setPrefix(version);
     }
