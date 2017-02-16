@@ -1,5 +1,10 @@
 # Cask Marketplace
 
+## Setup
+
+Since this repo stores jar files, it is required that you use git-lfs.
+See https://git-lfs.github.com/ for information on installing and settting up git-lfs.
+
 ## Directory Structure
 
 The marketplace repository requires this directory structure:
