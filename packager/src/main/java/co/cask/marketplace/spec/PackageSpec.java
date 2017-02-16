@@ -52,6 +52,11 @@ public class PackageSpec implements Validatable {
     this.beta = beta;
   }
 
+  public PackageSpec(PackageSpec oldSpec, String newCdapVersion, long newCreated, List<ActionSpec> newActions) {
+    this(oldSpec.specVersion, oldSpec.description, oldSpec.label, oldSpec.author, oldSpec.org, newCdapVersion,
+         oldSpec.license, newCreated, oldSpec.beta, oldSpec.categories, newActions);
+  }
+
   public String getSpecVersion() {
     return specVersion;
   }

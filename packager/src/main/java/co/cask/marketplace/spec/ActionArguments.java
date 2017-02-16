@@ -40,6 +40,18 @@ public class ActionArguments implements Validatable {
     this.canModify = canModify;
   }
 
+  public String getName() {
+    return name;
+  }
+
+  public JsonElement getValue() {
+    return value;
+  }
+
+  public Boolean getCanModify() {
+    return canModify;
+  }
+
   @Override
   public void validate() {
     if (name == null || name.isEmpty() || value == null) {

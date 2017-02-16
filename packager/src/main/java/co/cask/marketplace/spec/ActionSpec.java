@@ -24,11 +24,25 @@ import java.util.Objects;
  */
 public class ActionSpec implements Validatable {
   private final String type;
+  private final String label;
   private final List<ActionArguments> arguments;
 
-  public ActionSpec(String type, List<ActionArguments> arguments) {
+  public ActionSpec(String type, String label, List<ActionArguments> arguments) {
     this.type = type;
+    this.label = label;
     this.arguments = arguments;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public String getLabel() {
+    return label;
+  }
+
+  public List<ActionArguments> getArguments() {
+    return arguments;
   }
 
   @Override
@@ -48,18 +62,21 @@ public class ActionSpec implements Validatable {
     }
 
     ActionSpec that = (ActionSpec) o;
-    return Objects.equals(type, that.type) && Objects.equals(arguments, that.arguments);
+    return Objects.equals(type, that.type) &&
+      Objects.equals(label, that.label) &&
+      Objects.equals(arguments, that.arguments);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, arguments);
+    return Objects.hash(type, label, arguments);
   }
 
   @Override
   public String toString() {
     return "ActionSpec{" +
       "type='" + type + '\'' +
+      ", label='" + label + '\'' +
       ", arguments=" + arguments +
       '}';
   }
