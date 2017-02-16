@@ -1,6 +1,1 @@
 *.jar filter=lfs diff=lfs merge=lfs -text
-packages/example-log-analysis/4.0.0/LogAnalysis-4.0.0.jar filter=lfs diff=lfs merge=lfs -text
-packages/example-spark-kmeans/4.0.0/SparkKMeans-4.0.0.jar filter=lfs diff=lfs merge=lfs -text
-packages/example-spark-pagerank/4.0.0/SparkPageRank-4.0.0.jar filter=lfs diff=lfs merge=lfs -text
-packages/example-wikipedia-pipeline/4.0.0/WikipediaPipeline-4.0.0.jar filter=lfs diff=lfs merge=lfs -text
-packages/example-wordcount/4.0.0/WordCount-4.0.0.jar filter=lfs diff=lfs merge=lfs -text
