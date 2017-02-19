@@ -1,10 +1,10 @@
 {
   "specVersion": "1.0",
-  "description": "Plugins to write to Cassandra in a Hydrator pipeline in both batch and realtime.",
-  "label": "Cassandra Hydrator Plugins",
+  "description": "Plugins to write to Cassandra in batch and realtime CDAP pipelines.",
+  "label": "Cassandra Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.1.0-SNAPSHOT,4.2.0)",
+  "cdapVersion": "[4.1.0-SNAPSHOT,4.2.0-SNAPSHOT)",
   "license": "license.txt",
   "created": 1487643280,
   "categories": [
@@ -12,21 +12,7 @@
   ],
   "actions": [
     {
-      "type": "informational",
-      "label": "Download Plugin Jar",
-      "arguments": [
-        {
-          "name": "steps",
-          "value": [
-            "Download the plugin jar from http://market.cask.co/v2/packages/hydrator-plugin-cassandra/1.6.0/cassandra-plugins-1.6.0.jar",
-            "Upload the jar in the next step"
-          ],
-          "canModify": false
-        }
-      ]
-    },
-    {
-      "type": "create_plugin_artifact",
+      "type": "one_step_deploy_plugin",
       "label": "Deploy Cassandra Plugins",
       "arguments": [
         {
@@ -58,3 +44,4 @@
     }
   ]
 }
+
