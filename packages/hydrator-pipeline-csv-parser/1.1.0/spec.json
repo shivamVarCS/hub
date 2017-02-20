@@ -5,7 +5,7 @@
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.1.0-SNAPSHOT,4.1.0-SNAPSHOT]",
-  "created": 1487286304734,
+  "created": 1487286304,
   "categories": [
     "pipeline"
   ],

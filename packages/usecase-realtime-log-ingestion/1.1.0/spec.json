@@ -5,7 +5,7 @@
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.1.0-SNAPSHOT,4.1.0-SNAPSHOT]",
-  "created": 1487286304734,
+  "created": 1487286304,
   "categories": [
     "usecase"
   ],
@@ -17,7 +17,7 @@
         {
           "name": "steps",
           "value": [
-            "Download the sample access log from http://market.cask.co/preview/v1/packages/realtime-log-ingestion/1.0.1/logdata.txt",
+            "Download the sample access log from http://market.cask.co/v2/packages/realtime-log-ingestion/1.1.0/logdata.txt",
             "Note the directory you downloaded the file to; it will be specified as the 'inputdir' argument when starting the pipeline"
           ],
           "canModify": false

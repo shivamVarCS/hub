@@ -69,7 +69,7 @@ public class Generator {
     this.pluginVersion = pluginVersion;
     this.packageVersion = packageVersion;
     this.categories = categories;
-    this.timestamp = System.currentTimeMillis();
+    this.timestamp = System.currentTimeMillis() / 1000L;
   }
 
   public void generate(final String baseVersion) throws IOException {
