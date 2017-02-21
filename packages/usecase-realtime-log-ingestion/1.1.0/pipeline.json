@@ -149,7 +149,7 @@
         "label": "ElasticsearchSink",
         "artifact": {
           "name": "elasticsearch-plugins",
-          "version": "1.6.0-SNAPSHOT",
+          "version": "1.6.0",
           "scope": "USER"
         },
         "properties": {
