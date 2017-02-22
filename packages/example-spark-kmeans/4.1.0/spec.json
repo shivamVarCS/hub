@@ -4,6 +4,7 @@
   "label": "Spark KMeans Example",
   "author": "Cask",
   "org": "Cask Data, Inc.",
+  "cdapVersion": "[4.1.0-SNAPSHOT,4.2.0-SNAPSHOT)",
   "cdapVersion": "[4.1.0-SNAPSHOT,4.2.0)",
   "created": 1487632890,
   "categories": [
@@ -45,21 +46,7 @@
       ]
     },
     {
-      "type": "informational",
-      "label": "Download Application JAR",
-      "arguments": [
-        {
-          "name": "steps",
-          "value": [
-            "Download the application JAR from http://market.cask.co/v2/packages/example-spark-kmeans/4.1.0/SparkKMeans-4.1.0.jar",
-            "Upload the JAR in the next step"
-          ],
-          "canModify": false
-        }
-      ]
-    },
-    {
-      "type": "deploy_app",
+      "type": "one_step_deploy_app",
       "label": "Deploy App",
       "arguments": [
         {
@@ -71,3 +58,4 @@
     }
   ]
 }
+
