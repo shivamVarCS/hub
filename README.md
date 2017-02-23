@@ -16,6 +16,10 @@ The marketplace repository requires this directory structure:
 
 Anything that falls under 'other files' will be zipped up by the packager into an 'archive.zip' file.
 
+## Local Market Setup
+
+Read the [LOCALSETUP](LOCALSETUP.md) guide to setup Cask Market locally on your machine
+
 ## Packager
 
 To build the packager:
@@ -28,11 +32,11 @@ files, sign package specs and archives, and push the package files to s3. You ca
 help manual by running:
 
     java -cp packager/target/*:packager/target/lib/* co.cask.marketplace.Tool
-  
+
 The packager uses PGP to sign archives and specs. It is therefore compatible with keyrings
 created with GnuPG. For example:
 
-    java -cp packager/target/*:packager/target/lib/* co.cask.marketplace.Tool build -k ~/.gnupg/secring.gpg -i 499BC990789824FD -p mypassword 
+    java -cp packager/target/*:packager/target/lib/* co.cask.marketplace.Tool build -k ~/.gnupg/secring.gpg -i 499BC990789824FD -p mypassword
 
 This will go through the files under the 'packages' directory, adding a 'packages.json'
 catalog at the top level and adding 'spec.json.asc', 'archive.zip', and 'archive.zip.asc' files:
@@ -59,7 +63,7 @@ Signatures will only be pushed if the corresponding file has changed.
 
 The spec.json file must be a JSON Object with this format:
 
-    
+
     {
       "specVersion": "1.0",
       "label": "<label>",
