@@ -41,7 +41,7 @@ Modify the market property
 
 Restart CDAP UI
 
-### For CDAP > 4.0.x
+### For CDAP 4.1.x and above
 Modify `cdap-site.xml`
 
 ```
