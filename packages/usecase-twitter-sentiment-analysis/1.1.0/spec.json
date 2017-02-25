@@ -80,31 +80,6 @@
     },
     {
       "type": "create_pipeline",
-      "label": "Sentiment Classifier",
-      "arguments": [
-        {
-          "name": "artifact",
-          "value": {
-            "scope": "system",
-            "name": "cdap-data-pipeline",
-            "version": "4.1.0-SNAPSHOT"
-          },
-          "canModify": false
-        },
-        {
-          "name": "name",
-          "value": "SentimentClassifier",
-          "canModify": true
-        },
-        {
-          "name": "config",
-          "value": "labeler.json",
-          "canModify": false
-        }
-      ]
-    },
-    {
-      "type": "create_pipeline",
       "label": "Sentiment Model Trainer",
       "arguments": [
         {
@@ -124,6 +99,31 @@
         {
           "name": "config",
           "value": "trainer.json",
+          "canModify": false
+        }
+      ]
+    },
+    {
+      "type": "create_pipeline",
+      "label": "Sentiment Classifier",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "system",
+            "name": "cdap-data-pipeline",
+            "version": "4.1.0-SNAPSHOT"
+          },
+          "canModify": false
+        },
+        {
+          "name": "name",
+          "value": "SentimentClassifier",
+          "canModify": true
+        },
+        {
+          "name": "config",
+          "value": "labeler.json",
           "canModify": false
         }
       ]

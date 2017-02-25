@@ -2,6 +2,7 @@
 .*.swp
 *.jar
 !packages/**/*.jar
+target/
 
 # Intellij Files & Dir #
 *.iml
