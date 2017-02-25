@@ -61,8 +61,8 @@
         "type": "sparkcompute",
         "label": "NaiveBayesClassifier",
         "artifact": {
-          "name": "spark-plugins",
-          "version": "1.6.0-SNAPSHOT",
+          "name": "naive-bayes-analytics-plugin",
+          "version": "1.0.0",
           "scope": "SYSTEM"
         },
         "properties": {
