@@ -1,15 +1,47 @@
 {
   "specVersion": "1.0",
-  "description": "HTTP is a common mechanism for accessing cloud-based sources of data. Subscribing to feeds and periodically ingesting the data into a data lake is critical for centralizing data. This application shows how you can ingest RSS XML data into Hadoop and Elasticsearch. This use case assumes you have a running instance of Elasticsearch 1.6. Also, ElasticSearch plugins must be downloaded and deployed from the 'Plugins' section of the Cask Market.",
+  "description": "HTTP is a common mechanism for accessing cloud-based sources of data. Subscribing to feeds and periodically ingesting the data into a data lake is critical for centralizing data. This application shows how you can ingest RSS XML data into Hadoop and Elasticsearch. This use case assumes you have a running instance of Elasticsearch 1.6.",
   "label": "HTTP Source Data Ingestion",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.1.0-SNAPSHOT,4.1.0-SNAPSHOT]",
-  "created": 1487286304,
+  "cdapVersion": "[4.1.0-SNAPSHOT,4.2.0-SNAPSHOT)",
+  "created": 1488050917,
+  "license": "license.txt",
   "categories": [
     "usecase"
   ],
   "actions": [
+    {
+      "type": "one_step_deploy_plugin",
+      "label": "Deploy Elasticsearch Plugins",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "elasticsearch-plugins",
+          "canModify": false
+        },
+        {
+          "name": "version",
+          "value": "1.6.0",
+          "canModify": false
+        },
+        {
+          "name": "scope",
+          "value": "user",
+          "canModify": false
+        },
+        {
+          "name": "config",
+          "value": "elasticsearch-plugins-1.6.0.json",
+          "canModify": false
+        },
+        {
+          "name": "jar",
+          "value": "elasticsearch-plugins-1.6.0.jar",
+          "canModify": false
+        }
+      ]
+    },
     {
       "type": "create_pipeline",
       "label": "RSS Feed Processor",
