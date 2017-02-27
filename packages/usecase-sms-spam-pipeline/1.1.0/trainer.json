@@ -31,7 +31,7 @@
         "label": "Stream",
         "artifact": {
           "name": "core-plugins",
-          "version": "1.6.0-SNAPSHOT",
+          "version": "1.6.0",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -59,7 +59,7 @@
         "label": "Projection",
         "artifact": {
           "name": "core-plugins",
-          "version": "1.6.0-SNAPSHOT",
+          "version": "1.6.0",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -90,7 +90,7 @@
         "label": "JavaScript",
         "artifact": {
           "name": "core-plugins",
-          "version": "1.6.0-SNAPSHOT",
+          "version": "1.6.0",
           "scope": "SYSTEM"
         },
         "properties": {
