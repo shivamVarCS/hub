@@ -1,394 +1,80 @@
 {
-    "artifact": {
-        "name": "cdap-data-pipeline",
-        "version": "4.1.0-SNAPSHOT",
-        "scope": "SYSTEM"
+    "resources": {
+        "memoryMB": 2048,
+        "virtualCores": 1
     },
-    "__ui__": {
-        "nodes": [
-            {
-                "name": "Netezza Table",
-                "plugin": {
-                    "name": "Database",
-                    "type": "batchsource",
-                    "label": "Netezza Table",
-                    "artifact": {
-                        "name": "database-plugins",
-                        "version": "1.6.0-SNAPSHOT",
-                        "scope": "SYSTEM"
-                    },
-                    "properties": {
-                        "enableAutoCommit": "false",
-                        "columnNameCase": "lower",
-                        "schema": "",
-                        "referenceName": "netezza_source",
-                        "user": "${netezza.user}",
-                        "password": "${netezza.password}",
-                        "jdbcPluginName": "netezza",
-                        "jdbcPluginType": "jdbc",
-                        "connectionString": "jdbc:netezza://${netezza.hostname}:${netezza.port}/${netezza.database}",
-                        "importQuery": "-- Type your SQL here",
-                        "numSplits": "5",
-                        "splitBy": "${netezza.table.split.field}",
-                        "boundingQuery": "-- Specify the query to return min and max to split"
-                    }
-                },
-                "outputSchema": "",
+    "driverResources": {
+        "memoryMB": 2048,
+        "virtualCores": 1
+    },
+    "connections": [
+        {
+            "from": "Netezza Table",
+            "to": "Kudu"
+        }
+    ],
+    "batchInterval": "1s",
+    "comments": [],
+    "postActions": [],
+    "stages": [
+        {
+            "name": "Netezza Table",
+            "plugin": {
+                "name": "Database",
                 "type": "batchsource",
-                "label": "Netezza",
-                "icon": "icon-database",
-                "_uiPosition": {
-                    "left": "425px",
-                    "top": "250px"
+                "label": "Netezza Table",
+                "artifact": {
+                    "name": "database-plugins",
+                    "version": "1.6.0",
+                    "scope": "SYSTEM"
                 },
-                "description": "Reads from a database table(s) using a configurable SQL query. Outputs one record for each row returned by the query.",
-                "_backendProperties": {
-                    "schema": {
-                        "name": "schema",
-                        "description": "The schema of records output by the source. This will be used in place of whatever schema comes back from the query. This should only be used if there is a bug in your jdbc driver. For example, if a column is not correctly getting marked as nullable.",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": false
-                    },
-                    "numSplits": {
-                        "name": "numSplits",
-                        "description": "The number of splits to generate. If set to one, the boundingQuery is not needed, and no $CONDITIONS string needs to be specified in the importQuery. If not specified, the execution framework will pick a value.",
-                        "type": "int",
-                        "required": false,
-                        "macroSupported": true
-                    },
-                    "jdbcPluginType": {
-                        "name": "jdbcPluginType",
-                        "description": "Type of the JDBC plugin to use. This is the value of the 'type' key defined in the JSON file for the JDBC plugin. Defaults to 'jdbc'.",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": false
-                    },
-                    "jdbcPluginName": {
-                        "name": "jdbcPluginName",
-                        "description": "Name of the JDBC plugin to use. This is the value of the 'name' key defined in the JSON file for the JDBC plugin.",
-                        "type": "string",
-                        "required": true,
-                        "macroSupported": false
-                    },
-                    "importQuery": {
-                        "name": "importQuery",
-                        "description": "The SELECT query to use to import data from the specified table. You can specify an arbitrary number of columns to import, or import all columns using *. The Query should contain the '$CONDITIONS' string unless numSplits is set to one. For example, 'SELECT * FROM table WHERE $CONDITIONS'. The '$CONDITIONS' stringwill be replaced by 'splitBy' field limits specified by the bounding query.",
-                        "type": "string",
-                        "required": true,
-                        "macroSupported": true
-                    },
-                    "enableAutoCommit": {
-                        "name": "enableAutoCommit",
-                        "description": "Whether to enable auto commit for queries run by this source. Defaults to false. This setting should only matter if you are using a jdbc driver that does not support a false value for auto commit, or a driver that does not support the commit call. For example, the Hive jdbc driver will throw an exception whenever a commit is called. For drivers like that, this should be set to true.",
-                        "type": "boolean",
-                        "required": false,
-                        "macroSupported": false
-                    },
-                    "connectionString": {
-                        "name": "connectionString",
-                        "description": "JDBC connection string including database name.",
-                        "type": "string",
-                        "required": true,
-                        "macroSupported": true
-                    },
-                    "boundingQuery": {
-                        "name": "boundingQuery",
-                        "description": "Bounding Query should return the min and max of the values of the 'splitBy' field. For example, 'SELECT MIN(id),MAX(id) FROM table'. This is required unless numSplits is set to one.",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": true
-                    },
-                    "password": {
-                        "name": "password",
-                        "description": "Password to use to connect to the specified database. Required for databases that need authentication. Optional for databases that do not require authentication.",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": true
-                    },
-                    "user": {
-                        "name": "user",
-                        "description": "User to use to connect to the specified database. Required for databases that need authentication. Optional for databases that do not require authentication.",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": true
-                    },
-                    "referenceName": {
-                        "name": "referenceName",
-                        "description": "This will be used to uniquely identify this source/sink for lineage, annotating metadata, etc.",
-                        "type": "string",
-                        "required": true,
-                        "macroSupported": false
-                    },
-                    "splitBy": {
-                        "name": "splitBy",
-                        "description": "Field Name which will be used to generate splits. This is required unless numSplits is set to one.",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": true
-                    },
-                    "columnNameCase": {
-                        "name": "columnNameCase",
-                        "description": "Sets the case of the column names returned from the query. Possible options are upper or lower. By default or for any other input, the column names are not modified and the names returned from the database are used as-is. Note that setting this property provides predictability of column name cases across different databases but might result in column name conflicts if multiple column names are the same when the case is ignored.",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": false
-                    }
-                },
-                "errorCount": 0,
-                "outputSchemaProperty": "schema",
-                "warning": true,
-                "selected": false
-            },
-            {
+                "properties": {
+                    "enableAutoCommit": "false",
+                    "columnNameCase": "lower",
+                    "referenceName": "netezza_source",
+                    "user": "${netezza.user}",
+                    "password": "${netezza.password}",
+                    "jdbcPluginName": "netezza",
+                    "jdbcPluginType": "jdbc",
+                    "connectionString": "jdbc:netezza://${netezza.hostname}:${netezza.port}/${netezza.database}",
+                    "importQuery": "-- Type your SQL here",
+                    "numSplits": "5",
+                    "splitBy": "${netezza.table.split.field}",
+                    "boundingQuery": "-- Specify the query to return min and max to split"
+                }
+            }
+        },
+        {
+            "name": "Kudu",
+            "plugin": {
                 "name": "Kudu",
-                "plugin": {
-                    "name": "Kudu",
-                    "type": "batchsink",
-                    "label": "Kudu",
-                    "artifact": {
-                        "name": "kudu-sink",
-                        "version": "1.0.0-SNAPSHOT",
-                        "scope": "SYSTEM"
-                    },
-                    "properties": {
-                        "buckets": "16",
-                        "seed": "1",
-                        "compression-algo": "Snappy",
-                        "encoding": "Auto",
-                        "opt-timeout": "30000",
-                        "admin-timeout": "30000",
-                        "replicas": "1",
-                        "row-flush": "1000",
-                        "boss-threads": "1",
-                        "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"businessentityid\",\"type\":\"int\"},{\"name\":\"person_type\",\"type\":\"string\"},{\"name\":\"name_style\",\"type\":\"boolean\"},{\"name\":\"title\",\"type\":[\"string\",\"null\"]},{\"name\":\"first_name\",\"type\":\"string\"},{\"name\":\"middle_name\",\"type\":[\"string\",\"null\"]},{\"name\":\"last_name\",\"type\":\"string\"},{\"name\":\"suffix\",\"type\":[\"string\",\"null\"]},{\"name\":\"email_promotion\",\"type\":\"int\"},{\"name\":\"total_purchase_ytd\",\"type\":[\"double\",\"null\"]},{\"name\":\"modified_date\",\"type\":\"long\"},{\"name\":\"email_address\",\"type\":[\"string\",\"null\"]},{\"name\":\"phone_number\",\"type\":\"string\"},{\"name\":\"phone_type\",\"type\":\"string\"},{\"name\":\"contact_type\",\"type\":\"string\"},{\"name\":\"address_line_one\",\"type\":\"string\"},{\"name\":\"address_line_two\",\"type\":[\"string\",\"null\"]},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state_province_code\",\"type\":\"string\"},{\"name\":\"state_province\",\"type\":\"string\"},{\"name\":\"postal_code\",\"type\":\"string\"},{\"name\":\"country_code\",\"type\":\"string\"},{\"name\":\"country_name\",\"type\":\"string\"}]}",
-                        "referenceName": "kudu_sink_table",
-                        "name": "${kudu.table}",
-                        "columns": "${kudu.table.keys}",
-                        "master": "${kudu.master.addresses}"
-                    }
-                },
-                "outputSchema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"businessentityid\",\"type\":\"int\"},{\"name\":\"person_type\",\"type\":\"string\"},{\"name\":\"name_style\",\"type\":\"boolean\"},{\"name\":\"title\",\"type\":[\"string\",\"null\"]},{\"name\":\"first_name\",\"type\":\"string\"},{\"name\":\"middle_name\",\"type\":[\"string\",\"null\"]},{\"name\":\"last_name\",\"type\":\"string\"},{\"name\":\"suffix\",\"type\":[\"string\",\"null\"]},{\"name\":\"email_promotion\",\"type\":\"int\"},{\"name\":\"total_purchase_ytd\",\"type\":[\"double\",\"null\"]},{\"name\":\"modified_date\",\"type\":\"long\"},{\"name\":\"email_address\",\"type\":[\"string\",\"null\"]},{\"name\":\"phone_number\",\"type\":\"string\"},{\"name\":\"phone_type\",\"type\":\"string\"},{\"name\":\"contact_type\",\"type\":\"string\"},{\"name\":\"address_line_one\",\"type\":\"string\"},{\"name\":\"address_line_two\",\"type\":[\"string\",\"null\"]},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state_province_code\",\"type\":\"string\"},{\"name\":\"state_province\",\"type\":\"string\"},{\"name\":\"postal_code\",\"type\":\"string\"},{\"name\":\"country_code\",\"type\":\"string\"},{\"name\":\"country_name\",\"type\":\"string\"}]}",
-                "inputSchema": [
-                    {
-                        "name": "Netezza Table",
-                        "schema": ""
-                    }
-                ],
                 "type": "batchsink",
                 "label": "Kudu",
-                "icon": "fa-plug",
-                "_uiPosition": {
-                    "left": "625px",
-                    "top": "250px"
+                "artifact": {
+                    "name": "kudu-sink",
+                    "version": "1.0.0",
+                    "scope": "SYSTEM"
                 },
-                "description": "Writes to Apache Kudu tables.",
-                "_backendProperties": {
-                    "replicas": {
-                        "name": "replicas",
-                        "description": "Specifies the number of replicas for the above table",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": false
-                    },
-                    "buckets": {
-                        "name": "buckets",
-                        "description": "Specifies the number of buckets to split the table into.",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": false
-                    },
-                    "opt-timeout": {
-                        "name": "opt-timeout",
-                        "description": "Timeout for Kudu operations in milliseconds. Defaults is  '30000 ms'.",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": false
-                    },
-                    "seed": {
-                        "name": "seed",
-                        "description": "Seed to be used for hashing. Default is 0",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": false
-                    },
-                    "compression-algo": {
-                        "name": "compression-algo",
-                        "description": "Compression algorithm to be applied on the columns. Default is 'snappy'",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": false
-                    },
-                    "row-flush": {
-                        "name": "row-flush",
-                        "description": "Number of rows that are buffered before flushing to the tablet server",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": false
-                    },
-                    "columns": {
-                        "name": "columns",
-                        "description": "List of columns that you would like to distribute data by. Default is 'all columns'",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": false
-                    },
-                    "referenceName": {
-                        "name": "referenceName",
-                        "description": "This will be used to uniquely identify this source/sink for lineage, annotating metadata, etc.",
-                        "type": "string",
-                        "required": true,
-                        "macroSupported": false
-                    },
-                    "master": {
-                        "name": "master",
-                        "description": "Comma-separated list of hostname:port for Kudu masters",
-                        "type": "string",
-                        "required": true,
-                        "macroSupported": true
-                    },
-                    "schema": {
-                        "name": "schema",
-                        "description": "Output schema for the kudu table.",
-                        "type": "string",
-                        "required": true,
-                        "macroSupported": true
-                    },
-                    "boss-threads": {
-                        "name": "boss-threads",
-                        "description": "Specifies the number of boss threads to be used by the client.",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": false
-                    },
-                    "admin-timeout": {
-                        "name": "admin-timeout",
-                        "description": "Administration operation time out. Default is '30000 ms'.",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": false
-                    },
-                    "name": {
-                        "name": "name",
-                        "description": "Name of the Kudu table to write to.",
-                        "type": "string",
-                        "required": true,
-                        "macroSupported": true
-                    },
-                    "encoding": {
-                        "name": "encoding",
-                        "description": "Specifies the encoding to be applied on the schema. Default is 'auto'",
-                        "type": "string",
-                        "required": false,
-                        "macroSupported": false
-                    }
-                },
-                "errorCount": 0,
-                "outputSchemaProperty": "schema",
-                "warning": true,
-                "selected": false
+                "properties": {
+                    "buckets": "16",
+                    "seed": "1",
+                    "compression-algo": "Snappy",
+                    "encoding": "Auto",
+                    "opt-timeout": "30000",
+                    "admin-timeout": "30000",
+                    "replicas": "1",
+                    "row-flush": "1000",
+                    "boss-threads": "1",
+                    "schema": "",
+                    "referenceName": "kudu_sink_table",
+                    "name": "${kudu.table}",
+                    "columns": "${kudu.table.keys}",
+                    "master": "${kudu.master.addresses}"
+                }
             }
-        ],
-        "connections": [
-            {
-                "from": "Netezza",
-                "to": "Parse XML Column"
-            },
-            {
-                "from": "Parse XML Column",
-                "to": "Kudu"
-            }
-        ],
-        "draftId": "7caaf37d-1134-415a-8dae-6e33dbaa07fd"
-    },
-    "description": "A pipeline to load table data from Netezza to Kudu using the JDBC driver.",
-    "name": "NetezzaToKudu",
-    "config": {
-        "resources": {
-            "memoryMB": 2048,
-            "virtualCores": 1
-        },
-        "driverResources": {
-            "memoryMB": 2048,
-            "virtualCores": 1
-        },
-        "connections": [
-            {
-                "from": "Netezza Table",
-                "to": "Kudu"
-            }
-        ],
-        "batchInterval": "1s",
-        "comments": [],
-        "postActions": [],
-        "stages": [
-            {
-                "name": "Netezza Table",
-                "plugin": {
-                    "name": "Database",
-                    "type": "batchsource",
-                    "label": "Netezza Table",
-                    "artifact": {
-                        "name": "database-plugins",
-                        "version": "1.6.0-SNAPSHOT",
-                        "scope": "SYSTEM"
-                    },
-                    "properties": {
-                        "enableAutoCommit": "false",
-                        "columnNameCase": "lower",
-                        "referenceName": "netezza_source",
-                        "user": "${netezza.user}",
-                        "password": "${netezza.password}",
-                        "jdbcPluginName": "netezza",
-                        "jdbcPluginType": "jdbc",
-                        "connectionString": "jdbc:netezza://${netezza.hostname}:${netezza.port}/${netezza.database}",
-                        "importQuery": "-- Type your SQL here",
-                        "numSplits": "5",
-                        "splitBy": "${netezza.table.split.field}",
-                        "boundingQuery": "-- Specify the query to return min and max to split"
-                    }
-                },
-                "outputSchema": ""
-            },
-            {
-                "name": "Kudu",
-                "plugin": {
-                    "name": "Kudu",
-                    "type": "batchsink",
-                    "label": "Kudu",
-                    "artifact": {
-                        "name": "kudu-sink",
-                        "version": "1.0.0-SNAPSHOT",
-                        "scope": "SYSTEM"
-                    },
-                    "properties": {
-                        "buckets": "16",
-                        "seed": "1",
-                        "compression-algo": "Snappy",
-                        "encoding": "Auto",
-                        "opt-timeout": "30000",
-                        "admin-timeout": "30000",
-                        "replicas": "1",
-                        "row-flush": "1000",
-                        "boss-threads": "1",
-                        "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"businessentityid\",\"type\":\"int\"},{\"name\":\"person_type\",\"type\":\"string\"},{\"name\":\"name_style\",\"type\":\"boolean\"},{\"name\":\"title\",\"type\":[\"string\",\"null\"]},{\"name\":\"first_name\",\"type\":\"string\"},{\"name\":\"middle_name\",\"type\":[\"string\",\"null\"]},{\"name\":\"last_name\",\"type\":\"string\"},{\"name\":\"suffix\",\"type\":[\"string\",\"null\"]},{\"name\":\"email_promotion\",\"type\":\"int\"},{\"name\":\"total_purchase_ytd\",\"type\":[\"double\",\"null\"]},{\"name\":\"modified_date\",\"type\":\"long\"},{\"name\":\"email_address\",\"type\":[\"string\",\"null\"]},{\"name\":\"phone_number\",\"type\":\"string\"},{\"name\":\"phone_type\",\"type\":\"string\"},{\"name\":\"contact_type\",\"type\":\"string\"},{\"name\":\"address_line_one\",\"type\":\"string\"},{\"name\":\"address_line_two\",\"type\":[\"string\",\"null\"]},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state_province_code\",\"type\":\"string\"},{\"name\":\"state_province\",\"type\":\"string\"},{\"name\":\"postal_code\",\"type\":\"string\"},{\"name\":\"country_code\",\"type\":\"string\"},{\"name\":\"country_name\",\"type\":\"string\"}]}",
-                        "referenceName": "kudu_sink_table",
-                        "name": "${kudu.table}",
-                        "columns": "${kudu.table.keys}",
-                        "master": "${kudu.master.addresses}"
-                    }
-                },
-                "outputSchema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"businessentityid\",\"type\":\"int\"},{\"name\":\"person_type\",\"type\":\"string\"},{\"name\":\"name_style\",\"type\":\"boolean\"},{\"name\":\"title\",\"type\":[\"string\",\"null\"]},{\"name\":\"first_name\",\"type\":\"string\"},{\"name\":\"middle_name\",\"type\":[\"string\",\"null\"]},{\"name\":\"last_name\",\"type\":\"string\"},{\"name\":\"suffix\",\"type\":[\"string\",\"null\"]},{\"name\":\"email_promotion\",\"type\":\"int\"},{\"name\":\"total_purchase_ytd\",\"type\":[\"double\",\"null\"]},{\"name\":\"modified_date\",\"type\":\"long\"},{\"name\":\"email_address\",\"type\":[\"string\",\"null\"]},{\"name\":\"phone_number\",\"type\":\"string\"},{\"name\":\"phone_type\",\"type\":\"string\"},{\"name\":\"contact_type\",\"type\":\"string\"},{\"name\":\"address_line_one\",\"type\":\"string\"},{\"name\":\"address_line_two\",\"type\":[\"string\",\"null\"]},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state_province_code\",\"type\":\"string\"},{\"name\":\"state_province\",\"type\":\"string\"},{\"name\":\"postal_code\",\"type\":\"string\"},{\"name\":\"country_code\",\"type\":\"string\"},{\"name\":\"country_name\",\"type\":\"string\"}]}",
-                "inputSchema": [
-                    {
-                        "name": "Netezza Table",
-                        "schema": ""
-                    }
-                ]
-            }
-        ],
-        "schedule": "0 * * * *",
-        "engine": "mapreduce",
-        "description": "A pipeline to load table data from Netezza to Kudu using the JDBC driver."
-    }
+        }
+    ],
+    "schedule": "0 * * * *",
+    "engine": "mapreduce",
+    "description": "A pipeline to load table data from Netezza to Kudu using the JDBC driver."
 }
