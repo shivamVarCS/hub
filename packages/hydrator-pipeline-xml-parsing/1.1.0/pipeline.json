@@ -28,7 +28,7 @@
         "label": "HTTPPoller",
         "artifact": {
           "name": "spark-plugins",
-          "version": "1.6.0-SNAPSHOT",
+          "version": "1.6.0",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -50,7 +50,7 @@
         "label": "XMLMultiParser",
         "artifact": {
           "name": "transform-plugins",
-          "version": "1.6.0-SNAPSHOT",
+          "version": "1.6.0",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -68,7 +68,7 @@
         "label": "Table",
         "artifact": {
           "name": "core-plugins",
-          "version": "1.6.0-SNAPSHOT",
+          "version": "1.6.0",
           "scope": "SYSTEM"
         },
         "properties": {
