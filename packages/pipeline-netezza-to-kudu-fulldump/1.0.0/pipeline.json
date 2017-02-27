@@ -37,10 +37,10 @@
                     "jdbcPluginName": "netezza",
                     "jdbcPluginType": "jdbc",
                     "connectionString": "jdbc:netezza://${netezza.hostname}:${netezza.port}/${netezza.database}",
-                    "importQuery": "-- Type your SQL here",
+                    "importQuery": "-- Type your SQL here. Example: SELECT * FROM customers WHERE $CONDITIONS",
                     "numSplits": "5",
-                    "splitBy": "${netezza.table.split.field}",
-                    "boundingQuery": "-- Specify the query to return min and max to split"
+                    "splitBy": "-- Specify splitBy column to parallelize. This is optional if boundingQuery is Specified",
+                    "boundingQuery": "-- Specify the bounding query to return min and max to split. Example: SELECT min(id), max(id) FROM customers"
                 }
             }
         },
