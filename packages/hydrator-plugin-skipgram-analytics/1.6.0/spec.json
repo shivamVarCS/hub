@@ -17,7 +17,7 @@
       "arguments": [
         {
           "name": "name",
-          "value": "skipgram-analytics-plugin ",
+          "value": "skipgram-analytics-plugin",
           "canModify": false
         },
         {
