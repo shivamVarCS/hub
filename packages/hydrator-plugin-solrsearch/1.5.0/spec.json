@@ -9,41 +9,33 @@
   "cdapVersion": "[4.0.0,4.2.0-SNAPSHOT)",
   "actions": [
     {
-      "type": "informational",
-      "label": "Download Plugin JAR",
-      "arguments": [
-        {
-          "name": "steps",
-          "value": [
-            "Download the plugin JAR from http://market.cask.co/v1/packages/hydrator-plugin-solrsearch/1.5.0/solrsearch-plugins-1.5.0.jar",
-            "Upload the JAR in the next step"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "create_plugin_artifact",
+      "type": "one_step_deploy_plugin",
       "label": "Deploy Solr Plugins",
       "arguments": [
         {
           "name": "name",
-          "value": "solrsearch-plugins"
+          "value": "solrsearch-plugins",
+          "canModify": false
         },
         {
           "name": "version",
-          "value": "1.5.0"
+          "value": "1.5.0",
+          "canModify": false
         },
         {
           "name": "scope",
-          "value": "user"
+          "value": "user",
+          "canModify": false
         },
         {
           "name": "config",
-          "value": "solrsearch-plugins-1.5.0.json"
+          "value": "solrsearch-plugins-1.5.0.json",
+          "canModify": false
         },
         {
           "name": "jar",
-          "value": "solrsearch-plugins-1.5.0.jar"
+          "value": "solrsearch-plugins-1.5.0.jar",
+          "canModify": false
         }
       ]
     }
