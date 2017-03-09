@@ -15,7 +15,7 @@
         {
           "name": "steps",
           "value": [ 
-            "Download the sample access log from http://market.cask.co/preview/v1/packages/realtime-log-ingestion/1.0.1/logdata.txt",
+            "Download the sample access log from http://market.cask.co/4.0.1/v1/packages/usecase-realtime-log-ingestion/1.0.1/logdata.txt",
             "Note the directory you downloaded the file to; it will be specified as the 'inputdir' argument when starting the pipeline"
           ]
         }
