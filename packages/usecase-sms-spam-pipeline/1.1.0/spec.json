@@ -5,6 +5,7 @@
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.1.0-SNAPSHOT,4.2.0-SNAPSHOT)",
+  "license": "license.txt",
   "created": 1487286304,
   "categories": [
     "usecase"
@@ -71,6 +72,37 @@
           "value": [
             "texts.txt"
           ],
+          "canModify": false
+        }
+      ]
+    },
+    {
+      "type": "one_step_deploy_plugin",
+      "label": "Deploy Naive Bayes Analytics",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "naive-bayes-analytics-plugin",
+          "canModify": false
+        },
+        {
+          "name": "version",
+          "value": "1.0.0",
+          "canModify": false
+        },
+        {
+          "name": "scope",
+          "value": "user",
+          "canModify": false
+        },
+        {
+          "name": "config",
+          "value": "naive-bayes-analytics-plugin-1.0.0.json",
+          "canModify": false
+        },
+        {
+          "name": "jar",
+          "value": "naive-bayes-analytics-plugin-1.0.0.jar",
           "canModify": false
         }
       ]
