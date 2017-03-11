@@ -1,14 +1,12 @@
 {
   "specVersion": "1.0",
-  "description": "Omniture Click Stream data feeds are an aggregation of hits and lookup data. Performing analytics on Omniture Hits data allows one to gain insights into how the users are behaving on their website on different dimensions. This data application provides you with a starting point for building analytics on Omniture Hits data.",
   "label": "Omniture Analytics",
+  "description": "Omniture Click Stream data feeds are an aggregation of hits and lookup data. Performing analytics on Omniture Hits data allows one to gain insights into how the users are behaving on their website on different dimensions. This data application provides you with a starting point for building analytics on Omniture Hits data.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.1.0-SNAPSHOT,4.2.0-SNAPSHOT)",
-  "created": 1487286304,
-  "categories": [
-    "usecase"
-  ],
+  "created": 1473901763,
+  "categories": [ "Solutions" ],
+  "cdapVersion": "[4.0.1,4.0.1]",
   "actions": [
     {
       "type": "create_stream",
@@ -16,13 +14,11 @@
       "arguments": [
         {
           "name": "name",
-          "value": "hits",
-          "canModify": false
+          "value": "hits"
         },
         {
           "name": "description",
-          "value": "Omniture Hits Data",
-          "canModify": false
+          "value": "Omniture Hits Data"
         }
       ]
     },
@@ -32,15 +28,11 @@
       "arguments": [
         {
           "name": "name",
-          "value": "hits",
-          "canModify": false
+          "value": "hits"
         },
         {
           "name": "files",
-          "value": [
-            "hit_data.tsv"
-          ],
-          "canModify": false
+          "value": [ "hit_data.tsv" ]
         }
       ]
     },
@@ -50,13 +42,11 @@
       "arguments": [
         {
           "name": "name",
-          "value": "browserInfo",
-          "canModify": false
+          "value": "browserInfo"
         },
         {
           "name": "description",
-          "value": "Browser ID to Name Mapping",
-          "canModify": false
+          "value": "Browser ID to Name Mapping"
         }
       ]
     },
@@ -66,15 +56,11 @@
       "arguments": [
         {
           "name": "name",
-          "value": "browserInfo",
-          "canModify": false
+          "value": "browserInfo"
         },
         {
           "name": "files",
-          "value": [
-            "browsers.tsv"
-          ],
-          "canModify": false
+          "value": [ "browsers.tsv" ]
         }
       ]
     },
@@ -87,9 +73,8 @@
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "4.1.0"
-          },
-          "canModify": false
+            "version": "4.0.1"
+          }
         },
         {
           "name": "name",
@@ -98,9 +83,8 @@
         },
         {
           "name": "config",
-          "value": "pipeline.json",
-          "canModify": false
-        }
+          "value": "pipeline.json"
+        } 
       ]
     }
   ]

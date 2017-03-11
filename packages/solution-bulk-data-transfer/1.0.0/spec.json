@@ -4,9 +4,9 @@
   "description": "Moving data from structured data source such as traditional relational databases into Hadoop is very common when building Data Lakes. This data application allows you to setup periodic full data dumps from an RDBMS into a Hadoop cluster. Data on Hadoop is stored as a DB table snapshot. Supports other relational databases.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "created": 1486589821,
-  "categories": [ "usecase" ],
-  "cdapVersion": "[4.0.1,4.0.1]",
+  "created": 1473901763,
+  "categories": [ "Solutions" ],
+  "cdapVersion": "[4.0.0,4.0.0]",
   "actions": [
     {
       "type": "informational",
@@ -53,7 +53,7 @@
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "4.0.1"
+            "version": "4.0.0"
           }
         },
         {

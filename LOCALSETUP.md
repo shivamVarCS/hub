@@ -10,7 +10,10 @@ You need to have some sort of webserver in your machine to serve from a director
 4. `cd ..`
 5. `java -cp packager/target/*:packager/target/lib/* co.cask.marketplace.Tool build`
 
-## Setting up MAMP
+## Start WebServer 
+```python -m SimpleHTTPServer```
+
+## Or Setting up MAMP
 1. Launch MAMP. *If this is the first time you are launching MAMP, make sure you check Never Open This Dialog Again, and choose launch MAMP (not MAMP PRO).*
 2. Open **Preferences**
 3. Go to **Ports** Tab

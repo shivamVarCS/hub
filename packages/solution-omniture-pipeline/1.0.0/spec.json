@@ -5,8 +5,8 @@
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
-  "categories": [ "usecase" ],
-  "cdapVersion": "[4.0.1,4.0.1]",
+  "categories": [ "Solutions" ],
+  "cdapVersion": "[4.0.0,4.0.0]",
   "actions": [
     {
       "type": "create_stream",
@@ -73,7 +73,7 @@
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "4.0.1"
+            "version": "4.0.0"
           }
         },
         {
