@@ -79,31 +79,6 @@
       ]
     },
     {
-      "type": "create_pipeline",
-      "label": "Sentiment Model Trainer",
-      "arguments": [
-        {
-          "name": "artifact",
-          "value": {
-            "scope": "system",
-            "name": "cdap-data-pipeline",
-            "version": "4.1.0"
-          },
-          "canModify": false
-        },
-        {
-          "name": "name",
-          "value": "SentimentModelTrainer",
-          "canModify": true
-        },
-        {
-          "name": "config",
-          "value": "trainer.json",
-          "canModify": false
-        }
-      ]
-    },
-    {
       "type": "one_step_deploy_plugin",
       "label": "Deploy Naive Bayes Analytics",
       "arguments": [
@@ -130,6 +105,31 @@
         {
           "name": "jar",
           "value": "naive-bayes-analytics-plugin-1.0.0.jar",
+          "canModify": false
+        }
+      ]
+    },
+    {
+      "type": "create_pipeline",
+      "label": "Sentiment Model Trainer",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "system",
+            "name": "cdap-data-pipeline",
+            "version": "4.1.0"
+          },
+          "canModify": false
+        },
+        {
+          "name": "name",
+          "value": "SentimentModelTrainer",
+          "canModify": true
+        },
+        {
+          "name": "config",
+          "value": "trainer.json",
           "canModify": false
         }
       ]
