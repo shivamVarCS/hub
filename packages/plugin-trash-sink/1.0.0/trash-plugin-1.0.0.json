@@ -1,9 +1,9 @@
 {
   "parents": [
-    "system:cdap-data-pipelinenull",
-    "system:cdap-data-streamsnull",
-    "system:cdap-etl-batchnull",
-    "system:cdap-etl-realtimenull"
+    "system:cdap-data-pipeline[4.0.0,10.0.0-SNAPSHOT)",
+    "system:cdap-data-streams[4.0.0,10.0.0-SNAPSHOT)",
+    "system:cdap-etl-batch[4.0.0,10.0.0-SNAPSHOT)",
+    "system:cdap-etl-realtime[4.0.0,10.0.0-SNAPSHOT)"
   ],
   "properties": {
     "widgets.Trash-batchsink": "{\"metadata\":{\"spec-version\":\"1.0\"},\"configuration-groups\":[{\"label\":\"Trash Configuration (No configurations)\"}]}",
