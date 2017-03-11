@@ -104,6 +104,37 @@
       ]
     },
     {
+      "type": "one_step_deploy_plugin",
+      "label": "Deploy Naive Bayes Analytics",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "naive-bayes-analytics-plugin",
+          "canModify": false
+        },
+        {
+          "name": "version",
+          "value": "1.0.0",
+          "canModify": false
+        },
+        {
+          "name": "scope",
+          "value": "user",
+          "canModify": false
+        },
+        {
+          "name": "config",
+          "value": "naive-bayes-analytics-plugin-1.0.0.json",
+          "canModify": false
+        },
+        {
+          "name": "jar",
+          "value": "naive-bayes-analytics-plugin-1.0.0.jar",
+          "canModify": false
+        }
+      ]
+    },
+    {
       "type": "create_pipeline",
       "label": "Sentiment Classifier",
       "arguments": [
