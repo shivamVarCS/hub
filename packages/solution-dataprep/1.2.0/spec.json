@@ -1,0 +1,77 @@
+{
+  "specVersion": "1.0",
+  "description": "This solution updates the data preparation capability in CDAP. Data preparation is a set of libraries, pipeline plugin and CDAP service for performing data cleansing, transformation and filtering using a set of instructions. Instructions to manipulate data are either generated using an interative visual tool or could be manually entered.",
+  "label": "Data Preparation",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "cdapVersion": "[4.1.0,4.2.0)",
+  "created": 1489212385,
+  "categories": [
+    "Solutions"
+  ],
+  "actions": [
+    {
+      "type": "one_step_deploy_plugin",
+      "label": "Deploy new Data Preparation Service",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "wrangler-service",
+          "canModify": false
+        },
+        {
+          "name": "version",
+          "value": "1.2.0",
+          "canModify": false
+        },
+        {
+          "name": "scope",
+          "value": "user",
+          "canModify": false
+        },
+        {
+          "name": "config",
+          "value": "wrangler-service-1.2.0.json",
+          "canModify": false
+        },
+        {
+          "name": "jar",
+          "value": "wrangler-service-1.2.0.jar",
+          "canModify": false
+        }
+      ]
+    },
+    {
+      "type": "one_step_deploy_plugin",
+      "label": "Deploy new Data Preparation Transform",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "wrangler-transform",
+          "canModify": false
+        },
+        {
+          "name": "version",
+          "value": "1.2.0",
+          "canModify": false
+        },
+        {
+          "name": "scope",
+          "value": "user",
+          "canModify": false
+        },
+        {
+          "name": "config",
+          "value": "wrangler-transform-1.2.0.json",
+          "canModify": false
+        },
+        {
+          "name": "jar",
+          "value": "wrangler-transform-1.2.0.jar",
+          "canModify": false
+        }
+      ]
+    }
+  ]
+}
+
