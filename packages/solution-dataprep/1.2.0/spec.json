@@ -1,10 +1,10 @@
 {
   "specVersion": "1.0",
-  "description": "This solution updates the data preparation capability in CDAP. Data preparation is a set of libraries, pipeline plugin and CDAP service for performing data cleansing, transformation and filtering using a set of instructions. Instructions to manipulate data are either generated using an interative visual tool or could be manually entered.",
+  "description": "",
   "label": "Data Preparation",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.1.0,4.2.0)",
+  "cdapVersion": "[4.1.0,5.0.0)",
   "created": 1489212385,
   "categories": [
     "Solutions"
