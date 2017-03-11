@@ -1,6 +1,6 @@
 {
   "specVersion": "1.0",
-  "description": "Data Preparation (a.k.a Data Pre) allows you to parse, transform, cleanse, blend, and consolidating data for analysis. Combination of CDAP service and transform allows you to ensure data is consistent and high-quality by allowing you to perform data transformation with visual feedback and immediately operationalizing them to run at big data scale in minutes.",
+  "description": "Data Preparation (a.k.a Data Prep) allows you to parse, transform, cleanse, blend, and consolidating data for analysis. Combination of CDAP service and transform allows you to ensure data is consistent and high-quality by allowing you to perform data transformation with visual feedback and immediately operationalizing them to run at big data scale in minutes.",
   "label": "Data Preparation",
   "author": "Cask",
   "org": "Cask Data, Inc.",
