@@ -14,11 +14,9 @@
         {
           "name": "steps",
           "value": [
-            "Go to https://www.ibm.com/support/knowledgecenter/SSULQD_7.2.1/com.ibm.nz.datacon.doc/c_datacon_installing_jdbc_unix_linux.html",
-            "Select an version 7.2.1",
-            "Login, Accept the License Agreement and download the driver",
-            "Download 'nzjdbc3.jar'",
-            "Upload the downloaded JAR file in the next stage"
+            "Follow the instructions at https://www.ibm.com/support/knowledgecenter/SSULQD_7.2.1/com.ibm.nz.datacon.doc/c_datacon_installing_configuring_jdbc.html to install the IBM Netezza JDBC driver version 7.2.1",
+            "After installation, locate the 'nzjdbc3.jar' file containing the JDBC driver.",
+            "Upload the 'nzjdbc3.jar' file in the next stage"
           ]
         }
       ]
