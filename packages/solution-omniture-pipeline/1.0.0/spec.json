@@ -1,0 +1,91 @@
+{
+  "specVersion": "1.0",
+  "label": "Omniture Analytics",
+  "description": "Omniture Click Stream data feeds are an aggregation of hits and lookup data. Performing analytics on Omniture Hits data allows one to gain insights into how the users are behaving on their website on different dimensions. This data application provides you with a starting point for building analytics on Omniture Hits data.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1473901763,
+  "categories": [ "usecase" ],
+  "cdapVersion": "[4.0.0,4.0.0]",
+  "actions": [
+    {
+      "type": "create_stream",
+      "label": "Omniture Hits Data Stream",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "hits"
+        },
+        {
+          "name": "description",
+          "value": "Omniture Hits Data"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "label": "Omniture Hits Data",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "hits"
+        },
+        {
+          "name": "files",
+          "value": [ "hit_data.tsv" ]
+        }
+      ]
+    },
+    {
+      "type": "create_stream",
+      "label": "Browser Mapping Data Stream",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "browserInfo"
+        },
+        {
+          "name": "description",
+          "value": "Browser ID to Name Mapping"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "label": "Browser Mapping Data",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "browserInfo"
+        },
+        {
+          "name": "files",
+          "value": [ "browsers.tsv" ]
+        }
+      ]
+    },
+    {
+      "type": "create_pipeline",
+      "label": "Omniture Hits Pipeline",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "system",
+            "name": "cdap-data-pipeline",
+            "version": "4.0.0"
+          }
+        },
+        {
+          "name": "name",
+          "value": "omnitureHitsPipeline",
+          "canModify": true
+        },
+        {
+          "name": "config",
+          "value": "pipeline.json"
+        } 
+      ]
+    }
+  ]
+}
