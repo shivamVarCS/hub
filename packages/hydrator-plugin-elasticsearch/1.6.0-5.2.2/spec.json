@@ -1,6 +1,6 @@
 {
   "specVersion": "1.0",
-  "description": "Plugins to write to ElasticSearch in batch and realtime CDAP pipelines.",
+  "description": "Plugins to write to ElasticSearch 5.2.2 in batch CDAP pipelines. This plugin requires Java 8 runtime environment - Java 1.8.0_121 or higher.",
   "label": "Elasticsearch Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
