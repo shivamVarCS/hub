@@ -1,0 +1,47 @@
+{
+  "specVersion": "1.0",
+  "description": "Plugin to bulk load to Vertica DB.",
+  "label": "Vertica Bulk Load",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "cdapVersion": "[4.1.0,4.2.0-SNAPSHOT)",
+  "license": "license.txt",
+  "created": 1488417487,
+  "categories": [
+    "hydrator-plugin"
+  ],
+  "actions": [
+    {
+      "type": "one_step_deploy_plugin",
+      "label": "Deploy Vertica Bulk Load",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "vertica-db-plugins",
+          "canModify": false
+        },
+        {
+          "name": "version",
+          "value": "1.0.0-8.0.2",
+          "canModify": false
+        },
+        {
+          "name": "scope",
+          "value": "user",
+          "canModify": false
+        },
+        {
+          "name": "config",
+          "value": "vertica-db-plugins-1.0.0-8.0.2.json",
+          "canModify": false
+        },
+        {
+          "name": "jar",
+          "value": "vertica-db-plugins-1.0.0-8.0.2.jar",
+          "canModify": false
+        }
+      ]
+    }
+  ]
+}
+
