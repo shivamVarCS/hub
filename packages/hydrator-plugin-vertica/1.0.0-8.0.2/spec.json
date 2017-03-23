@@ -1,6 +1,6 @@
 {
   "specVersion": "1.0",
-  "description": "Plugin to bulk load to Vertica DB.",
+  "description": "Plugin to bulk load into Vertica DB.",
   "label": "Vertica Bulk Load",
   "author": "Cask",
   "org": "Cask Data, Inc.",
@@ -17,7 +17,7 @@
       "arguments": [
         {
           "name": "name",
-          "value": "vertica-db-plugins",
+          "value": "vertica-bulk-load",
           "canModify": false
         },
         {
@@ -32,12 +32,12 @@
         },
         {
           "name": "config",
-          "value": "vertica-db-plugins-1.0.0-8.0.2.json",
+          "value": "vertica-bulk-load-1.0.0-8.0.2.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "vertica-db-plugins-1.0.0-8.0.2.jar",
+          "value": "vertica-bulk-load-1.0.0-8.0.2.jar",
           "canModify": false
         }
       ]
