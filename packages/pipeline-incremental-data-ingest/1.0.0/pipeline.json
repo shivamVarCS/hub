@@ -204,8 +204,8 @@
         "label": "ContactsDB",
         "artifact": {
           "name": "database-plugins",
-          "version": "1.6.0",
-          "scope": "SYSTEM"
+          "version": "1.6.1",
+          "scope": "USER"
         },
         "properties": {
           "enableAutoCommit": "false",
