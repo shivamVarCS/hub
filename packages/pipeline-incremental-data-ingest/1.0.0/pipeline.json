@@ -9,7 +9,7 @@
   },
   "connections": [
     {
-      "from": "ContactsHDFS",
+      "from": "HDFSSource",
       "to": "Wrangler"
     },
     {
@@ -34,7 +34,7 @@
     },
     {
       "from": "StateRestore",
-      "to": "ContactsDB"
+      "to": "DBSource"
     },
     {
       "from": "Merge",
@@ -42,10 +42,10 @@
     },
     {
       "from": "FormatDate",
-      "to": "ContactsHDFSUpdated"
+      "to": "HDFSMergedSink"
     },
     {
-      "from": "ContactsDB",
+      "from": "DBSource",
       "to": "Merge"
     }
   ],
@@ -58,7 +58,7 @@
       "plugin": {
         "name": "TPFSAvro",
         "type": "batchsource",
-        "label": "HDFSource",
+        "label": "HDFSSource",
         "artifact": {
           "name": "core-plugins",
           "version": "1.6.0",
@@ -66,7 +66,7 @@
         },
         "properties": {
           "name": "mergedHDFS",
-          "duration": "${hdfs.read.duration}"
+          "duration": "${hdfs.source.duration}"
         }
       }
     },
@@ -197,11 +197,11 @@
       }
     },
     {
-      "name": "ContactsDB",
+      "name": "DBSource",
       "plugin": {
         "name": "Database",
         "type": "batchsource",
-        "label": "ContactsDB",
+        "label": "DBSource",
         "artifact": {
           "name": "database-plugins",
           "version": "1.6.1",
@@ -241,11 +241,11 @@
       }
     },
     {
-      "name": "HDFSMerged",
+      "name": "HDFSMergedSink",
       "plugin": {
         "name": "TPFSAvro",
         "type": "batchsink",
-        "label": "HDFSMerged",
+        "label": "HDFSMergedSink",
         "artifact": {
           "name": "core-plugins",
           "version": "1.6.0",
