@@ -33,12 +33,12 @@
         },
         {
           "name": "config",
-          "value": "database-plugins-1.6.0.json",
+          "value": "database-plugins-1.6.1.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "database-plugins-1.6.0.jar",
+          "value": "database-plugins-1.6.1.jar",
           "canModify": false
         }
       ]
