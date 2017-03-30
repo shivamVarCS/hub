@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "description": "Plugin to bulk load into Vertica DB.",
-  "label": "Vertica Bulk Load",
+  "description": "Plugin to bulk import into Vertica DB.",
+  "label": "Vertica Bulk Import",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.1.0,4.2.0-SNAPSHOT)",
@@ -13,7 +13,7 @@
   "actions": [
     {
       "type": "one_step_deploy_plugin",
-      "label": "Deploy Vertica Bulk Load",
+      "label": "Deploy Vertica Bulk Import",
       "arguments": [
         {
           "name": "name",
