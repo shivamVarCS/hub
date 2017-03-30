@@ -1,0 +1,35 @@
+{
+  "specVersion": "1.0",
+  "label": "Kudu to Netezza Example - Location Analysis",
+  "description": "A pipeline that reads data from Kudu, performs an aggregation, then writes the data into Kudu and Netezza.",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1490834023,
+  "categories": [ "pipeline", "EDW Offloading" ],
+  "cdapVersion": "[4.0.0,5.0.0]",
+  "actions": [
+    {
+      "type": "create_pipeline_draft",
+      "label": "Kudu to Netezza Example - Location Analysis",
+      "arguments": [
+        {
+          "name": "artifact",
+          "value": {
+            "scope": "system",
+            "name": "cdap-data-pipeline",
+            "version": "4.1.0"
+          }
+        },
+        {
+          "name": "name",
+          "value": "LocationAnalysisKuduToNetezza",
+          "canModify": true
+        },
+        {
+          "name": "config",
+          "value": "pipeline.json"
+        }
+      ]
+    }
+  ]
+}
