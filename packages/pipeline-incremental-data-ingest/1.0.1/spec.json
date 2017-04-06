@@ -1,28 +1,28 @@
 {
   "specVersion": "1.0",
-  "label": "Kudu to Netezza Example - Location Analysis",
-  "description": "A pipeline that reads data from Kudu, performs an aggregation, then writes the data into Kudu and Netezza.",
+  "label": "Incremental data ingest from Database to HDFS",
+  "description": "Pipeline that incrementally ingests data from Database and merges the existing full snapshot of data and writes to a HDFS", 
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "created": 1490834023,
+  "created": 1490838885,
   "categories": [ "pipeline", "EDW Offloading" ],
-  "cdapVersion": "[4.1.0,4.1.0]",
+  "cdapVersion": "[4.1.1-SNAPSHOT,4.1.1-SNAPSHOT]",
   "actions": [
     {
       "type": "create_pipeline_draft",
-      "label": "Kudu to Netezza Example - Location Analysis",
+      "label": "Incremental data ingest from Database to HDFS",
       "arguments": [
         {
           "name": "artifact",
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "4.1.0"
+            "version": "4.1.1-SNAPSHOT"
           }
         },
         {
           "name": "name",
-          "value": "LocationAnalysisKuduToNetezza",
+          "value": "IncrementalDataIngest",
           "canModify": true
         },
         {
