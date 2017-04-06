@@ -204,7 +204,7 @@
         "label": "DBSource",
         "artifact": {
           "name": "database-plugins",
-          "version": "1.6.1",
+          "version": "1.6.0",
           "scope": "USER"
         },
         "properties": {

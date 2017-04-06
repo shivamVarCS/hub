@@ -30,7 +30,7 @@
         },
         {
             "from": "ErrorCollector",
-            "to": "TPFSParquet"
+            "to": "Error Records"
         }
     ],
     "batchInterval": "1s",
@@ -191,3 +191,4 @@
     "engine": "mapreduce",
     "description": "A pipeline to analyze total sales by country, state, and city."
 }
+

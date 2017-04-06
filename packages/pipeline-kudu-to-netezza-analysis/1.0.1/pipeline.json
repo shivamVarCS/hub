@@ -30,7 +30,7 @@
         },
         {
             "from": "ErrorCollector",
-            "to": "TPFSParquet"
+            "to": "Error Records"
         }
     ],
     "batchInterval": "1s",

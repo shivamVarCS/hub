@@ -204,8 +204,8 @@
         "label": "DBSource",
         "artifact": {
           "name": "database-plugins",
-          "version": "1.6.1",
-          "scope": "USER"
+          "version": "1.6.1-SNAPSHOT",
+          "scope": "SYSTEM"
         },
         "properties": {
           "enableAutoCommit": "false",
