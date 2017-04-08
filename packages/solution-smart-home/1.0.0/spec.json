@@ -1,0 +1,53 @@
+{
+  "specVersion": "1.0",
+  "label": "Smart Home App",
+  "description": "This usecase contains sample sensor data and a smart home application that utilizes the basic layout of a house and people’s movement record around that place, and applies machine learning algorithms to infer the furniture layout inside the house.",
+  "author": "Ericsson",
+  "org": "Ericsson",
+  "created": 1489002803,
+  "categories": [ "usecase" ],
+  "cdapVersion": "[4.0.0,5.0.0)",
+  "beta": false,
+  "license": "license.TXT",
+  "actions": [
+    {
+      "type": "create_stream",
+      "label": "Create Sensor Stream",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "sensorStream"
+        },
+        {
+          "name": "description",
+          "value": "Stream of sensor data"
+        }
+      ]
+    },
+    {
+      "type": "load_datapack",
+      "label": "Load sensor data",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "sensorStream"
+        },
+        {
+          "name": "files",
+          "value": [ "sensor_data.txt" ]
+        }
+      ]
+    },
+    {
+      "type": "one_step_deploy_app",
+      "label": "Deploy Smart Home App",
+      "arguments": [
+        {
+          "name": "jar",
+          "value": "SmartHomeApp-4.0.1.jar"
+        }
+      ]
+    }
+  ]
+}
+
