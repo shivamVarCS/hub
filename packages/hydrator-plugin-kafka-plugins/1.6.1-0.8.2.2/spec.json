@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "description": "Realtime Kafka Source and Sink",
-  "label": "Realtime Kafka Source and Sink",
+  "description": "Realtime/Batch Kafka Source and Sink",
+  "label": "Realtime/Batch Kafka Source and Sink",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.1.0,4.2.0-SNAPSHOT)",
