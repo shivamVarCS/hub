@@ -4,7 +4,7 @@
   "label": "Data Preparation",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.1.0,5.0.0)",
+  "cdapVersion": "[4.1.0,4.1.0]",
   "created": 1490214918,
   "categories": [
     "usecase"
