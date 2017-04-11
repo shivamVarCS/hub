@@ -4,7 +4,7 @@
   "label": "Realtime/Batch Kafka Source and Sink",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.1.0,4.2.0-SNAPSHOT)",
+  "cdapVersion": "[4.1.0,4.2.0)",
   "license": "license.txt",
   "created": 1488417487,
   "categories": [
@@ -13,7 +13,7 @@
   "actions": [
     {
       "type": "one_step_deploy_plugin",
-      "label": "Deploy Realtime Kafka Source and Sink",
+      "label": "Deploy Realtime/Batch Kafka Source and Sink",
       "arguments": [
         {
           "name": "name",
