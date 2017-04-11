@@ -1,10 +1,10 @@
 {
   "specVersion": "1.0",
-  "description": "Parses CSV data and writes to HBase.",
-  "label": "CSV Parsing",
+  "description": "Joins Omniture hits data and browser data using the browser ID.",
+  "label": "Join Data Sources",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.1.0,4.1.0]",
+  "cdapVersion": "[4.1.1-SNAPSHOT,4.2.0-SNAPSHOT)",
   "created": 1487286304,
   "categories": [
     "pipeline"
@@ -12,20 +12,20 @@
   "actions": [
     {
       "type": "create_pipeline_draft",
-      "label": "CSV Parsing",
+      "label": "Log Data Analytics",
       "arguments": [
         {
           "name": "artifact",
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "4.1.0"
+            "version": "4.1.1-SNAPSHOT"
           },
           "canModify": false
         },
         {
           "name": "name",
-          "value": "CSVParsing",
+          "value": "JoinDataSources",
           "canModify": true
         },
         {
