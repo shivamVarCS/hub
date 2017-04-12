@@ -6,7 +6,7 @@
   "org": "Ericsson",
   "created": 1489002803,
   "categories": [ "usecase" ],
-  "cdapVersion": "[4.0.0,5.0.0)",
+  "cdapVersion": "[4.1.0,4.1.0]",
   "beta": false,
   "license": "license.TXT",
   "actions": [
@@ -39,7 +39,20 @@
       ]
     },
     {
-      "type": "one_step_deploy_app",
+      "type": "informational",
+      "label": "Download Application JAR",
+      "arguments": [
+        {
+          "name": "steps",
+          "value": [
+            "Download the application JAR from http://market.cask.co/v2/packages/solution-smart-home/1.0.0/SmartHomeApp-4.0.1.jar",
+            "Upload the JAR in the next step"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "deploy_app",
       "label": "Deploy Smart Home App",
       "arguments": [
         {
