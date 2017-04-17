@@ -25,7 +25,7 @@
                 "label": "Netezza Table",
                 "artifact": {
                     "name": "database-plugins",
-                    "version": "1.6.1-SNAPSHOT",
+                    "version": "1.6.1",
                     "scope": "SYSTEM"
                 },
                 "properties": {
