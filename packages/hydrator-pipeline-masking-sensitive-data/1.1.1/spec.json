@@ -19,7 +19,7 @@
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "4.1.1-SNAPSHOT"
+            "version": "4.1.1"
           },
           "canModify": false
         },

@@ -34,7 +34,7 @@
         "label": "Stream",
         "artifact": {
           "name": "core-plugins",
-          "version": "1.6.1-SNAPSHOT",
+          "version": "1.6.1",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -97,7 +97,7 @@
         "label": "Formatter",
         "artifact": {
           "name": "core-plugins",
-          "version": "1.6.1-SNAPSHOT",
+          "version": "1.6.1",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -129,7 +129,7 @@
         "label": "TPFSAvro",
         "artifact": {
           "name": "core-plugins",
-          "version": "1.6.1-SNAPSHOT",
+          "version": "1.6.1",
           "scope": "SYSTEM"
         },
         "properties": {

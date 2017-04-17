@@ -36,7 +36,7 @@
         "label": "TransactionsFile",
         "artifact": {
           "name": "core-plugins",
-          "version": "1.6.1-SNAPSHOT",
+          "version": "1.6.1",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -52,7 +52,7 @@
         "label": "Parse Fields",
         "artifact": {
           "name": "transform-plugins",
-          "version": "1.6.1-SNAPSHOT",
+          "version": "1.6.1",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -70,7 +70,7 @@
         "label": "Validate Credit Card",
         "artifact": {
           "name": "core-plugins",
-          "version": "1.6.1-SNAPSHOT",
+          "version": "1.6.1",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -88,7 +88,7 @@
         "label": "Mask Credit Card",
         "artifact": {
           "name": "core-plugins",
-          "version": "1.6.1-SNAPSHOT",
+          "version": "1.6.1",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -105,7 +105,7 @@
         "label": "Credit Store",
         "artifact": {
           "name": "core-plugins",
-          "version": "1.6.1-SNAPSHOT",
+          "version": "1.6.1",
           "scope": "SYSTEM"
         },
         "properties": {

@@ -4,7 +4,7 @@
   "label": "Spam Classifier: Machine Learning",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.1.1-SNAPSHOT,4.1.1-SNAPSHOT]",
+  "cdapVersion": "[4.1.1,4.1.1]",
   "license": "license.txt",
   "created": 1487286304,
   "categories": [
@@ -116,7 +116,7 @@
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "4.1.1-SNAPSHOT"
+            "version": "4.1.1"
           },
           "canModify": false
         },
@@ -141,7 +141,7 @@
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "4.1.1-SNAPSHOT"
+            "version": "4.1.1"
           },
           "canModify": false
         },

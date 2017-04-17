@@ -6,7 +6,7 @@
   "org": "Cask Data, Inc.",
   "created": 1490838885,
   "categories": [ "usecase", "EDW Offloading" ],
-  "cdapVersion": "[4.1.1-SNAPSHOT,4.1.1-SNAPSHOT]",
+  "cdapVersion": "[4.1.1,4.1.1]",
   "actions": [
     {
       "type": "one_step_deploy_plugin",
@@ -105,7 +105,7 @@
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "4.1.1-SNAPSHOT"
+            "version": "4.1.1"
           }
         },
         {
