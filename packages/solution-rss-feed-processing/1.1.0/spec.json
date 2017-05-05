@@ -6,7 +6,6 @@
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.1.0,4.1.0]",
   "created": 1488050917,
-  "license": "license.txt",
   "categories": [
     "usecase"
   ],
