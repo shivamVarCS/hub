@@ -16,13 +16,13 @@
           "name": "steps",
           "value": [ 
             "Download the sample access log from http://market.cask.co/v1/packages/usecase-realtime-log-ingestion/1.0.0/logdata.txt",
-            "Note the directory you downloaded the file to; it will be specified as the 'inputdir' argument when starting the pipeline"
+            "Note the directory you downloaded the file to; you must specify it as the 'path' property in the source"
           ]
         }
       ]
     },
     {
-      "type": "create_pipeline",
+      "type": "create_pipeline_draft",
       "label": "Log Ingestion and Indexing Pipeline",
       "arguments": [
         {
