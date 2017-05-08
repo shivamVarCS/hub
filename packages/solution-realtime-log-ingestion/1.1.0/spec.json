@@ -18,7 +18,7 @@
           "name": "steps",
           "value": [
             "Download the sample access log from http://market.cask.co/v2/packages/usecase-realtime-log-ingestion/1.1.0/logdata.txt",
-            "Note the directory you downloaded the file to; it will be specified as the 'inputdir' argument when starting the pipeline"
+            "Note the directory you downloaded the file to; you must specify it as the path property in the source"
           ],
           "canModify": false
         }

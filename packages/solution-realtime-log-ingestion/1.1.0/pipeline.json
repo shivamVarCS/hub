@@ -51,7 +51,6 @@
           "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"body\",\"type\":\"string\"}]}",
           "format": "text",
           "extensions": "txt",
-          "path": "${inputdir}",
           "referenceName": "FileSource"
         }
       }
