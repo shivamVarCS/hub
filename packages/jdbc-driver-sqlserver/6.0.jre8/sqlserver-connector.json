@@ -1,0 +1,15 @@
+{
+  "parents": [
+    "cdap-data-pipeline[3.0.0,10.0.0]",
+    "cdap-data-streams[3.0.0,10.0.0]",
+    "cdap-etl-batch[3.0.0,10.0.0]"
+  ],
+  "plugins": [
+    {
+      "name" : "sqlserver42",
+      "type" : "jdbc",
+      "className" : "com.microsoft.sqlserver.jdbc.SQLServerDriver",
+      "description" : "Plugin for Microsoft JDBC driver 6.0 for SQL Server"
+    }
+  ]
+}
