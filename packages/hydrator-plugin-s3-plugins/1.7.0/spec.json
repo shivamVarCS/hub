@@ -4,7 +4,7 @@
   "label": "S3 Source and Sink",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.1.0,4.2.0-SNAPSHOT)",
+  "cdapVersion": "[4.1.0,4.3.0-SNAPSHOT)",
   "created": 1490651864,
   "beta": true,
   "categories": [
