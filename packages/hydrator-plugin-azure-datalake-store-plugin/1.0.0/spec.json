@@ -7,7 +7,7 @@
   "cdapVersion": "[4.2.0-SNAPSHOT,4.3.0]",
   "created": 1490842193,
   "categories": [
-    "Microsoft Azure",
+    "Azure",
     "hydrator-plugin"
   ],
   "actions": [
