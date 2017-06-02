@@ -4,7 +4,7 @@
   "label": "OrientDB Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.1.0-SNAPSHOT,4.2.0-SNAPSHOT)",
+  "cdapVersion": "[4.1.0-SNAPSHOT,5.0.0)",
   "created": 1488956298,
   "beta": true,
   "categories": [
@@ -22,7 +22,7 @@
         },
         {
           "name": "version",
-          "value": "1.6.0",
+          "value": "1.0.0",
           "canModify": false
         },
         {
