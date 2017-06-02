@@ -18,12 +18,12 @@
       "arguments": [
         {
           "name": "name",
-          "value": "azure-event-hub",
+          "value": "azure-event-hub_2.11",
           "canModify": false
         },
         {
           "name": "version",
-          "value": "1.0.0-2.11",
+          "value": "1.0.0",
           "canModify": false
         },
         {
@@ -33,12 +33,12 @@
         },
         {
           "name": "config",
-          "value": "azure-event-hub-1.0.0-2.11.json",
+          "value": "azure-event-hub_2.11-1.0.0.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "azure-event-hub-1.0.0-2.11.jar",
+          "value": "azure-event-hub_2.11-1.0.0.jar",
           "canModify": false
         }
       ]
