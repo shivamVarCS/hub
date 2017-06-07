@@ -21,7 +21,7 @@
         },
         {
           "name": "version",
-          "value": "1.6.1-0.8.2.2",
+          "value": "1.6.2-0.8.2.2",
           "canModify": false
         },
         {
@@ -31,12 +31,12 @@
         },
         {
           "name": "config",
-          "value": "kafka-plugins-1.6.1-0.8.2.2.json",
+          "value": "kafka-plugins-1.6.2-0.8.2.2.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "kafka-plugins-1.6.1-0.8.2.2.jar",
+          "value": "kafka-plugins-1.6.2-0.8.2.2.jar",
           "canModify": false
         }
       ]
