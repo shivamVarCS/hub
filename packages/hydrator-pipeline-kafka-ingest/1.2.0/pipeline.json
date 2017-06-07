@@ -32,9 +32,9 @@
         "type": "streamingsource",
         "label": "Kafka",
         "artifact": {
-          "name": "spark-plugins",
+          "name": "kafka-plugins",
           "version": "[1.7.0-SNAPSHOT, 1.8.0)",
-          "scope": "SYSTEM"
+          "scope": "USER"
         },
         "properties": {
           "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"message\",\"type\":\"string\"}]}",
