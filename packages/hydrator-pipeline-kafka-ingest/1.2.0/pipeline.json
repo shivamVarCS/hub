@@ -33,7 +33,7 @@
         "label": "Kafka",
         "artifact": {
           "name": "kafka-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-0.8.2.2, 1.8.0)",
           "scope": "USER"
         },
         "properties": {
