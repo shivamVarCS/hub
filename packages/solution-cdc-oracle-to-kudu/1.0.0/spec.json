@@ -6,7 +6,7 @@
   "org": "Cask Data, Inc.",
   "created": 1490838885,
   "categories": [ "usecase", "EDW Offloading" ],
-  "cdapVersion": "[4.2.0,4.2.0]",
+  "cdapVersion": "[4.2.0,5.0.0)",
   "actions": [
     {
       "type": "one_step_deploy_plugin",
