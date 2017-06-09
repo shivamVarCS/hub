@@ -7,6 +7,7 @@
   "cdapVersion": "[4.1.1-SNAPSHOT,4.2.0-SNAPSHOT)",
   "created": 1487286304,
   "categories": [
+    "AWS",
     "pipeline"
   ],
   "actions": [

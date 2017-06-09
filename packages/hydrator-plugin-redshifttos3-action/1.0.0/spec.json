@@ -6,8 +6,8 @@
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.1.0,4.2.0-SNAPSHOT)",
   "created": 1490333950,
-  "beta": true,
   "categories": [
+    "AWS",
     "EDW Offloading",
     "hydrator-plugin"
   ],
