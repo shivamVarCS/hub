@@ -8,6 +8,7 @@
   "created": 1496344134,
   "beta": true,
   "categories": [
+    "AWS",
     "EDW Offloading",
     "hydrator-plugin"
   ],

@@ -5,7 +5,7 @@
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
-  "categories": [ "pipeline" ],
+  "categories": [ "AWS", "pipeline" ],
   "cdapVersion": "[4.0.0,4.0.0]",
   "actions": [
     {
