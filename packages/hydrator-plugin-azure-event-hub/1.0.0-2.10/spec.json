@@ -4,7 +4,7 @@
   "label": "Azure Event Hub Realtime Source(Spark1)",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.2.0-SNAPSHOT,4.3.0-SNAPSHOT)",
+  "cdapVersion": "[4.2.0,4.3.0-SNAPSHOT)",
   "created": 1490651864,
   "beta": true,
   "categories": [
@@ -18,12 +18,12 @@
       "arguments": [
         {
           "name": "name",
-          "value": "azure-event-hub_2.10",
+          "value": "azure-event-hub",
           "canModify": false
         },
         {
           "name": "version",
-          "value": "1.0.0",
+          "value": "1.0.0-2.10",
           "canModify": false
         },
         {
@@ -33,12 +33,12 @@
         },
         {
           "name": "config",
-          "value": "azure-event-hub_2.10-1.0.0.json",
+          "value": "azure-event-hub-1.0.0-2.10.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "azure-event-hub_2.10-1.0.0.jar",
+          "value": "azure-event-hub-1.0.0-2.10.jar",
           "canModify": false
         }
       ]
