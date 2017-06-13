@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "description": "Plugins to Import/Export data to/from hive tables in a CDAP batch pipeline.",
-  "label": "Hive Import/Export Plugins",
+  "description": "Plugins to read from and write to Hive in a CDAP batch pipeline.",
+  "label": "Hive Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.2.0-SNAPSHOT, 4.3.0-SNAPSHOT)",
@@ -12,7 +12,7 @@
   "actions": [
     {
       "type": "one_step_deploy_plugin",
-      "label": "Deploy Import/Export Hive Plugins",
+      "label": "Deploy Hive Plugins",
       "arguments": [
         {
           "name": "name",
