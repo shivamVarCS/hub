@@ -21,7 +21,7 @@
         },
         {
           "name": "version",
-          "value": "1.1.0",
+          "value": "1.1.1",
           "canModify": false
         },
         {
@@ -31,12 +31,12 @@
         },
         {
           "name": "config",
-          "value": "ftp-copy-action-1.1.0.json",
+          "value": "ftp-copy-action-1.1.1.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "ftp-copy-action-1.1.0.jar",
+          "value": "ftp-copy-action-1.1.1.jar",
           "canModify": false
         }
       ]
