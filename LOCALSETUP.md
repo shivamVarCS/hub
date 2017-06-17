@@ -10,6 +10,9 @@ You need to have some sort of webserver in your machine to serve from a director
 4. `cd ..`
 5. `java -cp packager/target/*:packager/target/lib/* co.cask.marketplace.Tool build`
 
+## Windows
+5. `java -cp .\packager\target\*;.\packager\target\lib\* co.cask.marketplace.Tool build`
+
 ## Start WebServer 
 ```python -m SimpleHTTPServer```
 
