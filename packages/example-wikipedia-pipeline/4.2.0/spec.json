@@ -1,6 +1,6 @@
 {
   "specVersion": "1.0",
-  "description": "This example demonstrates a CDAP application performing analysis on Wikipedia data using MapReduce and Spark programs running within a CDAP Workflow. For information on running the application, see http://docs.cask.co/cdap/4.1.0/en/examples-manual/examples/wikipedia-data-pipeline.html",
+  "description": "This example demonstrates a CDAP application performing analysis on Wikipedia data using MapReduce and Spark programs running within a CDAP Workflow. For information on running the application, see http://docs.cask.co/cdap/current/en/examples-manual/examples/wikipedia-data-pipeline.html",
   "label": "Wikipedia Pipeline Example",
   "author": "Cask",
   "org": "Cask Data, Inc.",

@@ -1,6 +1,6 @@
 {
   "specVersion": "1.0",
-  "description": "This example demonstrates a Spark application performing streaming analysis, computing the centers of points from an input stream using the K-Means Clustering method. For information on running the application, see http://docs.cask.co/cdap/4.1.0/en/examples-manual/examples/spark-k-means.html",
+  "description": "This example demonstrates a Spark application performing streaming analysis, computing the centers of points from an input stream using the K-Means Clustering method. For information on running the application, see http://docs.cask.co/cdap/current/en/examples-manual/examples/spark-k-means.html",
   "label": "Spark KMeans Example",
   "author": "Cask",
   "org": "Cask Data, Inc.",
