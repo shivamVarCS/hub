@@ -1,6 +1,6 @@
 {
   "specVersion": "1.0",
-  "description": "Plugins to write to Apache Hive in batch and realtime CDAP pipelines.",
+  "description": "Plugins to write to MongoDB in batch and realtime CDAP pipelines.",
   "label": "MongoDB Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
