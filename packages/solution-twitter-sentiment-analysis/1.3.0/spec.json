@@ -4,8 +4,8 @@
   "label": "Social Media Sentiment Analysis",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.2.0-SNAPSHOT, 4.3.0-SNAPSHOT)",
-  "created": 1496282676,
+  "cdapVersion": "[4.3.0-SNAPSHOT, 5.0.0-SNAPSHOT)",
+  "created": 1503433942,
   "categories": [
     "usecase"
   ],
@@ -89,7 +89,7 @@
         },
         {
           "name": "version",
-          "value": "1.0.0",
+          "value": "1.1.0",
           "canModify": false
         },
         {
@@ -99,12 +99,12 @@
         },
         {
           "name": "config",
-          "value": "naive-bayes-analytics-plugin-1.0.0.json",
+          "value": "naive-bayes-analytics-plugin-1.1.0.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "naive-bayes-analytics-plugin-1.0.0.jar",
+          "value": "naive-bayes-analytics-plugin-1.1.0.jar",
           "canModify": false
         }
       ]
@@ -118,7 +118,7 @@
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "[4.2.0-SNAPSHOT, 4.3.0-SNAPSHOT)"
+            "version": "[4.3.0-SNAPSHOT, 5.0.0-SNAPSHOT)"
           },
           "canModify": false
         },
@@ -143,7 +143,7 @@
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "[4.2.0-SNAPSHOT, 4.3.0-SNAPSHOT)"
+            "version": "[4.3.0-SNAPSHOT, 5.0.0-SNAPSHOT)"
           },
           "canModify": false
         },

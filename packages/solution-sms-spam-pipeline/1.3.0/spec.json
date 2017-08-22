@@ -1,44 +1,39 @@
 {
   "specVersion": "1.0",
-  "description": "With many companies using social media marketing to prompte their brands, it's become necessary to evaluate the effectiveness of these campaigns. Understanding sentiment about a product launch or product features can be easily achieved with this use case. The package includes two applications: a trainer that uses human-labelled data to train a model and a second application used for classifying.",
-  "label": "Social Media Sentiment Analysis",
+  "description": "Spam classifiers allow classifying emails or SMS messages using labelled data. Using bags of words and statistical techniques such as 'Naive Bayes' makes classifying easy. This package includes a trainer application for training the model using labelled data and a classifier for using the trained model to score incoming emails or SMS messages.",
+  "label": "Spam Classifier: Machine Learning",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.2.0-SNAPSHOT, 4.3.0-SNAPSHOT)",
-  "created": 1496282676,
+  "cdapVersion": "[4.3.0-SNAPSHOT, 5.0.0-SNAPSHOT)",
+  "created": 1503433942,
   "categories": [
     "usecase"
   ],
   "actions": [
     {
       "type": "create_stream",
-      "label": "Labeled Tweets Stream",
+      "label": "Labeled Messages",
       "arguments": [
         {
           "name": "name",
-          "value": "labeledTweets",
-          "canModify": false
-        },
-        {
-          "name": "description",
-          "value": "Contains tweets that have been labeled as negative, neutral, or positive",
+          "value": "labeledSMSTexts",
           "canModify": false
         }
       ]
     },
     {
       "type": "load_datapack",
-      "label": "Labeled Tweet Data",
+      "label": "Labeled Messages Sample",
       "arguments": [
         {
           "name": "name",
-          "value": "labeledTweets",
+          "value": "labeledSMSTexts",
           "canModify": false
         },
         {
           "name": "files",
           "value": [
-            "labeled_tweets.tsv"
+            "labeled_texts.tsv"
           ],
           "canModify": false
         }
@@ -46,33 +41,35 @@
     },
     {
       "type": "create_stream",
-      "label": "Raw Tweets Stream",
+      "label": "Unlabeled Messages",
       "arguments": [
         {
           "name": "name",
-          "value": "rawTweets",
+          "value": "smsTexts",
           "canModify": false
         },
         {
-          "name": "description",
-          "value": "Contains raw tweets",
+          "name": "loadfiles",
+          "value": [
+            "texts.txt"
+          ],
           "canModify": false
         }
       ]
     },
     {
       "type": "load_datapack",
-      "label": "Raw Tweet Data",
+      "label": "Unlabeled SMS Text Data",
       "arguments": [
         {
           "name": "name",
-          "value": "rawTweets",
+          "value": "smsTexts",
           "canModify": false
         },
         {
           "name": "files",
           "value": [
-            "raw_tweets.txt"
+            "texts.txt"
           ],
           "canModify": false
         }
@@ -89,7 +86,7 @@
         },
         {
           "name": "version",
-          "value": "1.0.0",
+          "value": "1.1.0",
           "canModify": false
         },
         {
@@ -99,32 +96,32 @@
         },
         {
           "name": "config",
-          "value": "naive-bayes-analytics-plugin-1.0.0.json",
+          "value": "naive-bayes-analytics-plugin-1.1.0.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "naive-bayes-analytics-plugin-1.0.0.jar",
+          "value": "naive-bayes-analytics-plugin-1.1.0.jar",
           "canModify": false
         }
       ]
     },
     {
       "type": "create_pipeline",
-      "label": "Sentiment Model Trainer",
+      "label": "Spam Classifier Trainer",
       "arguments": [
         {
           "name": "artifact",
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "[4.2.0-SNAPSHOT, 4.3.0-SNAPSHOT)"
+            "version": "[4.3.0-SNAPSHOT, 5.0.0-SNAPSHOT)"
           },
           "canModify": false
         },
         {
           "name": "name",
-          "value": "SentimentModelTrainer",
+          "value": "SpamTrainer",
           "canModify": true
         },
         {
@@ -136,25 +133,25 @@
     },
     {
       "type": "create_pipeline",
-      "label": "Sentiment Classifier",
+      "label": "Spam Labeler",
       "arguments": [
         {
           "name": "artifact",
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "[4.2.0-SNAPSHOT, 4.3.0-SNAPSHOT)"
+            "version": "[4.3.0-SNAPSHOT, 5.0.0-SNAPSHOT)"
           },
           "canModify": false
         },
         {
           "name": "name",
-          "value": "SentimentClassifier",
+          "value": "SpamClassifier",
           "canModify": true
         },
         {
           "name": "config",
-          "value": "labeler.json",
+          "value": "classifier.json",
           "canModify": false
         }
       ]
