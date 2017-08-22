@@ -6,7 +6,7 @@
   "org": "Cask Data, Inc.",
   "created": 1496271953,
   "categories": [ "usecase", "EDW Offloading" ],
-  "cdapVersion": "[4.2.0-SNAPSHOT, 4.3.0-SNAPSHOT)",
+  "cdapVersion": "[4.3.0-SNAPSHOT, 5.0.0-SNAPSHOT)",
   "actions": [
     {
       "type": "one_step_deploy_plugin",
@@ -19,7 +19,7 @@
         },
         {
           "name": "version",
-          "value": "1.0.0",
+          "value": "1.1.0",
           "canModify": false
         },
         {
@@ -29,12 +29,12 @@
         },
         {
           "name": "config",
-          "value": "state-restore-action-1.0.0.json",
+          "value": "state-restore-action-1.1.0.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "state-restore-action-1.0.0.jar",
+          "value": "state-restore-action-1.1.0.jar",
           "canModify": false
         }
       ]
@@ -76,7 +76,7 @@
         },
         {
           "name": "version",
-          "value": "1.0.0",
+          "value": "1.1.0",
           "canModify": false
         },
         {
@@ -86,12 +86,12 @@
         },
         {
           "name": "config",
-          "value": "topn-1.0.0.json",
+          "value": "topn-1.1.0.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "topn-1.0.0.jar",
+          "value": "topn-1.1.0.jar",
           "canModify": false
         }
       ]
@@ -105,7 +105,7 @@
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "[4.2.0-SNAPSHOT, 4.3.0-SNAPSHOT)"
+            "version": "[4.3.0-SNAPSHOT, 5.0.0-SNAPSHOT)"
           }
         },
         {
