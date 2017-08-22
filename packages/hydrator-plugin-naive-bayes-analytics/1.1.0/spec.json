@@ -4,8 +4,8 @@
   "label": "Naive Bayes Analytics",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.2.0-SNAPSHOT, 4.3.0-SNAPSHOT)",
-  "created": 1496342501,
+  "cdapVersion": "[4.3.0-SNAPSHOT, 5.0.0-SNAPSHOT)",
+  "created": 1503433942,
   "categories": [
     "hydrator-plugin"
   ],
@@ -21,7 +21,7 @@
         },
         {
           "name": "version",
-          "value": "1.0.1",
+          "value": "1.1.0",
           "canModify": false
         },
         {
@@ -31,12 +31,12 @@
         },
         {
           "name": "config",
-          "value": "naive-bayes-analytics-plugin-1.0.1.json",
+          "value": "naive-bayes-analytics-plugin-1.1.0.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "naive-bayes-analytics-plugin-1.0.1.jar",
+          "value": "naive-bayes-analytics-plugin-1.1.0.jar",
           "canModify": false
         }
       ]
