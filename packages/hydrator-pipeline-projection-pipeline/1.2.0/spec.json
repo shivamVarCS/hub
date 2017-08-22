@@ -4,7 +4,7 @@
   "label": "Projection Pipeline",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.2.0-SNAPSHOT, 4.3.0)",
+  "cdapVersion": "[4.2.0-SNAPSHOT, 5.0.0-SNAPSHOT)",
   "created": 1496360089,
   "categories": [
     "pipeline"
@@ -53,7 +53,7 @@
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "[4.2.0-SNAPSHOT, 4.3.0)"
+            "version": "[4.2.0-SNAPSHOT, 5.0.0-SNAPSHOT)"
           },
           "canModify": false
         },

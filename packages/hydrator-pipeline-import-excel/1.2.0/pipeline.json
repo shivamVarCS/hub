@@ -24,7 +24,7 @@
         "label": "Excel",
         "artifact": {
           "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 2.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -46,7 +46,7 @@
         "label": "TPFSAvro",
         "artifact": {
           "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 2.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {}

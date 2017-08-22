@@ -35,9 +35,9 @@
         "type": "batchsource",
         "label": "S3 Source",
         "artifact": {
-          "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
-          "scope": "SYSTEM"
+          "name": "amazon-s3-plugins",
+          "version": "[1.7.0-SNAPSHOT, 2.0.0-SNAPSHOT)",
+          "scope": "USER"
         },
         "properties": {}
       }
@@ -50,7 +50,7 @@
         "label": "Log Parser",
         "artifact": {
           "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 2.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -67,7 +67,7 @@
         "label": "Group By Aggregator",
         "artifact": {
           "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 2.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -84,7 +84,7 @@
         "label": "Aggregated Result",
         "artifact": {
           "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 2.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -101,7 +101,7 @@
         "label": "Raw Logs",
         "artifact": {
           "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 2.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
