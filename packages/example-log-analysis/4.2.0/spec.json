@@ -1,6 +1,6 @@
 {
   "specVersion": "1.0",
-  "description": "This example demonstrates Spark and MapReduce performing log analysis, computing total number of hits for every unique URL, total number of responses for every unique response code, and total number of requests made by every unique IP address, based on Apache usage log. For information on running the application, see http://docs.cask.co/cdap/4.1.0/en/examples-manual/examples/log-analysis.html",
+  "description": "This example demonstrates Spark and MapReduce performing log analysis, computing total number of hits for every unique URL, total number of responses for every unique response code, and total number of requests made by every unique IP address, based on Apache usage log. For information on running the application, see http://docs.cask.co/cdap/current/en/examples-manual/examples/log-analysis.html",
   "label": "Log Analysis Example",
   "author": "Cask",
   "org": "Cask Data, Inc.",

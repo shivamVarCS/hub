@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "label": "Solr Hydrator Plugins",
-  "description": "Plugins to write to Solr in a Hydrator pipeline both in batch and in real time.",
+  "label": "Solr Plugins",
+  "description": "Plugins to write to Solr in a CDAP pipeline both in batch and in real time.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
