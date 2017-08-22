@@ -44,7 +44,7 @@
         "label": "FileSource",
         "artifact": {
           "name": "spark-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 1.8.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -63,7 +63,7 @@
         "label": "OneMinuteWindow",
         "artifact": {
           "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 1.8.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -80,7 +80,7 @@
         "label": "LogParser",
         "artifact": {
           "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 1.8.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -97,7 +97,7 @@
         "label": "GroupByAggregate",
         "artifact": {
           "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 1.8.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -114,7 +114,7 @@
         "label": "TPFSAvro",
         "artifact": {
           "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 1.8.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -131,7 +131,7 @@
         "label": "CreateIndex",
         "artifact": {
           "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 1.8.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -148,7 +148,7 @@
         "label": "ElasticsearchSink",
         "artifact": {
           "name": "elasticsearch-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 1.8.0-SNAPSHOT)",
           "scope": "USER"
         },
         "properties": {

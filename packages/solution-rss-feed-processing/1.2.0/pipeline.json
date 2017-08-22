@@ -29,7 +29,7 @@
         "label": "HTTPPoller",
         "artifact": {
           "name": "spark-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 1.8.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -60,7 +60,7 @@
         "label": "XMLMultiParser",
         "artifact": {
           "name": "transform-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 1.8.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -93,7 +93,7 @@
         "label": "Elasticsearch",
         "artifact": {
           "name": "elasticsearch-plugins",
-          "version": "[1.7.0-SNAPSHOT, 1.8.0)",
+          "version": "[1.7.0-SNAPSHOT, 1.8.0-SNAPSHOT)",
           "scope": "USER"
         },
         "properties": {
