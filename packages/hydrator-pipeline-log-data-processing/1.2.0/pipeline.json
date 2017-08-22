@@ -35,9 +35,9 @@
         "type": "batchsource",
         "label": "S3 Source",
         "artifact": {
-          "name": "core-plugins",
+          "name": "amazon-s3-plugins",
           "version": "[1.7.0-SNAPSHOT, 2.0.0-SNAPSHOT)",
-          "scope": "SYSTEM"
+          "scope": "USER"
         },
         "properties": {}
       }
