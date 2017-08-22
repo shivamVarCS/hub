@@ -4,7 +4,7 @@
   "label": "Azure Blob Store Source Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.2.0-SNAPSHOT,4.3.0-SNAPSHOT]",
+  "cdapVersion": "[4.2.0-SNAPSHOT,4.3.0-SNAPSHOT)",
   "created": 1490842193,
   "categories": [
     "Azure",
