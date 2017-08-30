@@ -4,7 +4,7 @@
   "label": "Azure Face Transform",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.1.0,4.3.0)",
+  "cdapVersion": "[4.1.0,5.0.0-SNAPSHOT)",
   "created": 1488956298,
   "beta": true,
   "categories": [
@@ -23,7 +23,7 @@
         },
         {
           "name": "version",
-          "value": "1.0.0",
+          "value": "1.0.1",
           "canModify": false
         },
         {
@@ -33,12 +33,12 @@
         },
         {
           "name": "config",
-          "value": "azure-face-transform-1.0.0.json",
+          "value": "azure-face-transform-1.0.1.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "azure-face-transform-1.0.0.jar",
+          "value": "azure-face-transform-1.0.1.jar",
           "canModify": false
         }
       ]
