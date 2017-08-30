@@ -1,6 +1,6 @@
 {
   "specVersion": "1.0",
-  "description": "Plugins for writing and executing arbitrary Spark code written in Scala",
+  "description": "Plugins for writing and executing arbitrary Spark code written in Scala or Python",
   "label": "Dynamic Spark Plugin",
   "author": "Cask",
   "org": "Cask Data, Inc.",
