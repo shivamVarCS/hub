@@ -114,7 +114,7 @@
         "label": "MaxUpdateTime",
         "artifact": {
           "name": "topn",
-          "version": "[1.0.0, 1.1.0)",
+          "version": "[1.0.0, 1.2.0)",
           "scope": "USER"
         },
         "properties": {
@@ -186,7 +186,7 @@
         "label": "StateRestore",
         "artifact": {
           "name": "state-restore-action",
-          "version": "[1.0.0, 1.1.0)",
+          "version": "[1.0.0, 1.2.0)",
           "scope": "USER"
         },
         "properties": {
