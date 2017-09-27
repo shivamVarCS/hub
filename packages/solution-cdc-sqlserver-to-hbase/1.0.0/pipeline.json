@@ -28,7 +28,7 @@
       {
         "name": "ChangeTrackingSQLServer",
         "plugin": {
-          "name": "ChangeTrackingSQLServer",
+          "name": "CTSQLServer",
           "type": "streamingsource",
           "label": "ChangeTrackingSQLServer",
           "artifact": {
