@@ -21,7 +21,7 @@
         },
         {
           "name": "version",
-          "value": "2.1.0",
+          "value": "2.0.2",
           "canModify": false
         },
         {
@@ -31,12 +31,12 @@
         },
         {
           "name": "config",
-          "value": "dynamic-spark-2.1.0.json",
+          "value": "dynamic-spark-2.0.2.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "dynamic-spark-2.1.0.jar",
+          "value": "dynamic-spark-2.0.2.jar",
           "canModify": false
         }
       ]
