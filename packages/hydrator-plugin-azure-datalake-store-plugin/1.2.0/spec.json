@@ -1,11 +1,11 @@
 {
   "specVersion": "1.0",
-  "description": "Azure Data Lake Source which reads from Azure File System. It only works on Standalone since it requires Hadoop 2.8 as dependency",
+  "description": "Azure Data Lake Source/Sink which reads/writes from/to Azure File System. It only works on Standalone since it requires Hadoop 2.8 as dependency",
   "label": "Azure Data Lake Source Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.3.0-SNAPSHOT,5.0.0-SNAPSHOT]",
-  "created": 1503371365,
+  "cdapVersion": "[4.2.0-SNAPSHOT,5.0.0-SNAPSHOT)",
+  "created": 1490842193,
   "categories": [
     "Azure",
     "hydrator-plugin"
@@ -13,7 +13,7 @@
   "actions": [
     {
       "type": "one_step_deploy_plugin",
-      "label": "Deploy Azure Data Lake Source Plugins",
+      "label": "Deploy Azure Data Lake Source/Sink Plugins",
       "arguments": [
         {
           "name": "name",
@@ -22,7 +22,7 @@
         },
         {
           "name": "version",
-          "value": "1.1.0",
+          "value": "1.2.0",
           "canModify": false
         },
         {
@@ -32,12 +32,12 @@
         },
         {
           "name": "config",
-          "value": "adls-plugins-1.1.0.json",
+          "value": "adls-plugins-1.2.0.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "adls-plugins-1.1.0.jar",
+          "value": "adls-plugins-1.2.0.jar",
           "canModify": false
         }
       ]
