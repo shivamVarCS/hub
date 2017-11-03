@@ -29,7 +29,7 @@
       "arguments": [
         {
           "name": "name",
-          "value": "oracle12c"
+          "value": "oracle"
         },
         {
           "name": "version",
