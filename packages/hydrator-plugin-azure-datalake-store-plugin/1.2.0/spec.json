@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "description": "Azure Data Lake Source/Sink which reads/writes from/to Azure File System. It only works on Standalone since it requires Hadoop 2.8 as dependency",
-  "label": "Azure Data Lake Source Plugins",
+  "description": "Azure Data Lake Source/Sink which reads/writes from/to Azure File System. The plugin requires Hadoop 2.8 as dependency",
+  "label": "Azure Data Lake Source/Sink Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.2.0-SNAPSHOT,5.0.0-SNAPSHOT)",
