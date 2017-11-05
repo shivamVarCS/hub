@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "description": "Google Cloud Platform plugins to read and write from Pub/Sub, Cloud Storage, Big Query, Big Table.",
-  "label": "Google Cloud Platform source, sink and transform plugins.",
+  "label": "Google Cloud Platform plugins.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.3.0-SNAPSHOT,5.0.0-SNAPSHOT)",
