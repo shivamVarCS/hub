@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "description": "A plugin to extract the faces in a given set of images using Azure Cognitive APIs.",
-  "label": "Azure Face Transform",
+  "label": "Microsoft Azure Face Transform",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.1.0,5.0.0-SNAPSHOT)",
