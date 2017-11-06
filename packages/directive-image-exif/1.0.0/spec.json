@@ -1,0 +1,46 @@
+{
+  "specVersion": "1.0",
+  "description": "Dataprep directive for extracting information from EXIF images.",
+  "label": "Dataprep Image meta extractor directive",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "cdapVersion": "[4.3.0-SNAPSHOT,5.0.0-SNAPSHOT)",
+  "created": 1509903767,
+  "categories": [
+    "directives"
+  ],
+  "actions": [
+    {
+      "type": "one_step_deploy_plugin",
+      "label": "Deploy EXIF Meta directive",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "image-exif",
+          "canModify": false
+        },
+        {
+          "name": "version",
+          "value": "1.0.0",
+          "canModify": false
+        },
+        {
+          "name": "scope",
+          "value": "user",
+          "canModify": false
+        },
+        {
+          "name": "config",
+          "value": "image-exif-1.0.0.json",
+          "canModify": false
+        },
+        {
+          "name": "jar",
+          "value": "image-exif-1.0.0.jar",
+          "canModify": false
+        }
+      ]
+    }
+  ]
+}
+
