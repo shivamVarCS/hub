@@ -16,7 +16,7 @@
       "arguments": [
         {
           "name": "name",
-          "value": "image-exif",
+          "value": "image-exif-directives",
           "canModify": false
         },
         {
@@ -31,12 +31,12 @@
         },
         {
           "name": "config",
-          "value": "image-exif-1.0.0.json",
+          "value": "image-exif-directives-1.0.0.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "image-exif-1.0.0.jar",
+          "value": "image-exif-directives-1.0.0.jar",
           "canModify": false
         }
       ]
