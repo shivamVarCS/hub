@@ -1,6 +1,6 @@
 {
   "specVersion": "1.0",
-  "description": "Dataprep directive for extracting information from EXIF images.",
+  "description": "Dataprep directive for extracting metadata from EXIF images.",
   "label": "Dataprep Image meta extractor directive",
   "author": "Cask",
   "org": "Cask Data, Inc.",
