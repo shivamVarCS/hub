@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "description": "XML Dataprep directives, support for parse-xml-to-document and extract-xpath with namespace and functions support",
-  "label": "Dataprep XML directives",
+  "label": "XML Transformations",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.3.1,5.0.0-SNAPSHOT)",
