@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "description": "Azure Event Hub plugin to read from Azure Event Hub in Realtime (Spark2).",
-  "label": "Azure Event Hub Realtime Source(Spark2)",
+  "label": "Microsoft Azure Event Hub Realtime Source(Spark2)",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.3.0-SNAPSHOT,5.0.0-SNAPSHOT)",
