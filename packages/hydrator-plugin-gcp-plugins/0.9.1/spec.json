@@ -16,7 +16,7 @@
       "arguments": [
         {
           "name": "name",
-          "value": "google-cloud-plugins",
+          "value": "google-cloud",
           "canModify": false
         },
         {
