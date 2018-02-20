@@ -5,7 +5,7 @@
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.3.1-SNAPSHOT, 6.0.0-SNAPSHOT)",
-  "created": 1510795077,
+  "created": 1519111975,
   "categories": [
     "hydrator-plugin"
   ],
@@ -21,7 +21,7 @@
         },
         {
           "name": "version",
-          "value": "2.0.5",
+          "value": "2.0.6",
           "canModify": false
         },
         {
@@ -31,12 +31,12 @@
         },
         {
           "name": "config",
-          "value": "dynamic-spark-2.0.5.json",
+          "value": "dynamic-spark-2.0.6.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "dynamic-spark-2.0.5.jar",
+          "value": "dynamic-spark-2.0.6.jar",
           "canModify": false
         }
       ]
