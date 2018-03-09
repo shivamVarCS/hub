@@ -4,7 +4,7 @@
   "label": "Naive Bayes Analytics",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.3.0-SNAPSHOT, 5.0.0-SNAPSHOT)",
+  "cdapVersion": "[4.3.0-SNAPSHOT, 5.1.0-SNAPSHOT)",
   "created": 1503433942,
   "categories": [
     "hydrator-plugin"
