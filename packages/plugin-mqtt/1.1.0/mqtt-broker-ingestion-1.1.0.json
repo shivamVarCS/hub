@@ -1,6 +1,6 @@
 {
   "parents": [
-    "system:cdap-data-streams[4.3.0-SNAPSHOT,5.0.0-SNAPSHOT)"
+    "system:cdap-data-streams[4.3.0-SNAPSHOT,6.0.0-SNAPSHOT)"
   ],
   "properties": {
     "widgets.MQTT-streamingsource": "{\"metadata\":{\"spec-version\":\"1.5\"},\"display-name\":\"MQTT\",\"configuration-groups\":[{\"label\":\"MQTT Configuration\",\"properties\":[{\"name\":\"referenceName\",\"widget-type\":\"textbox\",\"label\":\"Reference Name\"},{\"name\":\"brokerUrl\",\"widget-type\":\"textbox\",\"label\":\"Broker URL\",\"widget-attributes\":{\"default\":\"tcp://localhost\"}},{\"name\":\"topic\",\"widget-type\":\"textbox\",\"label\":\"MQTT Topic\"}]}],\"outputs\":[{\"widget-type\":\"non-editable-schema-editor\",\"schema\":{\"name\":\"schema\",\"type\":\"record\",\"fields\":[{\"name\":\"event\",\"type\":\"string\"}]}}]}",

@@ -4,12 +4,12 @@
   "description": "Action plugin to decompress files from Microsoft Azure Blob Service containers",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "created": 1510006834,
+  "created": 16.0.0-SNAPSHOT6834,
   "categories": [ 
     "Azure", 
     "hydrator-plugin" 
   ],
-  "cdapVersion": "[4.3.0-SNAPSHOT,5.0.0-SNAPSHOT)",
+  "cdapVersion": "[4.3.0-SNAPSHOT,6.0.0-SNAPSHOT)",
   "actions": [
     {
       "type": "one_step_deploy_plugin",
