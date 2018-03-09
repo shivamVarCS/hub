@@ -4,7 +4,7 @@
   "description": "Amazon Dynamo DB Source",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "created": 16.0.0-SNAPSHOT6834,
+  "created": 1510006834,
   "categories": [ 
     "AWS", 
     "hydrator-plugin" 
