@@ -6,7 +6,7 @@
   "org": "Ericsson",
   "created": 1489002803,
   "categories": [ "usecase" ],
-  "cdapVersion": "[4.1.1-SNAPSHOT,5.1.0-SNAPSHOT)",
+  "cdapVersion": "[4.1.1-SNAPSHOT,6.0.0-SNAPSHOT)",
   "beta": false,
   "license": "license.TXT",
   "actions": [

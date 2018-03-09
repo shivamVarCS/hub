@@ -1,7 +1,7 @@
 {
   "parents": [
-    "system:cdap-data-streams[4.2.0-SNAPSHOT,5.1.0-SNAPSHOT)",
-    "system:cdap-data-pipeline[4.2.0-SNAPSHOT,5.1.0-SNAPSHOT)"
+    "system:cdap-data-streams[4.2.0-SNAPSHOT,6.0.0-SNAPSHOT)",
+    "system:cdap-data-pipeline[4.2.0-SNAPSHOT,6.0.0-SNAPSHOT)"
   ],
   "properties": {
     "widgets.Kafka-batchsink": "{\"metadata\":{\"spec-version\":\"1.0\"},\"configuration-groups\":[{\"label\":\"Kafka Producer and Topic Config\",\"properties\":[{\"widget-type\":\"textbox\",\"label\":\"Reference Name\",\"name\":\"referenceName\"},{\"widget-type\":\"csv\",\"label\":\"Kafka Brokers\",\"name\":\"brokers\",\"widget-attributes\":{\"delimiter\":\",\"}},{\"widget-type\":\"textbox\",\"label\":\"Kafka Topic\",\"name\":\"topic\"},{\"widget-type\":\"select\",\"label\":\"Is Async ?\",\"name\":\"async\",\"widget-attributes\":{\"values\":[\"TRUE\",\"FALSE\"],\"default\":\"FALSE\"}},{\"widget-type\":\"select\",\"label\":\"Compression type\",\"name\":\"compressionType\",\"widget-attributes\":{\"values\":[\"none\",\"gzip\",\"snappy\"],\"default\":\"none\"}},{\"widget-type\":\"keyvalue\",\"label\":\"Additional Kafka Producer Properties\",\"name\":\"kafkaProperties\",\"widget-attributes\":{\"showDelimiter\":\"false\",\"key-placeholder\":\"Kafka producer property\",\"value-placeholder\":\"Kafka producer property value\"}}]},{\"label\":\"Message Configuration\",\"properties\":[{\"widget-type\":\"select\",\"label\":\"Message Format\",\"name\":\"format\",\"widget-attributes\":{\"values\":[\"CSV\",\"JSON\"],\"default\":\"CSV\"}},{\"widget-type\":\"textbox\",\"label\":\"Message Key field\",\"name\":\"key\"}]}],\"outputs\":[]}",

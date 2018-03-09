@@ -4,7 +4,7 @@
   "label": "SFTP Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.3.0,5.1.0-SNAPSHOT)",
+  "cdapVersion": "[4.3.0,6.0.0-SNAPSHOT)",
   "created": 1488417487,
   "categories": [
     "hydrator-plugin"
