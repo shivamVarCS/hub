@@ -1,11 +1,11 @@
 {
   "specVersion": "1.0",
-  "description": "Plugins to read from and write to Kafka in CDAP batch or realtime pipelines. The plugins work with kafka 9 and upward. It supports configuring properties for kafka consumers and reading from kerberos enabled kafka.",
+  "description": "Plugins to read from and write to Kafka in CDAP batch or realtime pipelines. The plugins work with kafka 9 and upward. It supports reading from kerberos enabled kafka.",
   "label": "Kafka Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.3.0-SNAPSHOT,6.0.0-SNAPSHOT)",
-  "created": 1496801773,
+  "created": 1521834081,
   "categories": [
     "hydrator-plugin"
   ],
