@@ -4,7 +4,7 @@
   "label": "Microsoft Azure Data Lake Source/Sink Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.2.0-SNAPSHOT,5.0.0-SNAPSHOT)",
+  "cdapVersion": "[4.2.0-SNAPSHOT,6.0.0-SNAPSHOT)",
   "created": 1516915331 ,
   "categories": [
     "Azure",
