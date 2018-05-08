@@ -1,0 +1,40 @@
+{
+  "specVersion": "1.0",
+  "label": "File Plugins",
+  "description": "Plugins to read from and write to HDFS compatible file systems",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "created": 1525806632,
+  "categories": [ 
+    "hydrator-plugin" 
+  ],
+  "cdapVersion": "[4.0.0-SNAPSHOT,6.0.0-SNAPSHOT)",
+  "actions": [
+    {
+      "type": "one_step_deploy_plugin",
+      "label": "Deploy File Plugins",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "file-plugins"
+        },
+        {
+          "name": "version",
+          "value": "2.0.0"
+        },
+        {
+          "name": "scope",
+          "value": "user"
+        },
+        {
+          "name": "config",
+          "value": "file-plugins-2.0.0.json"
+        },
+        {
+          "name": "jar",
+          "value": "file-plugins-2.0.0.jar"
+        }
+      ]
+    }
+  ]
+}
