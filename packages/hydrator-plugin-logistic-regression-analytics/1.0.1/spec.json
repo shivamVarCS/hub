@@ -4,7 +4,7 @@
   "label": "Logistic Regression Analytics",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.2.0-SNAPSHOT, 6.0.0-SNAPSHOT)",
+  "cdapVersion": "[4.2.0-SNAPSHOT, 5.0.0-SNAPSHOT)",
   "created": 1496342192,
   "categories": [
     "hydrator-plugin"
