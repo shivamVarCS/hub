@@ -40,7 +40,7 @@
         "label": "Hits Count Data",
         "artifact": {
           "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 2.0.0-SNAPSHOT)",
+          "version": "[1.7.0-SNAPSHOT, 3.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -57,7 +57,7 @@
         "label": "Hits Count Parser",
         "artifact": {
           "name": "transform-plugins",
-          "version": "[1.7.0-SNAPSHOT, 2.0.0-SNAPSHOT)",
+          "version": "[1.7.0-SNAPSHOT, 3.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -75,7 +75,7 @@
         "label": "Join Browser",
         "artifact": {
           "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 2.0.0-SNAPSHOT)",
+          "version": "[1.7.0-SNAPSHOT, 3.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -93,7 +93,7 @@
         "label": "Joined Browser Data",
         "artifact": {
           "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 2.0.0-SNAPSHOT)",
+          "version": "[1.7.0-SNAPSHOT, 3.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -110,7 +110,7 @@
         "label": "Browser Table",
         "artifact": {
           "name": "core-plugins",
-          "version": "[1.7.0-SNAPSHOT, 2.0.0-SNAPSHOT)",
+          "version": "[1.7.0-SNAPSHOT, 3.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
@@ -127,7 +127,7 @@
         "label": "Browser File Parser",
         "artifact": {
           "name": "transform-plugins",
-          "version": "[1.7.0-SNAPSHOT, 2.0.0-SNAPSHOT)",
+          "version": "[1.7.0-SNAPSHOT, 3.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
