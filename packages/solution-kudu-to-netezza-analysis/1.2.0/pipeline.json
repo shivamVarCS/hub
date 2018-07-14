@@ -66,7 +66,7 @@
                 "label": "Filter Missing Locations",
                 "artifact": {
                     "name": "wrangler-transform",
-                    "version": "[2.1.0-SNAPSHOT, 3.1.0-SNAPSHOT)",
+                    "version": "[2.1.0-SNAPSHOT, 4.0.0-SNAPSHOT)",
                     "scope": "SYSTEM"
                 },
                 "properties": {
