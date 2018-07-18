@@ -4,8 +4,8 @@
   "label": "Masking Sensitive Data",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.2.0-SNAPSHOT, 5.0.0-SNAPSHOT)",
-  "created": 1496360004,
+  "cdapVersion": "[5.0.0-SNAPSHOT, 6.0.0-SNAPSHOT)",
+  "created": 1531777798,
   "categories": [
     "pipeline"
   ],
