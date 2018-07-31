@@ -32,7 +32,6 @@
           "columnNameCase": "No change",
           "jdbcPluginName": "mysql",
           "jdbcPluginType": "jdbc",
-          "importQuery": "SELECT * FROM ${table_name}",
           "referenceName": "Database",
           "numSplits": "1"
         }
