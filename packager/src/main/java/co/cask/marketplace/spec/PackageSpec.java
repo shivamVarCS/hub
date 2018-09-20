@@ -31,14 +31,15 @@ public class PackageSpec implements Validatable {
   private final String org;
   private final String cdapVersion;
   private final String license;
+  private final LicenseInfo licenseInfo;
   private final long created;
   private final Boolean beta;
   private final Set<String> categories;
   private final List<ActionSpec> actions;
 
   public PackageSpec(String specVersion, String description, String label, String author, String org,
-                     String cdapVersion, String license, long created, Boolean beta,
-                     Set<String> categories, List<ActionSpec> actions) {
+                     String cdapVersion, String license, LicenseInfo licenseInfo, long created,
+                     Boolean beta, Set<String> categories, List<ActionSpec> actions) {
     this.specVersion = specVersion;
     this.description = description;
     this.label = label;
@@ -49,12 +50,13 @@ public class PackageSpec implements Validatable {
     this.categories = categories;
     this.actions = actions;
     this.license = license;
+    this.licenseInfo = licenseInfo;
     this.beta = beta;
   }
 
   public PackageSpec(PackageSpec oldSpec, String newCdapVersion, long newCreated, List<ActionSpec> newActions) {
     this(oldSpec.specVersion, oldSpec.description, oldSpec.label, oldSpec.author, oldSpec.org, newCdapVersion,
-         oldSpec.license, newCreated, oldSpec.beta, oldSpec.categories, newActions);
+         oldSpec.license, oldSpec.licenseInfo, newCreated, oldSpec.beta, oldSpec.categories, newActions);
   }
 
   public String getSpecVersion() {
@@ -83,6 +85,10 @@ public class PackageSpec implements Validatable {
 
   public String getLicense() {
     return license;
+  }
+
+  public LicenseInfo getLicenseInfo() {
+    return licenseInfo;
   }
 
   public long getCreated() {
