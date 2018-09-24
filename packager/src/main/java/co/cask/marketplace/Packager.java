@@ -16,6 +16,7 @@
 
 package co.cask.marketplace;
 
+import co.cask.marketplace.spec.CategoryMeta;
 import co.cask.marketplace.spec.PackageMeta;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,23 +30,34 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.SignatureException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TimeZone;
+import java.util.TreeSet;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.annotation.Nullable;
 
 /**
  * Tool to create and publish packages for a CDAP Marketplace.
+ *
+ * Expects packages to be under a specific directory structure of:
+ *
+ * baseDir/packages/name/version/spec.json
+ * baseDir/packages/name/version/icon.png
+ * baseDir/packages/name/version/[other resources]
+ *
+ * and category information to be under a similar directory structure of:
+ *
+ * baseDir/categories/name/icon.png
  */
 public class Packager {
   private static final Logger LOG = LoggerFactory.getLogger(Packager.class);
@@ -53,7 +65,9 @@ public class Packager {
   private static final String ARCHIVE_NAME = "archive.zip";
   private static final Comparator<File> FILE_COMPARATOR = new FileComparator();
   private final File packagesDir;
-  private final File catalogFile;
+  private final File categoriesDir;
+  private final File packageCatalogFile;
+  private final File categoryCatalogFile;
   private final Signer signer;
   private final boolean createZip;
   private final Set<String> whitelist;
@@ -66,7 +80,9 @@ public class Packager {
 
   public Packager(File baseDir, @Nullable Signer signer, boolean createZip, Set<String> whitelist) {
     this.packagesDir = new File(baseDir, "packages");
-    this.catalogFile = new File(baseDir, "packages.json");
+    this.categoriesDir = new File(baseDir, "categories");
+    this.packageCatalogFile = new File(baseDir, "packages.json");
+    this.categoryCatalogFile = new File(baseDir, "categories.json");
     this.signer = signer;
     this.createZip = createZip;
     this.whitelist = whitelist;
@@ -77,10 +93,10 @@ public class Packager {
    * @throws IOException
    */
   public void clean() throws IOException {
-    if (catalogFile.exists()) {
-      LOG.info("Deleting catalog file " + catalogFile);
-      if (!catalogFile.delete()) {
-        throw new IOException("Could not delete catalog file " + catalogFile);
+    if (packageCatalogFile.exists()) {
+      LOG.info("Deleting catalog file " + packageCatalogFile);
+      if (!packageCatalogFile.delete()) {
+        throw new IOException("Could not delete catalog file " + packageCatalogFile);
       }
     }
 
@@ -118,11 +134,12 @@ public class Packager {
    * Build package archives and create the package catalog file.
    * @throws IOException
    */
-  public List<Package> buildPackages() throws IOException, SignatureException, NoSuchAlgorithmException,
+  public Hub build() throws IOException, SignatureException, NoSuchAlgorithmException,
     NoSuchProviderException, PGPException {
     List<Package> packages = new ArrayList<>();
     List<PackageMeta> packageCatalog = new ArrayList<>();
 
+    Set<String> packageCategories = new TreeSet<>();
     for (File packageDir : sortedListFiles(packagesDir)) {
       if (!packageDir.isDirectory()) {
         LOG.warn("Skipping {} since it is not a directory", packageDir);
@@ -138,6 +155,7 @@ public class Packager {
 
         String packageVersion = versionDir.getName();
         Package pkg = buildPackage(packageName, packageVersion, versionDir);
+        packageCategories.addAll(pkg.getMeta().getCategories());
 
         if (!whitelist.isEmpty()) {
           boolean shouldPublish = false;
@@ -160,15 +178,62 @@ public class Packager {
     }
     LOG.info("Created {} packages", packageCatalog.size());
 
-    try (PrintWriter printWriter = new PrintWriter(new FileOutputStream(catalogFile))) {
-      printWriter.print(GSON.toJson(packageCatalog) + "\n");
+    try (PrintWriter printWriter = new PrintWriter(new FileOutputStream(packageCatalogFile))) {
+      printWriter.print(GSON.toJson(packageCatalog));
+      printWriter.append("\n");
     }
-    LOG.info("Created package catalog file {}", catalogFile);
-    return packages;
+    LOG.info("Created package catalog file {}", packageCatalogFile);
+
+    List<CategoryMeta> categories = createCategoryCatalog(packageCategories);
+    try (PrintWriter printWriter = new PrintWriter(new FileOutputStream(categoryCatalogFile))) {
+      printWriter.print(GSON.toJson(categories));
+      printWriter.append("\n");
+    }
+    LOG.info("Created category catalog file {}", categoryCatalogFile);
+
+    return new Hub(packages, packageCatalogFile, categories, categoryCatalogFile);
   }
 
-  public File getCatalog() {
-    return catalogFile;
+  private List<CategoryMeta> createCategoryCatalog(Set<String> packageCategories) {
+    Map<String, File> categoryIcons = getCategoryIcons();
+    // If there is a whitelist category catalog will be in order of the whitelist
+    // otherwise it will be in alphabetical order
+    List<CategoryMeta> categoryCatalog = new ArrayList<>();
+    if (whitelist.isEmpty()) {
+      for (String categoryName : packageCategories) {
+        categoryCatalog.add(new CategoryMeta(categoryName, categoryIcons.get(categoryName)));
+      }
+    } else {
+      for (String whitelistedCategory : whitelist) {
+        // exclude whitelisted categories that don't actually show up in any packages
+        if (packageCategories.contains(whitelistedCategory)) {
+          categoryCatalog.add(new CategoryMeta(whitelistedCategory, categoryIcons.get(whitelistedCategory)));
+        }
+      }
+    }
+    return categoryCatalog;
+  }
+
+  /**
+   * Returns mapping of category name to its icon if it exists.
+   */
+  private Map<String, File> getCategoryIcons() {
+    Map<String, File> icons = new HashMap<>();
+    if (!categoriesDir.exists() || !categoriesDir.isDirectory()) {
+      return icons;
+    }
+
+    for (File file : categoriesDir.listFiles()) {
+      if (!file.isDirectory()) {
+        continue;
+      }
+
+      File iconFile = new File(file, "icon.png");
+      if (iconFile.exists() && iconFile.isFile()) {
+        icons.put(file.getName(), iconFile);
+      }
+    }
+    return icons;
   }
 
   private Package buildPackage(String name, String version, File packageDir)
