@@ -16,6 +16,7 @@
 
 package co.cask.marketplace;
 
+import co.cask.marketplace.spec.CategoryMeta;
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.Protocol;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -77,13 +78,19 @@ public class S3Publisher implements Publisher {
   }
 
   @Override
-  public void publish(List<Package> packages, File catalog) throws Exception {
+  public void publish(Hub hub) throws Exception {
     updatedKeys.clear();
+    List<Package> packages = hub.getPackages();
     for (Package pkg : packages) {
       publishPackage(pkg);
     }
-    LOG.info("Publishing catalog");
-    putFilesIfChanged(prefix + "/", catalog);
+    for (CategoryMeta categoryMeta : hub.getCategories()) {
+      publishCategory(categoryMeta);
+    }
+    LOG.info("Publishing package catalog");
+    putFilesIfChanged(prefix + "/", hub.getPackageCatalog());
+    LOG.info("Publishing category catalog");
+    putFilesIfChanged(prefix + "/", hub.getCategoryCatalog());
 
     if (cfClient != null && !updatedKeys.isEmpty()) {
       CreateInvalidationRequest invalidationRequest = new CreateInvalidationRequest()
@@ -126,6 +133,11 @@ public class S3Publisher implements Publisher {
         }
       }
     }
+  }
+
+  private void publishCategory(CategoryMeta categoryMeta) throws Exception {
+    String keyPrefix = String.format("%s/categories/%s/", prefix, categoryMeta.getName());
+    putFilesIfChanged(keyPrefix, categoryMeta.getIcon());
   }
 
   // if the specified file has changed, put it plus all extra files on s3.

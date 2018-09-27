@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.HashSet;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -167,7 +167,7 @@ public class Tool {
       System.exit(0);
     }
 
-    List<Package> packages = packager.buildPackages();
+    Hub hub = packager.build();
     if (command.equalsIgnoreCase("build")) {
       System.exit(0);
     }
@@ -176,7 +176,7 @@ public class Tool {
       System.exit(0);
     }
 
-    publisher.publish(packages, packager.getCatalog());
+    publisher.publish(hub);
   }
 
   private static S3Publisher getPublisher(CommandLine commandLine, Set<String> whitelist) {
@@ -234,7 +234,7 @@ public class Tool {
   }
 
   private static Set<String> parseWhitelist(String whitelistStr) {
-    Set<String> whitelist = new HashSet<>();
+    Set<String> whitelist = new LinkedHashSet<>();
     for (String packageStr : Splitter.on(',').trimResults().split(whitelistStr)) {
       whitelist.add(packageStr);
     }

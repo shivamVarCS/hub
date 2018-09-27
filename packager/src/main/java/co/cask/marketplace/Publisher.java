@@ -16,20 +16,16 @@
 
 package co.cask.marketplace;
 
-import java.io.File;
-import java.util.List;
-
 /**
- * Publishes packages.
+ * Publishes the Hub.
  */
 public interface Publisher {
 
   /**
-   * Publish a packages.
+   * Publish the hub.
    *
-   * @param packages the packages to publish
-   * @param catalog the catalog to publish
+   * @param hub the hub to publish
    * @throws Exception if there was an error publishing
    */
-  void publish(List<Package> packages, File catalog) throws Exception;
+  void publish(Hub hub) throws Exception;
 }
