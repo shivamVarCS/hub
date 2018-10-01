@@ -6,7 +6,6 @@
   "org": "Cask Data, Inc.",
   "cdapVersion": "[4.1.0,6.0.0-SNAPSHOT)",
   "created": 1488956298,
-  "beta": true,
   "categories": [
     "Azure",
     "hydrator-plugin"

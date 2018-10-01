@@ -4,6 +4,7 @@
   "description": "SMS texts that have been labeled as either 'spam' or 'ham'.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
+  "cdapVersion": "[4.0.0,5.1.0-SNAPSHOT)",
   "created": 1474060461,
   "categories": [ "datapack" ],
   "actions": [
