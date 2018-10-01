@@ -5,6 +5,7 @@
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1473901763,
+  "cdapVersion": "[4.0.0,5.1.0-SNAPSHOT)",
   "categories": [ "datapack" ],
   "actions": [
     {

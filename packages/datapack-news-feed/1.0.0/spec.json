@@ -4,12 +4,13 @@
   "description": "A sample of the world news RSS feed from the New York Times in XML format.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
+  "cdapVersion": "[4.0.0,5.1.0-SNAPSHOT)",
   "created": 1474681358,
   "categories": [ "datapack" ],
   "actions": [
     {
       "type": "load_datapack",
-      "label": "New York Times World News Feed", 
+      "label": "New York Times World News Feed",
       "arguments": [
         {
           "name": "files",

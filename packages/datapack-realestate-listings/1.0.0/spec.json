@@ -4,6 +4,7 @@
   "description": "Sample of home listings made in a few Bay Area cities in 2017.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
+  "cdapVersion": "[4.0.0,5.1.0-SNAPSHOT)",
   "created": 1532482912,
   "categories": [ "datapack" ],
   "actions": [
