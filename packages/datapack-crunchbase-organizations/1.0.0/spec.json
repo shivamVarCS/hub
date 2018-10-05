@@ -4,7 +4,6 @@
   "description": "CSV-formatted organization data from Crunchbase.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.0.0,5.1.0-SNAPSHOT)",
   "created": 1473901763,
   "categories": [ "datapack" ],
   "actions": [
