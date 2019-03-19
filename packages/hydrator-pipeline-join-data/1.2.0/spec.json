@@ -4,7 +4,7 @@
   "label": "Join Data Sources",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.2.0-SNAPSHOT, 6.0.0-SNAPSHOT)",
+  "cdapVersion": "[4.2.0-SNAPSHOT, 10.0.0-SNAPSHOT)",
   "created": 1496359690,
   "categories": [
     "pipeline"
@@ -19,7 +19,7 @@
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "[4.2.0-SNAPSHOT, 6.0.0-SNAPSHOT)"
+            "version": "[4.2.0-SNAPSHOT, 10.0.0-SNAPSHOT)"
           },
           "canModify": false
         },

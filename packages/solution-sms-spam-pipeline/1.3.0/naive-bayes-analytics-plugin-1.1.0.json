@@ -1,7 +1,7 @@
 {
   "parents": [
-    "system:cdap-data-pipeline[4.3.0-SNAPSHOT,6.0.0-SNAPSHOT)",
-    "system:cdap-data-streams[4.3.0-SNAPSHOT,6.0.0-SNAPSHOT)"
+    "system:cdap-data-pipeline[4.3.0-SNAPSHOT,10.0.0-SNAPSHOT)",
+    "system:cdap-data-streams[4.3.0-SNAPSHOT,10.0.0-SNAPSHOT)"
   ],
   "properties": {
     "widgets.NaiveBayesClassifier-sparkcompute": "{\"metadata\":{\"spec-version\":\"1.5\"},\"display-name\":\"SparkML Naive Bayes Classifier\",\"configuration-groups\":[{\"label\":\"Naive Bayes Classifier Properties\",\"properties\":[{\"widget-type\":\"textbox\",\"label\":\"FileSet Name\",\"name\":\"fileSetName\"},{\"widget-type\":\"textbox\",\"label\":\"Path\",\"name\":\"path\"},{\"widget-type\":\"textbox\",\"label\":\"Field To Classify\",\"name\":\"fieldToClassify\"},{\"widget-type\":\"textbox\",\"label\":\"Prediction Field\",\"name\":\"predictionField\"},{\"widget-type\":\"textbox\",\"label\":\"Number of Features\",\"name\":\"numFeatures\"}]}],\"outputs\":[]}",
