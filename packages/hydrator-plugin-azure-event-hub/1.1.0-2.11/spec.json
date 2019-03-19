@@ -4,7 +4,7 @@
   "label": "Microsoft Azure Event Hub Realtime Source(Spark2)",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.3.0-SNAPSHOT,6.0.0-SNAPSHOT)",
+  "cdapVersion": "[4.3.0-SNAPSHOT,10.0.0-SNAPSHOT)",
   "created": 1503375288,
   "categories": [
     "Azure",

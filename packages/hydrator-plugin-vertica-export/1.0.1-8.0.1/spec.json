@@ -4,7 +4,7 @@
   "label": "Vertica Bulk Export",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.1.0,6.0.0-SNAPSHOT)",
+  "cdapVersion": "[4.1.0,10.0.0-SNAPSHOT)",
   "created": 1488417487,
   "categories": [
     "EDW Offloading", "hydrator-plugin"

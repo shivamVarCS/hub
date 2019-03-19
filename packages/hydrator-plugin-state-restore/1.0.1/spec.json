@@ -4,7 +4,7 @@
   "label": "State Restore",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.2.0-SNAPSHOT, 6.0.0-SNAPSHOT)",
+  "cdapVersion": "[4.2.0-SNAPSHOT, 10.0.0-SNAPSHOT)",
   "created": 1496345820,
   "categories": [
     "EDW Offloading",
