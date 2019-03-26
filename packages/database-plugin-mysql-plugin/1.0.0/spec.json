@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
-  "description": "Mysql plugins to read and write from mysql database",
-  "label": "Mysql Plugins",
+  "description": "MySQL plugins to read and write from a MySQL instance",
+  "label": "MySQL Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[5.1.0-SNAPSHOT, 7.0.0-SNAPSHOT)",
