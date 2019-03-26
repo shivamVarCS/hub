@@ -13,7 +13,7 @@
   "actions": [
     {
       "type": "one_step_deploy_plugin",
-      "label": "Deploy Mysql Plugins",
+      "label": "Deploy MySQL Plugins",
       "arguments": [
         {
           "name": "name",
