@@ -1,0 +1,46 @@
+{
+  "specVersion": "1.0",
+  "description": "DB2 plugins to read and write from a DB2 instance",
+  "label": "DB2 Plugins",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "cdapVersion": "[5.1.0-SNAPSHOT, 7.0.0-SNAPSHOT)",
+  "created": 1553089918,
+  "categories": [
+    "EDW Offloading",
+    "hydrator-plugin"
+  ],
+  "actions": [
+    {
+      "type": "one_step_deploy_plugin",
+      "label": "Deploy DB2 Plugins",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "db2-plugin",
+          "canModify": false
+        },
+        {
+          "name": "version",
+          "value": "1.8.0",
+          "canModify": false
+        },
+        {
+          "name": "scope",
+          "value": "user",
+          "canModify": false
+        },
+        {
+          "name": "config",
+          "value": "db2-plugin-1.0.0-SNAPSHOT.json",
+          "canModify": false
+        },
+        {
+          "name": "jar",
+          "value": "db2-plugin-1.0.0-SNAPSHOT.jar",
+          "canModify": false
+        }
+      ]
+    }
+  ]
+}
