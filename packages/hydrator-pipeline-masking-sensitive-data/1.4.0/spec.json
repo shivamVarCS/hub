@@ -1,19 +1,18 @@
 {
   "specVersion": "1.0",
-  "description": "Imports Apache access logs from S3, parses the logs, and computes aggregations by IP and HTTP status.",
-  "label": "Log Data Analytics",
+  "description": "Ingests transaction data, masks sensitive fields, and writes to GCS.",
+  "label": "Masking Sensitive Data",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[6.0.0-SNAPSHOT, 7.0.0-SNAPSHOT)",
   "created": 1554846312,
   "categories": [
-    "AWS",
     "pipeline"
   ],
   "actions": [
     {
       "type": "create_pipeline_draft",
-      "label": "Log Data Analytics",
+      "label": "Masking Sensitive Data",
       "arguments": [
         {
           "name": "artifact",
@@ -26,7 +25,7 @@
         },
         {
           "name": "name",
-          "value": "LogAnalytics",
+          "value": "MaskingCreditCardData",
           "canModify": true
         },
         {
