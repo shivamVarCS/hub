@@ -9,7 +9,7 @@
     "AWS", 
     "hydrator-plugin" 
   ],
-  "cdapVersion": "[4.3.0-SNAPSHOT,10.0.0-SNAPSHOT)",
+  "cdapVersion": "[4.3.0-SNAPSHOT,6.0.0-SNAPSHOT)",
   "actions": [
     {
       "type": "one_step_deploy_plugin",

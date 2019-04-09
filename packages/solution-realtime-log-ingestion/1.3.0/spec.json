@@ -4,7 +4,7 @@
   "label": "Real-time Log Analytics",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[4.3.0-SNAPSHOT, 10.0.0-SNAPSHOT)",
+  "cdapVersion": "[4.3.0-SNAPSHOT, 6.0.0-SNAPSHOT)",
   "created": 1496281134,
   "categories": [
     "usecase"
@@ -64,7 +64,7 @@
           "value": {
             "scope": "system",
             "name": "cdap-data-streams",
-            "version": "[4.3.0-SNAPSHOT, 10.0.0-SNAPSHOT)"
+            "version": "[4.3.0-SNAPSHOT, 6.0.0-SNAPSHOT)"
           },
           "canModify": false
         },
