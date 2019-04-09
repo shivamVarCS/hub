@@ -18,7 +18,7 @@
     },
     {
       "from": "Group By Aggregator",
-      "to": "Aggregated Result"
+      "to": "Aggregated Results"
     },
     {
       "from": "S3 Source",
@@ -36,7 +36,7 @@
         "label": "S3 Source",
         "artifact": {
           "name": "amazon-s3-plugins",
-          "version": "[1.7.0-SNAPSHOT, 3.0.0-SNAPSHOT)",
+          "version": "[1.10.0-SNAPSHOT, 3.0.0-SNAPSHOT)",
           "scope": "USER"
         },
         "properties": {}

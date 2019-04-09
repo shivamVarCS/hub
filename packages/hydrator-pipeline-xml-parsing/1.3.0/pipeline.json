@@ -14,7 +14,7 @@
     },
     {
       "from": "XMLMultiParser",
-      "to": "Table"
+      "to": "GCS"
     }
   ],
   "comments": [],
@@ -61,7 +61,7 @@
       }
     },
     {
-      "name": "Google Cloud Storage",
+      "name": "GCS",
       "plugin": {
         "name": "GCS",
         "type": "batchsink",

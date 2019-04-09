@@ -80,7 +80,7 @@
         "label": "Validate Credit Card",
         "artifact": {
           "name": "wrangler-transform",
-          "version": "[2.0.0-SNAPSHOT, 4.0.0-SNAPSHOT)",
+          "version": "[2.0.0-SNAPSHOT, 5.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
