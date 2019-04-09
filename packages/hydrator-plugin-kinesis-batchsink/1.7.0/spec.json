@@ -4,7 +4,7 @@
   "description": "A CDAP plugin that can be used to write to an Amazon Kinesis stream.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "created": 1554787338,
+  "created": 1554790329,
   "categories": [ 
     "AWS",
     "hydrator-plugin" 
