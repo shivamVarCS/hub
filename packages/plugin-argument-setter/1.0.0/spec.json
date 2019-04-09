@@ -2,11 +2,11 @@
   "specVersion": "1.0",
   "label": "Argument Setter Action Plugin",
   "description": "Argument setter for dynamically configuring pipelines",
-  "author": "Cask",
-  "org": "Cask Data, Inc.",
+  "author": "CDAP",
+  "org": "CDAP",
   "created": 1510182405,
-  "categories": [ 
-    "hydrator-plugin" 
+  "categories": [
+    "hydrator-plugin"
   ],
   "cdapVersion": "[4.3.0-SNAPSHOT,6.0.0-SNAPSHOT)",
   "actions": [
