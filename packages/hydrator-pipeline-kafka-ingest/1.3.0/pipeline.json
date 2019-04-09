@@ -127,7 +127,9 @@
                 "version": "[0.12.0,0.14.0-SNAPSHOT)",
                 "scope": "SYSTEM"
             },
-            "properties": {}
+            "properties": {
+          "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"ip\",\"type\":\"string\"},{\"name\":\"browser\",\"type\":\"string\"},{\"name\":\"device\",\"type\":\"string\"},{\"name\":\"httpStatus\",\"type\":\"int\"},{\"name\":\"ts\",\"type\":\"long\"},{\"name\":\"id\",\"type\":\"string\"}]}"
+            }
         }
     }
   ]
