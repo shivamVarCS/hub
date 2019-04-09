@@ -4,6 +4,7 @@
 !packages/**/*.jar
 target/
 packages.json
+categories.json
 
 # Intellij Files & Dir #
 *.iml
