@@ -29,7 +29,7 @@
         },
         {
           "name": "config",
-          "value": "Kinesis-sparkStreamingSource-1.0.1.jar"
+          "value": "Kinesis-sparkStreamingSource-1.0.1.json"
         },
         {
           "name": "jar",
