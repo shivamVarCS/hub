@@ -65,7 +65,9 @@
                 "version": "[0.12.0,0.14.0-SNAPSHOT)",
                 "scope": "SYSTEM"
             },
-            "properties": {}
+            "properties": {
+          "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"company_name\",\"type\":\"string\"},{\"name\":\"primary_role\",\"type\":\"string\"},{\"name\":\"domain\",\"type\":\"string\"},{\"name\":\"homepage_url\",\"type\":\"string\"},{\"name\":\"country_code\",\"type\":\"string\"},{\"name\":\"state_code\",\"type\":\"string\"},{\"name\":\"region\",\"type\":\"string\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"zip\",\"type\":\"string\"},{\"name\":\"address\",\"type\":\"string\"},{\"name\":\"status\",\"type\":\"string\"},{\"name\":\"short_description\",\"type\":\"string\"},{\"name\":\"category_list\",\"type\":\"string\"},{\"name\":\"category_group_list\",\"type\":\"string\"},{\"name\":\"funding_rounds\",\"type\":\"string\"},{\"name\":\"funding_total_usd\",\"type\":\"string\"},{\"name\":\"founded_on\",\"type\":\"string\"},{\"name\":\"first_funding_on\",\"type\":\"string\"},{\"name\":\"last_funding_on\",\"type\":\"string\"},{\"name\":\"closed_on\",\"type\":\"string\"},{\"name\":\"employee_count\",\"type\":\"string\"},{\"name\":\"email\",\"type\":\"string\"},{\"name\":\"phone\",\"type\":\"string\"},{\"name\":\"facebook_urll\",\"type\":\"string\"},{\"name\":\"cb_url\",\"type\":\"string\"},{\"name\":\"logo_url\",\"type\":\"string\"},{\"name\":\"profile_image_url\",\"type\":\"string\"},{\"name\":\"twitter_url\",\"type\":\"string\"},{\"name\":\"uuid\",\"type\":\"string\"},{\"name\":\"created_at\",\"type\":\"string\"},{\"name\":\"updated_at\",\"type\":\"string\"}]}"
+            }
         }
     }
   ],
