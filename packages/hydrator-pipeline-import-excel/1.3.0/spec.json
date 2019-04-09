@@ -1,11 +1,11 @@
 {
   "specVersion": "1.0",
-  "description": "Imports data from an Excel file and dumps it to a time-partitioned file set backed by Hive.",
+  "description": "Imports data from an Excel file and dumps it to GCS.",
   "label": "Import Data from Excel",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[6.0.0-SNAPSHOT,7.0.0-SNAPSHOT)",
-  "created": 1496359350,
+  "created": 1554846312,
   "categories": [
     "pipeline"
   ],
