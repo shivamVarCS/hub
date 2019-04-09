@@ -22,7 +22,7 @@
         },
         {
           "name": "version",
-          "value": "1.8.0",
+          "value": "1.0.1",
           "canModify": false
         },
         {
@@ -32,12 +32,12 @@
         },
         {
           "name": "config",
-          "value": "oracle-plugin-1.0.1-SNAPSHOT.json",
+          "value": "oracle-plugin-1.0.1.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "oracle-plugin-1.0.1-SNAPSHOT.jar",
+          "value": "oracle-plugin-1.0.1.jar",
           "canModify": false
         }
       ]
