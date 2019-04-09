@@ -86,7 +86,9 @@
                 "version": "[0.12.0,0.14.0-SNAPSHOT)",
                 "scope": "SYSTEM"
             },
-            "properties": {}
+            "properties": {
+          "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"first_name\",\"type\":\"string\"},{\"name\":\"last_name\",\"type\":\"string\"},{\"name\":\"address\",\"type\":\"string\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state\",\"type\":\"string\"},{\"name\":\"zip\",\"type\":\"int\"}]}"
+            }
         }
     }
   ],
