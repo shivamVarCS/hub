@@ -4,7 +4,7 @@
   "label": "Transfer Data From MySQL to Google BigQuery",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[5.0.0-SNAPSHOT, 10.0.0-SNAPSHOT)",
+  "cdapVersion": "[5.0.0-SNAPSHOT, 6.0.0-SNAPSHOT)",
   "created": 1532801520,
   "categories": [
     "pipeline",
@@ -68,7 +68,7 @@
           "value": {
             "scope": "system",
             "name": "cdap-data-pipeline",
-            "version": "[5.0.0-SNAPSHOT, 10.0.0-SNAPSHOT)"
+            "version": "[5.0.0-SNAPSHOT, 6.0.0-SNAPSHOT)"
           },
           "canModify": false
         },

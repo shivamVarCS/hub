@@ -4,7 +4,7 @@
   "label": "PostgreSQL Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[5.1.0-SNAPSHOT, 7.0.0-SNAPSHOT)",
+  "cdapVersion": "[5.1.0-SNAPSHOT, 6.0.0-SNAPSHOT)",
   "created": 1553089918,
   "categories": [
     "EDW Offloading",
