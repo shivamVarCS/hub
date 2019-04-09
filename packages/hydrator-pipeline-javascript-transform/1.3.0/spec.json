@@ -1,18 +1,18 @@
 {
   "specVersion": "1.0",
-  "description": "Parses CSV data and writes to HBase.",
-  "label": "CSV Parsing",
+  "description": "Perform transformations using JavaScript.",
+  "label": "JavaScript Transform",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[6.0.0-SNAPSHOT,7.0.0-SNAPSHOT)",
-  "created": 1496359079,
+  "created": 1496359604,
   "categories": [
     "pipeline"
   ],
   "actions": [
     {
       "type": "create_pipeline_draft",
-      "label": "CSV Parsing",
+      "label": "JavaScript Transform",
       "arguments": [
         {
           "name": "artifact",
@@ -25,7 +25,7 @@
         },
         {
           "name": "name",
-          "value": "CSVParsing",
+          "value": "JavascriptTransform",
           "canModify": true
         },
         {
