@@ -22,7 +22,7 @@
         },
         {
           "name": "version",
-          "value": "1.8.0",
+          "value": "1.1.0",
           "canModify": false
         },
         {
@@ -32,12 +32,12 @@
         },
         {
           "name": "config",
-          "value": "netezza-plugin-1.1.0-SNAPSHOT.json",
+          "value": "netezza-plugin-1.1.0.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "netezza-plugin-1.1.0-SNAPSHOT.jar",
+          "value": "netezza-plugin-1.1.0.jar",
           "canModify": false
         }
       ]
