@@ -7,8 +7,7 @@
   "cdapVersion": "[6.0.0-SNAPSHOT, 7.0.0-SNAPSHOT)",
   "created": 1532801520,
   "categories": [
-    "pipeline",
-    "gcp"
+    "pipeline"
   ],
   "actions": [
     {
