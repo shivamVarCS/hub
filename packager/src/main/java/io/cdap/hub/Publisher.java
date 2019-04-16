@@ -14,7 +14,7 @@
  * the License.
  */
 
-package co.cask.marketplace;
+package io.cdap.hub;
 
 /**
  * Publishes the Hub.

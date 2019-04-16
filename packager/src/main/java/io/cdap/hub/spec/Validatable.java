@@ -1,5 +1,5 @@
 /*
- * Copyright © 2018 Cask Data, Inc.
+ * Copyright © 2016 Cask Data, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,17 +14,18 @@
  * the License.
  */
 
-package co.cask.marketplace.spec;
+package io.cdap.hub.spec;
 
 /**
- * Information about a license.
+ * An object that can be validated. This is used for objects that can be created through Gson deserialization, to make
+ * sure all required fields exist.
  */
-public class LicenseInfo {
-  private final String name;
-  private final String url;
+public interface Validatable {
 
-  public LicenseInfo(String name, String url) {
-    this.name = name;
-    this.url = url;
-  }
+  /**
+   * Validate the object.
+   *
+   * @throws IllegalArgumentException if the object is not valid.
+   */
+  void validate();
 }

@@ -14,11 +14,11 @@
  * the License.
  */
 
-package co.cask.marketplace;
+package io.cdap.hub;
 
-import co.cask.marketplace.spec.PackageMeta;
-import co.cask.marketplace.spec.PackageSpec;
 import com.google.gson.Gson;
+import io.cdap.hub.spec.PackageMeta;
+import io.cdap.hub.spec.PackageSpec;
 
 import java.io.File;
 import java.io.FileReader;

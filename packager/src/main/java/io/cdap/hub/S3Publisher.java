@@ -14,9 +14,8 @@
  * the License.
  */
 
-package co.cask.marketplace;
+package io.cdap.hub;
 
-import co.cask.marketplace.spec.CategoryMeta;
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.Protocol;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -33,6 +32,7 @@ import com.google.common.hash.Hashing;
 import com.google.common.io.BaseEncoding;
 import com.google.common.io.Files;
 import com.google.common.net.MediaType;
+import io.cdap.hub.spec.CategoryMeta;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

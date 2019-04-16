@@ -14,32 +14,28 @@
  * the License.
  */
 
-package co.cask.marketplace;
+package io.cdap.hub;
 
-import java.io.File;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 /**
- * A pair of a File and its corresponding signature File. The signature is optional.
+ * Package name and version.
  */
-public class SignedFile {
-  private final File file;
-  @Nullable
-  private final File signature;
+public class PackageId {
+  private final String name;
+  private final String version;
 
-  public SignedFile(File file, @Nullable File signature) {
-    this.file = file;
-    this.signature = signature;
+  public PackageId(String name, String version) {
+    this.name = name;
+    this.version = version;
   }
 
-  public File getFile() {
-    return file;
+  public String getName() {
+    return name;
   }
 
-  @Nullable
-  public File getSignature() {
-    return signature;
+  public String getVersion() {
+    return version;
   }
 
   @Override
@@ -51,20 +47,21 @@ public class SignedFile {
       return false;
     }
 
-    SignedFile that = (SignedFile) o;
-    return Objects.equals(file, that.file) && Objects.equals(signature, that.signature);
+    PackageId that = (PackageId) o;
+
+    return Objects.equals(name, that.name) && Objects.equals(version, that.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(file, signature);
+    return Objects.hash(name, version);
   }
 
   @Override
   public String toString() {
-    return "SignedFile{" +
-      "file=" + file +
-      ", signature=" + signature +
+    return "PackageId{" +
+      "name='" + name + '\'' +
+      ", version='" + version + '\'' +
       '}';
   }
 }
