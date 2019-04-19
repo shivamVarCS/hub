@@ -1,0 +1,41 @@
+{
+  "specVersion": "1.0",
+  "label": "Example notification action",
+  "description": "Example notification action",
+  "author": "The CDAP Authors",
+  "org": "CDAP",
+  "created": 1555631260,
+  "categories": [
+    "postactions",
+    "hydrator-plugin"
+  ],
+  "cdapVersion": "[4.3.0-SNAPSHOT,6.0.0-SNAPSHOT)",
+  "actions": [
+    {
+      "type": "one_step_deploy_plugin",
+      "label": "Deploy example notification post action plugin",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "example-notification"
+        },
+        {
+          "name": "version",
+          "value": "1.0.0"
+        },
+        {
+          "name": "scope",
+          "value": "user"
+        },
+        {
+          "name": "config",
+          "value": "example-notification-1.0.0.json"
+        },
+        {
+          "name": "jar",
+          "value": "example-notification-1.0.0.jar"
+        }
+      ]
+    }
+  ]
+}
