@@ -14,7 +14,7 @@
  * the License.
  */
 
-package co.cask.marketplace.spec;
+package io.cdap.hub.spec;
 
 import com.google.gson.JsonElement;
 

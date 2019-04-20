@@ -14,7 +14,7 @@
  * the License.
  */
 
-package co.cask.marketplace;
+package io.cdap.hub;
 
 import org.bouncycastle.bcpg.ArmoredOutputStream;
 import org.bouncycastle.bcpg.BCPGOutputStream;

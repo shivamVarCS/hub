@@ -14,7 +14,7 @@
  * the License.
  */
 
-package co.cask.marketplace;
+package io.cdap.hub;
 
 import com.google.common.base.Splitter;
 import com.google.common.io.BaseEncoding;

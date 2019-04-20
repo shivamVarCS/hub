@@ -14,9 +14,9 @@
  * the License.
  */
 
-package co.cask.marketplace;
+package io.cdap.hub;
 
-import co.cask.marketplace.spec.CategoryMeta;
+import io.cdap.hub.spec.CategoryMeta;
 
 import java.io.File;
 import java.util.List;

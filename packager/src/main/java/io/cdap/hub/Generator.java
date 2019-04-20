@@ -14,11 +14,8 @@
  * the License.
  */
 
-package co.cask.marketplace;
+package io.cdap.hub;
 
-import co.cask.marketplace.spec.ActionArguments;
-import co.cask.marketplace.spec.ActionSpec;
-import co.cask.marketplace.spec.PackageSpec;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.io.Files;
@@ -26,6 +23,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import io.cdap.hub.spec.ActionArguments;
+import io.cdap.hub.spec.ActionSpec;
+import io.cdap.hub.spec.PackageSpec;
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;

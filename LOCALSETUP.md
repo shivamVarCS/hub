@@ -1,17 +1,17 @@
-# Setting Up Cask Market Locally
+# Setting Up CDAP Hub Locally
 
-You need to have some sort of webserver in your machine to serve from a directory. Using [MAMP](https://www.mamp.info/en/) will probably the fastest way to get started. Point your webserver to the cask-marketplace directory.
+You need to have some sort of webserver in your machine to serve from a directory. Using [MAMP](https://www.mamp.info/en/) will probably the fastest way to get started. Point your webserver to the hub repository directory.
 
 
-## Building Market
-1. `cd` into the cask-marketplace repository
+## Building Hub
+1. `cd` into the hub repository
 2. `cd packager`
 3. `mvn clean package`
 4. `cd ..`
-5. `java -cp packager/target/*:packager/target/lib/* co.cask.marketplace.Tool build`
+5. `java -cp packager/target/*:packager/target/lib/* io.cdap.hub.Tool build`
 
 ## Windows
-5. `java -cp .\packager\target\*;.\packager\target\lib\* co.cask.marketplace.Tool build`
+5. `java -cp .\packager\target\*;.\packager\target\lib\* io.cdap.hub.Tool build`
 
 ## Start WebServer 
 ```python -m SimpleHTTPServer```
@@ -24,12 +24,12 @@ You need to have some sort of webserver in your machine to serve from a director
 5. Go to **Web Server** Tab
 6. Make sure Apache is selected
 7. Click on the Folder icon with 3 dots next to Document Root.
-8. Navigate your cask-marketplace directory, and click **Select**
+8. Navigate your cdap directory, and click **Select**
 9. Click **OK**
 10. Click **Start Server**
 
 
-## Changing Cask Market Basepath in CDAP
+## Changing CDAP Hub Basepath in CDAP
 
 ### For CDAP 4.0.x
 Navigate to

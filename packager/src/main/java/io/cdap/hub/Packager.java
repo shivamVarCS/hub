@@ -14,12 +14,12 @@
  * the License.
  */
 
-package co.cask.marketplace;
+package io.cdap.hub;
 
-import co.cask.marketplace.spec.CategoryMeta;
-import co.cask.marketplace.spec.PackageMeta;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import io.cdap.hub.spec.CategoryMeta;
+import io.cdap.hub.spec.PackageMeta;
 import org.bouncycastle.openpgp.PGPException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,7 +47,7 @@ import java.util.zip.ZipOutputStream;
 import javax.annotation.Nullable;
 
 /**
- * Tool to create and publish packages for a CDAP Marketplace.
+ * Tool to create and publish packages for a CDAP Hub.
  *
  * Expects packages to be under a specific directory structure of:
  *
