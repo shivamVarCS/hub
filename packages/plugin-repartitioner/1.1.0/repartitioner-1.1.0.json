@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "doc.Repartitioner-sparkcompute": "# Repartitioner\n\nThis plugins re-partitions a Spark RDD.\n\n## Plugin Properties\n\n## Usage Notes\nProvide a clear description of your example Spark compute plugin.\n\n## Example \n\nProvide a sample configuration.\n",
+    "widgets.Repartitioner-sparkcompute": "{\n  \"outputs\": [],\n  \"metadata\": {\"spec-version\": \"1.0\"},\n  \"configuration-groups\": [{\n    \"label\": \"Repartitioner Configuration\",\n    \"properties\": [\n      {\n        \"widget-type\": \"textbox\",\n        \"name\": \"partitions\",\n        \"label\": \"Partitions\",\n        \"widget-attributes\": {\n          \"default\": \"1\",\n          \"placeholder\": \"Number of partitions to be created for each window.\"\n        }\n      },\n      {\n        \"widget-type\": \"select\",\n        \"name\": \"shuffle\",\n        \"label\": \"Shuffle data\",\n        \"widget-attributes\": {\n          \"default\": \"False\",\n          \"values\": [\n            \"True\",\n            \"False\"\n          ]\n        }\n      }\n    ]\n  }]\n}"
+  },
+  "parents": [
+    "system:cdap-data-pipeline[6.0.0-SNAPSHOT,7.0.0-SNAPSHOT)",
+    "system:cdap-data-streams[6.0.0-SNAPSHOT,7.0.0-SNAPSHOT)"
+  ]
+}
