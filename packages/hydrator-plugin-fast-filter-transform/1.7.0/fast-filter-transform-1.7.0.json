@@ -1,7 +1,5 @@
 {
   "parents": [
-    "system:cdap-etl-batch[5.0.0-SNAPSHOT,6.0.0-SNAPSHOT)",
-    "system:cdap-etl-realtime[5.0.0-SNAPSHOT,6.0.0-SNAPSHOT)",
     "system:cdap-data-pipeline[5.0.0-SNAPSHOT,6.0.0-SNAPSHOT)",
     "system:cdap-data-streams[5.0.0-SNAPSHOT,6.0.0-SNAPSHOT)"
   ],
