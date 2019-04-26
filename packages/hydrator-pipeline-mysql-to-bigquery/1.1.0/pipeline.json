@@ -46,7 +46,7 @@
         "artifact": {
           "name": "google-cloud",
           "version": "[0.12.0,0.14.0-SNAPSHOT)",
-          "scope": "USER"
+          "scope": "SYSTEM"
         },
         "properties": {
           "project": "${gcp-project}",
