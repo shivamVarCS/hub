@@ -6,7 +6,7 @@
     "widgets.Elasticsearch-batchsource": "{\n  \"outputs\": [{\n    \"name\": \"schema\",\n    \"widget-type\": \"schema\",\n    \"label\": \"schema\",\n    \"widget-attributes\": {\n      \"schema-types\": [\n        \"boolean\",\n        \"int\",\n        \"long\",\n        \"float\",\n        \"double\",\n        \"bytes\",\n        \"string\"\n      ],\n      \"schema-default-type\": \"string\",\n      \"property-watch\": \"format\"\n    }\n  }],\n  \"metadata\": {\"spec-version\": \"1.5\"},\n  \"configuration-groups\": [{\n    \"label\": \"Elasticsearch Configuration\",\n    \"properties\": [\n      {\n        \"widget-type\": \"textbox\",\n        \"name\": \"referenceName\",\n        \"label\": \"Reference Name\"\n      },\n      {\n        \"widget-type\": \"textbox\",\n        \"name\": \"es.host\",\n        \"label\": \"Elasticsearch Host\"\n      },\n      {\n        \"widget-type\": \"textbox\",\n        \"name\": \"es.index\",\n        \"label\": \"Index\"\n      },\n      {\n        \"widget-type\": \"textbox\",\n        \"name\": \"es.type\",\n        \"label\": \"Type\"\n      },\n      {\n        \"widget-type\": \"textbox\",\n        \"name\": \"query\",\n        \"label\": \"Query\"\n      }\n    ]\n  }],\n  \"display-name\": \"Elasticsearch\"\n}"
   },
   "parents": [
-    "system:cdap-data-pipeline[5.0.0,6.0.0-SNAPSHOT)",
-    "system:cdap-data-streams[5.0.0,6.0.0-SNAPSHOT)"
+    "system:cdap-data-pipeline[6.0.0,10.0.0-SNAPSHOT)",
+    "system:cdap-data-streams[6.0.0,10.0.0-SNAPSHOT)"
   ]
 }
