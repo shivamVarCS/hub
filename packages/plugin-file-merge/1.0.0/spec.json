@@ -5,10 +5,10 @@
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1510182405,
-  "categories": [ 
-    "hydrator-plugin" 
+  "categories": [
+    "hydrator-plugin"
   ],
-  "cdapVersion": "[4.3.0-SNAPSHOT,6.0.0-SNAPSHOT)",
+  "cdapVersion": "[2.3.0-SNAPSHOT,3.0.0-SNAPSHOT)",
   "actions": [
     {
       "type": "one_step_deploy_plugin",
