@@ -7,7 +7,6 @@
   "cdapVersion": "[6.0.0-SNAPSHOT,7.0.0-SNAPSHOT)",
   "created": 1559770746,
   "categories": [
-    "gcp",
     "hydrator-plugin"
   ],
   "actions": [
