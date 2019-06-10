@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "description": "SQL Server plugins to read and write from a SQL Server instance",
-  "label": "SQL Server Plugins",
+  "label": "Microsoft SQL Server Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[6.0.0-SNAPSHOT, 7.0.0-SNAPSHOT)",

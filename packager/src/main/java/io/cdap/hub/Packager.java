@@ -178,6 +178,9 @@ public class Packager {
     }
     LOG.info("Created {} packages", packageCatalog.size());
 
+    // sort catalog by package display name
+    packageCatalog.sort(Comparator.comparing(p -> p.getLabel().toLowerCase()));
+
     try (PrintWriter printWriter = new PrintWriter(new FileOutputStream(packageCatalogFile))) {
       printWriter.print(GSON.toJson(packageCatalog));
       printWriter.append("\n");

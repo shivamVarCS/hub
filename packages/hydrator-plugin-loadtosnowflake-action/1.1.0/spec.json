@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "description": "An action that will trigger the LOAD command for copying data from an internal location or S3 into Snowflake DB.",
-  "label": "Load to Snowflake Action",
+  "label": "Snowflake Load Action",
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[6.0.0-SNAPSHOT, 7.0.0-SNAPSHOT)",
