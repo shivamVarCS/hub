@@ -24,6 +24,7 @@ import java.util.Set;
  * A package specification.
  */
 public class PackageSpec implements Validatable {
+
   private final String specVersion;
   private final String description;
   private final String label;
@@ -34,12 +35,15 @@ public class PackageSpec implements Validatable {
   private final LicenseInfo licenseInfo;
   private final long created;
   private final Boolean beta;
+  private final Boolean preview;
   private final Set<String> categories;
   private final List<ActionSpec> actions;
+  private final Boolean paid;
 
   public PackageSpec(String specVersion, String description, String label, String author, String org,
                      String cdapVersion, String license, LicenseInfo licenseInfo, long created,
-                     Boolean beta, Set<String> categories, List<ActionSpec> actions) {
+                     Boolean beta, Boolean preview, Set<String> categories, List<ActionSpec> actions,
+                     Boolean paid) {
     this.specVersion = specVersion;
     this.description = description;
     this.label = label;
@@ -52,11 +56,15 @@ public class PackageSpec implements Validatable {
     this.license = license;
     this.licenseInfo = licenseInfo;
     this.beta = beta;
+    this.preview = preview;
+    this.paid = paid;
   }
+
 
   public PackageSpec(PackageSpec oldSpec, String newCdapVersion, long newCreated, List<ActionSpec> newActions) {
     this(oldSpec.specVersion, oldSpec.description, oldSpec.label, oldSpec.author, oldSpec.org, newCdapVersion,
-         oldSpec.license, oldSpec.licenseInfo, newCreated, oldSpec.beta, oldSpec.categories, newActions);
+         oldSpec.license, oldSpec.licenseInfo, newCreated, oldSpec.beta, oldSpec.preview, oldSpec.categories,
+         newActions, oldSpec.paid);
   }
 
   public String getSpecVersion() {
@@ -96,7 +104,9 @@ public class PackageSpec implements Validatable {
   }
 
   public Boolean getBeta() {
-    return beta == null ? false : beta;
+    Boolean b = beta == null ? false : beta;
+    Boolean p = preview == null ? false : preview;
+    return b || p;
   }
 
   public Set<String> getCategories() {
@@ -105,6 +115,10 @@ public class PackageSpec implements Validatable {
 
   public List<ActionSpec> getActions() {
     return actions;
+  }
+
+  public Boolean getPaid() {
+    return paid == null ? false : paid;
   }
 
   @Override

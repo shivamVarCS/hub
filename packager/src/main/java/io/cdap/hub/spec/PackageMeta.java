@@ -36,16 +36,17 @@ public class PackageMeta {
   private final long created;
   private final Boolean beta;
   private final Set<String> categories;
+  private final Boolean paid;
 
   public static PackageMeta fromSpec(String name, String version, PackageSpec spec) {
     return new PackageMeta(name, version, spec.getDescription(), spec.getLabel(), spec.getAuthor(), spec.getOrg(),
                            spec.getCdapVersion(), spec.getLicense(), spec.getLicenseInfo(), spec.getCreated(),
-                           spec.getBeta(), spec.getCategories());
+                           spec.getBeta(), spec.getCategories(), spec.getPaid());
   }
 
   public PackageMeta(String name, String version, String description, String label, String author, String org,
                      String cdapVersion, String license, LicenseInfo licenseInfo,
-                     long created, Boolean beta, Set<String> categories) {
+                     long created, Boolean beta, Set<String> categories, Boolean paid) {
     this.name = name;
     this.version = version;
     this.description = description;
@@ -58,6 +59,7 @@ public class PackageMeta {
     this.license = license;
     this.licenseInfo = licenseInfo;
     this.beta = beta;
+    this.paid = paid;
   }
 
   public String getName() {
@@ -120,13 +122,14 @@ public class PackageMeta {
       Objects.equals(license, that.license) &&
       Objects.equals(created, that.created) &&
       Objects.equals(beta, that.beta) &&
-      Objects.equals(categories, that.categories);
+      Objects.equals(categories, that.categories) &&
+      Objects.equals(paid, that.paid);
   }
 
   @Override
   public int hashCode() {
     return Objects.hash(name, version, description, label, author, org, cdapVersion,
-                        license, created, beta, categories);
+                        license, created, beta, categories, paid);
   }
 
   @Override
@@ -143,6 +146,7 @@ public class PackageMeta {
       ", created=" + created +
       ", beta=" + beta +
       ", categories=" + categories +
+      ", paid=" + paid +
       '}';
   }
 }
