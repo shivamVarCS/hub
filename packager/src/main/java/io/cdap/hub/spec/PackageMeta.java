@@ -37,16 +37,17 @@ public class PackageMeta {
   private final Boolean beta;
   private final Set<String> categories;
   private final Boolean paid;
+  private final String paidLink;
 
   public static PackageMeta fromSpec(String name, String version, PackageSpec spec) {
     return new PackageMeta(name, version, spec.getDescription(), spec.getLabel(), spec.getAuthor(), spec.getOrg(),
                            spec.getCdapVersion(), spec.getLicense(), spec.getLicenseInfo(), spec.getCreated(),
-                           spec.getBeta(), spec.getCategories(), spec.getPaid());
+                           spec.getBeta(), spec.getCategories(), spec.getPaid(), spec.getPaidLink());
   }
 
   public PackageMeta(String name, String version, String description, String label, String author, String org,
                      String cdapVersion, String license, LicenseInfo licenseInfo,
-                     long created, Boolean beta, Set<String> categories, Boolean paid) {
+                     long created, Boolean beta, Set<String> categories, Boolean paid, String paidLink) {
     this.name = name;
     this.version = version;
     this.description = description;
@@ -60,6 +61,7 @@ public class PackageMeta {
     this.licenseInfo = licenseInfo;
     this.beta = beta;
     this.paid = paid;
+    this.paidLink = paidLink;
   }
 
   public String getName() {
