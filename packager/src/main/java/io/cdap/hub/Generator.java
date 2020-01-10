@@ -107,7 +107,7 @@ public class Generator {
           if (configs.contains(resource.getName())) {
             LOG.info("copying and modifying {}", resource.getName());
             try (FileReader reader = new FileReader(resource);
-                 FileWriter writer = new FileWriter(newFile)) {
+              FileWriter writer = new FileWriter(newFile)) {
               GSON.toJson(modifyHydratorConfig(GSON.fromJson(reader, JsonObject.class)), writer);
             }
           } else {
