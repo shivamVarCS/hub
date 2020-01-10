@@ -16,6 +16,8 @@
 
 package io.cdap.hub.spec;
 
+import jdk.internal.joptsimple.internal.Strings;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -38,13 +40,12 @@ public class PackageSpec implements Validatable {
   private final Boolean preview;
   private final Set<String> categories;
   private final List<ActionSpec> actions;
-  private final Boolean paid;
   private final String paidLink;
 
   public PackageSpec(String specVersion, String description, String label, String author, String org,
                      String cdapVersion, String license, LicenseInfo licenseInfo, long created,
                      Boolean beta, Boolean preview, Set<String> categories, List<ActionSpec> actions,
-                     Boolean paid, String paidLink) {
+                     String paidLink) {
     this.specVersion = specVersion;
     this.description = description;
     this.label = label;
@@ -58,7 +59,6 @@ public class PackageSpec implements Validatable {
     this.licenseInfo = licenseInfo;
     this.beta = beta;
     this.preview = preview;
-    this.paid = paid;
     this.paidLink = paidLink;
   }
 
@@ -66,7 +66,7 @@ public class PackageSpec implements Validatable {
   public PackageSpec(PackageSpec oldSpec, String newCdapVersion, long newCreated, List<ActionSpec> newActions) {
     this(oldSpec.specVersion, oldSpec.description, oldSpec.label, oldSpec.author, oldSpec.org, newCdapVersion,
          oldSpec.license, oldSpec.licenseInfo, newCreated, oldSpec.beta, oldSpec.preview, oldSpec.categories,
-         newActions, oldSpec.paid, oldSpec.paidLink);
+         newActions, oldSpec.paidLink);
   }
 
   public String getPaidLink() {
@@ -124,7 +124,7 @@ public class PackageSpec implements Validatable {
   }
 
   public Boolean getPaid() {
-    return paid == null ? false : paid;
+    return !Strings.isNullOrEmpty(paidLink);
   }
 
   @Override
