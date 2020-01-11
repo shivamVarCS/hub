@@ -16,7 +16,7 @@
 
 package io.cdap.hub.spec;
 
-import jdk.internal.joptsimple.internal.Strings;
+import com.google.common.base.Strings;
 
 import java.util.List;
 import java.util.Objects;
