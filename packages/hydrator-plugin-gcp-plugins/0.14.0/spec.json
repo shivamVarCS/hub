@@ -21,7 +21,7 @@
         },
         {
           "name": "version",
-          "value": "0.12.6",
+          "value": "0.14.0",
           "canModify": false
         },
         {
@@ -31,12 +31,12 @@
         },
         {
           "name": "config",
-          "value": "google-cloud-0.12.6.json",
+          "value": "google-cloud-0.14.0.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "google-cloud-0.12.6.jar",
+          "value": "google-cloud-0.14.0.jar",
           "canModify": false
         }
       ]
