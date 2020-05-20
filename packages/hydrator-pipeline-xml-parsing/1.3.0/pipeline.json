@@ -68,7 +68,7 @@
         "label": "Google Cloud Storage",
         "artifact": {
           "name": "google-cloud",
-          "version": "0.12.0",
+          "version": "[0.12.0, 1.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {"schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\"},{\"name\":\"title\",\"type\":[\"string\",\"null\"]},{\"name\":\"link\",\"type\":[\"string\",\"null\"]},{\"name\":\"description\",\"type\":[\"string\",\"null\"]},{\"name\":\"pubDate\",\"type\":[\"string\",\"null\"]}]}"}

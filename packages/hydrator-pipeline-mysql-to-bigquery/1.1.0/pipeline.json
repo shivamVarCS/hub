@@ -45,7 +45,7 @@
         "label": "BigQuery",
         "artifact": {
           "name": "google-cloud",
-          "version": "[0.12.0,0.14.0-SNAPSHOT)",
+          "version": "[0.12.0,1.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {
