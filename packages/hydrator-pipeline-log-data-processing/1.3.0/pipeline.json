@@ -84,7 +84,7 @@
         "label": "Aggregated Results",
         "artifact": {
           "name": "google-cloud",
-          "version": "[0.12.0,0.14.0-SNAPSHOT)",
+          "version": "[0.12.0,1.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {"schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"ip\",\"type\":[\"string\",\"null\"]},{\"name\":\"httpStatus\",\"type\":[\"int\",\"null\"]},{\"name\":\"count\",\"type\":\"long\"}]}"}
@@ -98,7 +98,7 @@
         "label": "Raw Logs",
         "artifact": {
           "name": "google-cloud",
-          "version": "[0.12.0,0.14.0-SNAPSHOT)",
+          "version": "[0.12.0,1.0.0-SNAPSHOT)",
           "scope": "SYSTEM"
         },
         "properties": {"schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"body\",\"type\":\"string\"}]}"}
