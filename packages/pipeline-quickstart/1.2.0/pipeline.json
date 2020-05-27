@@ -103,6 +103,7 @@
                     "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"amazon_product_url\",\"type\":[\"string\",\"null\"]},{\"name\":\"author\",\"type\":[\"string\",\"null\"]},{\"name\":\"description\",\"type\":[\"string\",\"null\"]},{\"name\":\"publisher\",\"type\":[\"string\",\"null\"]},{\"name\":\"title\",\"type\":[\"string\",\"null\"]},{\"name\":\"id\",\"type\":[\"string\",\"null\"]},{\"name\":\"rank\",\"type\":[\"int\",\"null\"]},{\"name\":\"price_final\",\"type\":[\"double\",\"null\"]}]}",
                     "referenceName": "Top_Rated_Inexpensive_Books",
                     "dataset": "GCPQuickStart",
+                    "allowSchemaRelaxation": "false",
                     "table": "top_rated_inexpensive"
                 }
             },
