@@ -4,8 +4,8 @@
   "label": "FTP Copy",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[6.0.0-SNAPSHOT,7.0.0-SNAPSHOT)",
-  "created": 1556056385,
+  "cdapVersion": "[6.0.0,7.0.0-SNAPSHOT)",
+  "created": 1595017296,
   "categories": [
     "hydrator-plugin"
   ],
@@ -21,7 +21,7 @@
         },
         {
           "name": "version",
-          "value": "1.3.0",
+          "value": "1.3.1",
           "canModify": false
         },
         {
@@ -31,12 +31,12 @@
         },
         {
           "name": "config",
-          "value": "ftp-copy-action-1.3.0.json",
+          "value": "ftp-copy-action-1.3.1.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "ftp-copy-action-1.3.0.jar",
+          "value": "ftp-copy-action-1.3.1.jar",
           "canModify": false
         }
       ]
