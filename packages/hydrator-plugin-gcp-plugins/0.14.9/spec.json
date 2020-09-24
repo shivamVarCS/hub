@@ -4,8 +4,8 @@
   "label": "Google Cloud Platform",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[6.1.2,7.0.0-SNAPSHOT)",
-  "created": 1597787276,
+  "cdapVersion": "[6.1.2,6.2.0-SNAPSHOT)",
+  "created": 1600987124,
   "categories": [
     "hydrator-plugin"
   ],
@@ -21,7 +21,7 @@
         },
         {
           "name": "version",
-          "value": "0.14.8",
+          "value": "0.14.9",
           "canModify": false
         },
         {
@@ -31,12 +31,12 @@
         },
         {
           "name": "config",
-          "value": "google-cloud-0.14.8.json",
+          "value": "google-cloud-0.14.9.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "google-cloud-0.14.8.jar",
+          "value": "google-cloud-0.14.9.jar",
           "canModify": false
         }
       ]
