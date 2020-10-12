@@ -5,7 +5,7 @@
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[6.1.3,7.0.0-SNAPSHOT)",
-  "created": 1601066371,
+  "created": 1602493664,
   "categories": [
     "hydrator-plugin"
   ],
@@ -22,7 +22,7 @@
         },
         {
           "name": "version",
-          "value": "1.0.1",
+          "value": "1.0.2",
           "canModify": false
         },
         {
@@ -32,12 +32,12 @@
         },
         {
           "name": "config",
-          "value": "scd2-plugins-1.0.1.json",
+          "value": "scd2-plugins-1.0.2.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "scd2-plugins-1.0.1.jar",
+          "value": "scd2-plugins-1.0.2.jar",
           "canModify": false
         }
       ]
