@@ -4,7 +4,7 @@
     "label": "Amazon SQS Plugins",
     "author": "Cask",
     "org": "Cask Data, Inc.",
-    "cdapVersion": "[6.1.1,6.2.0-SNAPSHOT)",
+    "cdapVersion": "[6.1.1,7.0.0-SNAPSHOT)",
     "created": 1602280700,
     "categories": [
       "AWS",
