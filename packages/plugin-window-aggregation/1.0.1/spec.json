@@ -8,7 +8,7 @@
   "categories": [ 
     "hydrator-plugin"
   ],
-  "cdapVersion": "[6.1.2,6.1.2)",
+  "cdapVersion": "[6.1.2,7.0.0-SNAPSHOT)",
   "actions": [
     {
       "type": "one_step_deploy_plugin",
@@ -21,7 +21,7 @@
         },
         {
           "name": "version",
-          "value": "1.0.0",
+          "value": "1.0.1",
           "canModify": false
         },
         {
@@ -31,12 +31,12 @@
         },
         {
           "name": "config",
-          "value": "window-aggregator-1.0.0.json",
+          "value": "window-aggregator-1.0.1.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "window-aggregator-1.0.0.jar",
+          "value": "window-aggregator-1.0.1.jar",
           "canModify": false
         }
       ]
