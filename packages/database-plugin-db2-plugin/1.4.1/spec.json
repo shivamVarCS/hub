@@ -4,8 +4,8 @@
   "label": "DB2 Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[6.1.0-SNAPSHOT, 7.0.0-SNAPSHOT]",
-  "created": 1585087648,
+  "cdapVersion": "[6.1.0, 6.1.0]",
+  "created": 1607115018,
   "categories": [
     "EDW Offloading",
     "hydrator-plugin"
