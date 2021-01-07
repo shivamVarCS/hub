@@ -5,11 +5,11 @@
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "created": 1554789831,
-  "categories": [ 
-    "AWS", 
-    "hydrator-plugin" 
+  "categories": [
+    "AWS",
+    "hydrator-plugin"
   ],
-  "cdapVersion": "[6.0.0-SNAPSHOT,7.0.0-SNAPSHOT)",
+  "cdapVersion": "[6.0.0-SNAPSHOT,6.1.0-SNAPSHOT)",
   "actions": [
     {
       "type": "one_step_deploy_plugin",
