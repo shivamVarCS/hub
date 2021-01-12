@@ -4,7 +4,7 @@
   "description": "Source that reads from multiple database tables, and sink that writes to dynamic partitioned Filesets.",
   "author": "CDAP",
   "org": "CDAP",
-  "created": 1594933267,
+  "created": 1609365980,
   "categories": [
     "hydrator-plugin"
   ],
