@@ -4,9 +4,9 @@
   "description": "Provides the ability to pivot data out of the box, so that users can transpose, reorganise, group, and aggregate data.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "created": 1606302808,
+  "created": 1611258280,
   "categories": ["hydrator-plugin" ],
-  "cdapVersion": "[6.1.3,6.1.3)",
+  "cdapVersion": "[6.1.3,7.0.0-SNAPSHOT)",
   "actions": [
     {
       "type": "one_step_deploy_plugin",
@@ -18,7 +18,7 @@
         },
         {
           "name": "version",
-          "value": "1.0.0"
+          "value": "1.0.1"
         },
         {
           "name": "scope",
@@ -26,11 +26,11 @@
         },
         {
           "name": "config",
-          "value": "pivot-1.0.0.json"
+          "value": "pivot-1.0.1.json"
         },
         {
           "name": "jar",
-          "value": "pivot-1.0.0.jar"
+          "value": "pivot-1.0.1.jar"
         }
       ]
     }
