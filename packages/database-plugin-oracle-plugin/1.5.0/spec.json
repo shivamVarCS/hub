@@ -5,7 +5,7 @@
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[6.1.1, 7.0.0-SNAPSHOT)",
-  "created": 1603375631,
+  "created": 1613765412,
   "categories": [
     "EDW Offloading",
     "hydrator-plugin"
