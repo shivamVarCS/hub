@@ -4,7 +4,7 @@
   "label": "Microsoft SQL Server Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[6.1.1, 7.0.0-SNAPSHOT)",
+  "cdapVersion": "[6.1.1, 6.1.1)",
   "created": 1607115018,
   "categories": [
     "EDW Offloading",
