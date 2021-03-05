@@ -4,7 +4,7 @@
   "label": "Confluent Kafka Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[6.1.2,7.0.0-SNAPSHOT)",
+  "cdapVersion": "[6.1.2,6.1.2)",
   "created": 1597945715,
   "categories": [
     "hydrator-plugin"
