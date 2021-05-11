@@ -4,7 +4,7 @@
   "label": "Salesforce Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[6.0.0-SNAPSHOT,7.0.0-SNAPSHOT)",
+  "cdapVersion": "[6.0.0-SNAPSHOT,6.2.0)",
   "created": 1601064494,
   "categories": [
     "hydrator-plugin"
