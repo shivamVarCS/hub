@@ -7,7 +7,7 @@
   "cdapVersion": "[6.4.0,7.0.0-SNAPSHOT)",
   "created": 1621916654,
   "categories": [
-    "delta-plugin"
+    "hydrator-plugin"
   ],
   "preview": true,
   "actions": [
