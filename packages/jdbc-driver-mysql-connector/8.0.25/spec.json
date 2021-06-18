@@ -16,7 +16,7 @@
           "value": [
             "Download the ZIP file from Oracle at https://dev.mysql.com/downloads/file/?id=504660",
             "Unzip the file",
-            "In the next stage, upload the 'mysql-connector-java-8.0.25-bin.jar' file from the ZIP"
+            "In the next stage, upload the 'mysql-connector-java-8.0.25.jar' file from the ZIP"
           ]
         }
       ]
