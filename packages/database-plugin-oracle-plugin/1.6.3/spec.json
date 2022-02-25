@@ -5,7 +5,7 @@
   "author": "Cask",
   "org": "Cask Data, Inc.",
   "cdapVersion": "[6.5.0, 6.5.1]",
-  "created": 1624300688,
+  "created": 1645728267,
   "categories": [
     "EDW Offloading",
     "hydrator-plugin"
@@ -22,7 +22,7 @@
         },
         {
           "name": "version",
-          "value": "1.6.2",
+          "value": "1.6.3",
           "canModify": false
         },
         {
@@ -32,12 +32,12 @@
         },
         {
           "name": "config",
-          "value": "oracle-plugin-1.6.2.json",
+          "value": "oracle-plugin-1.6.3.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "oracle-plugin-1.6.2.jar",
+          "value": "oracle-plugin-1.6.3.jar",
           "canModify": false
         }
       ]
