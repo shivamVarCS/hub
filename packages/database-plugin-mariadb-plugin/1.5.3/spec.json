@@ -4,7 +4,7 @@
   "label": "MariaDB Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[6.1.2, 7.0.0-SNAPSHOT)",
+  "cdapVersion": "[6.1.2, 6.5.0)",
   "created": 1624300688,
   "categories": [
     "EDW Offloading",
