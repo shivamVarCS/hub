@@ -4,7 +4,7 @@
   "label": "CloudSQL MySQL Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[6.1.1, 6.5.0)",
+  "cdapVersion": "[6.1.1, 6.6.0)",
   "created": 1624300688,
   "categories": [
     "hydrator-plugin"
