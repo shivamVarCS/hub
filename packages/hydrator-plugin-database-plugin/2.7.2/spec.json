@@ -4,8 +4,8 @@
   "label": "Database Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[6.1.1, 6.2.0-SNAPSHOT)",
-  "created": 1585870587,
+  "cdapVersion": "[6.5.0, 6.5.1]",
+  "created": 1646162674,
   "categories": [
     "EDW Offloading",
     "hydrator-plugin"
@@ -22,7 +22,7 @@
         },
         {
           "name": "version",
-          "value": "2.3.5",
+          "value": "2.7.2",
           "canModify": false
         },
         {
@@ -32,12 +32,12 @@
         },
         {
           "name": "config",
-          "value": "database-plugins-2.3.5.json",
+          "value": "database-plugins-2.7.2.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "database-plugins-2.3.5.jar",
+          "value": "database-plugins-2.7.2.jar",
           "canModify": false
         }
       ]
