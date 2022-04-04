@@ -4,7 +4,7 @@
   "label": "BigQuery Replication Plugin",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[6.5.1, 6.5.2)",
+  "cdapVersion": "[6.5.0, 6.5.2)",
   "created": 1649076490,
   "categories": [
     "hydrator-plugin"
