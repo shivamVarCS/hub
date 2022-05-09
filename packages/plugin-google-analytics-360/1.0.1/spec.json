@@ -4,7 +4,7 @@
   "description": "Plugins to retrieve data from Google Analytics 360.",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "created": 1597945715,
+  "created": 1652083519,
   "categories": [ 
     "hydrator-plugin" 
   ],
@@ -22,7 +22,7 @@
         },
         {
           "name": "version",
-          "value": "1.0.0",
+          "value": "1.0.1",
           "canModify": false
         },
         {
@@ -32,12 +32,12 @@
         },
         {
           "name": "config",
-          "value": "google-analytics-360-plugin-1.0.0.json",
+          "value": "google-analytics-360-plugin-1.0.1.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "google-analytics-360-plugin-1.0.0.jar",
+          "value": "google-analytics-360-plugin-1.0.1.jar",
           "canModify": false
         }
       ]
