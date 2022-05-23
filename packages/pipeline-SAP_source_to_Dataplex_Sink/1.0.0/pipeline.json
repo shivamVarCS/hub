@@ -1,0 +1,129 @@
+{
+    "stages": [
+        {
+            "name": "SAP ODP",
+            "plugin": {
+                "name": "SapOdp",
+                "type": "batchsource",
+                "label": "SAP ODP",
+                "artifact": {
+                    "name": "sap-odp-plugins",
+                    "version": "[0.2.0,1.0.0)",
+                    "scope": "USER"
+                },
+                "properties": {
+                    "referenceName": "SAP_source_to_Dataplex_Sink",
+                    "connType": "directClient",
+                    "sapSourceObjName": "0FI_AP_4",
+                    "extractType": "Full",
+                    "gcpProjectId": "auto-detect",
+                    "gcsPath": "gs://cdf-sap-dependent-files/",
+                    "schema": "{\"type\":\"record\",\"name\":\"columnMetadata_0FI_AP_4\",\"fields\":[{\"name\":\"BUKRS\",\"type\":\"string\"},{\"name\":\"FISCPER\",\"type\":\"string\"},{\"name\":\"BELNR\",\"type\":\"string\"},{\"name\":\"BUZEI\",\"type\":\"string\"},{\"name\":\"UPOSZ\",\"type\":\"string\"},{\"name\":\"STATUSPS\",\"type\":[\"string\",\"null\"]},{\"name\":\"LIFNR\",\"type\":[\"string\",\"null\"]},{\"name\":\"KKBER\",\"type\":[\"string\",\"null\"]},{\"name\":\"MABER\",\"type\":[\"string\",\"null\"]},{\"name\":\"KOART\",\"type\":[\"string\",\"null\"]},{\"name\":\"UMSKZ\",\"type\":[\"string\",\"null\"]},{\"name\":\"BLART\",\"type\":[\"string\",\"null\"]},{\"name\":\"BSCHL\",\"type\":[\"string\",\"null\"]},{\"name\":\"FISCVAR\",\"type\":[\"string\",\"null\"]},{\"name\":\"BLDAT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"BUDAT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"CPUDT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"AUGDT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"MADAT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"NETDT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"SK1DT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"SK2DT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"ZFBDT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"ZBD1T\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":0},\"null\"]},{\"name\":\"ZBD2T\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":0},\"null\"]},{\"name\":\"ZBD3T\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":0},\"null\"]},{\"name\":\"ZBD1P\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":8,\"scale\":3},\"null\"]},{\"name\":\"ZBD2P\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":8,\"scale\":3},\"null\"]},{\"name\":\"LAND1\",\"type\":[\"string\",\"null\"]},{\"name\":\"ZLSCH\",\"type\":[\"string\",\"null\"]},{\"name\":\"ZTERM\",\"type\":[\"string\",\"null\"]},{\"name\":\"ZLSPR\",\"type\":[\"string\",\"null\"]},{\"name\":\"RSTGR\",\"type\":[\"string\",\"null\"]},{\"name\":\"MANSP\",\"type\":[\"string\",\"null\"]},{\"name\":\"MSCHL\",\"type\":[\"string\",\"null\"]},{\"name\":\"MANST\",\"type\":[\"string\",\"null\"]},{\"name\":\"LCURR\",\"type\":[\"string\",\"null\"]},{\"name\":\"DMSOL\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"DMHAB\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"DMSHB\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"SKNTO\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"WAERS\",\"type\":[\"string\",\"null\"]},{\"name\":\"WRSOL\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"WRHAB\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"WRSHB\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"SKFBT\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"WSKTO\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"KTOPL\",\"type\":[\"string\",\"null\"]},{\"name\":\"HKONT\",\"type\":[\"string\",\"null\"]},{\"name\":\"SAKNR\",\"type\":[\"string\",\"null\"]},{\"name\":\"FILKD\",\"type\":[\"string\",\"null\"]},{\"name\":\"AUGBL\",\"type\":[\"string\",\"null\"]},{\"name\":\"XBLNR\",\"type\":[\"string\",\"null\"]},{\"name\":\"REBZG\",\"type\":[\"string\",\"null\"]},{\"name\":\"REBZJ\",\"type\":[\"string\",\"null\"]},{\"name\":\"REBZZ\",\"type\":[\"string\",\"null\"]},{\"name\":\"VBELN\",\"type\":[\"string\",\"null\"]},{\"name\":\"XREF1\",\"type\":[\"string\",\"null\"]},{\"name\":\"XREF2\",\"type\":[\"string\",\"null\"]},{\"name\":\"XREF3\",\"type\":[\"string\",\"null\"]},{\"name\":\"SGTXT\",\"type\":[\"string\",\"null\"]},{\"name\":\"XNEGP\",\"type\":[\"string\",\"null\"]},{\"name\":\"XARCH\",\"type\":[\"string\",\"null\"]},{\"name\":\"UMSKS\",\"type\":[\"string\",\"null\"]},{\"name\":\"UPDMOD\",\"type\":[\"string\",\"null\"]},{\"name\":\"ZUONR\",\"type\":[\"string\",\"null\"]},{\"name\":\"AWTYP\",\"type\":[\"string\",\"null\"]},{\"name\":\"AWKEY\",\"type\":[\"string\",\"null\"]},{\"name\":\"BSTAT\",\"type\":[\"string\",\"null\"]},{\"name\":\"DMBTR\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"DMBE2\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"DMBE3\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"GJAHR\",\"type\":[\"string\",\"null\"]},{\"name\":\"HWAE2\",\"type\":[\"string\",\"null\"]},{\"name\":\"HWAE3\",\"type\":[\"string\",\"null\"]},{\"name\":\"MONAT\",\"type\":[\"string\",\"null\"]},{\"name\":\"PROJK\",\"type\":[\"string\",\"null\"]},{\"name\":\"SHKZG\",\"type\":[\"string\",\"null\"]},{\"name\":\"WRBTR\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]}]}"
+                }
+            },
+            "information": {
+                "comments": {
+                    "list": [
+                        {
+                            "content": "This plugin gives us options to enter SAP source details, SAP client, SAP GCS library path, credentials and so on. \n\nAfter that you have options to use filters, get schema, etc.",
+                            "createDate": 1635762787923
+                        }
+                    ]
+                }
+            },
+            "outputSchema": [
+                {
+                    "name": "etlSchemaBody",
+                    "schema": "{\"type\":\"record\",\"name\":\"columnMetadata_0FI_AP_4\",\"fields\":[{\"name\":\"BUKRS\",\"type\":\"string\"},{\"name\":\"FISCPER\",\"type\":\"string\"},{\"name\":\"BELNR\",\"type\":\"string\"},{\"name\":\"BUZEI\",\"type\":\"string\"},{\"name\":\"UPOSZ\",\"type\":\"string\"},{\"name\":\"STATUSPS\",\"type\":[\"string\",\"null\"]},{\"name\":\"LIFNR\",\"type\":[\"string\",\"null\"]},{\"name\":\"KKBER\",\"type\":[\"string\",\"null\"]},{\"name\":\"MABER\",\"type\":[\"string\",\"null\"]},{\"name\":\"KOART\",\"type\":[\"string\",\"null\"]},{\"name\":\"UMSKZ\",\"type\":[\"string\",\"null\"]},{\"name\":\"BLART\",\"type\":[\"string\",\"null\"]},{\"name\":\"BSCHL\",\"type\":[\"string\",\"null\"]},{\"name\":\"FISCVAR\",\"type\":[\"string\",\"null\"]},{\"name\":\"BLDAT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"BUDAT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"CPUDT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"AUGDT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"MADAT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"NETDT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"SK1DT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"SK2DT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"ZFBDT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"ZBD1T\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":0},\"null\"]},{\"name\":\"ZBD2T\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":0},\"null\"]},{\"name\":\"ZBD3T\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":0},\"null\"]},{\"name\":\"ZBD1P\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":8,\"scale\":3},\"null\"]},{\"name\":\"ZBD2P\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":8,\"scale\":3},\"null\"]},{\"name\":\"LAND1\",\"type\":[\"string\",\"null\"]},{\"name\":\"ZLSCH\",\"type\":[\"string\",\"null\"]},{\"name\":\"ZTERM\",\"type\":[\"string\",\"null\"]},{\"name\":\"ZLSPR\",\"type\":[\"string\",\"null\"]},{\"name\":\"RSTGR\",\"type\":[\"string\",\"null\"]},{\"name\":\"MANSP\",\"type\":[\"string\",\"null\"]},{\"name\":\"MSCHL\",\"type\":[\"string\",\"null\"]},{\"name\":\"MANST\",\"type\":[\"string\",\"null\"]},{\"name\":\"LCURR\",\"type\":[\"string\",\"null\"]},{\"name\":\"DMSOL\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"DMHAB\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"DMSHB\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"SKNTO\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"WAERS\",\"type\":[\"string\",\"null\"]},{\"name\":\"WRSOL\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"WRHAB\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"WRSHB\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"SKFBT\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"WSKTO\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"KTOPL\",\"type\":[\"string\",\"null\"]},{\"name\":\"HKONT\",\"type\":[\"string\",\"null\"]},{\"name\":\"SAKNR\",\"type\":[\"string\",\"null\"]},{\"name\":\"FILKD\",\"type\":[\"string\",\"null\"]},{\"name\":\"AUGBL\",\"type\":[\"string\",\"null\"]},{\"name\":\"XBLNR\",\"type\":[\"string\",\"null\"]},{\"name\":\"REBZG\",\"type\":[\"string\",\"null\"]},{\"name\":\"REBZJ\",\"type\":[\"string\",\"null\"]},{\"name\":\"REBZZ\",\"type\":[\"string\",\"null\"]},{\"name\":\"VBELN\",\"type\":[\"string\",\"null\"]},{\"name\":\"XREF1\",\"type\":[\"string\",\"null\"]},{\"name\":\"XREF2\",\"type\":[\"string\",\"null\"]},{\"name\":\"XREF3\",\"type\":[\"string\",\"null\"]},{\"name\":\"SGTXT\",\"type\":[\"string\",\"null\"]},{\"name\":\"XNEGP\",\"type\":[\"string\",\"null\"]},{\"name\":\"XARCH\",\"type\":[\"string\",\"null\"]},{\"name\":\"UMSKS\",\"type\":[\"string\",\"null\"]},{\"name\":\"UPDMOD\",\"type\":[\"string\",\"null\"]},{\"name\":\"ZUONR\",\"type\":[\"string\",\"null\"]},{\"name\":\"AWTYP\",\"type\":[\"string\",\"null\"]},{\"name\":\"AWKEY\",\"type\":[\"string\",\"null\"]},{\"name\":\"BSTAT\",\"type\":[\"string\",\"null\"]},{\"name\":\"DMBTR\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"DMBE2\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"DMBE3\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"GJAHR\",\"type\":[\"string\",\"null\"]},{\"name\":\"HWAE2\",\"type\":[\"string\",\"null\"]},{\"name\":\"HWAE3\",\"type\":[\"string\",\"null\"]},{\"name\":\"MONAT\",\"type\":[\"string\",\"null\"]},{\"name\":\"PROJK\",\"type\":[\"string\",\"null\"]},{\"name\":\"SHKZG\",\"type\":[\"string\",\"null\"]},{\"name\":\"WRBTR\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]}]}"
+                }
+            ],
+            "id": "SAP-ODP",
+            "type": "batchsource",
+            "label": "SAP ODP",
+            "icon": "fa-plug",
+            "$$hashKey": "object:2616",
+            "isPluginAvailable": true,
+            "_uiPosition": {
+                "left": "646px",
+                "top": "401.5px"
+            }
+        },
+        {
+            "name": "Dataplex",
+            "plugin": {
+                "name": "Dataplex",
+                "type": "batchsink",
+                "label": "Dataplex",
+                "artifact": {
+                    "name": "google-cloud",
+                    "version": "[0.19.1,7.0.0-SNAPSHOT)",
+                    "scope": "USER"
+                },
+                "properties": {
+                    "project": "auto-detect",
+                    "serviceAccountType": "filePath",
+                    "assetType": "STORAGE_BUCKET",
+                    "referenceName": "SAP_source_to_Dataplex_Sink",
+                    "serviceFilePath": "auto-detect",
+                    "format": "csv",
+                    "suffix": "yyyy-MM-dd-HH-mm"
+                }
+            },
+            "information": {
+                "comments": {
+                    "list": [
+                        {
+                            "content": "This plugin ingests the data to Dataplex assets.\n1. You need to enter location_id>>lake_id>>zone_id>>asset_id and type of asset(either BigQuery or GCS)\n2. You need to enter your project details where you have created your Dataplex assets.\n3. Use auto-detect feature if Dataplex configuration is within the same GCP project.",
+                            "createDate": 1635762787923
+                        }
+                    ]
+                }
+            },
+            "outputSchema": [
+                {
+                    "name": "etlSchemaBody",
+                    "schema": ""
+                }
+            ],
+            "inputSchema": [
+                {
+                    "name": "SAP ODP",
+                    "schema": "{\"type\":\"record\",\"name\":\"columnMetadata_0FI_AP_4\",\"fields\":[{\"name\":\"BUKRS\",\"type\":\"string\"},{\"name\":\"FISCPER\",\"type\":\"string\"},{\"name\":\"BELNR\",\"type\":\"string\"},{\"name\":\"BUZEI\",\"type\":\"string\"},{\"name\":\"UPOSZ\",\"type\":\"string\"},{\"name\":\"STATUSPS\",\"type\":[\"string\",\"null\"]},{\"name\":\"LIFNR\",\"type\":[\"string\",\"null\"]},{\"name\":\"KKBER\",\"type\":[\"string\",\"null\"]},{\"name\":\"MABER\",\"type\":[\"string\",\"null\"]},{\"name\":\"KOART\",\"type\":[\"string\",\"null\"]},{\"name\":\"UMSKZ\",\"type\":[\"string\",\"null\"]},{\"name\":\"BLART\",\"type\":[\"string\",\"null\"]},{\"name\":\"BSCHL\",\"type\":[\"string\",\"null\"]},{\"name\":\"FISCVAR\",\"type\":[\"string\",\"null\"]},{\"name\":\"BLDAT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"BUDAT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"CPUDT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"AUGDT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"MADAT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"NETDT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"SK1DT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"SK2DT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"ZFBDT\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"ZBD1T\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":0},\"null\"]},{\"name\":\"ZBD2T\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":0},\"null\"]},{\"name\":\"ZBD3T\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":0},\"null\"]},{\"name\":\"ZBD1P\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":8,\"scale\":3},\"null\"]},{\"name\":\"ZBD2P\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":8,\"scale\":3},\"null\"]},{\"name\":\"LAND1\",\"type\":[\"string\",\"null\"]},{\"name\":\"ZLSCH\",\"type\":[\"string\",\"null\"]},{\"name\":\"ZTERM\",\"type\":[\"string\",\"null\"]},{\"name\":\"ZLSPR\",\"type\":[\"string\",\"null\"]},{\"name\":\"RSTGR\",\"type\":[\"string\",\"null\"]},{\"name\":\"MANSP\",\"type\":[\"string\",\"null\"]},{\"name\":\"MSCHL\",\"type\":[\"string\",\"null\"]},{\"name\":\"MANST\",\"type\":[\"string\",\"null\"]},{\"name\":\"LCURR\",\"type\":[\"string\",\"null\"]},{\"name\":\"DMSOL\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"DMHAB\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"DMSHB\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"SKNTO\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"WAERS\",\"type\":[\"string\",\"null\"]},{\"name\":\"WRSOL\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"WRHAB\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"WRSHB\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"SKFBT\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"WSKTO\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"KTOPL\",\"type\":[\"string\",\"null\"]},{\"name\":\"HKONT\",\"type\":[\"string\",\"null\"]},{\"name\":\"SAKNR\",\"type\":[\"string\",\"null\"]},{\"name\":\"FILKD\",\"type\":[\"string\",\"null\"]},{\"name\":\"AUGBL\",\"type\":[\"string\",\"null\"]},{\"name\":\"XBLNR\",\"type\":[\"string\",\"null\"]},{\"name\":\"REBZG\",\"type\":[\"string\",\"null\"]},{\"name\":\"REBZJ\",\"type\":[\"string\",\"null\"]},{\"name\":\"REBZZ\",\"type\":[\"string\",\"null\"]},{\"name\":\"VBELN\",\"type\":[\"string\",\"null\"]},{\"name\":\"XREF1\",\"type\":[\"string\",\"null\"]},{\"name\":\"XREF2\",\"type\":[\"string\",\"null\"]},{\"name\":\"XREF3\",\"type\":[\"string\",\"null\"]},{\"name\":\"SGTXT\",\"type\":[\"string\",\"null\"]},{\"name\":\"XNEGP\",\"type\":[\"string\",\"null\"]},{\"name\":\"XARCH\",\"type\":[\"string\",\"null\"]},{\"name\":\"UMSKS\",\"type\":[\"string\",\"null\"]},{\"name\":\"UPDMOD\",\"type\":[\"string\",\"null\"]},{\"name\":\"ZUONR\",\"type\":[\"string\",\"null\"]},{\"name\":\"AWTYP\",\"type\":[\"string\",\"null\"]},{\"name\":\"AWKEY\",\"type\":[\"string\",\"null\"]},{\"name\":\"BSTAT\",\"type\":[\"string\",\"null\"]},{\"name\":\"DMBTR\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"DMBE2\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"DMBE3\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]},{\"name\":\"GJAHR\",\"type\":[\"string\",\"null\"]},{\"name\":\"HWAE2\",\"type\":[\"string\",\"null\"]},{\"name\":\"HWAE3\",\"type\":[\"string\",\"null\"]},{\"name\":\"MONAT\",\"type\":[\"string\",\"null\"]},{\"name\":\"PROJK\",\"type\":[\"string\",\"null\"]},{\"name\":\"SHKZG\",\"type\":[\"string\",\"null\"]},{\"name\":\"WRBTR\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":25,\"scale\":2},\"null\"]}]}"
+                }
+            ],
+            "id": "Dataplex",
+            "type": "batchsink",
+            "label": "Dataplex",
+            "icon": "fa-plug",
+            "$$hashKey": "object:2617",
+            "isPluginAvailable": true,
+            "_uiPosition": {
+                "left": "946px",
+                "top": "401.5px"
+            }
+        }
+    ],
+    "connections": [
+        {
+            "from": "SAP ODP",
+            "to": "Dataplex"
+        }
+    ],
+    "comments": [],
+    "resources": {
+        "memoryMB": 2048,
+        "virtualCores": 1
+    },
+    "driverResources": {
+        "memoryMB": 2048,
+        "virtualCores": 1
+    },
+    "postActions": [],
+    "properties": {},
+    "processTimingEnabled": true,
+    "stageLoggingEnabled": false,
+    "description": "This pipeline is a sample pipeline for SAP as source and Dataplex GCS sink as destination.",
+    "engine": "spark",
+    "schedule": "0 1 */1 * *",
+    "maxConcurrentRuns": 1
+}
