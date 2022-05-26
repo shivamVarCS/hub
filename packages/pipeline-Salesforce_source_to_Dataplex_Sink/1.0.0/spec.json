@@ -1,11 +1,11 @@
 {
   "specVersion": "1.0",
-  "description": "Transfers data from SAP to Dataplex.",
-  "label": "Transfer data from SAP to Dataplex",
+  "description": "Transfers data from Salesforce to Dataplex.",
+  "label": "Transfer data from Salesforce to Dataplex",
   "author": "Google",
   "org": "Google, LLC",
   "cdapVersion": "[6.6.0,7.0.0-SNAPSHOT)",
-  "created": 1652808635,
+  "created": 1653520433,
   "categories": [
     "pipeline"
   ],
@@ -25,7 +25,7 @@
         },
         {
           "name": "name",
-          "value": "SAP_source_to_Dataplex_Sink",
+          "value": "Salesforce_source_to_Dataplex_Sink",
           "canModify": true
         },
         {
