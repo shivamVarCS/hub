@@ -4,7 +4,7 @@
   "label": "Kafka Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[6.3.0-SNAPSHOT,7.0.0)",
+  "cdapVersion": "[6.3.0-SNAPSHOT,6.7.0-SNAPSHOT)",
   "created": 1614637770,
   "categories": [
     "hydrator-plugin"

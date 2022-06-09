@@ -1,0 +1,46 @@
+{
+  "specVersion": "1.0",
+  "description": "Plugins to read from and write to Kafka in CDAP batch or realtime pipelines. It supports reading from kerberos enabled kafka.",
+  "label": "Kafka Plugins",
+  "author": "Cask",
+  "org": "Cask Data, Inc.",
+  "cdapVersion": "[6.7.0-SNAPSHOT,7.0.0-SNAPSHOT)",
+  "created": 1654796835,
+  "categories": [
+    "hydrator-plugin"
+  ],
+  "actions": [
+    {
+      "type": "one_step_deploy_plugin",
+      "label": "Deploy Kafka Plugins",
+      "arguments": [
+        {
+          "name": "name",
+          "value": "kafka-plugins",
+          "canModify": false
+        },
+        {
+          "name": "version",
+          "value": "3.0.0",
+          "canModify": false
+        },
+        {
+          "name": "scope",
+          "value": "user",
+          "canModify": false
+        },
+        {
+          "name": "config",
+          "value": "kafka-plugins-client-3.0.0.json",
+          "canModify": false
+        },
+        {
+          "name": "jar",
+          "value": "kafka-plugins-client-3.0.0.jar",
+          "canModify": false
+        }
+      ]
+    }
+  ]
+}
+
