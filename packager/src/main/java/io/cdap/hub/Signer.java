@@ -26,6 +26,10 @@ import org.bouncycastle.openpgp.PGPSecretKeyRingCollection;
 import org.bouncycastle.openpgp.PGPSignature;
 import org.bouncycastle.openpgp.PGPSignatureGenerator;
 import org.bouncycastle.openpgp.PGPUtil;
+import org.bouncycastle.openpgp.operator.PBESecretKeyDecryptor;
+import org.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
+import org.bouncycastle.openpgp.operator.jcajce.JcaPGPContentSignerBuilder;
+import org.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyDecryptorBuilder;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -43,37 +47,47 @@ import java.security.SignatureException;
  */
 public class Signer {
 
+  private static final String PROVIDER_NAME = "BC";
+
   private final PGPSignatureGenerator signer;
 
   static {
     Security.addProvider(new BouncyCastleProvider());
   }
 
-  public static Signer fromKeyFile(File keyFile, long id, String keyPassword) throws IOException, PGPException,
-    NoSuchProviderException, NoSuchAlgorithmException {
+  public static Signer fromKeyFile(File keyFile, long id, String keyPassword) throws IOException, PGPException {
 
     PGPSecretKey secretKey = getSecretKey(keyFile, id);
-    PGPPrivateKey privateKey;
-    try {
-      privateKey = secretKey.extractPrivateKey(keyPassword.toCharArray(), "BC");
-    } catch (Exception e) {
-      throw new IllegalArgumentException("Could not extract private key. Please make sure the password is correct.", e);
-    }
+    PGPPrivateKey privateKey = extractPrivateKey(secretKey, keyPassword);
     int algorithm = secretKey.getPublicKey().getAlgorithm();
 
-    PGPSignatureGenerator signer = new PGPSignatureGenerator(algorithm, PGPUtil.SHA256, "BC");
-    signer.initSign(PGPSignature.BINARY_DOCUMENT, privateKey);
+    JcaPGPContentSignerBuilder contentSignerBuilder =
+      new JcaPGPContentSignerBuilder(algorithm, PGPUtil.SHA256).setProvider(PROVIDER_NAME);
+    PGPSignatureGenerator signer = new PGPSignatureGenerator(contentSignerBuilder);
+    signer.init(PGPSignature.BINARY_DOCUMENT, privateKey);
     return new Signer(signer);
   }
 
   private static PGPSecretKey getSecretKey(File keyFile, long id) throws IOException, PGPException {
     try (InputStream is = PGPUtil.getDecoderStream(new FileInputStream(keyFile))) {
-      PGPSecretKeyRingCollection secretKeyRings = new PGPSecretKeyRingCollection(is);
+      JcaKeyFingerprintCalculator fingerPrintCalculator = new JcaKeyFingerprintCalculator().setProvider(PROVIDER_NAME);
+      PGPSecretKeyRingCollection secretKeyRings = new PGPSecretKeyRingCollection(is, fingerPrintCalculator);
       PGPSecretKey key = secretKeyRings.getSecretKey(id);
       if (key == null) {
         throw new IllegalArgumentException("Could not find secret key with id " + id + " in keyring.");
       }
       return key;
+    }
+  }
+
+  private static PGPPrivateKey extractPrivateKey(PGPSecretKey secretKey, String keyPassword) {
+    try {
+      PBESecretKeyDecryptor keyDecryptor = new JcePBESecretKeyDecryptorBuilder()
+        .setProvider(PROVIDER_NAME)
+        .build(keyPassword.toCharArray());
+      return secretKey.extractPrivateKey(keyDecryptor);
+    } catch (Exception e) {
+      throw new IllegalArgumentException("Could not extract private key. Please make sure the password is correct.", e);
     }
   }
 
@@ -88,7 +102,7 @@ public class Signer {
 
     // logic comes from DetachedSignatureProcessor example from bouncy castle
     byte[] buffer = new byte[1024 * 1024];
-    try (BufferedInputStream is  = new BufferedInputStream(new FileInputStream(fileToSign))) {
+    try (BufferedInputStream is = new BufferedInputStream(new FileInputStream(fileToSign))) {
       int len;
       while (is.available() != 0) {
         len = is.read(buffer);
