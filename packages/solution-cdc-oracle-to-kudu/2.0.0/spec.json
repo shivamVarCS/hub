@@ -29,12 +29,12 @@
         },
         {
           "name": "config",
-          "value": "cask-cdc-2.0.0-SNAPSHOT.json",
+          "value": "cask-cdc-2.0.0.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "cask-cdc-2.0.0-SNAPSHOT.jar",
+          "value": "cask-cdc-2.0.0.jar",
           "canModify": false
         }
       ]
