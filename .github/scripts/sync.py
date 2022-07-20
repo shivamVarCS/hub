@@ -15,6 +15,7 @@
 import utilities
 # commands to sync the local repo in the runner to GCS central production bucket
 # -c flag : to compute and compare checksums (instead of comparing mtime) for files
-utilities.run_shell_command('gsutil -m rsync -c -r packages/ gs://hub-cdap-io/v2/packages/')
-utilities.run_shell_command('gsutil cp categories.json gs://hub-cdap-io/v2/categories.json')
-utilities.run_shell_command('gsutil cp packages.json gs://hub-cdap-io/v2/packages.json')
+
+utilities.run_shell_command('gsutil -m rsync -d -c -r -n packages/ gs://${CENTRAL_GCS_BUCKET_PREFIX}/packages/')
+utilities.run_shell_command('gsutil cp categories.json gs://${CENTRAL_GCS_BUCKET_PREFIX}/categories.json')
+utilities.run_shell_command('gsutil cp packages.json gs://${CENTRAL_GCS_BUCKET_PREFIX}/packages.json')
