@@ -29,7 +29,7 @@ jobs:
     - name: Repository Checkout    # Action to access file structure of repository in runner
       uses: actions/checkout@v2.3.4
 
-    - name: Run Script    # Step to execute build.py script that performs build operations of this job
+    - name: Run Script to Build packages.json    # Step to execute build.py script that performs build operations of this job
       run: python3 ./.github/scripts/build.py
 
     - name: Store packages.json as Artifact    # Action to upload packages.json as an artifact for further use
@@ -38,7 +38,7 @@ jobs:
         name: packages.json
         path: ./packages.json
 
-    - name: Run Script    # Step to execute list.py script that performs find and list operations of this job
+    - name: Run Script to List Missing Artifact Files    # Step to execute list.py script that performs find and list operations of this job
       run: python3 ./.github/scripts/list.py
 
     - name: Setting Output    # Step to set resultant list as output of job
@@ -103,7 +103,7 @@ jobs:
       with:
         path: artifacts/
 
-    - name: Run Script    # Step to execute merge.py script that performs operations of this job
+    - name: Run Script to Merge Fetched Missing Files    # Step to execute merge.py script that performs operations of this job
       run: python3 ./.github/scripts/merge.py
 
     - name: Syncing Central GCS Bucket    # Step to sync central GCS bucket with updated artifacts, along with cleanup of bucket
