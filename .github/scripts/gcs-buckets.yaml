@@ -1,5 +1,5 @@
 central-bucket:
-hub-cdap-io/v2
+  hub-cdap-io/v2
 
 regional-buckets:
 - cdfhub-us-west1
