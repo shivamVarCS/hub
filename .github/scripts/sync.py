@@ -39,5 +39,3 @@ with open(env_file, "a") as myfile:
 utilities.run_shell_command('gsutil -m rsync -d -c -r -n packages/ gs://' + central_bucket + '/packages/')
 utilities.run_shell_command('gsutil cp -n categories.json gs://' + central_bucket + '/categories.json')
 utilities.run_shell_command('gsutil cp -n packages.json gs://' + central_bucket + '/packages.json')
-utilities.run_shell_command('gsutil -m -q rsync -d -c -r -n gs://hub-cdap-io/v2/packages gs://cdfhub-us-west1/hub')
-utilities.run_shell_command('gsutil -m cp -r -n gs://hub-cdap-io/v2/\*.json gs://cdfhub-us-west1/hub')
