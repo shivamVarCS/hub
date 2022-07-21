@@ -131,9 +131,9 @@ jobs:
     needs: merge-missing-artifacts
     if: success()
 
-    strategy:
-      matrix:
-        loc: ${{ fromJSON(needs.merge-missing-artifacts.outputs.matrix) }}
+    #strategy:
+     # matrix:
+      #  loc: ${{ fromJSON(needs.merge-missing-artifacts.outputs.matrix) }}
 
     steps:
 
@@ -143,7 +143,5 @@ jobs:
         timeout_seconds: 3600
         max_attempts: 3
         retry_on: error
-        on_retry_command: echo "The upload to ${{ matrix.loc.regional_address }} has failed in this attempt, retrying ..."
-        command: |
-          gsutil -m rsync -d -c -r -n ${{ matrix.loc.central_address }}/packages ${{ matrix.loc.regional_address }} 
-          gsutil -m cp -r -n ${{ matrix.loc.central_address }}/\*.json ${{ matrix.loc.regional_address }}
+        on_retry_command: echo "The upload to regional bucket has failed in this attempt, retrying ..."
+        command: python3 ./.github/scripts/sync_regional.py
