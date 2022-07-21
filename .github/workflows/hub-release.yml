@@ -112,7 +112,7 @@ jobs:
     - name: Syncing Central GCS Bucket    # Step to sync central GCS bucket with updated artifacts, along with cleanup of bucket
       uses: nick-fields/retry@e88a9994b039653512d697de1bce46b00bfe11b5    # Retrying upto 3 times if operations fails due to network error
       with:
-        timeout_seconds: 600
+        timeout_seconds: 3600
         max_attempts: 3
         retry_on: error
         on_retry_command: echo "The upload to central bucket failed in this attempt, retrying...."
@@ -140,7 +140,7 @@ jobs:
     - name: Syncing buckets, max 3 retries    # Action to sync bucket, and retry upto 3 times if failed
       uses: nick-fields/retry@e88a9994b039653512d697de1bce46b00bfe11b5
       with:
-        timeout_seconds: 600
+        timeout_seconds: 3600
         max_attempts: 3
         retry_on: error
         on_retry_command: echo "The upload to ${{ matrix.loc.regional_address }} has failed in this attempt, retrying ..."
