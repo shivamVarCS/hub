@@ -126,25 +126,22 @@ jobs:
       matrix: ${{ steps.set-gcs-buckets.outputs.buckets }}    # JSON output containing contents of strategy matrix of next job
 
 
-  sync-regional-buckets:    # Job to sync all regional GCS buckets with central GCS bucket, in parallel
-    runs-on: cdapio-hub-k8-runner
-    needs: merge-missing-artifacts
-    if: success()
+  #sync-regional-buckets:    # Job to sync all regional GCS buckets with central GCS bucket, in parallel
+  #  runs-on: cdapio-hub-k8-runner
+  #  needs: merge-missing-artifacts
+  #  if: success()
 
     #strategy:
      # matrix:
       #  loc: ${{ fromJSON(needs.merge-missing-artifacts.outputs.matrix) }}
 
-    steps:
+  #  steps:
 
-    - name: Repository Checkout    # Action to access file structure of repository in runner
-      uses: actions/checkout@v2.3.4
-
-    - name: Syncing buckets, max 3 retries    # Action to sync bucket, and retry upto 3 times if failed
-      uses: nick-fields/retry@e88a9994b039653512d697de1bce46b00bfe11b5
-      with:
-        timeout_seconds: 3600
-        max_attempts: 3
-        retry_on: error
-        on_retry_command: echo "The upload to regional bucket has failed in this attempt, retrying ..."
-        command: python3 ./.github/scripts/sync_regional.py
+  #  - name: Syncing buckets, max 3 retries    # Action to sync bucket, and retry upto 3 times if failed
+  #    uses: nick-fields/retry@e88a9994b039653512d697de1bce46b00bfe11b5
+  #    with:
+  #      timeout_seconds: 3600
+  #      max_attempts: 3
+  #      retry_on: error
+  #      on_retry_command: echo "The upload to regional bucket has failed in this attempt, retrying ..."
+  #      command: python3 ./.github/scripts/sync_regional.py
