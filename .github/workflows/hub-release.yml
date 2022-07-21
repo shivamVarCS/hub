@@ -19,6 +19,9 @@ on:
 concurrency:
   group: automation    # In-order execution by limiting to only 1 workflow run at a time
 
+env:
+  CENTRAL_GCS_BUCKET_PREFIX: "hub-cdap-io/v2"
+
 jobs:
 
   setup-build-and-list-missing-artifacts:    # Job to build packages.json file, find and list missing files
@@ -114,3 +117,25 @@ jobs:
         retry_on: error
         on_retry_command: echo "The upload to central bucket failed in this attempt, retrying...."
         command: python3 ./.github/scripts/sync.py
+
+  sync-regional-buckets:    # Job to sync all regional GCS buckets with central GCS bucket, in parallel
+    runs-on: cdapio-hub-k8-runner
+    needs: merge-missing-artifacts
+    if: success()
+
+    strategy:
+      matrix:
+        loc: [ "us-west1" , "asia-south1", "asia-east1", "asia-east2", "asia-northeast1", "asia-northeast2", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west6", "us-central1", "us-east1", "us-east4", "us-west2" ]
+
+    steps:
+
+    - name: Syncing buckets, max 3 retries    # Action to sync bucket, and retry upto 3 times if failed
+      uses: nick-fields/retry@e88a9994b039653512d697de1bce46b00bfe11b5
+      with:
+        timeout_seconds: 180
+        max_attempts: 3
+        retry_on: error
+        on_retry_command: echo "The upload to ${{ matrix.loc }} has failed in this attempt, retrying ..."
+        command: |
+          gsutil -m rsync -d -c -r -n gs://${{ env.GCS_BUCKET_ADDRESS }}/packages gs://cdfhub-${{ matrix.loc }}/hub 
+          gsutil -m cp -r gs://${{ env.GCS_BUCKET_ADDRESS }}/\*.json gs://cdfhub-${{ matrix.loc }}/hub
