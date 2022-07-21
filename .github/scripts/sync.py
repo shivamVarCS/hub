@@ -17,5 +17,5 @@ import utilities
 # -c flag : to compute and compare checksums (instead of comparing mtime) for files
 
 utilities.run_shell_command('gsutil -m rsync -d -c -r -n packages/ gs://${CENTRAL_GCS_BUCKET_PREFIX}/packages/')
-utilities.run_shell_command('gsutil cp categories.json gs://${CENTRAL_GCS_BUCKET_PREFIX}/categories.json')
-utilities.run_shell_command('gsutil cp packages.json gs://${CENTRAL_GCS_BUCKET_PREFIX}/packages.json')
+utilities.run_shell_command('gsutil cp -n categories.json gs://${CENTRAL_GCS_BUCKET_PREFIX}/categories.json')
+utilities.run_shell_command('gsutil cp -n packages.json gs://${CENTRAL_GCS_BUCKET_PREFIX}/packages.json')
