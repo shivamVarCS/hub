@@ -112,9 +112,9 @@ jobs:
     - name: Syncing Central GCS Bucket    # Step to sync central GCS bucket with updated artifacts, along with cleanup of bucket
       uses: nick-fields/retry@e88a9994b039653512d697de1bce46b00bfe11b5    # Retrying upto 3 times if operations fails due to network error
       with:
-        timeout_seconds: 3600
+        timeout_seconds: 600
         max_attempts: 3
-        retry_on: error
+        retry_on: any
         on_retry_command: echo "The upload to central bucket failed in this attempt, retrying...."
         command: python3 ./.github/scripts/sync.py
 
@@ -126,22 +126,24 @@ jobs:
       matrix: ${{ steps.set-gcs-buckets.outputs.buckets }}    # JSON output containing contents of strategy matrix of next job
 
 
-  #sync-regional-buckets:    # Job to sync all regional GCS buckets with central GCS bucket, in parallel
-  #  runs-on: cdapio-hub-k8-runner
-  #  needs: merge-missing-artifacts
-  #  if: success()
+  sync-regional-buckets:    # Job to sync all regional GCS buckets with central GCS bucket, in parallel
+    runs-on: cdapio-hub-k8-runner
+    needs: merge-missing-artifacts
+    if: success()
 
-    #strategy:
-     # matrix:
-      #  loc: ${{ fromJSON(needs.merge-missing-artifacts.outputs.matrix) }}
+    strategy:
+      matrix:
+        loc: ${{ fromJSON(needs.merge-missing-artifacts.outputs.matrix) }}
 
-  #  steps:
+    steps:
 
-  #  - name: Syncing buckets, max 3 retries    # Action to sync bucket, and retry upto 3 times if failed
-  #    uses: nick-fields/retry@e88a9994b039653512d697de1bce46b00bfe11b5
-  #    with:
-  #      timeout_seconds: 3600
-  #      max_attempts: 3
-  #      retry_on: error
-  #      on_retry_command: echo "The upload to regional bucket has failed in this attempt, retrying ..."
-  #      command: python3 ./.github/scripts/sync_regional.py
+    - name: Syncing buckets, max 3 retries    # Action to sync bucket, and retry upto 3 times if failed
+      uses: nick-fields/retry@e88a9994b039653512d697de1bce46b00bfe11b5
+      with:
+        timeout_seconds: 600
+        max_attempts: 3
+        retry_on: any
+        on_retry_command: echo "The upload to regional bucket has failed in this attempt, retrying ..."
+        command: |
+          gsutil -m -q rsync -d -c -r -n ${{ matrix.loc.central_address }}/packages ${{ matrix.loc.regional_address }} 
+          gsutil -m cp -r -n ${{ matrix.loc.central_address }}/\*.json ${{ matrix.loc.regional_address }}
