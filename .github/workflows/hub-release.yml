@@ -137,6 +137,9 @@ jobs:
 
     steps:
 
+    - name: Repository Checkout    # Action to access file structure of repository in runner
+      uses: actions/checkout@v2.3.4
+
     - name: Syncing buckets, max 3 retries    # Action to sync bucket, and retry upto 3 times if failed
       uses: nick-fields/retry@e88a9994b039653512d697de1bce46b00bfe11b5
       with:
