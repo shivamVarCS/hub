@@ -131,9 +131,9 @@ jobs:
     needs: merge-missing-artifacts
     if: success()
 
-    strategy:
-      matrix:
-        loc: ${{ fromJSON(needs.merge-missing-artifacts.outputs.matrix) }}
+    #strategy:
+     # matrix:
+      #  loc: ${{ fromJSON(needs.merge-missing-artifacts.outputs.matrix) }}
 
     steps:
 
@@ -145,5 +145,5 @@ jobs:
         retry_on: error
         on_retry_command: echo "The upload to ${{ matrix.loc.regional_address }} has failed in this attempt, retrying ..."
         command: |
-          gsutil -m rsync -d -c -r -n ${{ matrix.loc.central_address }}/packages ${{ matrix.loc.regional_address }} 
-          gsutil -m cp -r -n ${{ matrix.loc.central_address }}/\*.json ${{ matrix.loc.regional_address }}
+          gsutil -m rsync -d -c -r -n gs://hub-cdap-io/v2/packages gs://cdfhub-us-west1/hub 
+          gsutil -m cp -r -n gs://hub-cdap-io/v2/\*.json gs://cdfhub-us-west1/hub
