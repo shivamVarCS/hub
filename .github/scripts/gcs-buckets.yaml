@@ -1,0 +1,22 @@
+central-bucket:
+hub-cdap-io/v2
+
+regional-buckets:
+- cdfhub-us-west1
+- cdfhub-asia-south1
+- cdfhub-asia-east1
+- cdfhub-asia-east2
+- cdfhub-asia-northeast1
+- cdfhub-asia-northeast2
+- cdfhub-asia-southeast1
+- cdfhub-australia-southeast1
+- cdfhub-europe-north1
+- cdfhub-europe-west1
+- cdfhub-europe-west2
+- cdfhub-europe-west3
+- cdfhub-europe-west4
+- cdfhub-europe-west6
+- cdfhub-us-central1
+- cdfhub-us-east1
+- cdfhub-us-east4
+- cdfhub-us-west2
