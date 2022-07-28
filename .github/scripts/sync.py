@@ -36,6 +36,7 @@ with open(env_file, "a") as myfile:
 # commands to sync the local repo in the runner to GCS central production bucket
 # -c flag : to compute and compare checksums (instead of comparing mtime) for files
 
+# TODO : remove -n after verification.
 utilities.run_shell_command('gsutil -m rsync -d -c -r -n packages/ gs://' + central_bucket + '/packages/')
 utilities.run_shell_command('gsutil cp -n categories.json gs://' + central_bucket + '/categories.json')
 utilities.run_shell_command('gsutil cp -n packages.json gs://' + central_bucket + '/packages.json')
