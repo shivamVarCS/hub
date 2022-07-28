@@ -148,5 +148,5 @@ jobs:
         retry_on: any
         on_retry_command: echo "The upload to regional bucket has failed in this attempt, retrying ..."
         command: |
-          gsutil -m -q rsync -d -c -r ${{ matrix.loc.central_address }}/packages ${{ matrix.loc.regional_address }} 
-          gsutil -m cp -r ${{ matrix.loc.central_address }}/\*.json ${{ matrix.loc.regional_address }}
+          gsutil -m -q rsync -d -c -r -n ${{ matrix.loc.central_address }}/packages ${{ matrix.loc.regional_address }} 
+          gsutil -m cp -r -n ${{ matrix.loc.central_address }}/\*.json ${{ matrix.loc.regional_address }}
