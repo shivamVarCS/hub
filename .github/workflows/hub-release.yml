@@ -76,12 +76,19 @@ jobs:
       run: mkdir artifact
 
     - name: Sync with GCS    # Step to sync GCS bucket directory that is expected to contain missing file with working directory
-      run: gsutil rsync gs://hub-cdap-io/v2/$DIR artifact/
+      run: |
+        if [ `gsutil -m ls -r gs://$CENTRAL_GCS_BUCKET_PREFIX/packages | grep $DIR | wc -l` -gt 0 ]; 
+        then
+          gsutil -m rsync -c -r gs://$CENTRAL_GCS_BUCKET_PREFIX/$DIR artifact/
+        else
+          echo "${DIR} does not exist in gs://${CENTRAL_GCS_BUCKET_PREFIX}"
+        fi
 
     - name: Fetching Missing Files    # Step to find and fetch the missing file
       run: |
         echo "Fetching: ${FILEPATH}"
-        if [ -f "artifact/${FILENAME}" ]; then
+        if [ -f "artifact/${FILENAME}" ]; 
+        then
           echo "${FILENAME} : Found in GCS Bucket"
         else
           echo "${FILENAME} : Not found in GCS Bucket, Fetching from Maven Central"
