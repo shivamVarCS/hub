@@ -143,7 +143,7 @@ jobs:
 
     strategy:
       matrix:
-        loc: ${{ fromJSON(needs.merge-missing-artifacts.outputs.matrix) }}
+        loc: ${{ fromJSON(needs.merge-missing-artifacts-and-sync-central-gcs-bucket.outputs.matrix) }}
 
     steps:
 
