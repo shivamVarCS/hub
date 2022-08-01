@@ -75,16 +75,16 @@ jobs:
     - name: Creating Working Directory    # Step to create a temporary working directory
       run: mkdir artifact
 
-    - name: Sync with GCS    # Step to sync GCS bucket directory that is expected to contain missing file with working directory
+    - name: Fetch from Central Hub GCS if Exists   # Step to copy file from Central Hub GCS bucket if exists
       run: |
-        if [ `gsutil -m ls -r gs://$CENTRAL_GCS_BUCKET_PREFIX/packages | grep $DIR | wc -l` -gt 0 ]; 
+        if [ `gsutil -q stat gs://$CENTRAL_GCS_BUCKET_PREFIX/$FILEPATH | echo $?` -eq 0 ]; 
         then
-          gsutil -m rsync -c -r gs://$CENTRAL_GCS_BUCKET_PREFIX/$DIR artifact/
+          gsutil cp -n gs://$CENTRAL_GCS_BUCKET_PREFIX/$FILEPATH artifact/
         else
-          echo "${DIR} does not exist in gs://${CENTRAL_GCS_BUCKET_PREFIX}"
+          echo "${FILEPATH} does not exist in gs://${CENTRAL_GCS_BUCKET_PREFIX}"
         fi
 
-    - name: Fetching Missing Files    # Step to find and fetch the missing file
+    - name: Fetch from Maven Central if Not Found in Central Hub GCS    # Step to fetch the missing file from maven central if not found in GCS
       run: |
         echo "Fetching: ${FILEPATH}"
         if [ -f "artifact/${FILENAME}" ]; 
@@ -101,7 +101,7 @@ jobs:
         name: ${{ matrix.artifact.artifact }}
         path: ${{ matrix.artifact.target_path }}
 
-  merge-missing-artifacts:    # Job to place all artifacts in appropriate location, and push to GCS buckets
+  merge-missing-artifacts-and-sync-central-gcs-bucket:    # Job to place all artifacts in appropriate location, and sync central Hub GCS bucket
     needs: fetch-missing-artifacts
     if: success()
     runs-on: cdapio-hub-k8-runner
@@ -138,7 +138,7 @@ jobs:
 
   sync-regional-buckets:    # Job to sync all regional GCS buckets with central GCS bucket, in parallel
     runs-on: cdapio-hub-k8-runner
-    needs: merge-missing-artifacts
+    needs: merge-missing-artifacts-and-sync-central-gcs-bucket
     if: success()
 
     strategy:
