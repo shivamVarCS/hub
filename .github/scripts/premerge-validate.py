@@ -28,12 +28,12 @@ logging.getLogger().setLevel(logging.DEBUG)
 CENTRAL_GCS_BUCKET_PREFIX = 'hub-cdap-io/v2'
 onlyWarningTypes: List[str] = ['create_driver_artifact']
 
-## 1 . FETCHING ADDED/MODIFIED ARTIFACTS
-# Getting list of added artifacts and modified artifacts, and concatenating them
-added_list = ast.literal_eval(os.getenv('ADDED_LIST'))
-modified_list = ast.literal_eval(os.getenv('MODIFIED_LIST'))
-am_list = added_list + modified_list
-logging.debug('List of added or modified files within pull request')
+## 1 . FETCHING ADDED/MODIFIED/RENAMED FILES
+# Getting list of added_modified and renamed files, and concatenating them
+added_modified_list = ast.literal_eval(os.getenv('ADDED_MODIFIED_LIST'))
+renamed_list = ast.literal_eval(os.getenv('RENAMED_LIST'))
+am_list = added_modified_list + renamed_list
+logging.debug('List of added/modified/renamed files within pull request')
 logging.debug(am_list)
 
 
@@ -50,14 +50,14 @@ for file in am_list:
     version = file.split('/')[2]
     modifiedArtifacts.append(artifact + '/' + version)
 
-# logging the final list of artifact versions which were added/modified
-logging.debug("Modified artifacts are (where spec.json was modified/added) :")
+# logging the final list of artifact versions which were added/modified/renamed
+logging.debug("Modified artifacts are (where spec.json was modified/added/renamed) :")
 logging.debug(modifiedArtifacts)
 logging.debug("Spec.json files are :")
 logging.debug(specFiles)
 
 if len(specFiles) == 0:
-  # exiting successfully if none of the modified/added files are spec.json
+  # exiting successfully if none of the modified/added/renamed files are spec.json
   sys.exit(0)
 
 ## 2. CHECKING PACKAGES.JSON FILE
@@ -65,7 +65,7 @@ packages: List[Any] = json.loads(open("./packages.json", "r").read())
 # converting list to dictionary format to access easily later
 modifiedPackages: Dict[str, Any] = dict([(artifact['name'] + '/' + artifact['version'], artifact)  # Key: "<artifact_name>/<version>" Value: artifact object in packagesList
                                          for artifact in packages
-                                         if artifact['name'] + '/' + artifact['version'] in modifiedArtifacts])  # only appending those artifacts which are modified/added
+                                         if artifact['name'] + '/' + artifact['version'] in modifiedArtifacts])  # only appending those artifacts which are modified/added/renamed
 logging.debug("Dictionary of modified artifacts: \n")
 logging.debug(modifiedPackages)
 
@@ -87,10 +87,10 @@ for index, artifact in enumerate(modifiedArtifacts):
 
   # Validating packages.json
   if 'cdapVersion' in specFile and not(specFile['cdapVersion'] == modifiedPackagesItem['cdapVersion']):
-    sys.exit(f"Supported CDAP version does not match in packages.json for added/modified artifact,version - {artifact}.")
+    sys.exit(f"Supported CDAP version does not match in packages.json for added/modified/renamed artifact,version - {artifact}.")
 
 else:
-  logging.debug("Success, all modified/added artifact versions are present in packages.json")
+  logging.debug("Success, all modified/added/renamed artifact versions are present in packages.json")
 
 
 ## 3. ITERATING THROUGH THE MODIFIED ARTIFACTS AND CHECKING IF ALL THE REQUIRED DEPENDENCIES ARE RETRIEVABLE

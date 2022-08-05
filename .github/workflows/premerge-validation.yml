@@ -35,6 +35,6 @@ jobs:
     - name: Log list and search for necessary files #list out , find and search for missing artifacts
       if: always()
       env:
-        ADDED_LIST: ${{ steps.list.outputs.added }}
-        MODIFIED_LIST: ${{ steps.list.outputs.modified }}
+        ADDED_MODIFIED_LIST: ${{ steps.list.outputs.added_modified }}
+        RENAMED_LIST: ${{ steps.list.outputs.renamed }}
       run: python3 ./.github/scripts/premerge-validate.py
