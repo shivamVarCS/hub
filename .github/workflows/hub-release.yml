@@ -17,7 +17,6 @@ on:
   push:    # Automated trigger on deploy branch
     branches:
     - deploy
-  workflow_dispatch:    # Manual trigger event to execute workflow
 
 concurrency:
   group: automation    # In-order execution by limiting to only 1 workflow run at a time
