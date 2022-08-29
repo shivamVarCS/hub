@@ -20,3 +20,6 @@ regional-buckets:
 - cdfhub-us-east1
 - cdfhub-us-east4
 - cdfhub-us-west2
+- cdfhub-us-east5
+- cdfhub-us-south1
+- cdfhub-me-west1
