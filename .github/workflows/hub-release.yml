@@ -91,7 +91,7 @@ jobs:
           echo "${FILENAME} : Found in GCS Bucket"
         else
           echo "${FILENAME} : Not found in GCS Bucket, Fetching from Maven Central"
-          mvn org.apache.maven.plugins:maven-dependency-plugin:2.8:copy -Dartifact=${ID}:${VERSION}:${EXTENSION} -DoutputDirectory=./artifact/
+          mvn org.apache.maven.plugins:maven-dependency-plugin:2.8:copy -Dartifact=${ID}:${EXTENSION} -DoutputDirectory=./artifact/
         fi
 
     - name: Upload Files    # Action to upload the fetched missing file as an artifact
