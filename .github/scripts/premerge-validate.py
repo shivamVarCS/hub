@@ -18,9 +18,8 @@ from typing import Any, List, Dict
 import yaml
 import json
 import logging
-import requests
 import ast
-import subprocess as sp
+import utilities
 
 # Setting logging level to DEBUG
 logging.getLogger().setLevel(logging.DEBUG)
@@ -124,7 +123,8 @@ for specFile in specFiles:
 
   for index, necessaryFile in enumerate(necessaryFiles):
 
-    if sp.getoutput(f'gsutil -q stat gs://{CENTRAL_GCS_BUCKET_PREFIX}/{necessaryFile}; echo $?') == '0':
+    rc = utilities.run_shell_command(f'gsutil -q stat gs://{CENTRAL_GCS_BUCKET_PREFIX}/{necessaryFile}')
+    if rc == 0:
       logging.debug(f"{necessaryFile} found in GCS bucket")
 
     elif os.path.isfile(os.path.join(artifactDir, 'build.yaml')):
@@ -137,11 +137,9 @@ for specFile in specFiles:
       version = artifactVersionDir.split('/')[-1]
       packaging = necessaryFile.split('.')[-1]
 
-      # using Maven Central search api to get the required file
-      response = requests.get(f'https://search.maven.org/solrsearch/select?q=g:{groupId}%20AND%20a:{artifactId}%20AND%20v:{version}%20AND%20p:{packaging}&rows=20&wt=json').json()
-      logging.debug(response['response']['docs'])
-
-      if len(response['response']['docs']) > 0:
+      # copying the required file from maven central
+      rc = utilities.run_shell_command(f'mvn -q org.apache.maven.plugins:maven-dependency-plugin:2.8:copy -Dartifact={groupId}:{artifactId}:{version}:{packaging} -DoutputDirectory=./artifact/')
+      if rc == 0:
         logging.debug(f"{necessaryFile} found in Maven Central")
       else:
         logging.warning(f"{necessaryFile} not found in GCS or Maven Central")
