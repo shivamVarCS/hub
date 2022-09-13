@@ -76,7 +76,8 @@ jobs:
 
     - name: Fetch from Central Hub GCS if Exists   # Step to copy file from Central Hub GCS bucket if exists
       run: |
-        if [ `gsutil -q stat gs://$CENTRAL_GCS_BUCKET_PREFIX/$FILEPATH | echo $?` -eq 0 ]; 
+        gsutil stat gs://$CENTRAL_GCS_BUCKET_PREFIX/$FILEPATH
+        if [ `echo $?` -eq 0 ];
         then
           gsutil cp -n gs://$CENTRAL_GCS_BUCKET_PREFIX/$FILEPATH artifact/
         else
