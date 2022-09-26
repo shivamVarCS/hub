@@ -4,8 +4,8 @@
   "label": "Hive Import/Export Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[6.0.0-SNAPSHOT, 6.1.4)",
-  "created": 1554935026,
+  "cdapVersion": "[6.1.4, 7.0.0-SNAPSHOT)",
+  "created": 1664218929,
   "categories": [
     "hydrator-plugin"
   ],
@@ -21,7 +21,7 @@
         },
         {
           "name": "version",
-          "value": "1.8.0-1.1.0",
+          "value": "1.9.0-1.1.0",
           "canModify": false
         },
         {
@@ -31,12 +31,12 @@
         },
         {
           "name": "config",
-          "value": "hive-plugins-1.8.0-1.1.0.json",
+          "value": "hive-plugins-1.9.0-1.1.0.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "hive-plugins-1.8.0-1.1.0.jar",
+          "value": "hive-plugins-1.9.0-1.1.0.jar",
           "canModify": false
         }
       ]
