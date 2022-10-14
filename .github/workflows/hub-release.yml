@@ -46,12 +46,8 @@ jobs:
     - name: Run Script to List Missing Artifact Files    # Step to execute list.py script that performs find and list operations of this job
       run: python3 ./.github/scripts/list.py
 
-    - name: Setting Output    # Step to set resultant list as output of job
-      id: set-matrix
-      run: echo "::set-output name=matrix::${output}"
-
     outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}    # JSON output containing contents of strategy matrix of next job
+      matrix: ${{ env.output }}    # JSON output containing contents of strategy matrix of next job
 
   fetch-missing-artifacts:    # Job to fetch each missing file individually in parallel
     needs: setup-build-and-list-missing-artifacts
