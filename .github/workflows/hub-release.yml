@@ -124,12 +124,8 @@ jobs:
         on_retry_command: echo "The upload to central bucket failed in this attempt, retrying...."
         command: python3 ./.github/scripts/sync.py
 
-    - name: Setting GCS Bucket List Output    # Step to set resultant list as output of job
-      id: set-gcs-buckets
-      run: echo "::set-output name=buckets::${buckets}"
-
     outputs:
-      matrix: ${{ steps.set-gcs-buckets.outputs.buckets }}    # JSON output containing contents of strategy matrix of next job
+      matrix: ${{ env.buckets }}    # JSON output containing contents of strategy matrix of next job
 
 
   sync-regional-buckets:    # Job to sync all regional GCS buckets with central GCS bucket, in parallel
