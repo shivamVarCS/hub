@@ -10,14 +10,15 @@ jobs:
     runs-on: ubuntu-latest #running on Github runners
     steps:
     - name: Checkout PR
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         ref: ${{ github.event.pull_request.head.sha }}
 
     - name: Set up JDK 1.8 #to setup Java for building packager
-      uses: actions/setup-java@v1
+      uses: actions/setup-java@v3
       with:
-        java-version: 1.8
+        distribution: 'zulu' # Azul Zulu OpenJDK
+        java-version: '8'
 
     - name: Set up Cloud SDK #to use gsutil commands when searching for necessary files
       uses: google-github-actions/setup-gcloud@v0
