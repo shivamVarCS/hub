@@ -32,7 +32,7 @@ for id in ids:
 jsonStr = ''
 for i in range(len(toFetch)):
     extension = toFetch[i].split('.')[-1]
-    jsonStr += '{\"path\":\"%s\",\"target_path\":\"artifact/%s\",\"artifact\":\"%s\",\"artifactDir\":\"%s\",\"repo\":{\"id\":\"%s\",\"file_type\":\"%s\"}},' %(toFetch[i], toFetch[i].split('/')[3], toFetch[i].split('/')[3], toFetch[i].rsplit('/', 1)[0], ids[i], extension)
+    jsonStr += '{"path":"%s","target_path":"artifact/%s","artifact":"%s","artifactDir":"%s","repo":{"id":"%s","file_type":"%s"}},' %(toFetch[i], toFetch[i].split('/')[3], toFetch[i].split('/')[3], toFetch[i].rsplit('/', 1)[0], ids[i], extension)
 
 output = '[' + jsonStr[:-1] + ']'
 logging.debug('Output of list.py: ')
