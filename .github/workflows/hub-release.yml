@@ -32,7 +32,7 @@ jobs:
     steps:
 
     - name: Repository Checkout    # Action to access file structure of repository in runner
-      uses: actions/checkout@v2.3.4
+      uses: actions/checkout@v3
 
     - name: Run Script to Build packages.json    # Step to execute build.py script that performs build operations of this job
       run: python3 ./.github/scripts/build.py
@@ -109,7 +109,7 @@ jobs:
     steps:
 
     - name: Repository Checkout    # Action to access file structure of repository in runner
-      uses: actions/checkout@v2.3.4
+      uses: actions/checkout@v3
 
     - name: Download Artifact    # Action to download all the fetched missing files to a temporary artifacts directory
       uses: actions/download-artifact@v3
