@@ -116,7 +116,8 @@ jobs:
       run: python3 ./.github/scripts/merge.py
 
     - name: Syncing Central GCS Bucket    # Step to sync central GCS bucket with updated artifacts, along with cleanup of bucket
-      uses: nick-fields/retry@b4fa57557dda8c2f30bcb2d19372cc3237190f7f    # Retrying upto 3 times if operations fails due to network error
+      # Pinned version 2.8.2
+      uses: nick-fields/retry@3e91a01664abd3c5cd539100d10d33b9c5b68482    # Retrying upto 3 times if operations fails due to network error
       with:
         timeout_seconds: 600
         max_attempts: 3
@@ -140,7 +141,8 @@ jobs:
     steps:
 
     - name: Syncing buckets, max 3 retries    # Action to sync bucket, and retry upto 3 times if failed
-      uses: nick-fields/retry@b4fa57557dda8c2f30bcb2d19372cc3237190f7f
+      # Pinned version 2.8.2
+      uses: nick-fields/retry@3e91a01664abd3c5cd539100d10d33b9c5b68482
       with:
         timeout_seconds: 600
         max_attempts: 3
