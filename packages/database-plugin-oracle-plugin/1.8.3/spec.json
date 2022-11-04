@@ -1,11 +1,11 @@
 {
   "specVersion": "1.0",
-  "description": "Oracle plugins to read and write from a Oracle instance",
+  "description": "Oracle plugins to read and write from an Oracle instance",
   "label": "Oracle Plugins",
   "author": "Cask",
   "org": "Cask Data, Inc.",
-  "cdapVersion": "[6.5.0, 6.7.0)",
-  "created": 1645728267,
+  "cdapVersion": "[6.7.0, 6.8.0)",
+  "created": 1667556293,
   "categories": [
     "EDW Offloading",
     "hydrator-plugin"
@@ -22,7 +22,7 @@
         },
         {
           "name": "version",
-          "value": "1.7.1",
+          "value": "1.8.3",
           "canModify": false
         },
         {
@@ -32,15 +32,16 @@
         },
         {
           "name": "config",
-          "value": "oracle-plugin-1.7.1.json",
+          "value": "oracle-plugin-1.8.3.json",
           "canModify": false
         },
         {
           "name": "jar",
-          "value": "oracle-plugin-1.7.1.jar",
+          "value": "oracle-plugin-1.8.3.jar",
           "canModify": false
         }
       ]
     }
   ]
 }
+
