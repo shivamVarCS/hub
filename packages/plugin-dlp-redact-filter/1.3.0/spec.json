@@ -8,7 +8,7 @@
   "categories": [ 
     "hydrator-plugin" 
   ],
-  "cdapVersion": "[6.7.0,7.0.0-SNAPSHOT)",
+  "cdapVersion": "[6.7.0,6.8.0)",
   "paidLink":"https://cloud.google.com/dlp/pricing",
   "actions": [
     {
