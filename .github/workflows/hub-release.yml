@@ -42,6 +42,7 @@ jobs:
       with:
         name: packages.json
         path: ./packages.json
+        retention-days: 7
 
     - name: Run Script to List Missing Artifact Files    # Step to execute list.py script that performs find and list operations of this job
       run: python3 ./.github/scripts/list.py
@@ -98,6 +99,7 @@ jobs:
       with:
         name: ${{ matrix.artifact.artifact }}
         path: ${{ matrix.artifact.target_path }}
+        retention-days: 7
 
   merge-missing-artifacts-and-sync-central-gcs-bucket:    # Job to place all artifacts in appropriate location, and sync central Hub GCS bucket
     needs: fetch-missing-artifacts
