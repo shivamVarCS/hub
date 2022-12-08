@@ -16,13 +16,13 @@ name: Hub Release Automation
 on:
   push:    # Automated trigger on deploy branch
     branches:
-    - safe-yaml
+    - deploy
 
 concurrency:
   group: automation    # In-order execution by limiting to only 1 workflow run at a time
 
 env:
-  CENTRAL_GCS_BUCKET_PREFIX: 'hub-cdap-io-yamini1'
+  CENTRAL_GCS_BUCKET_PREFIX: 'hub-cdap-io/v2'
 
 jobs:
 
