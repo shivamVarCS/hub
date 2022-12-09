@@ -84,7 +84,7 @@ def get_missing_files():    # Utility function to get list of missing artifact f
                                 if(not os.path.isfile(os.path.join(artifactVersionDir, file))):
                                     if(os.path.isfile(os.path.join(artifactDir, 'build.yaml'))):
                                         buildFile = open(os.path.join(artifactDir, 'build.yaml'))
-                                        buildData = yaml.load(buildFile, Loader=yaml.FullLoader)
+                                        buildData = yaml.load(buildFile, Loader=yaml.SafeLoader)
                                         groupId = buildData['maven-central']['groupId']
                                         artifactId = buildData['maven-central']['artifactId']
                                         files.append(os.path.join(artifactVersionDir, file))
@@ -103,7 +103,7 @@ def get_missing_files():    # Utility function to get list of missing artifact f
 def get_bucket_list():
 
     bucketFile = open(os.path.join('.github', 'scripts', 'gcs-buckets.yaml'))
-    bucketData = yaml.load(bucketFile, Loader=yaml.FullLoader)
+    bucketData = yaml.load(bucketFile, Loader=yaml.SafeLoader)
     central_bucket = bucketData['central-bucket']
     regional_buckets = list(bucketData['regional-buckets'])
 

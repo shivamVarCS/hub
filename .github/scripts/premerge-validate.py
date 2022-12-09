@@ -130,7 +130,7 @@ for specFile in specFiles:
     elif os.path.isfile(os.path.join(artifactDir, 'build.yaml')):
       # getting required info from build.yaml file
       buildFile = open(os.path.join(artifactDir, 'build.yaml'))
-      buildData = yaml.load(buildFile, Loader=yaml.FullLoader)
+      buildData = yaml.load(buildFile, Loader=yaml.SafeLoader)
       groupId = buildData['maven-central']['groupId']
       artifactId = buildData['maven-central']['artifactId']
 
