@@ -3,3 +3,4 @@ central-bucket:
 
 regional-buckets:
 - kinaxis-hub
+- hub-bucket-kinaxis
