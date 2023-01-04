@@ -1,4 +1,0 @@
-# This file contains Maven Central coordinates of artifact if a fetch is needed
-maven-central:
-  groupId: io.cdap.plugin
-  artifactId: google-cloud
