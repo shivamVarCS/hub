@@ -27,7 +27,7 @@ env:
 jobs:
 
   setup-build-and-list-missing-artifacts:    # Job to build packages.json file, find and list missing files
-    runs-on: cdapio-hub-k8-runner    # Self hosted runner on GKE cluster
+    runs-on: self-hosted-KX    # Self hosted runner on GKE cluster
 
     steps:
 
