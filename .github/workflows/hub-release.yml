@@ -22,7 +22,7 @@ concurrency:
   group: automation    # In-order execution by limiting to only 1 workflow run at a time
 
 env:
-  CENTRAL_GCS_BUCKET_PREFIX: 'hub-cdap-io/v2'
+  CENTRAL_GCS_BUCKET_PREFIX: 'kinaxis-hub'
 
 jobs:
 
@@ -53,7 +53,7 @@ jobs:
   fetch-missing-artifacts:    # Job to fetch each missing file individually in parallel
     needs: setup-build-and-list-missing-artifacts
     if: ${{ needs.setup-build-and-list-missing-artifacts.outputs.matrix != '[]' && needs.setup-build-and-list-missing-artifacts.outputs.matrix != '' && success() }}    # Skip job if no file to be fetched. Execute job sequentially after completion of previous jobs without failure
-    runs-on: cdapio-hub-k8-runner
+    runs-on: self-hosted-KX
 
     strategy:
       matrix:
@@ -104,7 +104,7 @@ jobs:
   merge-missing-artifacts-and-sync-central-gcs-bucket:    # Job to place all artifacts in appropriate location, and sync central Hub GCS bucket
     needs: fetch-missing-artifacts
     if: success()
-    runs-on: cdapio-hub-k8-runner
+    runs-on: self-hosted-KX
 
     steps:
 
@@ -134,7 +134,7 @@ jobs:
 
 
   sync-regional-buckets:    # Job to sync all regional GCS buckets with central GCS bucket, in parallel
-    runs-on: cdapio-hub-k8-runner
+    runs-on: self-hosted-KX
     needs: merge-missing-artifacts-and-sync-central-gcs-bucket
     if: success()
 

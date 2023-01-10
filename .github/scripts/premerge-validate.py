@@ -24,7 +24,7 @@ import utilities
 # Setting logging level to DEBUG
 logging.getLogger().setLevel(logging.DEBUG)
 
-CENTRAL_GCS_BUCKET_PREFIX = 'hub-cdap-io/v2'
+CENTRAL_GCS_BUCKET_PREFIX = 'kinaxis-hub'
 onlyWarningTypes: List[str] = ['create_driver_artifact']
 
 ## 1 . FETCHING ADDED/MODIFIED/RENAMED FILES
