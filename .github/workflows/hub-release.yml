@@ -27,7 +27,7 @@ env:
 jobs:
 
   setup-build-and-list-missing-artifacts:    # Job to build packages.json file, find and list missing files
-    runs-on: self-hosted-KX    # Self hosted runner on GKE cluster
+    runs-on: self-hosted    # Self hosted runner on GKE cluster
 
     steps:
 
@@ -53,7 +53,7 @@ jobs:
   fetch-missing-artifacts:    # Job to fetch each missing file individually in parallel
     needs: setup-build-and-list-missing-artifacts
     if: ${{ needs.setup-build-and-list-missing-artifacts.outputs.matrix != '[]' && needs.setup-build-and-list-missing-artifacts.outputs.matrix != '' && success() }}    # Skip job if no file to be fetched. Execute job sequentially after completion of previous jobs without failure
-    runs-on: self-hosted-KX
+    runs-on: self-hosted
 
     strategy:
       matrix:
