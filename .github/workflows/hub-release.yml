@@ -104,7 +104,7 @@ jobs:
   merge-missing-artifacts-and-sync-central-gcs-bucket:    # Job to place all artifacts in appropriate location, and sync central Hub GCS bucket
     needs: fetch-missing-artifacts
     if: success()
-    runs-on: self-hosted-KX
+    runs-on: self-hosted
 
     steps:
 
@@ -134,7 +134,7 @@ jobs:
 
 
   sync-regional-buckets:    # Job to sync all regional GCS buckets with central GCS bucket, in parallel
-    runs-on: self-hosted-KX
+    runs-on: self-hosted
     needs: merge-missing-artifacts-and-sync-central-gcs-bucket
     if: success()
 
