@@ -35,7 +35,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Run Script to Build packages.json    # Step to execute build.py script that performs build operations of this job
-      run: python3 ./.github/scripts/build.py
+      run: python3 https://github.com/cdapio/hub/blob/deploy/.github/scripts/build.py
 
     - name: Store packages.json as Artifact    # Action to upload packages.json as an artifact for further use
       uses: actions/upload-artifact@v3
