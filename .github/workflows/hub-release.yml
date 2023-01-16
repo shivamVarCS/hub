@@ -44,7 +44,7 @@ jobs:
         path: ./packages.json
         retention-days: 7
 
-    - name: Run Script to List Missing Artifact Files    # Step to execute list.py script that performs find and list operations of this job
+    - name: Run Script to  List Missing Artifact Files    # Step to execute list.py script that performs find and list operations of this job
       run: python3 ./.github/scripts/list.py
 
     outputs:
