@@ -1,5 +1,5 @@
 central-bucket:
-  kinaxis-hub
+  hub-cdap-io/v2
 
 regional-buckets:
-- hub-bucket-kinaxis
+- kinaxis-hub
