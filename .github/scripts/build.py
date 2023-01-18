@@ -38,7 +38,7 @@ utilities.run_shell_command('mvn clean package')
 os.chdir('../')
 
 logging.debug('Building packages.json ....\n')
-utilities.run_shell_command('java -cp "packager/target/lib/*:packager/target/*" io.cdap.hub.Tool build')
+utilities.run_shell_command('java -cp "packager/target/lib/*:packager/target/*" io.cdap.hub.Tool build -i 499BC990789824FD -p mypassword')
 
 # Listing all files
 logging.info('ls:\n', os.listdir())
